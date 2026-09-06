@@ -72,13 +72,6 @@ jobs:
             exit 1
           fi
 
-          echo "=== DEBUG: raw Cloudflare API response ==="
-          curl -s "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects" \
-            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            -H "Content-Type: application/json"
-          echo ""
-          echo "=== END DEBUG ==="
-
           while IFS= read -r slug; do
             [ -z "$slug" ] && continue
             dir="sites/$slug"
