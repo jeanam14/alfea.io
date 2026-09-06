@@ -41,23 +41,19 @@ Same site, same deploy — nothing gets rebuilt:
 
 ## One-time setup — what needs to happen outside this repo
 
-- [ ] **Netlify account** — using the existing alfea.io Netlify account/team
+- [x] **Netlify account** — using the existing alfea.io Netlify account/team
       (the one already hosting the main site), not a new one.
-- [ ] **Confirm how alfea.io's DNS is set up** — this decides whether new
-      client subdomains attach themselves automatically or need one manual
-      step per client:
-      - Check Netlify → Sites → the site with `web-creation.alfea.io` as its
-        custom domain → Domain management. If Netlify shows **"Netlify
-        DNS"** for the zone, new `*.web-creation.alfea.io` subdomains
-        provision automatically — nothing further to do per client.
-      - If it shows an **external DNS provider** instead, a CNAME record for
-        each new client subdomain (`<slug>.web-creation.alfea.io` →
-        `alfea-<slug>.netlify.app`) needs to be added manually wherever
-        alfea.io's DNS is actually managed, once per new client, until this
-        gets automated further.
-      - Report back which case it is — the deploy workflow already handles
-        both, but the second case means an extra manual step per client for
-        now.
+- [x] **DNS confirmed** — alfea.io is delegated to Netlify DNS (confirmed via
+      the exported DNS records: the `NETLIFY` apex record only exists on a
+      Netlify-hosted zone). New `<slug>.web-creation.alfea.io` records
+      provision automatically when the deploy workflow sets a site's custom
+      domain — no manual DNS step per client.
+      One thing to note: this Netlify account/team also hosts `julaide.io`,
+      an unrelated business. The deploy workflow only ever creates sites
+      named `alfea-<slug>` and only ever sets `*.web-creation.alfea.io`
+      domains, so it never touches julaide.io's sites — but the access token
+      below is account-wide, not scoped to this project, so use the
+      narrowest scope Netlify's token creation screen offers.
 - [ ] **A Netlify Personal Access Token** — Netlify → User settings →
       Applications → Personal access tokens → New access token.
 - [ ] **Add it as a GitHub repo secret** — this repo's Settings → Secrets

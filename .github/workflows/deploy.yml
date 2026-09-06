@@ -9,15 +9,16 @@ name: Deploy client sites
 # Actions), set directly in GitHub — never pasted into chat:
 #   NETLIFY_AUTH_TOKEN  - Netlify personal access token
 #                         (Netlify -> User settings -> Applications -> New access token)
+#                         Note: this token is account-wide on a Netlify team
+#                         that also hosts julaide.io (an unrelated business).
+#                         This workflow only creates sites named alfea-<slug>
+#                         and only sets *.web-creation.alfea.io domains, so it
+#                         never touches julaide.io's sites — but use the
+#                         narrowest token scope Netlify offers regardless.
 #
-# NOTE ON DNS: setting a site's custom_domain via the Netlify API always
-# registers the intended domain on the site. Whether it actually resolves
-# depends on how alfea.io's DNS is set up:
-#   - If alfea.io is delegated to Netlify DNS, Netlify provisions the record
-#     and SSL cert automatically — nothing else to do.
-#   - If alfea.io's DNS lives elsewhere, a CNAME for <slug>.web-creation.alfea.io
-#     pointing at alfea-<slug>.netlify.app must be added manually there, once
-#     per client, until that's resolved.
+# NOTE ON DNS: alfea.io is delegated to Netlify DNS, so setting a site's
+# custom_domain via the Netlify API provisions the DNS record and SSL cert
+# automatically — no manual step per client.
 
 on:
   push:
