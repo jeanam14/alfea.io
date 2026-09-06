@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ Remove this line at close, once the client has paid -->
+<title>Alfea Pipeline Smoke Test | This is not a real business — pipeline verification only</title>
+<meta name="description" content="Alfea Pipeline Smoke Test — This is not a real business — pipeline verification only. Serving the Alfea deploy pipeline. Call (555) 000-0000." />
+<link rel="icon" href="data:," />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: "#1D6F5C", brandDark: "#14503F" },
+        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter',sans-serif; }
+  h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
+  .reveal{ opacity:0; transform:translateY(24px); }
+  .star{ color:#F5A524; }
+</style>
+</head>
+<body class="bg-white text-slate-900">
+
+  <!-- Sticky call bar (mobile) -->
+  <a href="tel:5550000000" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-lg">
+    Call now — (555) 000-0000
+  </a>
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-display font-extrabold text-lg tracking-tight">Alfea Pipeline Smoke Test</span>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#services" class="hover:text-slate-900">Services</a>
+        <a href="#reviews" class="hover:text-slate-900">Reviews</a>
+        <a href="#area" class="hover:text-slate-900">Service Area</a>
+        <a href="#contact" class="hover:text-slate-900">Contact</a>
+      </nav>
+      <a href="tel:5550000000" class="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition">
+        (555) 000-0000
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-800 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+          <span class="star">★★★★★</span> 5.0 · 1 Google reviews
+        </div>
+        <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight tracking-tight text-wrap-balance">
+          This is not a real business — pipeline verification only
+        </h1>
+        <p class="mt-5 text-lg text-slate-600 max-w-md">If you can read this at smoke-test.web-creation.alfea.io, the deploy pipeline works end to end.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="tel:5550000000" class="bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition shadow-lg shadow-brand/20">
+            Call (555) 000-0000
+          </a>
+          <a href="#contact" class="border border-slate-200 hover:border-slate-300 font-semibold px-7 py-3.5 rounded-full transition">
+            Request a quote
+          </a>
+        </div>
+        <div class="mt-10 flex items-center gap-8 text-sm text-slate-500">
+          <div><span class="font-display font-bold text-slate-900 text-xl">0+</span><br>years serving Austin</div>
+          <div><span class="font-display font-bold text-slate-900 text-xl">24/7</span><br>emergency calls</div>
+          <div><span class="font-display font-bold text-slate-900 text-xl">Licensed</span><br>&amp; insured</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="https://placehold.co/800x1000/1D6F5C/white?text=Smoke+Test" alt="Alfea Pipeline Smoke Test at work" class="rounded-2xl shadow-2xl w-full aspect-[4/5] object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-slate-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="reveal text-3xl font-display font-bold mb-2">What we do</h2>
+      <p class="reveal text-slate-600 mb-12 max-w-lg">This section exists only to confirm the template renders correctly.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">Test service 1</h3>
+          <p class="text-sm text-slate-600">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">Test service 2</h3>
+          <p class="text-sm text-slate-600">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">Test service 3</h3>
+          <p class="text-sm text-slate-600">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">Test service 4</h3>
+          <p class="text-sm text-slate-600">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">Test service 5</h3>
+          <p class="text-sm text-slate-600">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">Test service 6</h3>
+          <p class="text-sm text-slate-600">Placeholder description for the smoke test.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <img src="https://placehold.co/800x600/1D6F5C/white?text=Smoke+Test" alt="Alfea Pipeline Smoke Test team" class="reveal rounded-2xl w-full aspect-[4/3] object-cover order-2 md:order-1" />
+      <div class="order-1 md:order-2">
+        <h2 class="reveal text-3xl font-display font-bold mb-4">Pipeline check</h2>
+        <p class="reveal text-slate-600 leading-relaxed">Cloudflare Pages hosting, Netlify DNS record, GitHub Actions deploy — all exercised by this one push.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-slate-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="reveal text-3xl font-display font-bold mb-12">What Austin says</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-slate-700 mb-4">"Deploy worked as expected."</p>
+          <p class="text-sm font-semibold">Test Reviewer 1</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-slate-700 mb-4">"Deploy worked as expected."</p>
+          <p class="text-sm font-semibold">Test Reviewer 2</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-slate-700 mb-4">"Deploy worked as expected."</p>
+          <p class="text-sm font-semibold">Test Reviewer 3</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area / map -->
+  <section id="area" class="py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="reveal text-3xl font-display font-bold mb-4">Proudly serving the Alfea deploy pipeline</h2>
+        <p class="reveal text-slate-600 leading-relaxed mb-6">1 Test St, Austin, TX</p>
+        <a href="tel:5550000000" class="reveal inline-flex bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition">
+          Call (555) 000-0000
+        </a>
+      </div>
+      <div class="reveal rounded-2xl overflow-hidden border border-slate-100 aspect-[4/3]">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.9!2d-97.7431!3d30.2672" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-brand py-20">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="reveal text-3xl md:text-4xl font-display font-bold text-white mb-4">Ready when you are</h2>
+      <p class="reveal text-white/80 mb-8">Call now, or leave your number and we'll call you back today.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:5550000000" class="bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call (555) 000-0000</a>
+        <a href="mailto:jean@alfea.io" class="border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-sm text-slate-400">
+    © 2026 Alfea Pipeline Smoke Test. 1 Test St, Austin, TX.
+  </footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.reveal').forEach((el) => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' }
+    });
+  });
+</script>
+</body>
+</html>
