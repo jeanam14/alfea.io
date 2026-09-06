@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ Remove this line at close, once the client has paid -->
+<title>{{BUSINESS_NAME}} | {{TAGLINE}}</title>
+<meta name="description" content="{{BUSINESS_NAME}} — {{TAGLINE}}. Serving {{SERVICE_AREA}}. Call {{PHONE}}." />
+<link rel="icon" href="data:," />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: "{{PRIMARY_COLOR}}", brandDark: "{{PRIMARY_COLOR_DARK}}" },
+        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter',sans-serif; }
+  h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
+  .reveal{ opacity:0; transform:translateY(24px); }
+  .star{ color:#F5A524; }
+</style>
+</head>
+<body class="bg-white text-slate-900">
+
+  <!-- Sticky call bar (mobile) -->
+  <a href="tel:{{PHONE_HREF}}" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-lg">
+    Call now — {{PHONE}}
+  </a>
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-display font-extrabold text-lg tracking-tight">{{BUSINESS_NAME}}</span>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#services" class="hover:text-slate-900">Services</a>
+        <a href="#reviews" class="hover:text-slate-900">Reviews</a>
+        <a href="#area" class="hover:text-slate-900">Service Area</a>
+        <a href="#contact" class="hover:text-slate-900">Contact</a>
+      </nav>
+      <a href="tel:{{PHONE_HREF}}" class="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition">
+        {{PHONE}}
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-800 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+          <span class="star">★★★★★</span> {{RATING}} · {{REVIEW_COUNT}} Google reviews
+        </div>
+        <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight tracking-tight text-wrap-balance">
+          {{TAGLINE}}
+        </h1>
+        <p class="mt-5 text-lg text-slate-600 max-w-md">{{HERO_SUBTEXT}}</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="tel:{{PHONE_HREF}}" class="bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition shadow-lg shadow-brand/20">
+            Call {{PHONE}}
+          </a>
+          <a href="#contact" class="border border-slate-200 hover:border-slate-300 font-semibold px-7 py-3.5 rounded-full transition">
+            Request a quote
+          </a>
+        </div>
+        <div class="mt-10 flex items-center gap-8 text-sm text-slate-500">
+          <div><span class="font-display font-bold text-slate-900 text-xl">{{YEARS}}+</span><br>years serving {{CITY}}</div>
+          <div><span class="font-display font-bold text-slate-900 text-xl">24/7</span><br>emergency calls</div>
+          <div><span class="font-display font-bold text-slate-900 text-xl">Licensed</span><br>&amp; insured</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="{{HERO_IMAGE}}" alt="{{BUSINESS_NAME}} at work" class="rounded-2xl shadow-2xl w-full aspect-[4/5] object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-slate-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="reveal text-3xl font-display font-bold mb-2">What we do</h2>
+      <p class="reveal text-slate-600 mb-12 max-w-lg">{{SERVICES_INTRO}}</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_1_NAME}}</h3>
+          <p class="text-sm text-slate-600">{{SERVICE_1_DESC}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_2_NAME}}</h3>
+          <p class="text-sm text-slate-600">{{SERVICE_2_DESC}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_3_NAME}}</h3>
+          <p class="text-sm text-slate-600">{{SERVICE_3_DESC}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_4_NAME}}</h3>
+          <p class="text-sm text-slate-600">{{SERVICE_4_DESC}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_5_NAME}}</h3>
+          <p class="text-sm text-slate-600">{{SERVICE_5_DESC}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_6_NAME}}</h3>
+          <p class="text-sm text-slate-600">{{SERVICE_6_DESC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <img src="{{ABOUT_IMAGE}}" alt="{{BUSINESS_NAME}} team" class="reveal rounded-2xl w-full aspect-[4/3] object-cover order-2 md:order-1" />
+      <div class="order-1 md:order-2">
+        <h2 class="reveal text-3xl font-display font-bold mb-4">{{ABOUT_HEADLINE}}</h2>
+        <p class="reveal text-slate-600 leading-relaxed">{{ABOUT_TEXT}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-slate-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="reveal text-3xl font-display font-bold mb-12">What {{CITY}} says</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-slate-700 mb-4">"{{REVIEW_1_TEXT}}"</p>
+          <p class="text-sm font-semibold">{{REVIEW_1_AUTHOR}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-slate-700 mb-4">"{{REVIEW_2_TEXT}}"</p>
+          <p class="text-sm font-semibold">{{REVIEW_2_AUTHOR}}</p>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-slate-700 mb-4">"{{REVIEW_3_TEXT}}"</p>
+          <p class="text-sm font-semibold">{{REVIEW_3_AUTHOR}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area / map -->
+  <section id="area" class="py-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="reveal text-3xl font-display font-bold mb-4">Proudly serving {{SERVICE_AREA}}</h2>
+        <p class="reveal text-slate-600 leading-relaxed mb-6">{{ADDRESS}}</p>
+        <a href="tel:{{PHONE_HREF}}" class="reveal inline-flex bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition">
+          Call {{PHONE}}
+        </a>
+      </div>
+      <div class="reveal rounded-2xl overflow-hidden border border-slate-100 aspect-[4/3]">
+        <iframe src="{{MAP_EMBED_SRC}}" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-brand py-20">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="reveal text-3xl md:text-4xl font-display font-bold text-white mb-4">Ready when you are</h2>
+      <p class="reveal text-white/80 mb-8">Call now, or leave your number and we'll call you back today.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:{{PHONE_HREF}}" class="bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call {{PHONE}}</a>
+        <a href="mailto:{{EMAIL}}" class="border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-sm text-slate-400">
+    © {{YEAR}} {{BUSINESS_NAME}}. {{ADDRESS}}.
+  </footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.reveal').forEach((el) => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' }
+    });
+  });
+</script>
+</body>
+</html>

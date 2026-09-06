@@ -1,0 +1,67 @@
+name: Deploy client sites
+
+# Deploys every site under sites/<slug>/ that changed in this push to its own
+# Cloudflare Pages project, then attaches <slug>.alfea.io as its custom
+# domain (a no-op if already attached). Static sites only — no build step.
+#
+# Requires two repository secrets (Settings -> Secrets and variables ->
+# Actions), set directly in GitHub — never pasted into chat:
+#   CLOUDFLARE_API_TOKEN   - scoped token: Account.Cloudflare Pages: Edit,
+#                            Zone.DNS: Edit (for the alfea.io zone)
+#   CLOUDFLARE_ACCOUNT_ID  - found on the Workers & Pages overview page
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sites/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed sites
+        id: changed
+        run: |
+          if git rev-parse "${{ github.event.before }}" >/dev/null 2>&1 && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            CHANGED=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- sites | awk -F/ '{print $2}' | sort -u)
+          else
+            CHANGED=$(find sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
+          fi
+          echo "Changed site slugs:"
+          echo "$CHANGED"
+          {
+            echo "slugs<<EOF"
+            echo "$CHANGED"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Deploy each changed site
+        if: steps.changed.outputs.slugs != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npm install -g wrangler
+          while IFS= read -r slug; do
+            [ -z "$slug" ] && continue
+            dir="sites/$slug"
+            [ -d "$dir" ] || { echo "skip $slug (removed)"; continue; }
+
+            echo "=== $slug ==="
+            wrangler pages project create "$slug" --production-branch main 2>/dev/null || true
+            wrangler pages deploy "$dir" --project-name "$slug" --branch main
+
+            echo "Attaching $slug.alfea.io"
+            curl -s -o /dev/null -w "domain attach: %{http_code}\n" -X POST \
+              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$slug/domains" \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"name\":\"$slug.alfea.io\"}"
+          done <<< "${{ steps.changed.outputs.slugs }}"
