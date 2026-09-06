@@ -8,6 +8,8 @@
 <title>{{BUSINESS_NAME}} | {{TAGLINE}}</title>
 <meta name="description" content="{{BUSINESS_NAME}} — {{TAGLINE}}. Serving {{SERVICE_AREA}}. Call {{PHONE}}." />
 <link rel="icon" href="data:," />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -19,180 +21,359 @@
     }
   }
 </script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- GSAP + free bonus plugins (ScrollSmoother, SplitText) via jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+
 <style>
-  html{ scroll-behavior:smooth; }
-  body{ font-family:'Inter',sans-serif; }
+  :root{
+    --ink: #14181B;
+    --ink-soft: #545B60;
+    --paper: #FAF9F6;
+    --line: rgba(20,24,27,0.08);
+  }
+  html{ background:var(--paper); }
+  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
   h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
-  .reveal{ opacity:0; transform:translateY(24px); }
-  .star{ color:#F5A524; }
+  h1,h2{ text-wrap:balance; }
+  ::selection{ background:{{PRIMARY_COLOR}}; color:#fff; }
+
+  /* ScrollSmoother required structure */
+  #smooth-wrapper{ overflow:hidden; }
+  #smooth-content{ overflow:visible; }
+
+  .word{ display:inline-block; will-change:transform; }
+  .clip-reveal{ clip-path: inset(0 0 100% 0); }
+  .star{ color:#F5A524; letter-spacing:1px; }
+  .tabular{ font-variant-numeric: tabular-nums; }
+
+  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease, padding .4s ease; }
+  #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+
+  .magnetic{ display:inline-flex; will-change:transform; }
+
+  .card-glow{ position:relative; overflow:hidden; }
+  .card-glow::before{
+    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease;
+    background: radial-gradient(120px 120px at var(--mx,50%) var(--my,0%), {{PRIMARY_COLOR}}22, transparent 70%);
+    pointer-events:none;
+  }
+  .card-glow:hover::before{ opacity:1; }
+
+  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
+
+  .snap-row{ scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+  .snap-row > *{ scroll-snap-align:start; }
+  .snap-row::-webkit-scrollbar{ display:none; }
+  .snap-row{ scrollbar-width:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
 </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-[--paper] text-[--ink]">
 
-  <!-- Sticky call bar (mobile) -->
-  <a href="tel:{{PHONE_HREF}}" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-lg">
-    Call now — {{PHONE}}
-  </a>
-
-  <!-- Nav -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- Nav + mobile call bar live OUTSIDE the smoother wrapper: ScrollSmoother
+       applies a transform to #smooth-content, and position:fixed children of a
+       transformed ancestor stop tracking the viewport. -->
+  <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <span class="font-display font-extrabold text-lg tracking-tight">{{BUSINESS_NAME}}</span>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="#services" class="hover:text-slate-900">Services</a>
-        <a href="#reviews" class="hover:text-slate-900">Reviews</a>
-        <a href="#area" class="hover:text-slate-900">Service Area</a>
-        <a href="#contact" class="hover:text-slate-900">Contact</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
+        <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
+        <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
+        <a href="#area" class="hover:text-[--ink] transition-colors">Service Area</a>
+        <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
       </nav>
-      <a href="tel:{{PHONE_HREF}}" class="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition">
+      <a href="tel:{{PHONE_HREF}}" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
         {{PHONE}}
       </a>
     </div>
   </header>
 
+  <a href="tel:{{PHONE_HREF}}" id="mobile-call-bar" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)] translate-y-full">
+    Call now — {{PHONE}}
+  </a>
+
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid md:grid-cols-2 gap-12 items-center">
+  <section class="relative pt-32 pb-24 md:pt-40 md:pb-32">
+    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-10%] w-[640px] h-[640px] rounded-full opacity-[0.10] blur-3xl" style="background:{{PRIMARY_COLOR}}"></div>
+
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center relative">
       <div>
-        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-800 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+        <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-7 opacity-0">
           <span class="star">★★★★★</span> {{RATING}} · {{REVIEW_COUNT}} Google reviews
         </div>
-        <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight tracking-tight text-wrap-balance">
+
+        <h1 id="hero-headline" class="text-[13vw] leading-[1.02] md:text-6xl md:leading-[1.05] font-display font-extrabold tracking-tight overflow-hidden">
           {{TAGLINE}}
         </h1>
-        <p class="mt-5 text-lg text-slate-600 max-w-md">{{HERO_SUBTEXT}}</p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="tel:{{PHONE_HREF}}" class="bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition shadow-lg shadow-brand/20">
+
+        <p id="hero-sub" class="mt-6 text-lg text-[--ink-soft] max-w-md opacity-0 translate-y-4">{{HERO_SUBTEXT}}</p>
+
+        <div id="hero-ctas" class="mt-9 flex flex-wrap gap-4 opacity-0 translate-y-4">
+          <a href="tel:{{PHONE_HREF}}" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg" style="box-shadow: 0 12px 30px -10px {{PRIMARY_COLOR}}aa">
             Call {{PHONE}}
           </a>
-          <a href="#contact" class="border border-slate-200 hover:border-slate-300 font-semibold px-7 py-3.5 rounded-full transition">
+          <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
             Request a quote
           </a>
         </div>
-        <div class="mt-10 flex items-center gap-8 text-sm text-slate-500">
-          <div><span class="font-display font-bold text-slate-900 text-xl">{{YEARS}}+</span><br>years serving {{CITY}}</div>
-          <div><span class="font-display font-bold text-slate-900 text-xl">24/7</span><br>emergency calls</div>
-          <div><span class="font-display font-bold text-slate-900 text-xl">Licensed</span><br>&amp; insured</div>
+
+        <div id="hero-stats" class="mt-12 flex items-center gap-10 text-sm text-[--ink-soft] opacity-0 translate-y-4">
+          <div><span class="font-display font-bold text-[--ink] text-2xl tabular"><span data-counter="{{YEARS}}">0</span>+</span><br>years serving {{CITY}}</div>
+          <div><span class="font-display font-bold text-[--ink] text-2xl">24/7</span><br>emergency calls</div>
+          <div><span class="font-display font-bold text-[--ink] text-2xl">Licensed</span><br>&amp; insured</div>
         </div>
       </div>
-      <div class="reveal">
-        <img src="{{HERO_IMAGE}}" alt="{{BUSINESS_NAME}} at work" class="rounded-2xl shadow-2xl w-full aspect-[4/5] object-cover" />
+
+      <div class="relative">
+        <div id="hero-image-wrap" class="clip-reveal rounded-2xl overflow-hidden shadow-2xl" data-speed="0.9">
+          <img src="{{HERO_IMAGE}}" alt="{{BUSINESS_NAME}} at work" class="w-full aspect-[4/5] object-cover" />
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Services -->
-  <section id="services" class="bg-slate-50 py-20">
+  <section id="services" class="bg-white border-y border-[--line] py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="reveal text-3xl font-display font-bold mb-2">What we do</h2>
-      <p class="reveal text-slate-600 mb-12 max-w-lg">{{SERVICES_INTRO}}</p>
+      <div class="reveal-up flex items-end justify-between flex-wrap gap-4 mb-14">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-display font-bold mb-3">What we do</h2>
+          <p class="text-[--ink-soft] max-w-lg">{{SERVICES_INTRO}}</p>
+        </div>
+      </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
           <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_1_NAME}}</h3>
-          <p class="text-sm text-slate-600">{{SERVICE_1_DESC}}</p>
+          <p class="text-sm text-[--ink-soft]">{{SERVICE_1_DESC}}</p>
         </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
           <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_2_NAME}}</h3>
-          <p class="text-sm text-slate-600">{{SERVICE_2_DESC}}</p>
+          <p class="text-sm text-[--ink-soft]">{{SERVICE_2_DESC}}</p>
         </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
           <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_3_NAME}}</h3>
-          <p class="text-sm text-slate-600">{{SERVICE_3_DESC}}</p>
+          <p class="text-sm text-[--ink-soft]">{{SERVICE_3_DESC}}</p>
         </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
           <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_4_NAME}}</h3>
-          <p class="text-sm text-slate-600">{{SERVICE_4_DESC}}</p>
+          <p class="text-sm text-[--ink-soft]">{{SERVICE_4_DESC}}</p>
         </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
           <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_5_NAME}}</h3>
-          <p class="text-sm text-slate-600">{{SERVICE_5_DESC}}</p>
+          <p class="text-sm text-[--ink-soft]">{{SERVICE_5_DESC}}</p>
         </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
+        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
           <h3 class="font-display font-bold text-lg mb-2">{{SERVICE_6_NAME}}</h3>
-          <p class="text-sm text-slate-600">{{SERVICE_6_DESC}}</p>
+          <p class="text-sm text-[--ink-soft]">{{SERVICE_6_DESC}}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section class="py-20">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-      <img src="{{ABOUT_IMAGE}}" alt="{{BUSINESS_NAME}} team" class="reveal rounded-2xl w-full aspect-[4/3] object-cover order-2 md:order-1" />
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="clip-reveal rounded-2xl overflow-hidden order-2 md:order-1" data-speed="1.08">
+        <img src="{{ABOUT_IMAGE}}" alt="{{BUSINESS_NAME}} team" class="w-full aspect-[4/3] object-cover" />
+      </div>
       <div class="order-1 md:order-2">
-        <h2 class="reveal text-3xl font-display font-bold mb-4">{{ABOUT_HEADLINE}}</h2>
-        <p class="reveal text-slate-600 leading-relaxed">{{ABOUT_TEXT}}</p>
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">{{ABOUT_HEADLINE}}</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">{{ABOUT_TEXT}}</p>
       </div>
     </div>
   </section>
 
   <!-- Reviews -->
-  <section id="reviews" class="bg-slate-50 py-20">
+  <section id="reviews" class="bg-white border-y border-[--line] py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="reveal text-3xl font-display font-bold mb-12">What {{CITY}} says</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
-          <div class="star mb-3">★★★★★</div>
-          <p class="text-sm text-slate-700 mb-4">"{{REVIEW_1_TEXT}}"</p>
-          <p class="text-sm font-semibold">{{REVIEW_1_AUTHOR}}</p>
-        </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
-          <div class="star mb-3">★★★★★</div>
-          <p class="text-sm text-slate-700 mb-4">"{{REVIEW_2_TEXT}}"</p>
-          <p class="text-sm font-semibold">{{REVIEW_2_AUTHOR}}</p>
-        </div>
-        <div class="reveal bg-white rounded-2xl p-7 border border-slate-100">
-          <div class="star mb-3">★★★★★</div>
-          <p class="text-sm text-slate-700 mb-4">"{{REVIEW_3_TEXT}}"</p>
-          <p class="text-sm font-semibold">{{REVIEW_3_AUTHOR}}</p>
-        </div>
+      <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-14">What {{CITY}} says</h2>
+    </div>
+    <div class="snap-row flex gap-6 overflow-x-auto px-6 max-w-6xl mx-auto pb-4">
+      <div class="reveal-card min-w-[300px] md:min-w-[340px] bg-[--paper] rounded-2xl p-8 border border-[--line]">
+        <div class="quote-mark text-5xl mb-2" style="color:{{PRIMARY_COLOR}}">"</div>
+        <div class="star mb-3">★★★★★</div>
+        <p class="text-[--ink] mb-5">{{REVIEW_1_TEXT}}</p>
+        <p class="text-sm font-semibold text-[--ink-soft]">{{REVIEW_1_AUTHOR}}</p>
+      </div>
+      <div class="reveal-card min-w-[300px] md:min-w-[340px] bg-[--paper] rounded-2xl p-8 border border-[--line]">
+        <div class="quote-mark text-5xl mb-2" style="color:{{PRIMARY_COLOR}}">"</div>
+        <div class="star mb-3">★★★★★</div>
+        <p class="text-[--ink] mb-5">{{REVIEW_2_TEXT}}</p>
+        <p class="text-sm font-semibold text-[--ink-soft]">{{REVIEW_2_AUTHOR}}</p>
+      </div>
+      <div class="reveal-card min-w-[300px] md:min-w-[340px] bg-[--paper] rounded-2xl p-8 border border-[--line]">
+        <div class="quote-mark text-5xl mb-2" style="color:{{PRIMARY_COLOR}}">"</div>
+        <div class="star mb-3">★★★★★</div>
+        <p class="text-[--ink] mb-5">{{REVIEW_3_TEXT}}</p>
+        <p class="text-sm font-semibold text-[--ink-soft]">{{REVIEW_3_AUTHOR}}</p>
       </div>
     </div>
   </section>
 
   <!-- Service area / map -->
-  <section id="area" class="py-20">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+  <section id="area" class="py-24">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
       <div>
-        <h2 class="reveal text-3xl font-display font-bold mb-4">Proudly serving {{SERVICE_AREA}}</h2>
-        <p class="reveal text-slate-600 leading-relaxed mb-6">{{ADDRESS}}</p>
-        <a href="tel:{{PHONE_HREF}}" class="reveal inline-flex bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition">
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving {{SERVICE_AREA}}</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">{{ADDRESS}}</p>
+        <a href="tel:{{PHONE_HREF}}" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
           Call {{PHONE}}
         </a>
       </div>
-      <div class="reveal rounded-2xl overflow-hidden border border-slate-100 aspect-[4/3]">
+      <div class="clip-reveal rounded-2xl overflow-hidden border border-[--line] aspect-[4/3]">
         <iframe src="{{MAP_EMBED_SRC}}" class="w-full h-full" style="border:0" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="bg-brand py-20">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="reveal text-3xl md:text-4xl font-display font-bold text-white mb-4">Ready when you are</h2>
-      <p class="reveal text-white/80 mb-8">Call now, or leave your number and we'll call you back today.</p>
-      <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:{{PHONE_HREF}}" class="bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call {{PHONE}}</a>
-        <a href="mailto:{{EMAIL}}" class="border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
+  <section id="contact" class="relative py-28 overflow-hidden" style="background:{{PRIMARY_COLOR}}">
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
+      <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
+      <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:{{PHONE_HREF}}" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call {{PHONE}}</a>
+        <a href="mailto:{{EMAIL}}" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
       </div>
     </div>
   </section>
 
-  <footer class="py-10 text-center text-sm text-slate-400">
+  <footer class="py-10 text-center text-sm text-[--ink-soft]">
     © {{YEAR}} {{BUSINESS_NAME}}. {{ADDRESS}}.
   </footer>
 
+  </div>
+  </div>
+  <!-- /#smooth-wrapper -->
+
 <script>
-  gsap.registerPlugin(ScrollTrigger);
-  document.querySelectorAll('.reveal').forEach((el) => {
-    gsap.to(el, {
-      opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 85%' }
-    });
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+
+// Respect users who've asked for less motion: skip smoothing/animation entirely.
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const smoother = reduceMotion ? null : ScrollSmoother.create({
+  wrapper: '#smooth-wrapper',
+  content: '#smooth-content',
+  smooth: 1.3,
+  effects: true, // enables data-speed parallax attributes used on hero/about images
+  smoothTouch: 0.1,
+});
+
+// Nav anchor links -> smooth scroll through ScrollSmoother (or native fallback)
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    if (smoother) smoother.scrollTo(target, true, 'top top');
+    else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
   });
+});
+
+// Nav appearance on scroll
+const nav = document.getElementById('site-nav');
+ScrollTrigger.create({
+  start: 0,
+  end: 99999,
+  onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40),
+});
+
+// Mobile call bar slides in after the hero, out again if scrolling back to top fast
+const callBar = document.getElementById('mobile-call-bar');
+ScrollTrigger.create({
+  trigger: '#hero-headline',
+  start: 'bottom top',
+  onEnter: () => gsap.to(callBar, { yPercent: 0, duration: 0.5, ease: 'power3.out' }),
+  onLeaveBack: () => gsap.to(callBar, { yPercent: 100, duration: 0.4, ease: 'power3.in' }),
+});
+
+// Hero entrance
+const heroTl = gsap.timeline({ delay: 0.15 });
+
+if (!reduceMotion && window.SplitText) {
+  const split = new SplitText('#hero-headline', { type: 'words' });
+  gsap.set('#hero-headline', { opacity: 1 });
+  heroTl.from(split.words, { yPercent: 130, opacity: 0, duration: 1, stagger: 0.05, ease: 'power4.out' });
+} else {
+  gsap.set('#hero-headline', { opacity: 1 });
+}
+
+heroTl
+  .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
+  .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+  .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
+  .to('#hero-stats', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
+  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9');
+
+// Generic scroll reveals: text fades up, cards/images wipe in
+gsap.utils.toArray('.reveal-up').forEach((el) => {
+  gsap.fromTo(el, { opacity: 0, y: 28 }, {
+    opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+  });
+});
+
+gsap.utils.toArray('.reveal-card').forEach((el, i) => {
+  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
+    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.out',
+    delay: (i % 3) * 0.08,
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+  });
+});
+
+gsap.utils.toArray('.clip-reveal').forEach((el) => {
+  if (el.id === 'hero-image-wrap') return; // handled in the hero timeline
+  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, {
+    clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power4.inOut',
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+  });
+});
+
+// Animated stat counters
+document.querySelectorAll('[data-counter]').forEach((el) => {
+  const target = parseFloat(el.dataset.counter);
+  if (!target) return;
+  const obj = { val: 0 };
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 90%',
+    once: true,
+    onEnter: () => gsap.to(obj, {
+      val: target, duration: 1.4, ease: 'power2.out',
+      onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); },
+    }),
+  });
+});
+
+// Subtle magnetic pull on primary buttons (desktop only — mousemove won't fire on touch)
+document.querySelectorAll('.magnetic').forEach((btn) => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: 'power3.out' });
+  });
+  btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
+});
+
+// Card cursor-glow position (see .card-glow in CSS)
+document.querySelectorAll('.card-glow').forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    card.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+});
 </script>
 </body>
 </html>
