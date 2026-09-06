@@ -1,24 +1,25 @@
 name: Deploy client sites
 
-# Deploys every site under sites/<slug>/ that changed in this push as its own
-# Netlify site (named alfea-<slug>), then points its custom domain at
-# <slug>.web-creation.alfea.io (a no-op if already set). Static sites only —
-# no build step.
+# Deploys every site under sites/<slug>/ that changed in this push to its own
+# Cloudflare Pages project (alfea-<slug>), adds <slug>.web-creation.alfea.io
+# as that project's custom domain, then creates the matching CNAME record in
+# Netlify DNS (which stays authoritative for the whole alfea.io zone — this
+# workflow never touches Netlify sites, only one DNS record per client).
+# Static sites only — no build step.
 #
-# Requires one repository secret (Settings -> Secrets and variables ->
+# Why split like this: Netlify's 2026 credit-based free plan (300
+# credits/month, ~20 deploys) is shared with julaide.io on the same account
+# and can't sustain this project's deploy frequency. Cloudflare Pages' free
+# tier (500 builds/month, unlimited bandwidth) can, and is fully separate
+# from julaide.io's usage. DNS stays on Netlify untouched.
+#
+# Requires three repository secrets (Settings -> Secrets and variables ->
 # Actions), set directly in GitHub — never pasted into chat:
-#   NETLIFY_AUTH_TOKEN  - Netlify personal access token
-#                         (Netlify -> User settings -> Applications -> New access token)
-#                         Note: this token is account-wide on a Netlify team
-#                         that also hosts julaide.io (an unrelated business).
-#                         This workflow only creates sites named alfea-<slug>
-#                         and only sets *.web-creation.alfea.io domains, so it
-#                         never touches julaide.io's sites — but use the
-#                         narrowest token scope Netlify offers regardless.
-#
-# NOTE ON DNS: alfea.io is delegated to Netlify DNS, so setting a site's
-# custom_domain via the Netlify API provisions the DNS record and SSL cert
-# automatically — no manual step per client.
+#   CLOUDFLARE_API_TOKEN   - scoped to Account.Cloudflare Pages: Edit
+#   CLOUDFLARE_ACCOUNT_ID  - Cloudflare dashboard -> Workers & Pages overview
+#   NETLIFY_AUTH_TOKEN     - used ONLY to create one DNS record per client in
+#                            the alfea.io zone. Same account-wide caveat as
+#                            before: never touches julaide.io's sites.
 
 on:
   push:
@@ -55,39 +56,53 @@ jobs:
       - name: Deploy each changed site
         if: steps.changed.outputs.slugs != ''
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
-          npm install -g netlify-cli
+          npm install -g wrangler
+
+          # Resolve the Netlify DNS zone id for alfea.io once.
+          zone_id=$(curl -s "https://api.netlify.com/api/v1/dns_zones" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const z=JSON.parse(d).find(x=>x.name==='alfea.io');console.log(z?z.id:'')})")
+          if [ -z "$zone_id" ]; then
+            echo "::error::Could not find the alfea.io zone in Netlify DNS — check NETLIFY_AUTH_TOKEN."
+            exit 1
+          fi
+
           while IFS= read -r slug; do
             [ -z "$slug" ] && continue
             dir="sites/$slug"
             [ -d "$dir" ] || { echo "skip $slug (removed)"; continue; }
-            site_name="alfea-$slug"
-            domain="$slug.web-creation.alfea.io"
+            project="alfea-$slug"
+            hostname="$slug.web-creation.alfea.io"
+            target="$project.pages.dev"
 
             echo "=== $slug ==="
+            wrangler pages project create "$project" --production-branch main 2>/dev/null || true
+            wrangler pages deploy "$dir" --project-name "$project" --branch main
 
-            # Find an existing site by name, else create it.
-            site_id=$(curl -s "https://api.netlify.com/api/v1/sites?name=$site_name" \
+            echo "Adding custom domain $hostname to Cloudflare Pages project $project"
+            curl -s -o /dev/null -w "cf custom domain: %{http_code}\n" -X POST \
+              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project/domains" \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"name\":\"$hostname\"}"
+
+            # Create the CNAME in Netlify DNS, only if it doesn't already exist.
+            existing=$(curl -s "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
               -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
-              node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const a=JSON.parse(d||'[]');const s=a.find(x=>x.name==='$site_name');console.log(s?s.id:'')})")
+              node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const r=JSON.parse(d).find(x=>x.hostname==='$hostname');console.log(r?r.id:'')})")
 
-            if [ -z "$site_id" ]; then
-              echo "Creating Netlify site $site_name"
-              site_id=$(curl -s -X POST "https://api.netlify.com/api/v1/sites" \
+            if [ -z "$existing" ]; then
+              echo "Creating Netlify DNS CNAME: $hostname -> $target"
+              curl -s -o /dev/null -w "netlify dns record: %{http_code}\n" -X POST \
+                "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
                 -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
                 -H "Content-Type: application/json" \
-                --data "{\"name\":\"$site_name\"}" | \
-                node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{console.log(JSON.parse(d).id)})")
+                --data "{\"type\":\"CNAME\",\"hostname\":\"$hostname\",\"value\":\"$target\",\"ttl\":3600}"
+            else
+              echo "DNS record for $hostname already exists, leaving it as-is"
             fi
-
-            echo "Site id: $site_id"
-            netlify deploy --auth "$NETLIFY_AUTH_TOKEN" --dir="$dir" --site="$site_id" --prod
-
-            echo "Setting custom domain $domain"
-            curl -s -o /dev/null -w "custom_domain set: %{http_code}\n" -X PATCH \
-              "https://api.netlify.com/api/v1/sites/$site_id" \
-              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
-              -H "Content-Type: application/json" \
-              --data "{\"custom_domain\":\"$domain\"}"
           done <<< "${{ steps.changed.outputs.slugs }}"
