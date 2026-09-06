@@ -1,14 +1,23 @@
 name: Deploy client sites
 
-# Deploys every site under sites/<slug>/ that changed in this push to its own
-# Cloudflare Pages project, then attaches <slug>.alfea.io as its custom
-# domain (a no-op if already attached). Static sites only — no build step.
+# Deploys every site under sites/<slug>/ that changed in this push as its own
+# Netlify site (named alfea-<slug>), then points its custom domain at
+# <slug>.web-creation.alfea.io (a no-op if already set). Static sites only —
+# no build step.
 #
-# Requires two repository secrets (Settings -> Secrets and variables ->
+# Requires one repository secret (Settings -> Secrets and variables ->
 # Actions), set directly in GitHub — never pasted into chat:
-#   CLOUDFLARE_API_TOKEN   - scoped token: Account.Cloudflare Pages: Edit,
-#                            Zone.DNS: Edit (for the alfea.io zone)
-#   CLOUDFLARE_ACCOUNT_ID  - found on the Workers & Pages overview page
+#   NETLIFY_AUTH_TOKEN  - Netlify personal access token
+#                         (Netlify -> User settings -> Applications -> New access token)
+#
+# NOTE ON DNS: setting a site's custom_domain via the Netlify API always
+# registers the intended domain on the site. Whether it actually resolves
+# depends on how alfea.io's DNS is set up:
+#   - If alfea.io is delegated to Netlify DNS, Netlify provisions the record
+#     and SSL cert automatically — nothing else to do.
+#   - If alfea.io's DNS lives elsewhere, a CNAME for <slug>.web-creation.alfea.io
+#     pointing at alfea-<slug>.netlify.app must be added manually there, once
+#     per client, until that's resolved.
 
 on:
   push:
@@ -45,23 +54,39 @@ jobs:
       - name: Deploy each changed site
         if: steps.changed.outputs.slugs != ''
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
-          npm install -g wrangler
+          npm install -g netlify-cli
           while IFS= read -r slug; do
             [ -z "$slug" ] && continue
             dir="sites/$slug"
             [ -d "$dir" ] || { echo "skip $slug (removed)"; continue; }
+            site_name="alfea-$slug"
+            domain="$slug.web-creation.alfea.io"
 
             echo "=== $slug ==="
-            wrangler pages project create "$slug" --production-branch main 2>/dev/null || true
-            wrangler pages deploy "$dir" --project-name "$slug" --branch main
 
-            echo "Attaching $slug.alfea.io"
-            curl -s -o /dev/null -w "domain attach: %{http_code}\n" -X POST \
-              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$slug/domains" \
-              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            # Find an existing site by name, else create it.
+            site_id=$(curl -s "https://api.netlify.com/api/v1/sites?name=$site_name" \
+              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
+              node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const a=JSON.parse(d||'[]');const s=a.find(x=>x.name==='$site_name');console.log(s?s.id:'')})")
+
+            if [ -z "$site_id" ]; then
+              echo "Creating Netlify site $site_name"
+              site_id=$(curl -s -X POST "https://api.netlify.com/api/v1/sites" \
+                -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+                -H "Content-Type: application/json" \
+                --data "{\"name\":\"$site_name\"}" | \
+                node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{console.log(JSON.parse(d).id)})")
+            fi
+
+            echo "Site id: $site_id"
+            netlify deploy --auth "$NETLIFY_AUTH_TOKEN" --dir="$dir" --site="$site_id" --prod
+
+            echo "Setting custom domain $domain"
+            curl -s -o /dev/null -w "custom_domain set: %{http_code}\n" -X PATCH \
+              "https://api.netlify.com/api/v1/sites/$site_id" \
+              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
               -H "Content-Type: application/json" \
-              --data "{\"name\":\"$slug.alfea.io\"}"
+              --data "{\"custom_domain\":\"$domain\"}"
           done <<< "${{ steps.changed.outputs.slugs }}"

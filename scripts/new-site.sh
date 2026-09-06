@@ -35,7 +35,7 @@ if [[ -d "$DEST" ]]; then
 fi
 
 if [[ ! "$SLUG" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$ ]]; then
-  echo "Slug must be lowercase letters, digits, and hyphens only (it becomes $SLUG.alfea.io)." >&2
+  echo "Slug must be lowercase letters, digits, and hyphens only (it becomes $SLUG.web-creation.alfea.io)." >&2
   exit 1
 fi
 
@@ -44,4 +44,4 @@ cp -R "$SRC"/. "$DEST"/
 rm -f "$DEST/TOKENS.md"
 
 echo "Created sites/$SLUG from templates/$TEMPLATE"
-echo "Preview URL once pushed: https://$SLUG.alfea.io"
+echo "Preview URL once pushed: https://$SLUG.web-creation.alfea.io"
