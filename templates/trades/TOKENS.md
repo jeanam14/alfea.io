@@ -21,6 +21,7 @@ structurally per client, only these values.
 | `{{YEARS}}` | 12 |
 | `{{PRIMARY_COLOR}}` / `{{PRIMARY_COLOR_DARK}}` | #1D6F5C / #14503F |
 | `{{HERO_IMAGE}}` / `{{ABOUT_IMAGE}}` | Real photo URL (Google Places photo or licensed stock) |
+| `{{GALLERY_IMAGE_1..4}}` | 4 work/job photos for the "Recent work" gallery grid |
 | `{{SERVICES_INTRO}}` | One sentence introducing the services grid |
 | `{{SERVICE_1..6_NAME}}` / `{{SERVICE_1..6_DESC}}` | e.g. "Emergency Repairs" / one-line description |
 | `{{ABOUT_HEADLINE}}` / `{{ABOUT_TEXT}}` | Short "why us" section |

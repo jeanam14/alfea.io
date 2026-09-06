@@ -41,7 +41,6 @@
   h1,h2{ text-wrap:balance; }
   ::selection{ background:#1D6F5C; color:#fff; }
 
-  /* ScrollSmoother required structure */
   #smooth-wrapper{ overflow:hidden; }
   #smooth-content{ overflow:visible; }
 
@@ -50,43 +49,65 @@
   .star{ color:#F5A524; letter-spacing:1px; }
   .tabular{ font-variant-numeric: tabular-nums; }
 
-  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease, padding .4s ease; }
+  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease; }
   #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
 
   .magnetic{ display:inline-flex; will-change:transform; }
 
-  .card-glow{ position:relative; overflow:hidden; }
+  /* ---- Trust marquee ---- */
+  .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
+  .marquee-track:hover{ animation-play-state: paused; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---- Bento services grid ---- */
+  .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
+  @media (min-width:1024px){
+    .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; }
+    .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
+    .bento .t-wide{ grid-column:span 4; }
+  }
+  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; }
+  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .tile:hover .tile-img{ transform:scale(1.06); }
+  .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,24,27,0) 30%, rgba(20,24,27,0.82) 100%); }
+
+  .card-glow{ position:relative; }
   .card-glow::before{
-    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease;
-    background: radial-gradient(120px 120px at var(--mx,50%) var(--my,0%), #1D6F5C22, transparent 70%);
+    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
+    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), #1D6F5C33, transparent 70%);
     pointer-events:none;
   }
   .card-glow:hover::before{ opacity:1; }
 
-  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
+  /* ---- Work gallery (asymmetric) ---- */
+  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+  @media (min-width:768px){
+    .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; }
+    .gallery .g-tall{ grid-row:span 2; }
+  }
 
-  .snap-row{ scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
-  .snap-row > *{ scroll-snap-align:start; }
-  .snap-row::-webkit-scrollbar{ display:none; }
-  .snap-row{ scrollbar-width:none; }
+  /* ---- Reviews marquee ---- */
+  .review-track{ display:flex; gap:1.5rem; width:max-content; animation: marquee-rev 40s linear infinite; }
+  .review-track:hover{ animation-play-state:paused; }
+  @keyframes marquee-rev{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+    .marquee-track, .review-track{ animation:none !important; }
   }
 </style>
 </head>
 <body class="bg-[--paper] text-[--ink]">
 
-  <!-- Nav + mobile call bar live OUTSIDE the smoother wrapper: ScrollSmoother
-       applies a transform to #smooth-content, and position:fixed children of a
-       transformed ancestor stop tracking the viewport. -->
   <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <span class="font-display font-extrabold text-lg tracking-tight">Alfea Pipeline Smoke Test</span>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
+        <a href="#work" class="hover:text-[--ink] transition-colors">Our Work</a>
         <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
         <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
-        <a href="#area" class="hover:text-[--ink] transition-colors">Service Area</a>
         <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
       </nav>
       <a href="tel:5550000000" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
@@ -102,79 +123,149 @@
   <div id="smooth-wrapper">
   <div id="smooth-content">
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-24 md:pt-40 md:pb-32">
-    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-10%] w-[640px] h-[640px] rounded-full opacity-[0.10] blur-3xl" style="background:#1D6F5C"></div>
+  <!-- Hero: full-width headline over an asymmetric layered visual, not a plain two-column split -->
+  <section class="relative pt-32 md:pt-40 pb-10">
+    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#1D6F5C"></div>
 
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center relative">
-      <div>
-        <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-7 opacity-0">
-          <span class="star">★★★★★</span> 4.9 · 62 Google reviews
-        </div>
-
-        <h1 id="hero-headline" class="text-[13vw] leading-[1.02] md:text-6xl md:leading-[1.05] font-display font-extrabold tracking-tight overflow-hidden">
-          Fast, honest plumbing for Austin homes
-        </h1>
-
-        <p id="hero-sub" class="mt-6 text-lg text-[--ink-soft] max-w-md opacity-0 translate-y-4">This is a template quality check, not a real business — judge the motion and polish, not the copy.</p>
-
-        <div id="hero-ctas" class="mt-9 flex flex-wrap gap-4 opacity-0 translate-y-4">
-          <a href="tel:5550000000" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg" style="box-shadow: 0 12px 30px -10px #1D6F5Caa">
-            Call (555) 000-0000
-          </a>
-          <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
-            Request a quote
-          </a>
-        </div>
-
-        <div id="hero-stats" class="mt-12 flex items-center gap-10 text-sm text-[--ink-soft] opacity-0 translate-y-4">
-          <div><span class="font-display font-bold text-[--ink] text-2xl tabular"><span data-counter="12">0</span>+</span><br>years serving Austin</div>
-          <div><span class="font-display font-bold text-[--ink] text-2xl">24/7</span><br>emergency calls</div>
-          <div><span class="font-display font-bold text-[--ink] text-2xl">Licensed</span><br>&amp; insured</div>
-        </div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
+        <span class="star">★★★★★</span> 4.9 · 62 Google reviews · Austin
       </div>
 
-      <div class="relative">
-        <div id="hero-image-wrap" class="clip-reveal rounded-2xl overflow-hidden shadow-2xl" data-speed="0.9">
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000&auto=format&fit=crop" alt="Alfea Pipeline Smoke Test at work" class="w-full aspect-[4/5] object-cover" />
+      <h1 id="hero-headline" class="text-[15vw] leading-[0.94] md:text-[7.5vw] md:leading-[0.92] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
+        Fast, honest plumbing for Austin homes
+      </h1>
+
+      <div class="mt-10 grid md:grid-cols-[1.1fr_1.4fr] gap-10 items-end">
+        <div>
+          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">This is a template quality check, not a real business — judge the layout, not the copy.</p>
+          <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
+            <a href="tel:5550000000" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #1D6F5Caa">
+              Call (555) 000-0000
+            </a>
+            <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
+              Request a quote
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl" data-speed="0.92">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop" alt="Alfea Pipeline Smoke Test at work" class="w-full aspect-[16/10] object-cover" />
+          </div>
+          <!-- Floating overlap card: the single biggest "someone designed this" tell -->
+          <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
+            <div class="font-display font-extrabold text-3xl tabular"><span data-counter="12">0</span>+</div>
+            <div class="text-xs text-white/70 leading-tight">years serving<br>Austin</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="bg-white border-y border-[--line] py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="reveal-up flex items-end justify-between flex-wrap gap-4 mb-14">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-display font-bold mb-3">What we do</h2>
-          <p class="text-[--ink-soft] max-w-lg">This section exists to confirm cards, hover glow, and stagger reveals render correctly.</p>
+  <!-- Trust marquee -->
+  <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
+    <div class="marquee-track text-sm font-semibold text-[--ink-soft] tracking-wide">
+      <div class="flex items-center gap-10 pr-10">
+        <span>★ 4.9 on Google</span><span>•</span>
+        <span>Licensed &amp; Insured</span><span>•</span>
+        <span>24/7 Emergency Calls</span><span>•</span>
+        <span>62+ Happy Customers</span><span>•</span>
+        <span>Serving the Alfea deploy pipeline</span><span>•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+        <span>★ 4.9 on Google</span><span>•</span>
+        <span>Licensed &amp; Insured</span><span>•</span>
+        <span>24/7 Emergency Calls</span><span>•</span>
+        <span>62+ Happy Customers</span><span>•</span>
+        <span>Serving the Alfea deploy pipeline</span><span>•</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: bento grid, mixed tile sizes, one image-backed feature tile -->
+  <section id="services" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal-up mb-12 max-w-lg">
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
+        <p class="text-[--ink-soft] text-lg">This section exists to confirm the bento grid, gallery, and marquee render correctly.</p>
+      </div>
+
+      <div class="bento">
+        <div class="reveal-card tile t-feature min-h-[280px]">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop" alt="" class="tile-img" />
+          <div class="tile-overlay"></div>
+          <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
+            <h3 class="font-display font-bold text-2xl mb-2">Test service 1</h3>
+            <p class="text-sm text-white/80 max-w-xs">Placeholder description for the smoke test.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Test service 2</h3>
+          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Test service 3</h3>
+          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Test service 4</h3>
+          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Test service 5</h3>
+          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        </div>
+
+        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#1D6F5C">
+          <div>
+            <h3 class="font-display font-bold text-xl mb-1">Test service 6</h3>
+            <p class="text-sm text-white/80 max-w-md">Placeholder description for the smoke test.</p>
+          </div>
+          <a href="tel:5550000000" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call (555) 000-0000</a>
         </div>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
-          <h3 class="font-display font-bold text-lg mb-2">Test service 1</h3>
-          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+    </div>
+  </section>
+
+  <!-- Dark stat band — section-rhythm contrast, oversized numerals as the visual -->
+  <section class="py-24" style="background:var(--ink);">
+    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="12">0</span>+</div>
+        <p class="text-white/60 mt-2">Years in business</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="62">0</span>+</div>
+        <p class="text-white/60 mt-2">Jobs completed</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="4.9">0</span></div>
+        <p class="text-white/60 mt-2">Average Google rating</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work gallery -->
+  <section id="work" class="py-24 bg-white border-b border-[--line]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
+      <div class="gallery">
+        <div class="reveal-card tile g-tall">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=900&auto=format&fit=crop" alt="" class="tile-img" />
         </div>
-        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
-          <h3 class="font-display font-bold text-lg mb-2">Test service 2</h3>
-          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        <div class="reveal-card tile">
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=900&auto=format&fit=crop" alt="" class="tile-img" />
         </div>
-        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
-          <h3 class="font-display font-bold text-lg mb-2">Test service 3</h3>
-          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        <div class="reveal-card tile">
+          <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=900&auto=format&fit=crop" alt="" class="tile-img" />
         </div>
-        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
-          <h3 class="font-display font-bold text-lg mb-2">Test service 4</h3>
-          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        <div class="reveal-card tile g-tall">
+          <img src="https://images.unsplash.com/photo-1571935441005-15bfa0dd7a41?q=80&w=900&auto=format&fit=crop" alt="" class="tile-img" />
         </div>
-        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
-          <h3 class="font-display font-bold text-lg mb-2">Test service 5</h3>
-          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
-        </div>
-        <div class="reveal-card card-glow bg-[--paper] rounded-2xl p-8 border border-[--line]">
-          <h3 class="font-display font-bold text-lg mb-2">Test service 6</h3>
-          <p class="text-sm text-[--ink-soft]">Placeholder description for the smoke test.</p>
+        <div class="reveal-card tile hidden md:block">
+          <img src="https://images.unsplash.com/photo-1607472829760-a2ea1e0e7e2f?q=80&w=1200&auto=format&fit=crop" alt="" class="tile-img" />
         </div>
       </div>
     </div>
@@ -182,47 +273,65 @@
 
   <!-- About -->
   <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
-      <div class="clip-reveal rounded-2xl overflow-hidden order-2 md:order-1" data-speed="1.08">
-        <img src="https://images.unsplash.com/photo-1607472829760-a2ea1e0e7e2f?q=80&w=1000&auto=format&fit=crop" alt="Alfea Pipeline Smoke Test team" class="w-full aspect-[4/3] object-cover" />
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1" data-speed="1.06">
+        <img src="https://images.unsplash.com/photo-1607472829760-a2ea1e0e7e2f?q=80&w=1200&auto=format&fit=crop" alt="Alfea Pipeline Smoke Test team" class="w-full aspect-[4/3] object-cover" />
       </div>
       <div class="order-1 md:order-2">
-        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Design quality check</h2>
-        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">Smooth scroll, split-text hero reveal, parallax images, animated counters, magnetic buttons — all exercised on this one page.</p>
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Design quality check, round two</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">Bento-grid services, a work gallery, a dark stat band, marquee trust bar and reviews, a diagonal CTA — structural changes this time, not just motion.</p>
       </div>
     </div>
   </section>
 
-  <!-- Reviews -->
-  <section id="reviews" class="bg-white border-y border-[--line] py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-14">What Austin says</h2>
+  <!-- Reviews: infinite marquee row + one featured pull-quote -->
+  <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold">What Austin says</h2>
+      <div class="reveal-up border-l-4 pl-6" style="border-color:#1D6F5C">
+        <p class="text-xl font-display leading-snug">"The redesign actually looks different this time, not just animated."</p>
+        <p class="text-sm text-[--ink-soft] mt-3 font-semibold">Test Reviewer 1</p>
+      </div>
     </div>
-    <div class="snap-row flex gap-6 overflow-x-auto px-6 max-w-6xl mx-auto pb-4">
-      <div class="reveal-card min-w-[300px] md:min-w-[340px] bg-[--paper] rounded-2xl p-8 border border-[--line]">
-        <div class="quote-mark text-5xl mb-2" style="color:#1D6F5C">"</div>
-        <div class="star mb-3">★★★★★</div>
-        <p class="text-[--ink] mb-5">The new template looks and feels completely different — worth the rebuild.</p>
-        <p class="text-sm font-semibold text-[--ink-soft]">Test Reviewer 1</p>
+
+    <div class="review-track px-6">
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The redesign actually looks different this time, not just animated.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Test Reviewer 2</p>
       </div>
-      <div class="reveal-card min-w-[300px] md:min-w-[340px] bg-[--paper] rounded-2xl p-8 border border-[--line]">
-        <div class="quote-mark text-5xl mb-2" style="color:#1D6F5C">"</div>
-        <div class="star mb-3">★★★★★</div>
-        <p class="text-[--ink] mb-5">The new template looks and feels completely different — worth the rebuild.</p>
-        <p class="text-sm font-semibold text-[--ink-soft]">Test Reviewer 2</p>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The redesign actually looks different this time, not just animated.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Test Reviewer 3</p>
       </div>
-      <div class="reveal-card min-w-[300px] md:min-w-[340px] bg-[--paper] rounded-2xl p-8 border border-[--line]">
-        <div class="quote-mark text-5xl mb-2" style="color:#1D6F5C">"</div>
-        <div class="star mb-3">★★★★★</div>
-        <p class="text-[--ink] mb-5">The new template looks and feels completely different — worth the rebuild.</p>
-        <p class="text-sm font-semibold text-[--ink-soft]">Test Reviewer 3</p>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The redesign actually looks different this time, not just animated.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Test Reviewer 1</p>
+      </div>
+      <!-- duplicated for a seamless loop -->
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The redesign actually looks different this time, not just animated.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Test Reviewer 2</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The redesign actually looks different this time, not just animated.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Test Reviewer 3</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The redesign actually looks different this time, not just animated.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Test Reviewer 1</p>
       </div>
     </div>
   </section>
 
   <!-- Service area / map -->
   <section id="area" class="py-24">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
       <div>
         <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving the Alfea deploy pipeline</h2>
         <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">1 Test St, Austin, TX</p>
@@ -230,14 +339,14 @@
           Call (555) 000-0000
         </a>
       </div>
-      <div class="clip-reveal rounded-2xl overflow-hidden border border-[--line] aspect-[4/3]">
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.9!2d-97.7431!3d30.2672" class="w-full h-full" style="border:0" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="relative py-28 overflow-hidden" style="background:#1D6F5C">
+  <!-- Contact: diagonal top edge instead of a plain rectangle -->
+  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#1D6F5C; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
     <div aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
     <div class="max-w-3xl mx-auto px-6 text-center relative">
       <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
@@ -255,23 +364,15 @@
 
   </div>
   </div>
-  <!-- /#smooth-wrapper -->
 
 <script>
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
-
-// Respect users who've asked for less motion: skip smoothing/animation entirely.
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const smoother = reduceMotion ? null : ScrollSmoother.create({
-  wrapper: '#smooth-wrapper',
-  content: '#smooth-content',
-  smooth: 1.3,
-  effects: true, // enables data-speed parallax attributes used on hero/about images
-  smoothTouch: 0.1,
+  wrapper: '#smooth-wrapper', content: '#smooth-content', smooth: 1.3, effects: true, smoothTouch: 0.1,
 });
 
-// Nav anchor links -> smooth scroll through ScrollSmoother (or native fallback)
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener('click', (e) => {
     const target = document.querySelector(a.getAttribute('href'));
@@ -282,26 +383,17 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
   });
 });
 
-// Nav appearance on scroll
 const nav = document.getElementById('site-nav');
-ScrollTrigger.create({
-  start: 0,
-  end: 99999,
-  onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40),
-});
+ScrollTrigger.create({ start: 0, end: 99999, onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40) });
 
-// Mobile call bar slides in after the hero, out again if scrolling back to top fast
 const callBar = document.getElementById('mobile-call-bar');
 ScrollTrigger.create({
-  trigger: '#hero-headline',
-  start: 'bottom top',
+  trigger: '#hero-headline', start: 'bottom top',
   onEnter: () => gsap.to(callBar, { yPercent: 0, duration: 0.5, ease: 'power3.out' }),
   onLeaveBack: () => gsap.to(callBar, { yPercent: 100, duration: 0.4, ease: 'power3.in' }),
 });
 
-// Hero entrance
 const heroTl = gsap.timeline({ delay: 0.15 });
-
 if (!reduceMotion && window.SplitText) {
   const split = new SplitText('#hero-headline', { type: 'words' });
   gsap.set('#hero-headline', { opacity: 1 });
@@ -309,55 +401,39 @@ if (!reduceMotion && window.SplitText) {
 } else {
   gsap.set('#hero-headline', { opacity: 1 });
 }
-
 heroTl
   .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
   .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
   .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
-  .to('#hero-stats', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
-  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9');
+  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
+  .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
 
-// Generic scroll reveals: text fades up, cards/images wipe in
 gsap.utils.toArray('.reveal-up').forEach((el) => {
-  gsap.fromTo(el, { opacity: 0, y: 28 }, {
-    opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-    scrollTrigger: { trigger: el, start: 'top 85%' },
-  });
+  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
 });
 
 gsap.utils.toArray('.reveal-card').forEach((el, i) => {
   gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
-    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.out',
-    delay: (i % 3) * 0.08,
+    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.out', delay: (i % 4) * 0.07,
     scrollTrigger: { trigger: el, start: 'top 88%' },
   });
 });
 
 gsap.utils.toArray('.clip-reveal').forEach((el) => {
-  if (el.id === 'hero-image-wrap') return; // handled in the hero timeline
-  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, {
-    clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power4.inOut',
-    scrollTrigger: { trigger: el, start: 'top 85%' },
-  });
+  if (el.id === 'hero-image-wrap') return;
+  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power4.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
 });
 
-// Animated stat counters
 document.querySelectorAll('[data-counter]').forEach((el) => {
   const target = parseFloat(el.dataset.counter);
   if (!target) return;
   const obj = { val: 0 };
   ScrollTrigger.create({
-    trigger: el,
-    start: 'top 90%',
-    once: true,
-    onEnter: () => gsap.to(obj, {
-      val: target, duration: 1.4, ease: 'power2.out',
-      onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); },
-    }),
+    trigger: el, start: 'top 90%', once: true,
+    onEnter: () => gsap.to(obj, { val: target, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); } }),
   });
 });
 
-// Subtle magnetic pull on primary buttons (desktop only — mousemove won't fire on touch)
 document.querySelectorAll('.magnetic').forEach((btn) => {
   btn.addEventListener('mousemove', (e) => {
     const r = btn.getBoundingClientRect();
@@ -366,7 +442,6 @@ document.querySelectorAll('.magnetic').forEach((btn) => {
   btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
 });
 
-// Card cursor-glow position (see .card-glow in CSS)
 document.querySelectorAll('.card-glow').forEach((card) => {
   card.addEventListener('mousemove', (e) => {
     const r = card.getBoundingClientRect();
