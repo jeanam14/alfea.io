@@ -38,6 +38,17 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: DEBUG - test fal.ai image generation
+        env:
+          FAL_API_KEY: ${{ secrets.FAL_API_KEY }}
+        run: |
+          chmod +x scripts/generate-image.sh
+          ./scripts/generate-image.sh \
+            "professional photo of a licensed plumber in navy workwear repairing a modern kitchen sink, natural window light, shallow depth of field, shot on a full-frame camera, realistic editorial photography, no text, no watermark" \
+            /tmp/fal-test.jpg \
+            landscape_16_9
+          file /tmp/fal-test.jpg
+
       - name: Detect changed sites
         id: changed
         run: |
