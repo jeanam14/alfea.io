@@ -1,11 +1,8 @@
 # One line per image: output_path|prompt|image_size
 # Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
-# Lines below are commented out so a workflow_dispatch run only regenerates
-# hero.jpg and about.jpg (their prompts were just corrected) — uncomment
-# before a full rebuild.
 images/hero.jpg|wide photo of an HVAC technician in navy workwear installing an outdoor AC condenser/compressor unit mounted on an exterior wall in Dubai, only outdoor condenser equipment with fan grilles visible, no indoor wall-mounted split AC unit anywhere in the shot, bright daylight, modern residential building in the background, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
 images/about.jpg|photo of two HVAC technicians in navy workwear servicing an indoor wall-mounted split AC unit installed high on the wall near the ceiling of a Dubai apartment room, one technician on a short ladder reaching up to the unit, tools laid out on the floor below, professional and attentive, realistic editorial photography, no text, no watermark|landscape_4_3
-# images/gallery-1.jpg|photo of a technician mounting an outdoor AC condenser unit on an exterior wall, Dubai, realistic editorial photography, no text, no watermark|portrait_4_3
-# images/gallery-2.jpg|close-up photo of a technician's gloved hands using a gauge manifold to check refrigerant pressure on an AC unit, realistic editorial photography, no text, no watermark|square_hd
-# images/gallery-3.jpg|photo of a technician cleaning an indoor AC unit's filter and coil, deep cleaning service, realistic editorial photography, no text, no watermark|square_hd
-# images/gallery-4.jpg|photo of a technician inspecting AC ductwork in a ceiling void, tools and flashlight, realistic editorial photography, no text, no watermark|portrait_4_3
+images/gallery-1.jpg|photo of a technician mounting an outdoor AC condenser unit on an exterior wall, Dubai, realistic editorial photography, no text, no watermark|portrait_4_3
+images/gallery-2.jpg|close-up photo of a technician's gloved hands using a gauge manifold to check refrigerant pressure on an AC unit, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-3.jpg|photo of a technician cleaning an indoor AC unit's filter and coil, deep cleaning service, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-4.jpg|photo of a technician inspecting AC ductwork in a ceiling void, tools and flashlight, realistic editorial photography, no text, no watermark|portrait_4_3
