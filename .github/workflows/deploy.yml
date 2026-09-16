@@ -107,3 +107,31 @@ jobs:
               echo "DNS record for $hostname already exists, leaving it as-is"
             fi
           done <<< "${{ steps.changed.outputs.slugs }}"
+
+      - name: DEBUG - check big-brothers-ac domain status
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          echo "--- Cloudflare Pages custom domain status ---"
+          curl -s "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/alfea-big-brothers-ac/domains" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | node -e "
+              let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{
+                const j = JSON.parse(d);
+                console.log(JSON.stringify(j, null, 2));
+              });"
+          echo "--- Netlify DNS record for big-brothers-ac.web-creation.alfea.io ---"
+          zone_id=$(curl -s "https://api.netlify.com/api/v1/dns_zones" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const z=JSON.parse(d).find(x=>x.name==='alfea.io');console.log(z?z.id:'')})")
+          curl -s "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | node -e "
+              let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{
+                const recs = JSON.parse(d).filter(r=>r.hostname.includes('big-brothers-ac'));
+                console.log(JSON.stringify(recs, null, 2));
+              });"
+          echo "--- Direct HTTPS check of the pages.dev URL (should always work) ---"
+          curl -sS -o /dev/null -w "pages.dev status: %{http_code}\n" "https://alfea-big-brothers-ac.pages.dev/"
+          echo "--- Direct HTTPS check of the custom domain ---"
+          curl -sS -o /dev/null -w "custom domain status: %{http_code}\n" "https://big-brothers-ac.web-creation.alfea.io/" || true
