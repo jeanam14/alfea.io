@@ -38,6 +38,18 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: DEBUG - check what's actually served
+        run: |
+          curl -s "https://power-cool.web-creation.alfea.io/" -o /tmp/live.html
+          echo "--- byte count ---"
+          wc -c /tmp/live.html
+          echo "--- does it contain PRODUCTS array? ---"
+          grep -c "const PRODUCTS" /tmp/live.html || echo "NOT FOUND"
+          echo "--- does it contain product-grid div? ---"
+          grep -c 'id="product-grid"' /tmp/live.html || echo "NOT FOUND"
+          echo "--- gsap script tags present? ---"
+          grep -o 'src="https://cdn.jsdelivr.net[^"]*"' /tmp/live.html
+
       - name: Detect changed sites
         id: changed
         run: |
