@@ -15,7 +15,7 @@
   tailwind.config = {
     theme: {
       extend: {
-        colors: { brand: "#0E7FA6", brandDark: "#0A5A78" },
+        colors: { brand: "#2856F2", brandDark: "#1B3EC2" },
         fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
       }
     }
@@ -35,7 +35,7 @@
   body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
   h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
   h1,h2{ text-wrap:balance; }
-  ::selection{ background:#0E7FA6; color:#fff; }
+  ::selection{ background:#2856F2; color:#fff; }
   #smooth-wrapper{ overflow:hidden; }
   #smooth-content{ overflow:visible; }
   .word{ display:inline-block; will-change:transform; }
@@ -76,9 +76,21 @@
   #checkout-section.active{ display:block; }
 
   #quickview-overlay.open-qv, #quickview-modal.open-qv{ opacity:1; pointer-events:auto; }
+  .spec-row{ display:flex; justify-content:space-between; padding:.6rem 0; border-bottom:1px solid var(--line); }
+  .spec-row span:first-child{ color:var(--ink-soft); }
+  .badge-pill{ background:var(--paper); border:1px solid var(--line); border-radius:9999px; padding:.3rem .7rem; }
+  .compat-pill{ background:#EEF2FF; color:var(--ink); border-radius:9999px; padding:.3rem .7rem; }
+  .stock-badge{ position:absolute; top:.6rem; left:.6rem; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:.2rem .55rem; border-radius:9999px; background:#F97316; color:#fff; }
+  .rating-badge{ position:absolute; top:.6rem; right:.6rem; background:rgba(255,255,255,0.92); border-radius:9999px; padding:.2rem .55rem; font-size:11px; font-weight:700; display:flex; align-items:center; gap:.2rem; }
+  .quick-add-btn{ position:absolute; bottom:.6rem; right:.6rem; width:34px; height:34px; border-radius:9999px; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s ease; }
+  .quick-add-btn:hover{ background:#2856F2; }
+  .category-pill{ border:1px solid var(--line); border-radius:9999px; padding:.5rem 1.1rem; font-size:.875rem; font-weight:600; background:#fff; transition:background-color .2s ease, color .2s ease; }
+  .category-pill.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .category-cell{ padding:1.75rem; }
+  .category-icon{ width:44px; height:44px; border-radius:.9rem; background:#EEF2FF; color:#2856F2; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
 
   .pay-option{ border:1px solid var(--line); border-radius:.9rem; padding:.9rem 1rem; cursor:pointer; }
-  .pay-option.selected{ border-color:#0E7FA6; box-shadow:0 0 0 3px #0E7FA61a; }
+  .pay-option.selected{ border-color:#2856F2; box-shadow:0 0 0 3px #2856F21a; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
@@ -89,22 +101,36 @@
 <body class="bg-[--paper] text-[--ink]">
 
   <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-display font-extrabold text-lg tracking-tight">Power Cool <span class="text-brand">AC Parts</span></span>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
-        <a href="#shop" class="hover:text-[--ink] transition-colors">Shop Parts</a>
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display font-extrabold text-lg tracking-tight">Power Cool</span>
+          <span class="block text-[10px] font-semibold tracking-wider text-[--ink-soft] uppercase">AC Spare Parts · Dubai</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[--ink-soft]">
+        <a href="#shop" class="hover:text-[--ink] transition-colors">Catalog</a>
+        <a href="#categories" class="hover:text-[--ink] transition-colors">Categories</a>
+        <a href="#brands" class="hover:text-[--ink] transition-colors">Brands</a>
         <a href="#about" class="hover:text-[--ink] transition-colors">About</a>
         <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
         <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
       </nav>
-      <div class="flex items-center gap-3">
-        <button id="cart-toggle" class="relative w-11 h-11 flex items-center justify-center rounded-full border border-[--line] bg-white">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span id="cart-count" class="absolute -top-1 -right-1 bg-brand text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="nav-search-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Search parts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         </button>
-        <a href="https://wa.me/971508854100" target="_blank" rel="noopener" class="magnetic hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
-          WhatsApp Us
+        <a href="tel:+971503563100" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Call the store">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </a>
+        <button id="cart-toggle" class="relative flex items-center gap-2 bg-[--ink] hover:bg-black text-white text-sm font-semibold pl-4 pr-5 py-2.5 rounded-full transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Cart
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-brand text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
       </div>
     </div>
   </header>
@@ -127,8 +153,17 @@
   <div id="smooth-wrapper">
   <div id="smooth-content">
 
+  <!-- Brands -->
+  <section id="brands" class="pt-28 pb-14 bg-[--paper] border-b border-[--line]">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">Authorized Stockist</p>
+      <h2 class="reveal-up text-2xl md:text-3xl font-display font-bold mb-8">Brands we trust and stock</h2>
+      <div id="brand-pills" class="reveal-up flex flex-wrap justify-center gap-3"></div>
+    </div>
+  </section>
+
   <!-- Hero -->
-  <section class="relative pt-32 md:pt-40 pb-10">
+  <section class="relative pt-16 md:pt-20 pb-10">
     <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl bg-brand"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
       <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
@@ -141,7 +176,7 @@
         <div>
           <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">Compressors, capacitors, refrigerant gas, fan motors and more — trusted by technicians across the UAE.</p>
           <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
-            <a href="#shop" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #0E7FA6aa;">Shop Parts</a>
+            <a href="#shop" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #2856F2aa;">Shop Parts</a>
             <a href="https://wa.me/971508854100" target="_blank" rel="noopener" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">Chat on WhatsApp</a>
           </div>
         </div>
@@ -154,6 +189,13 @@
             <div class="text-xs text-white/70 leading-tight">Google<br>reviews</div>
           </div>
         </div>
+      </div>
+
+      <div class="reveal-up mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 border-t border-[--line] pt-10">
+        <div><div class="font-display font-extrabold text-3xl tabular"><span data-counter="4.1">0</span></div><p class="text-sm text-[--ink-soft] mt-1">Google rating</p></div>
+        <div><div class="font-display font-extrabold text-3xl tabular"><span data-counter="158">0</span>+</div><p class="text-sm text-[--ink-soft] mt-1">Customer reviews</p></div>
+        <div><div class="font-display font-extrabold text-3xl tabular"><span data-counter="24">0</span>+</div><p class="text-sm text-[--ink-soft] mt-1">Brands stocked</p></div>
+        <div><div class="font-display font-extrabold text-3xl">24h</div><p class="text-sm text-[--ink-soft] mt-1">Dubai delivery</p></div>
       </div>
     </div>
   </section>
@@ -174,102 +216,94 @@
   </section>
 
   <!-- Categories -->
-  <section class="py-24">
+  <section id="categories" class="py-24">
     <div class="max-w-7xl mx-auto px-6">
+      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">The Component Atlas</p>
       <div class="reveal-up mb-12 max-w-lg">
-        <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Shop by category</h2>
-        <p class="text-[--ink-soft] text-lg">Everything a technician needs, in stock at our Deira warehouse.</p>
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Browse by component type</h2>
+        <p class="text-[--ink-soft] text-lg">Every category stocked and ready in our Deira warehouse.</p>
       </div>
-      <div class="bento">
-        <div class="reveal-card tile t-feature min-h-[260px]">
-          <img src="images/product-compressor.jpg" alt="" class="tile-img" />
-          <div class="tile-overlay"></div>
-          <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
-            <h3 class="font-display font-bold text-2xl mb-1">Compressors</h3>
-            <p class="text-sm text-white/80">Scroll &amp; rotary, all major brands</p>
-          </div>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[130px]">
-          <h3 class="font-display font-bold text-base">Capacitors &amp; Relays</h3>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[130px]">
-          <h3 class="font-display font-bold text-base">Refrigerant Gas</h3>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[130px]">
-          <h3 class="font-display font-bold text-base">Fan Motors</h3>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[130px]">
-          <h3 class="font-display font-bold text-base">Control Boards</h3>
-        </div>
-      </div>
+      <div id="category-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-[--line] border border-[--line] rounded-2xl overflow-hidden bg-white"></div>
     </div>
   </section>
 
   <!-- Shop -->
   <section id="shop" class="bg-white border-y border-[--line] py-24">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-3">Shop parts</h2>
-      <p class="reveal-up text-[--ink-soft] text-lg mb-10 max-w-lg">Sample catalog for review — swap in your real SKUs and pricing before this goes live.</p>
-
-      <div class="grid lg:grid-cols-[240px_1fr] gap-10">
-        <!-- Filters -->
-        <aside class="lg:sticky lg:top-28 self-start">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-display font-bold text-sm uppercase tracking-wide text-[--ink-soft]">Filters</h3>
-            <button id="filters-reset" class="text-xs font-semibold text-brand">Clear</button>
-          </div>
-
-          <div class="mb-7">
-            <h4 class="font-display font-semibold text-sm mb-3">Category</h4>
-            <div id="category-filters" class="space-y-2 text-sm"></div>
-          </div>
-
-          <div class="mb-7">
-            <h4 class="font-display font-semibold text-sm mb-3">Price range (AED)</h4>
-            <div class="flex items-center gap-2">
-              <input id="price-min" type="number" min="0" placeholder="Min" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm" />
-              <span class="text-[--ink-soft]">–</span>
-              <input id="price-max" type="number" min="0" placeholder="Max" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm" />
-            </div>
-          </div>
-
-          <div>
-            <h4 class="font-display font-semibold text-sm mb-3">Sort by</h4>
-            <select id="sort-select" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm bg-white">
-              <option value="default">Featured</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="name-asc">Name: A–Z</option>
-            </select>
-          </div>
-        </aside>
-
-        <!-- Grid -->
-        <div>
-          <p id="results-count" class="text-sm text-[--ink-soft] mb-4"></p>
-          <div id="product-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">In Stock · Dubai</p>
+      <div class="reveal-up flex flex-wrap items-end justify-between gap-6 mb-10">
+        <div class="max-w-lg">
+          <h2 class="text-3xl md:text-5xl font-display font-bold mb-3">The Component Atlas</h2>
+          <p class="text-[--ink-soft] text-lg">Sample catalog for review — swap in your real SKUs and pricing before this goes live.</p>
+        </div>
+        <div class="relative w-full sm:w-72">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="absolute left-4 top-1/2 -translate-y-1/2 text-[--ink-soft]"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="search-input" type="text" placeholder="Search part number or brand" class="w-full border border-[--line] rounded-full pl-10 pr-4 py-3 text-sm" />
         </div>
       </div>
+
+      <!-- Category pills -->
+      <div id="category-pills" class="reveal-up flex flex-wrap gap-2 mb-8"></div>
+
+      <!-- Secondary filters -->
+      <div class="reveal-up flex flex-wrap items-center gap-3 mb-8 text-sm">
+        <span class="text-[--ink-soft]">Price (AED)</span>
+        <input id="price-min" type="number" min="0" placeholder="Min" class="w-24 border border-[--line] rounded-lg px-3 py-2" />
+        <span class="text-[--ink-soft]">–</span>
+        <input id="price-max" type="number" min="0" placeholder="Max" class="w-24 border border-[--line] rounded-lg px-3 py-2" />
+        <select id="sort-select" class="border border-[--line] rounded-lg px-3 py-2 bg-white">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A–Z</option>
+        </select>
+        <button id="filters-reset" class="font-semibold text-brand">Clear filters</button>
+      </div>
+
+      <p id="results-count" class="reveal-up text-sm text-[--ink-soft] mb-4"></p>
+      <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
     </div>
   </section>
 
   <!-- Quick view -->
   <div id="quickview-overlay" class="fixed inset-0 bg-black/50 z-[80] opacity-0 pointer-events-none transition-opacity duration-300"></div>
   <div id="quickview-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="bg-white rounded-2xl max-w-2xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-3xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
       <button id="quickview-close" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 border border-[--line] z-10">✕</button>
-      <img id="qv-img" src="" alt="" class="w-full h-64 sm:h-full object-cover" />
+      <img id="qv-img" src="" alt="" class="w-full h-72 sm:h-full object-cover bg-[--paper]" />
       <div class="p-8 flex flex-col">
-        <p id="qv-category" class="text-xs font-semibold uppercase tracking-wide text-brand mb-2"></p>
-        <h3 id="qv-name" class="font-display font-bold text-xl mb-3"></h3>
-        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-5"></p>
-        <p id="qv-price" class="font-display font-bold text-2xl mb-6 tabular"></p>
-        <div class="flex items-center gap-3 mb-6">
-          <button id="qv-dec" class="qty-btn">−</button>
-          <span id="qv-qty" class="w-6 text-center tabular">1</span>
-          <button id="qv-inc" class="qty-btn">+</button>
+        <div class="flex items-center gap-2 mb-1">
+          <span id="qv-brand" class="text-xs font-bold uppercase tracking-wide text-brand"></span>
+          <span class="text-xs text-[--ink-soft]">·</span>
+          <span id="qv-sku" class="text-xs text-[--ink-soft] font-mono"></span>
         </div>
-        <button id="qv-add" class="mt-auto w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
+        <h3 id="qv-name" class="font-display font-bold text-xl mb-2"></h3>
+        <div class="flex items-center gap-1 text-sm mb-4">
+          <span class="star">★★★★★</span>
+          <span id="qv-rating" class="text-[--ink-soft]"></span>
+        </div>
+        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-4"></p>
+
+        <div id="qv-badges" class="flex flex-wrap gap-2 mb-5 text-xs font-medium"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Technical Specifications</p>
+        <div id="qv-specs" class="text-sm mb-5 border-t border-[--line]"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Compatibility</p>
+        <div id="qv-compat" class="flex flex-wrap gap-2 mb-6 text-xs"></div>
+
+        <div class="mt-auto flex items-center justify-between gap-4 pt-2">
+          <div>
+            <p id="qv-price" class="font-display font-bold text-2xl tabular"></p>
+            <p class="text-[11px] text-[--ink-soft]">VAT included · ex-warehouse Dubai</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="qv-dec" class="qty-btn">−</button>
+            <span id="qv-qty" class="w-5 text-center tabular">1</span>
+            <button id="qv-inc" class="qty-btn">+</button>
+          </div>
+        </div>
+        <button id="qv-add" class="mt-4 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -436,10 +470,11 @@ gsap.utils.toArray('.clip-reveal').forEach((el) => {
 });
 document.querySelectorAll('[data-counter]').forEach((el) => {
   const target = parseFloat(el.dataset.counter);
+  const isDecimal = !Number.isInteger(target);
   const obj = { val: 0 };
   ScrollTrigger.create({
     trigger: el, start: 'top 90%', once: true,
-    onEnter: () => gsap.to(obj, { val: target, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.val); } }),
+    onEnter: () => gsap.to(obj, { val: target, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = isDecimal ? obj.val.toFixed(1) : Math.round(obj.val); } }),
   });
 });
 document.querySelectorAll('.magnetic').forEach((btn) => {
@@ -450,53 +485,111 @@ document.querySelectorAll('.magnetic').forEach((btn) => {
   btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
 });
 
-/* ---------------- Product catalog + cart ---------------- */
+/* ---------------- Data: brands, categories, products ---------------- */
+/* Brand names, specs and compatibility below are realistic placeholders for
+   the demo. Before this goes live, confirm with Power Cool exactly which
+   brands they're authorized to claim as stockist. */
+
+const BRANDS = ['Copeland', 'Danfoss', 'Bristol', 'Tecumseh', 'LG', 'Samsung', 'Panasonic', 'Honeywell', 'Genetron', 'Briton', 'DuPont', 'Forane', 'Mafron', 'Maksal', 'Mueller', 'Klima', 'Siemens', 'Omron', 'Rothenberger', 'Uniweld', 'AO Smith', 'EBM', 'Sporlan', 'Mitsubishi'];
+
+document.getElementById('brand-pills').innerHTML = BRANDS.map((b) => `<span class="category-pill">${b}</span>`).join('');
+
+const CATEGORY_META = {
+  'Compressors': { icon: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>', brands: ['Copeland', 'Danfoss', 'Bristol', 'Tecumseh'] },
+  'Capacitors & Relays': { icon: '<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>', brands: ['Danfoss', 'Mueller', 'Omron'] },
+  'Refrigerant Gas': { icon: '<path d="M12 2.7l5.7 5.7a8 8 0 11-11.4 0z"/>', brands: ['Honeywell Genetron', 'Briton', 'DuPont', 'Forane'] },
+  'Fan Motors': { icon: '<circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="7" rx="2" ry="4"/><ellipse cx="17" cy="12" rx="4" ry="2"/><ellipse cx="12" cy="17" rx="2" ry="4"/><ellipse cx="7" cy="12" rx="4" ry="2"/>', brands: ['AO Smith', 'EBM'] },
+  'Control Boards': { icon: '<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>', brands: ['Honeywell', 'Siemens'] },
+  'Filters & Driers': { icon: '<path d="M22 4H2l8 9v6l4 2v-8z"/>', brands: ['Sporlan', 'Danfoss'] },
+  'Thermostats': { icon: '<path d="M14 14.8V4a2 2 0 00-4 0v10.8a4 4 0 104 0z"/>', brands: ['Siemens', 'Honeywell', 'Omron'] },
+  'Copper & Fittings': { icon: '<circle cx="8" cy="12" r="4"/><circle cx="16" cy="12" r="4"/>', brands: ['Maksal', 'Mueller', 'Klima'] },
+};
 
 const PRODUCTS = [
-  { id: 'compressor', name: 'Copeland Scroll Compressor 3TR', price: 1850, img: 'images/product-compressor.jpg', category: 'Compressors', description: 'Genuine 3-ton scroll compressor for residential and light commercial split systems. R-410A compatible.' },
-  { id: 'capacitor', name: 'Run Capacitor 35+5 MFD', price: 45, img: 'images/product-capacitor.jpg', category: 'Capacitors & Relays', description: 'Dual-rated run capacitor for compressor and fan motor circuits. 370/440V rated.' },
-  { id: 'gas', name: 'R-410A Refrigerant Gas 11.3kg', price: 320, img: 'images/product-gas.jpg', category: 'Refrigerant Gas', description: 'Virgin R-410A refrigerant, 11.3kg disposable cylinder. Sealed, batch-tested.' },
-  { id: 'fanmotor', name: 'Condenser Fan Motor 1/4 HP', price: 210, img: 'images/product-fanmotor.jpg', category: 'Fan Motors', description: 'Weatherproof condenser fan motor, 1/4 HP, single-phase. Fits most split and package units.' },
-  { id: 'pcb', name: 'Universal AC Control Board', price: 380, img: 'images/product-pcb.jpg', category: 'Control Boards', description: 'Universal indoor unit control board with configurable DIP settings for major brands.' },
-  { id: 'filterdrier', name: 'Filter Drier 3/8" (Pack of 5)', price: 95, img: 'images/product-filterdrier.jpg', category: 'Filters & Driers', description: 'Bi-flow filter drier, 3/8" solder connections. Removes moisture and particulates from the refrigerant line.' },
-  { id: 'thermostat', name: 'Digital Room Thermostat', price: 120, img: 'images/product-thermostat.jpg', category: 'Thermostats', description: 'Programmable digital thermostat with backlit display, compatible with most split unit systems.' },
-  { id: 'copperpipe', name: 'Copper Refrigerant Pipe 3/8" (15m)', price: 260, img: 'images/product-copperpipe.jpg', category: 'Copper & Fittings', description: 'Refrigeration-grade soft copper coil, 3/8" OD, 15m length, nitrogen-purged.' },
+  { id: 'compressor', brand: 'Copeland', sku: 'ZR125KCE-TFD', name: 'Copeland Scroll Compressor 3TR', price: 1850, img: 'images/product-compressor.jpg', category: 'Compressors', rating: 4.9, reviews: 21, stock: 'in-stock',
+    description: 'Genuine 3-ton scroll compressor for residential and light commercial split systems. R-410A compatible.',
+    specs: { 'Capacity': '3 Ton (36,000 BTU)', 'Refrigerant': 'R-410A', 'Voltage': '208-230V / 1-Phase', 'Displacement': '12.62 cc/rev' },
+    compatibility: ['Split systems', 'Package units', 'Commercial A/C'] },
+  { id: 'capacitor', brand: 'Danfoss', sku: 'CAP-3505-370', name: 'Run Capacitor 35+5 MFD', price: 45, img: 'images/product-capacitor.jpg', category: 'Capacitors & Relays', rating: 4.6, reviews: 58, stock: 'in-stock',
+    description: 'Dual-rated run capacitor for compressor and fan motor circuits. 370/440V rated.',
+    specs: { 'Capacitance': '35+5 MFD', 'Voltage': '370/440V', 'Type': 'Dual round can' },
+    compatibility: ['Split systems', 'Package units'] },
+  { id: 'gas', brand: 'Honeywell Genetron', sku: 'R410A-11.3KG', name: 'R-410A Refrigerant Gas 11.3kg', price: 320, img: 'images/product-gas.jpg', category: 'Refrigerant Gas', rating: 4.7, reviews: 39, stock: 'low-stock',
+    description: 'Virgin R-410A refrigerant, 11.3kg disposable cylinder. Sealed, batch-tested.',
+    specs: { 'Refrigerant': 'R-410A', 'Cylinder': '11.3kg disposable', 'Purity': '99.98%' },
+    compatibility: ['Split systems', 'Ducted systems', 'Commercial A/C'] },
+  { id: 'fanmotor', brand: 'AO Smith', sku: 'FM-14-208', name: 'Condenser Fan Motor 1/4 HP', price: 210, img: 'images/product-fanmotor.jpg', category: 'Fan Motors', rating: 4.5, reviews: 17, stock: 'in-stock',
+    description: 'Weatherproof condenser fan motor, 1/4 HP, single-phase. Fits most split and package units.',
+    specs: { 'Power': '1/4 HP', 'Voltage': '208-230V', 'Speed': '1075 RPM', 'Rating': 'IP54 weatherproof' },
+    compatibility: ['Split systems', 'Package units'] },
+  { id: 'pcb', brand: 'Honeywell', sku: 'PCB-UNI-24V', name: 'Universal AC Control Board', price: 380, img: 'images/product-pcb.jpg', category: 'Control Boards', rating: 4.4, reviews: 12, stock: 'in-stock',
+    description: 'Universal indoor unit control board with configurable DIP settings for major brands.',
+    specs: { 'Voltage': '24V control / 230V line', 'Compatibility': 'Multi-brand DIP config', 'Outputs': '4-speed fan control' },
+    compatibility: ['Ducted systems', 'Split systems'] },
+  { id: 'filterdrier', brand: 'Sporlan', sku: 'FD-38-5PK', name: 'Filter Drier 3/8" (Pack of 5)', price: 95, img: 'images/product-filterdrier.jpg', category: 'Filters & Driers', rating: 4.8, reviews: 26, stock: 'in-stock',
+    description: 'Bi-flow filter drier, 3/8" solder connections. Removes moisture and particulates from the refrigerant line.',
+    specs: { 'Connection': '3/8" solder (ODF)', 'Flow': 'Bi-flow', 'Pack size': '5 units' },
+    compatibility: ['Refrigeration', 'Split systems', 'Commercial A/C'] },
+  { id: 'thermostat', brand: 'Siemens', sku: 'TH-DIG-24V', name: 'Digital Room Thermostat', price: 120, img: 'images/product-thermostat.jpg', category: 'Thermostats', rating: 4.6, reviews: 33, stock: 'in-stock',
+    description: 'Programmable digital thermostat with backlit display, compatible with most split unit systems.',
+    specs: { 'Display': 'Backlit LCD', 'Power': '24V / battery backup', 'Programs': '7-day scheduling' },
+    compatibility: ['Split systems', 'Ducted systems'] },
+  { id: 'copperpipe', brand: 'Maksal', sku: 'CU-3/8-15M', name: 'Copper Refrigerant Pipe 3/8" (15m)', price: 260, img: 'images/product-copperpipe.jpg', category: 'Copper & Fittings', rating: 4.7, reviews: 39, stock: 'in-stock',
+    description: 'Refrigeration-grade soft copper coil, 3/8" OD, 15m length, nitrogen-purged.',
+    specs: { 'Outer Diameter': '3/8" (9.5mm)', 'Length': '15m', 'Purity': '99.9% Cu', 'Origin': 'South Africa' },
+    compatibility: ['Package units', 'Ducted systems', 'Commercial A/C'] },
 ];
 
 const CATEGORIES = [...new Set(PRODUCTS.map((p) => p.category))];
-const filters = { categories: new Set(), min: null, max: null, sort: 'default' };
 
-const categoryFiltersEl = document.getElementById('category-filters');
-CATEGORIES.forEach((cat) => {
-  const label = document.createElement('label');
-  label.className = 'flex items-center gap-2 cursor-pointer';
-  label.innerHTML = `<input type="checkbox" value="${cat}" class="category-checkbox accent-brand" /> <span>${cat}</span>`;
-  categoryFiltersEl.appendChild(label);
-});
-categoryFiltersEl.querySelectorAll('.category-checkbox').forEach((cb) => {
-  cb.addEventListener('change', () => {
-    cb.checked ? filters.categories.add(cb.value) : filters.categories.delete(cb.value);
+/* Categories section */
+document.getElementById('category-grid').innerHTML = CATEGORIES.map((cat) => `
+  <div class="category-cell">
+    <div class="category-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${CATEGORY_META[cat].icon}</svg></div>
+    <h3 class="font-display font-bold text-base mb-1">${cat}</h3>
+    <p class="text-xs text-[--ink-soft]">${CATEGORY_META[cat].brands.join(', ')}</p>
+  </div>`).join('');
+
+/* Shop filters */
+const filters = { category: 'all', min: null, max: null, sort: 'default', query: '' };
+
+const pillsEl = document.getElementById('category-pills');
+pillsEl.innerHTML = ['all', ...CATEGORIES].map((cat) =>
+  `<button class="category-pill${cat === 'all' ? ' active' : ''}" data-cat="${cat}">${cat === 'all' ? 'All Parts' : cat}</button>`
+).join('');
+pillsEl.querySelectorAll('.category-pill').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filters.category = btn.dataset.cat;
+    pillsEl.querySelectorAll('.category-pill').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
     renderProducts();
   });
 });
+document.getElementById('search-input').addEventListener('input', (e) => { filters.query = e.target.value.trim().toLowerCase(); renderProducts(); });
 document.getElementById('price-min').addEventListener('input', (e) => { filters.min = e.target.value ? Number(e.target.value) : null; renderProducts(); });
 document.getElementById('price-max').addEventListener('input', (e) => { filters.max = e.target.value ? Number(e.target.value) : null; renderProducts(); });
 document.getElementById('sort-select').addEventListener('change', (e) => { filters.sort = e.target.value; renderProducts(); });
 document.getElementById('filters-reset').addEventListener('click', () => {
-  filters.categories.clear(); filters.min = null; filters.max = null; filters.sort = 'default';
-  categoryFiltersEl.querySelectorAll('.category-checkbox').forEach((cb) => { cb.checked = false; });
+  filters.category = 'all'; filters.min = null; filters.max = null; filters.sort = 'default'; filters.query = '';
+  pillsEl.querySelectorAll('.category-pill').forEach((b) => b.classList.toggle('active', b.dataset.cat === 'all'));
+  document.getElementById('search-input').value = '';
   document.getElementById('price-min').value = '';
   document.getElementById('price-max').value = '';
   document.getElementById('sort-select').value = 'default';
   renderProducts();
 });
+document.getElementById('nav-search-toggle').addEventListener('click', () => {
+  document.getElementById('shop').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  setTimeout(() => document.getElementById('search-input').focus(), 400);
+});
 
 const grid = document.getElementById('product-grid');
 function renderProducts() {
   let list = PRODUCTS.filter((p) => {
-    if (filters.categories.size && !filters.categories.has(p.category)) return false;
+    if (filters.category !== 'all' && p.category !== filters.category) return false;
     if (filters.min !== null && p.price < filters.min) return false;
     if (filters.max !== null && p.price > filters.max) return false;
+    if (filters.query && !`${p.name} ${p.brand} ${p.sku}`.toLowerCase().includes(filters.query)) return false;
     return true;
   });
   if (filters.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
@@ -513,14 +606,16 @@ function renderProducts() {
     const card = document.createElement('div');
     card.className = 'product-card reveal-up cursor-pointer';
     card.innerHTML = `
-      <div class="product-img-wrap"><img src="${p.img}" alt="${p.name}" /></div>
-      <div class="p-5 flex flex-col gap-2 flex-1">
-        <p class="text-[11px] font-semibold uppercase tracking-wide text-brand">${p.category}</p>
-        <h3 class="font-display font-semibold text-sm leading-snug">${p.name}</h3>
-        <div class="mt-auto flex items-center justify-between pt-2">
-          <span class="font-bold tabular">AED ${p.price}</span>
-          <button class="add-to-cart bg-[--ink] hover:bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full transition-colors" data-id="${p.id}">Add to Cart</button>
-        </div>
+      <div class="product-img-wrap relative">
+        <img src="${p.img}" alt="${p.name}" />
+        ${p.stock === 'low-stock' ? '<span class="stock-badge">Low Stock</span>' : ''}
+        <span class="rating-badge"><span class="star">★</span>${p.rating}</span>
+        <button class="quick-add-btn add-to-cart" data-id="${p.id}" aria-label="Add to cart">+</button>
+      </div>
+      <div class="p-5 flex flex-col gap-1 flex-1">
+        <p class="text-[11px] font-semibold uppercase tracking-wide text-[--ink-soft]">${p.brand}</p>
+        <h3 class="font-display font-semibold text-sm leading-snug mb-1">${p.name}</h3>
+        <span class="font-bold tabular mt-auto">AED ${p.price}</span>
       </div>`;
     card.addEventListener('click', () => openQuickView(p));
     card.querySelector('.add-to-cart').addEventListener('click', (e) => {
@@ -541,11 +636,25 @@ function openQuickView(p) {
   qvQty = 1;
   document.getElementById('qv-img').src = p.img;
   document.getElementById('qv-img').alt = p.name;
-  document.getElementById('qv-category').textContent = p.category;
+  document.getElementById('qv-brand').textContent = p.brand;
+  document.getElementById('qv-sku').textContent = p.sku;
   document.getElementById('qv-name').textContent = p.name;
+  document.getElementById('qv-rating').textContent = `${p.rating} · ${p.reviews} reviews`;
   document.getElementById('qv-desc').textContent = p.description;
   document.getElementById('qv-price').textContent = `AED ${p.price}`;
   document.getElementById('qv-qty').textContent = qvQty;
+
+  document.getElementById('qv-badges').innerHTML = [
+    'Dubai Warehouse', 'In-Store Pickup', 'Delivery Available',
+    p.stock === 'low-stock' ? 'Low Stock' : 'In Stock',
+  ].map((b) => `<span class="badge-pill">${b}</span>`).join('');
+
+  document.getElementById('qv-specs').innerHTML = Object.entries(p.specs)
+    .map(([k, v]) => `<div class="spec-row"><span>${k}</span><span class="font-medium">${v}</span></div>`).join('');
+
+  document.getElementById('qv-compat').innerHTML = p.compatibility
+    .map((c) => `<span class="compat-pill">✓ ${c}</span>`).join('');
+
   document.getElementById('quickview-overlay').classList.add('open-qv');
   document.getElementById('quickview-modal').classList.add('open-qv');
 }
