@@ -12,6 +12,7 @@ structurally per client, only these values.
 | `{{HERO_SUBTEXT}}` | One-line supporting sentence under the tagline |
 | `{{PHONE}}` | (512) 555-0134 |
 | `{{PHONE_HREF}}` | 5125550134 |
+| `{{WHATSAPP_NUMBER}}` | 15125550134 (digits only, no +, used in the sticky `wa.me/` button — omit if the business doesn't use WhatsApp) |
 | `{{EMAIL}}` | contact@riveraplumbing.com |
 | `{{ADDRESS}}` | 123 Main St, Austin, TX |
 | `{{CITY}}` | Austin |
