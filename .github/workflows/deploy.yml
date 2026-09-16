@@ -38,14 +38,6 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: DEBUG - check custom domain SSL status
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          curl -s "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/alfea-power-cool/domains/power-cool.web-creation.alfea.io" \
-            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | python3 -m json.tool
-
       - name: Detect changed sites
         id: changed
         run: |
