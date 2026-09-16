@@ -1,0 +1,40 @@
+name: Generate site image assets
+
+# Generates every image listed in sites/<slug>/assets-manifest.txt via fal.ai
+# and commits the resulting files back into that site's folder.
+#
+# Run manually: Actions tab -> Generate site image assets -> Run workflow,
+# entering the site slug (e.g. "power-cool").
+#
+# Requires the FAL_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site slug under sites/ (must have an assets-manifest.txt)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate images
+        env:
+          FAL_API_KEY: ${{ secrets.FAL_API_KEY }}
+        run: |
+          chmod +x scripts/generate-image.sh scripts/generate-site-assets.sh
+          ./scripts/generate-site-assets.sh "${{ github.event.inputs.site }}"
+
+      - name: Commit generated images
+        run: |
+          git config user.name "alfea-bot"
+          git config user.email "bot@alfea.io"
+          git add "sites/${{ github.event.inputs.site }}/images"
+          git diff --cached --quiet && echo "No new images to commit" || git commit -m "Generate image assets for ${{ github.event.inputs.site }}"
+          git push origin HEAD:${{ github.ref_name }}
