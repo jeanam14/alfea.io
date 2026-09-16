@@ -38,9 +38,14 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: DEBUG - list actual gsap package file tree
+      - name: DEBUG - confirm the fix is actually live
         run: |
-          curl -s "https://data.jsdelivr.com/v1/packages/npm/gsap@3.12.5" | python3 -m json.tool | grep -iE '"name"|smoother|split' -A1 -B1
+          curl -s "https://power-cool.web-creation.alfea.io/" -o /tmp/live.html
+          echo "--- ScrollSmoother/SplitText references left? (should be none) ---"
+          grep -c "ScrollSmoother\|SplitText" /tmp/live.html || echo "0 (clean)"
+          echo "--- product-grid + PRODUCTS still present? ---"
+          grep -c 'id="product-grid"' /tmp/live.html
+          grep -c "const PRODUCTS" /tmp/live.html
 
       - name: Detect changed sites
         id: changed
