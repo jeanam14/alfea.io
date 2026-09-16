@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ Remove once the client has signed off and paid -->
+<title>{{BUSINESS_NAME}} | {{TAGLINE}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}" />
+<link rel="icon" href="data:," />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: "{{PRIMARY_COLOR}}", brandDark: "{{PRIMARY_COLOR_DARK}}" },
+        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
+      }
+    }
+  }
+</script>
+
+<!-- GSAP core + ScrollTrigger only -- ScrollSmoother/SplitText 404 at this
+     CDN path despite being free to use; not actually bundled in the public
+     npm package's dist/ folder. Smooth scroll and text-split are hand-rolled
+     in js/app.js instead. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="bg-[--paper] text-[--ink]">
+
+  <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display font-extrabold text-lg tracking-tight">{{BUSINESS_NAME}}</span>
+          <span class="block text-[10px] font-semibold tracking-wider text-[--ink-soft] uppercase">{{BUSINESS_TYPE_LINE}}</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[--ink-soft]">
+        <a href="shop.html" class="hover:text-[--ink] transition-colors">Catalog</a>
+        <a href="#categories" class="hover:text-[--ink] transition-colors">Categories</a>
+        <a href="#brands" class="hover:text-[--ink] transition-colors">Brands</a>
+        <a href="#about" class="hover:text-[--ink] transition-colors">About</a>
+        <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
+        <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <select class="currency-select hidden md:block" aria-label="Currency">
+          <option value="{{BASE_CURRENCY}}">{{BASE_CURRENCY}}</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+        </select>
+        <button id="nav-search-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Search parts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+        <div class="relative">
+          <button id="account-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Account">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </button>
+          <div id="account-dropdown" class="account-dropdown">
+            <p class="text-sm font-semibold mb-1">Welcome</p>
+            <p class="text-xs text-[--ink-soft] mb-4">Sign in to track orders and save your details.</p>
+            <button data-account-action="signin" class="w-full bg-[--ink] text-white text-sm font-semibold py-2.5 rounded-full mb-2">Sign In</button>
+            <button data-account-action="signup" class="w-full border border-[--line] text-sm font-semibold py-2.5 rounded-full">Create Account</button>
+            <p class="text-[11px] text-[--ink-soft] mt-4 text-center">Customer accounts coming soon</p>
+          </div>
+        </div>
+        <a href="tel:{{PHONE_HREF}}" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Call the store">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <button id="cart-toggle" class="relative flex items-center gap-2 bg-[--ink] hover:bg-black text-white text-sm font-semibold pl-4 pr-5 py-2.5 rounded-full transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Cart
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-brand text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart drawer -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-[60]"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between p-6 border-b border-[--line]">
+      <h3 class="font-display font-bold text-lg">Your Cart</h3>
+      <button id="cart-close" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[--paper]">✕</button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-5"></div>
+    <div class="p-6 border-t border-[--line]">
+      <div class="flex items-center justify-between text-sm text-[--ink-soft] mb-1"><span>Subtotal</span><span id="cart-subtotal" class="font-semibold text-[--ink] tabular">{{BASE_CURRENCY}} 0</span></div>
+      <p class="text-xs text-[--ink-soft] mb-4">Delivery calculated at checkout.</p>
+      <button id="cart-checkout-btn" class="w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Quick view -->
+  <div id="quickview-overlay" class="fixed inset-0 bg-black/50 z-[80] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="quickview-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-2xl max-w-3xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
+      <button id="quickview-close" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 border border-[--line] z-10">✕</button>
+      <img id="qv-img" src="" alt="" class="w-full h-72 sm:h-full object-cover bg-[--paper]" />
+      <div class="p-8 flex flex-col">
+        <div class="flex items-center gap-2 mb-1">
+          <span id="qv-brand" class="text-xs font-bold uppercase tracking-wide text-brand"></span>
+          <span class="text-xs text-[--ink-soft]">·</span>
+          <span id="qv-sku" class="text-xs text-[--ink-soft] font-mono"></span>
+        </div>
+        <h3 id="qv-name" class="font-display font-bold text-xl mb-2"></h3>
+        <div class="flex items-center gap-1 text-sm mb-4">
+          <span class="star">★★★★★</span>
+          <span id="qv-rating" class="text-[--ink-soft]"></span>
+        </div>
+        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-4"></p>
+
+        <div id="qv-badges" class="flex flex-wrap gap-2 mb-5 text-xs font-medium"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Technical Specifications</p>
+        <div id="qv-specs" class="text-sm mb-5 border-t border-[--line]"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Compatibility</p>
+        <div id="qv-compat" class="flex flex-wrap gap-2 mb-6 text-xs"></div>
+
+        <div class="mt-auto flex items-center justify-between gap-4 pt-2">
+          <div>
+            <p id="qv-price" class="font-display font-bold text-2xl tabular"></p>
+            <p class="text-[11px] text-[--ink-soft]">VAT included · ex-warehouse {{CITY}}</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="qv-dec" class="qty-btn">−</button>
+            <span id="qv-qty" class="w-5 text-center tabular">1</span>
+            <button id="qv-inc" class="qty-btn">+</button>
+          </div>
+        </div>
+        <button id="qv-add" class="mt-4 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+
+  <!-- Hero -->
+  <section class="relative pt-32 md:pt-40 pb-10">
+    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl bg-brand"></div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
+        <span class="star">★★★★☆</span> {{RATING}} · {{REVIEW_COUNT}} Google reviews · {{CITY}}
+      </div>
+      <h1 id="hero-headline" class="text-[12vw] leading-[0.98] md:text-[5.4vw] md:leading-[1.02] font-display font-extrabold tracking-tight max-w-4xl overflow-hidden">
+        {{TAGLINE}}
+      </h1>
+      <div class="mt-10 grid md:grid-cols-[1.1fr_1.4fr] gap-10 items-end">
+        <div>
+          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">{{HERO_SUBTEXT}}</p>
+          <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
+            <a href="shop.html" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px color-mix(in srgb, {{PRIMARY_COLOR}} 65%, transparent);">Shop Now</a>
+            <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">Chat on WhatsApp</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
+            <img src="images/hero.jpg" alt="{{BUSINESS_NAME}}" class="w-full aspect-[16/10] object-cover" />
+          </div>
+          <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
+            <div class="font-display font-extrabold text-3xl tabular"><span data-counter="{{REVIEW_COUNT}}">0</span>+</div>
+            <div class="text-xs text-white/70 leading-tight">Google<br>reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-up mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 border-t border-[--line] pt-10">
+        <div><div class="font-display font-extrabold text-3xl tabular"><span data-counter="{{RATING}}">0</span></div><p class="text-sm text-[--ink-soft] mt-1">Google rating</p></div>
+        <div><div class="font-display font-extrabold text-3xl tabular"><span data-counter="{{REVIEW_COUNT}}">0</span>+</div><p class="text-sm text-[--ink-soft] mt-1">Customer reviews</p></div>
+        <div><div class="font-display font-extrabold text-3xl tabular"><span data-counter="{{BRAND_COUNT}}">0</span>+</div><p class="text-sm text-[--ink-soft] mt-1">Brands stocked</p></div>
+        <div><div class="font-display font-extrabold text-3xl">{{DELIVERY_TIME}}</div><p class="text-sm text-[--ink-soft] mt-1">{{DELIVERY_LABEL}}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
+    <div class="marquee-track text-sm font-semibold text-[--ink-soft] tracking-wide">
+      <div class="flex items-center gap-10 pr-10">
+        <span>★ {{RATING}} on Google</span><span>•</span><span>Genuine Products Only</span><span>•</span>
+        <span>Fast {{CITY}} Delivery</span><span>•</span><span>{{REVIEW_COUNT}}+ Reviews</span><span>•</span>
+        <span>{{CITY}}</span><span>•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+        <span>★ {{RATING}} on Google</span><span>•</span><span>Genuine Products Only</span><span>•</span>
+        <span>Fast {{CITY}} Delivery</span><span>•</span><span>{{REVIEW_COUNT}}+ Reviews</span><span>•</span>
+        <span>{{CITY}}</span><span>•</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">{{CATEGORIES_EYEBROW}}</p>
+      <div class="reveal-up mb-12 max-w-lg">
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Browse by category</h2>
+        <p class="text-[--ink-soft] text-lg">Every category stocked and ready — click one to shop it.</p>
+      </div>
+      <div id="category-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-[--line] border border-[--line] rounded-2xl overflow-hidden bg-white"></div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section id="brands" class="pb-24 bg-[--paper]">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">{{BRANDS_EYEBROW}}</p>
+      <h2 class="reveal-up text-2xl md:text-3xl font-display font-bold mb-8">Brands we trust and stock</h2>
+      <div id="brand-pills" class="reveal-up flex flex-wrap justify-center gap-3"></div>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section id="featured" class="bg-white border-y border-[--line] py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal-up flex flex-wrap items-end justify-between gap-6 mb-10">
+        <div class="max-w-lg">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand mb-3">{{CATEGORIES_EYEBROW}}</p>
+          <h2 class="text-3xl md:text-5xl font-display font-bold mb-3">Popular right now</h2>
+          <p class="text-[--ink-soft] text-lg">Sample catalog for review — swap in the real SKUs and pricing before this goes live.</p>
+        </div>
+        <a href="shop.html" class="magnetic shrink-0 border border-[--ink]/15 hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">View Full Catalog →</a>
+      </div>
+      <div id="featured-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1">
+        <img src="images/about.jpg" alt="{{BUSINESS_NAME}} team" class="w-full aspect-[4/3] object-cover" />
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">{{ABOUT_HEADLINE}}</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">{{ABOUT_TEXT}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-white border-y border-[--line] py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-12">What our customers say</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="reveal-card bg-[--paper] rounded-2xl p-8 border border-[--line]">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-[--ink] mb-5">"{{REVIEW_1_TEXT}}"</p>
+          <p class="text-sm font-semibold text-[--ink-soft]">{{REVIEW_1_AUTHOR}}</p>
+        </div>
+        <div class="reveal-card bg-[--paper] rounded-2xl p-8 border border-[--line]">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-[--ink] mb-5">"{{REVIEW_2_TEXT}}"</p>
+          <p class="text-sm font-semibold text-[--ink-soft]">{{REVIEW_2_AUTHOR}}</p>
+        </div>
+      </div>
+      <!-- Add more review cards here if there are more than 2 real reviews to use;
+           delete a card rather than leave a token unfilled. -->
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Visit or order online</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-2 text-lg">{{ADDRESS}}</p>
+        <p class="reveal-up text-[--ink-soft] mb-7">{{HOURS}} · {{EMAIL}}</p>
+        <div class="reveal-up flex flex-wrap gap-4">
+          <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">WhatsApp: {{PHONE}}</a>
+          <a href="mailto:{{EMAIL}}" class="magnetic border border-[--line] font-semibold px-7 py-3.5 rounded-full transition-colors">Email Us</a>
+        </div>
+      </div>
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
+        <iframe src="{{MAP_EMBED_SRC}}" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout (hidden until "Proceed to Checkout") -->
+  <section id="checkout-section" class="py-24 bg-white border-t border-[--line]">
+    <div class="max-w-6xl mx-auto px-6">
+      <button id="checkout-back" class="text-sm font-semibold text-[--ink-soft] mb-8">← Back to shop</button>
+      <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Checkout</h2>
+
+      <div id="checkout-empty" class="hidden text-[--ink-soft]">Your cart is empty. <a href="shop.html" class="text-brand font-semibold">Browse products</a> to get started.</div>
+
+      <div id="checkout-filled" class="grid lg:grid-cols-[1.3fr_1fr] gap-12">
+        <div>
+          <h3 class="font-display font-bold text-lg mb-4">Delivery details</h3>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            <input id="ck-name" placeholder="Full name" class="border border-[--line] rounded-xl px-4 py-3 text-sm" />
+            <input id="ck-phone" placeholder="Phone / WhatsApp" class="border border-[--line] rounded-xl px-4 py-3 text-sm" />
+            <input id="ck-company" placeholder="Company (optional)" class="border border-[--line] rounded-xl px-4 py-3 text-sm sm:col-span-2" />
+            <input id="ck-address" placeholder="Delivery address" class="border border-[--line] rounded-xl px-4 py-3 text-sm sm:col-span-2" />
+            <select id="ck-emirate" class="border border-[--line] rounded-xl px-4 py-3 text-sm sm:col-span-2 bg-white">
+              <option>{{CITY}}</option><option>Other</option>
+            </select>
+          </div>
+
+          <h3 class="font-display font-bold text-lg mb-4">Payment method</h3>
+          <p class="text-xs text-[--ink-soft] mb-4">Preview only — card payments aren't wired up yet. WhatsApp ordering below works for real, and is always confirmed in {{BASE_CURRENCY}}.</p>
+          <div class="space-y-3 mb-4">
+            <label class="pay-option flex items-center gap-3 selected" data-pay="card">
+              <input type="radio" name="pay" checked class="accent-brand" /> Credit / Debit Card
+            </label>
+            <div id="card-fields" class="grid sm:grid-cols-2 gap-4 pl-2">
+              <input placeholder="Card number" disabled class="border border-[--line] rounded-xl px-4 py-3 text-sm bg-[--paper] sm:col-span-2" />
+              <input placeholder="MM / YY" disabled class="border border-[--line] rounded-xl px-4 py-3 text-sm bg-[--paper]" />
+              <input placeholder="CVC" disabled class="border border-[--line] rounded-xl px-4 py-3 text-sm bg-[--paper]" />
+            </div>
+            <label class="pay-option flex items-center gap-3" data-pay="cod">
+              <input type="radio" name="pay" class="accent-brand" /> Cash on Delivery
+            </label>
+            <label class="pay-option flex items-center gap-3" data-pay="bank">
+              <input type="radio" name="pay" class="accent-brand" /> Bank Transfer
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-[--paper] rounded-2xl p-6 border border-[--line]">
+            <h3 class="font-display font-bold text-lg mb-4">Order summary</h3>
+            <div id="checkout-items" class="space-y-3 mb-4 text-sm"></div>
+            <div class="border-t border-[--line] pt-4 space-y-1 text-sm">
+              <div class="flex justify-between"><span class="text-[--ink-soft]">Subtotal</span><span id="ck-subtotal" class="tabular font-semibold">{{BASE_CURRENCY}} 0</span></div>
+              <div class="flex justify-between"><span class="text-[--ink-soft]">Delivery</span><span id="ck-delivery" class="tabular">{{BASE_CURRENCY}} {{DELIVERY_FEE}}</span></div>
+              <div class="flex justify-between text-base font-bold pt-2"><span>Total</span><span id="ck-total" class="tabular">{{BASE_CURRENCY}} 0</span></div>
+            </div>
+            <button id="ck-place-order" class="mt-6 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Complete Order via WhatsApp</button>
+            <p class="text-[11px] text-[--ink-soft] mt-3 text-center">Opens WhatsApp with your order pre-filled, in {{BASE_CURRENCY}} — sends straight to {{BUSINESS_NAME}}.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-[1.3fr_1fr_1fr] gap-14 pb-14 border-b border-white/10">
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
+            </span>
+            <span class="leading-tight">
+              <span class="block font-display font-extrabold text-lg text-white">{{BUSINESS_NAME}}</span>
+              <span class="block text-[10px] font-semibold tracking-wider text-white/50 uppercase">{{BUSINESS_TYPE_LINE}}</span>
+            </span>
+          </a>
+          <p class="text-sm leading-relaxed mb-7 max-w-sm">{{FOOTER_ABOUT_TEXT}}</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+              WhatsApp Support
+            </a>
+            <a href="mailto:{{EMAIL}}" class="flex items-center gap-2 border border-white/15 hover:border-white/35 text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              Email Us
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-heading">Visit Us</p>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-start gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ADDRESS}}
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {{PHONE}}
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              {{EMAIL}}
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              {{HOURS}}
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Catalog</p>
+          <ul id="footer-catalog-links" class="space-y-3"></ul>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-8 text-xs text-white/40">
+        <p>© {{YEAR}} {{BUSINESS_NAME}}. All rights reserved.</p>
+        <button id="back-to-top" class="flex items-center gap-2 text-white/60 hover:text-white transition-colors">Back to top ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp sticky button -->
+  <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
+    <span class="wa-sticky-ring" aria-hidden="true"></span>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+  </a>
+  <div id="toast"></div>
+
+<script src="js/app.js"></script>
+<script>
+/* ---------------- Hero animation (index only) ---------------- */
+const heroTl = gsap.timeline({ delay: 0.15 });
+const headline = document.getElementById('hero-headline');
+gsap.set(headline, { opacity: 1 });
+if (!reduceMotion) {
+  const words = headline.textContent.trim().split(/\s+/);
+  headline.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
+  heroTl.from(headline.querySelectorAll('.word'), { yPercent: 130, opacity: 0, duration: 1, stagger: 0.04, ease: 'power4.out' });
+}
+heroTl
+  .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
+  .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+  .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
+  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
+  .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+
+/* ---------------- Featured products ---------------- */
+function renderFeatured() {
+  const grid = document.getElementById('featured-grid');
+  grid.innerHTML = '';
+  PRODUCTS.slice(0, 4).forEach((p) => grid.appendChild(makeProductCard(p)));
+}
+renderFeatured();
+
+/* ---------------- Checkout (index only) ---------------- */
+function refreshCheckoutTotals() {
+  const section = document.getElementById('checkout-section');
+  if (!section.classList.contains('active')) return;
+  const subtotal = cartSubtotal();
+  document.getElementById('ck-subtotal').textContent = formatPrice(subtotal);
+  document.getElementById('ck-delivery').textContent = formatPrice({{DELIVERY_FEE}});
+  document.getElementById('ck-total').textContent = formatPrice(subtotal ? subtotal + {{DELIVERY_FEE}} : 0);
+}
+
+function showCheckout() {
+  closeCart();
+  const lines = cartLines();
+  const section = document.getElementById('checkout-section');
+  section.classList.add('active');
+  document.getElementById('checkout-empty').classList.toggle('hidden', lines.length > 0);
+  document.getElementById('checkout-filled').classList.toggle('hidden', lines.length === 0);
+
+  const itemsEl = document.getElementById('checkout-items');
+  itemsEl.innerHTML = '';
+  lines.forEach((l) => {
+    const row = document.createElement('div');
+    row.className = 'flex justify-between';
+    row.innerHTML = `<span>${l.qty}× ${l.name}</span><span class="tabular">${formatPrice(l.price * l.qty)}</span>`;
+    itemsEl.appendChild(row);
+  });
+  refreshCheckoutTotals();
+  section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+}
+document.getElementById('checkout-back').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('checkout-section').classList.remove('active');
+  window.location.hash = '';
+  document.getElementById('featured').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+});
+
+document.querySelectorAll('.pay-option').forEach((opt) => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.pay-option').forEach((o) => { o.classList.remove('selected'); o.querySelector('input').checked = false; });
+    opt.classList.add('selected');
+    opt.querySelector('input').checked = true;
+    document.getElementById('card-fields').style.display = opt.dataset.pay === 'card' ? 'grid' : 'none';
+  });
+});
+
+document.getElementById('ck-place-order').addEventListener('click', () => {
+  const lines = cartLines();
+  if (!lines.length) return;
+  const name = document.getElementById('ck-name').value || 'Customer';
+  const phone = document.getElementById('ck-phone').value || '';
+  const address = document.getElementById('ck-address').value || '';
+  const emirate = document.getElementById('ck-emirate').value;
+  const itemsText = lines.map((l) => `${l.qty}x ${l.name} — {{BASE_CURRENCY}} ${l.price * l.qty}`).join('%0A');
+  const total = cartSubtotal() + {{DELIVERY_FEE}};
+  const message = `New order from ${name} (${phone})%0A${address}, ${emirate}%0A%0A${itemsText}%0A%0ATotal incl. delivery: {{BASE_CURRENCY}} ${total}`;
+  window.open(`https://wa.me/{{WHATSAPP_NUMBER}}?text=${message}`, '_blank');
+});
+
+if (window.location.hash === '#open-checkout') showCheckout();
+</script>
+</body>
+</html>

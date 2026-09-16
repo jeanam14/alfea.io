@@ -1,0 +1,17 @@
+# One line per image: output_path|prompt|image_size
+# Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
+#
+# Replace every prompt below with one describing the real business and real
+# products before running the workflow — these are placeholders showing the
+# expected shape (1 hero + 1 about + 1 per sample product). Add or remove
+# product lines to match however many products PRODUCTS actually has in
+# js/app.js. Keep "no text, no logos, no watermark" in every prompt — that's
+# what keeps Flux Schnell from hallucinating fake brand text onto the image.
+images/hero.jpg|wide interior photo of a well-organized {{BUSINESS_TYPE_LINE}} showroom, shelves stocked with product, bright professional lighting, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
+images/about.jpg|photo of a staff member helping a customer at a counter in a {{BUSINESS_TYPE_LINE}} shop, product on shelves behind them, realistic editorial photography, no text, no watermark|landscape_4_3
+images/product-1.jpg|studio product photo of [describe real product 1], clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-2.jpg|studio product photo of [describe real product 2], clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-3.jpg|studio product photo of [describe real product 3], clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-4.jpg|studio product photo of [describe real product 4], clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-5.jpg|studio product photo of [describe real product 5], clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-6.jpg|studio product photo of [describe real product 6], clean white background, professional catalog photography, no text, no watermark|square_hd

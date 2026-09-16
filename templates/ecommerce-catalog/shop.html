@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ Remove once the client has signed off and paid -->
+<title>Shop All Products | {{BUSINESS_NAME}}</title>
+<meta name="description" content="Browse {{BUSINESS_NAME}}'s full catalog — filter by category, brand and price." />
+<link rel="icon" href="data:," />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: "{{PRIMARY_COLOR}}", brandDark: "{{PRIMARY_COLOR_DARK}}" },
+        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
+      }
+    }
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="bg-[--paper] text-[--ink]">
+
+  <header id="site-nav" class="fixed top-0 inset-x-0 z-50 scrolled">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block font-display font-extrabold text-lg tracking-tight">{{BUSINESS_NAME}}</span>
+          <span class="block text-[10px] font-semibold tracking-wider text-[--ink-soft] uppercase">{{BUSINESS_TYPE_LINE}}</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[--ink-soft]">
+        <a href="shop.html" class="text-[--ink] font-semibold" aria-current="page">Catalog</a>
+        <a href="index.html#categories" class="hover:text-[--ink] transition-colors">Categories</a>
+        <a href="index.html#brands" class="hover:text-[--ink] transition-colors">Brands</a>
+        <a href="index.html#about" class="hover:text-[--ink] transition-colors">About</a>
+        <a href="index.html#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
+        <a href="index.html#contact" class="hover:text-[--ink] transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <select class="currency-select hidden md:block" aria-label="Currency">
+          <option value="{{BASE_CURRENCY}}">{{BASE_CURRENCY}}</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+        </select>
+        <button id="nav-search-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Search parts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+        <div class="relative">
+          <button id="account-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Account">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </button>
+          <div id="account-dropdown" class="account-dropdown">
+            <p class="text-sm font-semibold mb-1">Welcome</p>
+            <p class="text-xs text-[--ink-soft] mb-4">Sign in to track orders and save your details.</p>
+            <button data-account-action="signin" class="w-full bg-[--ink] text-white text-sm font-semibold py-2.5 rounded-full mb-2">Sign In</button>
+            <button data-account-action="signup" class="w-full border border-[--line] text-sm font-semibold py-2.5 rounded-full">Create Account</button>
+            <p class="text-[11px] text-[--ink-soft] mt-4 text-center">Customer accounts coming soon</p>
+          </div>
+        </div>
+        <a href="tel:{{PHONE_HREF}}" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Call the store">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <button id="cart-toggle" class="relative flex items-center gap-2 bg-[--ink] hover:bg-black text-white text-sm font-semibold pl-4 pr-5 py-2.5 rounded-full transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Cart
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-brand text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart drawer -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-[60]"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between p-6 border-b border-[--line]">
+      <h3 class="font-display font-bold text-lg">Your Cart</h3>
+      <button id="cart-close" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[--paper]">✕</button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-5"></div>
+    <div class="p-6 border-t border-[--line]">
+      <div class="flex items-center justify-between text-sm text-[--ink-soft] mb-1"><span>Subtotal</span><span id="cart-subtotal" class="font-semibold text-[--ink] tabular">{{BASE_CURRENCY}} 0</span></div>
+      <p class="text-xs text-[--ink-soft] mb-4">Delivery calculated at checkout.</p>
+      <button id="cart-checkout-btn" class="w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Quick view -->
+  <div id="quickview-overlay" class="fixed inset-0 bg-black/50 z-[80] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="quickview-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-2xl max-w-3xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
+      <button id="quickview-close" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 border border-[--line] z-10">✕</button>
+      <img id="qv-img" src="" alt="" class="w-full h-72 sm:h-full object-cover bg-[--paper]" />
+      <div class="p-8 flex flex-col">
+        <div class="flex items-center gap-2 mb-1">
+          <span id="qv-brand" class="text-xs font-bold uppercase tracking-wide text-brand"></span>
+          <span class="text-xs text-[--ink-soft]">·</span>
+          <span id="qv-sku" class="text-xs text-[--ink-soft] font-mono"></span>
+        </div>
+        <h3 id="qv-name" class="font-display font-bold text-xl mb-2"></h3>
+        <div class="flex items-center gap-1 text-sm mb-4">
+          <span class="star">★★★★★</span>
+          <span id="qv-rating" class="text-[--ink-soft]"></span>
+        </div>
+        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-4"></p>
+
+        <div id="qv-badges" class="flex flex-wrap gap-2 mb-5 text-xs font-medium"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Technical Specifications</p>
+        <div id="qv-specs" class="text-sm mb-5 border-t border-[--line]"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Compatibility</p>
+        <div id="qv-compat" class="flex flex-wrap gap-2 mb-6 text-xs"></div>
+
+        <div class="mt-auto flex items-center justify-between gap-4 pt-2">
+          <div>
+            <p id="qv-price" class="font-display font-bold text-2xl tabular"></p>
+            <p class="text-[11px] text-[--ink-soft]">VAT included · ex-warehouse {{CITY}}</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="qv-dec" class="qty-btn">−</button>
+            <span id="qv-qty" class="w-5 text-center tabular">1</span>
+            <button id="qv-inc" class="qty-btn">+</button>
+          </div>
+        </div>
+        <button id="qv-add" class="mt-4 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+
+  <!-- Shop header -->
+  <section class="pt-32 pb-10 border-b border-[--line] bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-brand mb-3">{{CATEGORIES_EYEBROW}}</p>
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-display font-bold mb-3">Shop All Products</h1>
+          <p class="text-[--ink-soft] text-lg max-w-lg">Genuine products, ready for pickup or delivery.</p>
+        </div>
+        <div class="relative w-full sm:w-80">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="absolute left-4 top-1/2 -translate-y-1/2 text-[--ink-soft]"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="search-input" type="text" placeholder="Search product or brand" class="w-full border border-[--line] rounded-full pl-10 pr-4 py-3 text-sm" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- Mobile filter bar -->
+      <div class="flex items-center justify-between gap-4 mb-6 lg:hidden">
+        <button id="mobile-filters-toggle" class="flex items-center gap-2 border border-[--line] rounded-full px-5 py-2.5 text-sm font-semibold bg-white">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          Filters
+        </button>
+        <select id="sort-select-mobile" class="border border-[--line] rounded-full px-4 py-2.5 text-sm bg-white">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A–Z</option>
+        </select>
+      </div>
+
+      <div class="grid lg:grid-cols-[260px_1fr] gap-12">
+        <!-- Sidebar filters -->
+        <div id="filters-overlay"></div>
+        <aside id="filters-sidebar" class="hidden lg:block">
+          <div class="flex items-center justify-between mb-6 lg:hidden">
+            <p class="font-display font-bold text-lg">Filters</p>
+            <button id="filters-close" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[--paper]">✕</button>
+          </div>
+          <div class="filter-group">
+            <p class="footer-heading text-[--ink]">Category</p>
+            <div id="category-pills" class="flex flex-col gap-1.5"></div>
+          </div>
+          <div class="filter-group">
+            <p class="footer-heading text-[--ink]">Brand</p>
+            <div id="brand-filters" class="space-y-1"></div>
+          </div>
+          <div class="filter-group">
+            <p class="footer-heading text-[--ink]">Price ({{BASE_CURRENCY}})</p>
+            <div class="flex items-center gap-2">
+              <input id="price-min" type="number" min="0" placeholder="Min" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm" />
+              <span class="text-[--ink-soft]">–</span>
+              <input id="price-max" type="number" min="0" placeholder="Max" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm" />
+            </div>
+          </div>
+          <button id="filters-reset" class="font-semibold text-brand text-sm mt-4">Clear all filters</button>
+        </aside>
+
+        <!-- Results -->
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <p id="results-count" class="text-sm text-[--ink-soft]"></p>
+            <select id="sort-select" class="hidden lg:block border border-[--line] rounded-lg px-3 py-2 bg-white text-sm">
+              <option value="default">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </div>
+          <div id="product-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-[1.3fr_1fr_1fr] gap-14 pb-14 border-b border-white/10">
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
+            </span>
+            <span class="leading-tight">
+              <span class="block font-display font-extrabold text-lg text-white">{{BUSINESS_NAME}}</span>
+              <span class="block text-[10px] font-semibold tracking-wider text-white/50 uppercase">{{BUSINESS_TYPE_LINE}}</span>
+            </span>
+          </a>
+          <p class="text-sm leading-relaxed mb-7 max-w-sm">{{FOOTER_ABOUT_TEXT}}</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+              WhatsApp Support
+            </a>
+            <a href="mailto:{{EMAIL}}" class="flex items-center gap-2 border border-white/15 hover:border-white/35 text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              Email Us
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-heading">Visit Us</p>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-start gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ADDRESS}}
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {{PHONE}}
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              {{EMAIL}}
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              {{HOURS}}
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Catalog</p>
+          <ul id="footer-catalog-links" class="space-y-3"></ul>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-8 text-xs text-white/40">
+        <p>© {{YEAR}} {{BUSINESS_NAME}}. All rights reserved.</p>
+        <button id="back-to-top" class="flex items-center gap-2 text-white/60 hover:text-white transition-colors">Back to top ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp sticky button -->
+  <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
+    <span class="wa-sticky-ring" aria-hidden="true"></span>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+  </a>
+  <div id="toast"></div>
+
+<script src="js/app.js"></script>
+<script>
+/* ---------------- Shop filters (this page only) ---------------- */
+const params = new URLSearchParams(window.location.search);
+const filters = {
+  category: params.get('category') && CATEGORIES.includes(params.get('category')) ? params.get('category') : 'all',
+  brands: new Set(),
+  min: null, max: null, sort: 'default', query: '',
+};
+
+const pillsEl = document.getElementById('category-pills');
+pillsEl.innerHTML = ['all', ...CATEGORIES].map((cat) =>
+  `<button class="category-pill text-left${cat === filters.category ? ' active' : ''}" data-cat="${cat}">${cat === 'all' ? 'All Products' : cat}</button>`
+).join('');
+pillsEl.querySelectorAll('.category-pill').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filters.category = btn.dataset.cat;
+    pillsEl.querySelectorAll('.category-pill').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts();
+  });
+});
+
+const brandFiltersEl = document.getElementById('brand-filters');
+brandFiltersEl.innerHTML = PRODUCT_BRANDS.map((b) => `
+  <label class="filter-check">
+    <input type="checkbox" value="${b}" />
+    <span>${b}</span>
+  </label>`).join('');
+brandFiltersEl.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+  cb.addEventListener('change', () => {
+    if (cb.checked) filters.brands.add(cb.value); else filters.brands.delete(cb.value);
+    renderProducts();
+  });
+});
+
+function syncSort(value) {
+  filters.sort = value;
+  document.getElementById('sort-select').value = value;
+  document.getElementById('sort-select-mobile').value = value;
+  renderProducts();
+}
+document.getElementById('sort-select').addEventListener('change', (e) => syncSort(e.target.value));
+document.getElementById('sort-select-mobile').addEventListener('change', (e) => syncSort(e.target.value));
+
+document.getElementById('search-input').addEventListener('input', (e) => { filters.query = e.target.value.trim().toLowerCase(); renderProducts(); });
+document.getElementById('price-min').addEventListener('input', (e) => { filters.min = e.target.value ? Number(e.target.value) : null; renderProducts(); });
+document.getElementById('price-max').addEventListener('input', (e) => { filters.max = e.target.value ? Number(e.target.value) : null; renderProducts(); });
+document.getElementById('filters-reset').addEventListener('click', () => {
+  filters.category = 'all'; filters.brands.clear(); filters.min = null; filters.max = null; filters.sort = 'default'; filters.query = '';
+  pillsEl.querySelectorAll('.category-pill').forEach((b) => b.classList.toggle('active', b.dataset.cat === 'all'));
+  brandFiltersEl.querySelectorAll('input[type="checkbox"]').forEach((cb) => { cb.checked = false; });
+  document.getElementById('search-input').value = '';
+  document.getElementById('price-min').value = '';
+  document.getElementById('price-max').value = '';
+  syncSort('default');
+});
+
+if (params.get('focus') === 'search') {
+  setTimeout(() => document.getElementById('search-input').focus(), 300);
+}
+
+/* Mobile filter slide-over */
+const sidebar = document.getElementById('filters-sidebar');
+const filtersOverlay = document.getElementById('filters-overlay');
+function openFilters() { sidebar.classList.add('mobile-open'); filtersOverlay.classList.add('open'); }
+function closeFilters() { sidebar.classList.remove('mobile-open'); filtersOverlay.classList.remove('open'); }
+document.getElementById('mobile-filters-toggle').addEventListener('click', openFilters);
+document.getElementById('filters-close').addEventListener('click', closeFilters);
+filtersOverlay.addEventListener('click', closeFilters);
+
+const grid = document.getElementById('product-grid');
+function renderProducts() {
+  let list = PRODUCTS.filter((p) => {
+    if (filters.category !== 'all' && p.category !== filters.category) return false;
+    if (filters.brands.size && !filters.brands.has(p.brand)) return false;
+    if (filters.min !== null && p.price < filters.min) return false;
+    if (filters.max !== null && p.price > filters.max) return false;
+    if (filters.query && !`${p.name} ${p.brand} ${p.sku}`.toLowerCase().includes(filters.query)) return false;
+    return true;
+  });
+  if (filters.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+  if (filters.sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+  if (filters.sort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name));
+
+  document.getElementById('results-count').textContent = `${list.length} item${list.length === 1 ? '' : 's'}`;
+  grid.innerHTML = '';
+  if (!list.length) {
+    grid.innerHTML = '<p class="text-sm text-[--ink-soft] col-span-full">No products match these filters.</p>';
+    return;
+  }
+  list.forEach((p) => grid.appendChild(makeProductCard(p)));
+}
+renderProducts();
+</script>
+</body>
+</html>

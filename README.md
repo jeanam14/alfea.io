@@ -22,10 +22,19 @@ to the existing Netlify zone; nothing about Netlify's own sites is touched.
 
 1. You give Jean the prospect's info (whatever you copy-pasted from Google
    Maps, their Instagram, etc. — no formatting needed).
-2. Jean picks the closest template and scaffolds it:
+2. Jean picks a template deliberately for that specific prospect and
+   scaffolds it:
    ```
    scripts/new-site.sh trades rivera-plumbing
    ```
+   **Don't default to the same template for every prospect just because it
+   was the one most recently polished.** Each business gets evaluated on
+   its own — does it sell products people should browse and buy
+   (`ecommerce-catalog`), is it a service business with no catalog
+   (`trades`, or a new vertical worth adding), or does it need something
+   bespoke this repo doesn't have a starter for yet. Picking on autopilot
+   is exactly how one client's one-off polish quietly becomes everyone
+   else's generic starting point.
 3. Jean fills in every token in `sites/rivera-plumbing/index.html` (see the
    template's `TOKENS.md`) with the real business's content — name, phone,
    address, services, real Google reviews, real photos.
@@ -84,7 +93,13 @@ Claude Code session.
 
 ```
 templates/
-  trades/            starter for plumbers, electricians, contractors
+  trades/              starter for plumbers, electricians, contractors — no product catalog
+  ecommerce-catalog/   starter for businesses that sell physical products online — a
+                       trading/wholesale company, a parts supplier, a retailer (this is
+                       what the Power Cool build was generalized into). Home page +
+                       separate shop.html catalog with category/brand/price filters,
+                       cart, quick view, currency selector. Not a default — see the
+                       "picks a template deliberately" note above.
   (more verticals added as needed: legal, medical, salon, generic)
 sites/
   <client-slug>/      one folder per client, deployed to <slug>.web-creation.alfea.io
