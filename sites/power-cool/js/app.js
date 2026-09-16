@@ -78,7 +78,7 @@ const CATEGORY_META = {
 };
 
 const PRODUCTS = [
-  { id: 'compressor', brand: 'Copeland', sku: 'ZR125KCE-TFD', name: 'Copeland Scroll Compressor 3TR', price: 1850, img: 'images/product-compressor.jpg', category: 'Compressors', rating: 4.9, reviews: 21, stock: 'in-stock',
+  { id: 'compressor', brand: 'Copeland', sku: 'ZR125KCE-TFD', name: 'Copeland Scroll Compressor 3TR', price: 2450, img: 'images/product-compressor.jpg', category: 'Compressors', rating: 4.9, reviews: 21, stock: 'in-stock',
     description: 'Genuine 3-ton scroll compressor for residential and light commercial split systems. R-410A compatible.',
     specs: { 'Capacity': '3 Ton (36,000 BTU)', 'Refrigerant': 'R-410A', 'Voltage': '208-230V / 1-Phase', 'Displacement': '12.62 cc/rev' },
     compatibility: ['Split systems', 'Package units', 'Commercial A/C'] },
