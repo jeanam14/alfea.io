@@ -38,16 +38,9 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: DEBUG - check GSAP CDN files actually resolve
+      - name: DEBUG - list actual gsap package file tree
         run: |
-          for f in gsap.min.js ScrollTrigger.min.js ScrollSmoother.min.js SplitText.min.js; do
-            url="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/$f"
-            code=$(curl -s -o /tmp/gsapfile.js -w "%{http_code}" "$url")
-            bytes=$(wc -c < /tmp/gsapfile.js)
-            echo "$f -> HTTP $code, $bytes bytes"
-            head -c 200 /tmp/gsapfile.js; echo
-            echo "---"
-          done
+          curl -s "https://data.jsdelivr.com/v1/packages/npm/gsap@3.12.5" | python3 -m json.tool | grep -iE '"name"|smoother|split' -A1 -B1
 
       - name: Detect changed sites
         id: changed
