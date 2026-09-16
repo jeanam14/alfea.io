@@ -22,10 +22,12 @@
   }
 </script>
 
+<!-- GSAP core + ScrollTrigger only -- ScrollSmoother/SplitText 404 at this
+     CDN path despite being free to use; not actually bundled in the public
+     npm package's dist/ folder. Smooth scroll and text-split are hand-rolled
+     below instead. -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollSmoother.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
 
 <style>
   :root{ --ink:#12181B; --ink-soft:#556065; --paper:#F7FAFB; --line:rgba(18,24,27,0.08); }
@@ -36,6 +38,7 @@
   ::selection{ background:#0E7FA6; color:#fff; }
   #smooth-wrapper{ overflow:hidden; }
   #smooth-content{ overflow:visible; }
+  .word{ display:inline-block; will-change:transform; }
   .clip-reveal{ clip-path: inset(0 0 100% 0); }
   .star{ color:#F5A524; letter-spacing:1px; }
   .tabular{ font-variant-numeric: tabular-nums; }
@@ -141,7 +144,7 @@
           </div>
         </div>
         <div class="relative">
-          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl" data-speed="0.92">
+          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
             <img src="images/hero.jpg" alt="Power Cool AC spare parts warehouse" class="w-full aspect-[16/10] object-cover" />
           </div>
           <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
@@ -213,7 +216,7 @@
   <!-- About -->
   <section id="about" class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
-      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1" data-speed="1.06">
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1">
         <img src="images/about.jpg" alt="Power Cool staff" class="w-full aspect-[4/3] object-cover" />
       </div>
       <div class="order-1 md:order-2">
@@ -326,12 +329,8 @@
   </div>
 
 <script>
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const smoother = reduceMotion ? null : ScrollSmoother.create({
-  wrapper: '#smooth-wrapper', content: '#smooth-content', smooth: 1.3, effects: true, smoothTouch: 0.1,
-});
 
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener('click', (e) => {
@@ -339,8 +338,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
     if (!target) return;
     e.preventDefault();
     closeCart();
-    if (smoother) smoother.scrollTo(target, true, 'top top');
-    else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 });
 
@@ -348,12 +346,12 @@ const nav = document.getElementById('site-nav');
 ScrollTrigger.create({ start: 0, end: 99999, onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40) });
 
 const heroTl = gsap.timeline({ delay: 0.15 });
-if (!reduceMotion && window.SplitText) {
-  const split = new SplitText('#hero-headline', { type: 'words' });
-  gsap.set('#hero-headline', { opacity: 1 });
-  heroTl.from(split.words, { yPercent: 130, opacity: 0, duration: 1, stagger: 0.04, ease: 'power4.out' });
-} else {
-  gsap.set('#hero-headline', { opacity: 1 });
+const headline = document.getElementById('hero-headline');
+gsap.set(headline, { opacity: 1 });
+if (!reduceMotion) {
+  const words = headline.textContent.trim().split(/\s+/);
+  headline.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
+  heroTl.from(headline.querySelectorAll('.word'), { yPercent: 130, opacity: 0, duration: 1, stagger: 0.04, ease: 'power4.out' });
 }
 heroTl
   .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
@@ -496,15 +494,13 @@ function showCheckout() {
   document.getElementById('ck-subtotal').textContent = `AED ${subtotal}`;
   document.getElementById('ck-total').textContent = `AED ${subtotal ? subtotal + 25 : 0}`;
 
-  if (smoother) smoother.scrollTo(section, true, 'top top');
-  else section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
 }
 document.getElementById('cart-checkout-btn').addEventListener('click', showCheckout);
 document.getElementById('checkout-back').addEventListener('click', (e) => {
   e.preventDefault();
   document.getElementById('checkout-section').classList.remove('active');
-  const shop = document.getElementById('shop');
-  if (smoother) smoother.scrollTo(shop, true, 'top top'); else shop.scrollIntoView();
+  document.getElementById('shop').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
 });
 
 document.querySelectorAll('.pay-option').forEach((opt) => {
