@@ -75,6 +75,8 @@
   #checkout-section{ display:none; }
   #checkout-section.active{ display:block; }
 
+  #quickview-overlay.open-qv, #quickview-modal.open-qv{ opacity:1; pointer-events:auto; }
+
   .pay-option{ border:1px solid var(--line); border-radius:.9rem; padding:.9rem 1rem; cursor:pointer; }
   .pay-option.selected{ border-color:#0E7FA6; box-shadow:0 0 0 3px #0E7FA61a; }
 
@@ -203,15 +205,74 @@
     </div>
   </section>
 
-  <!-- Shop / product grid -->
+  <!-- Shop -->
   <section id="shop" class="bg-white border-y border-[--line] py-24">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-3">In-stock parts</h2>
-      <p class="reveal-up text-[--ink-soft] text-lg mb-12 max-w-lg">Sample catalog for review — swap in your real SKUs and pricing before this goes live.</p>
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-3">Shop parts</h2>
+      <p class="reveal-up text-[--ink-soft] text-lg mb-10 max-w-lg">Sample catalog for review — swap in your real SKUs and pricing before this goes live.</p>
 
-      <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+      <div class="grid lg:grid-cols-[240px_1fr] gap-10">
+        <!-- Filters -->
+        <aside class="lg:sticky lg:top-28 self-start">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-display font-bold text-sm uppercase tracking-wide text-[--ink-soft]">Filters</h3>
+            <button id="filters-reset" class="text-xs font-semibold text-brand">Clear</button>
+          </div>
+
+          <div class="mb-7">
+            <h4 class="font-display font-semibold text-sm mb-3">Category</h4>
+            <div id="category-filters" class="space-y-2 text-sm"></div>
+          </div>
+
+          <div class="mb-7">
+            <h4 class="font-display font-semibold text-sm mb-3">Price range (AED)</h4>
+            <div class="flex items-center gap-2">
+              <input id="price-min" type="number" min="0" placeholder="Min" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm" />
+              <span class="text-[--ink-soft]">–</span>
+              <input id="price-max" type="number" min="0" placeholder="Max" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm" />
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-display font-semibold text-sm mb-3">Sort by</h4>
+            <select id="sort-select" class="w-full border border-[--line] rounded-lg px-3 py-2 text-sm bg-white">
+              <option value="default">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- Grid -->
+        <div>
+          <p id="results-count" class="text-sm text-[--ink-soft] mb-4"></p>
+          <div id="product-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Quick view -->
+  <div id="quickview-overlay" class="fixed inset-0 bg-black/50 z-[80] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="quickview-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-2xl max-w-2xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
+      <button id="quickview-close" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 border border-[--line] z-10">✕</button>
+      <img id="qv-img" src="" alt="" class="w-full h-64 sm:h-full object-cover" />
+      <div class="p-8 flex flex-col">
+        <p id="qv-category" class="text-xs font-semibold uppercase tracking-wide text-brand mb-2"></p>
+        <h3 id="qv-name" class="font-display font-bold text-xl mb-3"></h3>
+        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-5"></p>
+        <p id="qv-price" class="font-display font-bold text-2xl mb-6 tabular"></p>
+        <div class="flex items-center gap-3 mb-6">
+          <button id="qv-dec" class="qty-btn">−</button>
+          <span id="qv-qty" class="w-6 text-center tabular">1</span>
+          <button id="qv-inc" class="qty-btn">+</button>
+        </div>
+        <button id="qv-add" class="mt-auto w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 
   <!-- About -->
   <section id="about" class="py-24">
@@ -392,30 +453,114 @@ document.querySelectorAll('.magnetic').forEach((btn) => {
 /* ---------------- Product catalog + cart ---------------- */
 
 const PRODUCTS = [
-  { id: 'compressor', name: 'Copeland Scroll Compressor 3TR', price: 1850, img: 'images/product-compressor.jpg' },
-  { id: 'capacitor', name: 'Run Capacitor 35+5 MFD', price: 45, img: 'images/product-capacitor.jpg' },
-  { id: 'gas', name: 'R-410A Refrigerant Gas 11.3kg', price: 320, img: 'images/product-gas.jpg' },
-  { id: 'fanmotor', name: 'Condenser Fan Motor 1/4 HP', price: 210, img: 'images/product-fanmotor.jpg' },
-  { id: 'pcb', name: 'Universal AC Control Board', price: 380, img: 'images/product-pcb.jpg' },
-  { id: 'filterdrier', name: 'Filter Drier 3/8" (Pack of 5)', price: 95, img: 'images/product-filterdrier.jpg' },
-  { id: 'thermostat', name: 'Digital Room Thermostat', price: 120, img: 'images/product-thermostat.jpg' },
-  { id: 'copperpipe', name: 'Copper Refrigerant Pipe 3/8" (15m)', price: 260, img: 'images/product-copperpipe.jpg' },
+  { id: 'compressor', name: 'Copeland Scroll Compressor 3TR', price: 1850, img: 'images/product-compressor.jpg', category: 'Compressors', description: 'Genuine 3-ton scroll compressor for residential and light commercial split systems. R-410A compatible.' },
+  { id: 'capacitor', name: 'Run Capacitor 35+5 MFD', price: 45, img: 'images/product-capacitor.jpg', category: 'Capacitors & Relays', description: 'Dual-rated run capacitor for compressor and fan motor circuits. 370/440V rated.' },
+  { id: 'gas', name: 'R-410A Refrigerant Gas 11.3kg', price: 320, img: 'images/product-gas.jpg', category: 'Refrigerant Gas', description: 'Virgin R-410A refrigerant, 11.3kg disposable cylinder. Sealed, batch-tested.' },
+  { id: 'fanmotor', name: 'Condenser Fan Motor 1/4 HP', price: 210, img: 'images/product-fanmotor.jpg', category: 'Fan Motors', description: 'Weatherproof condenser fan motor, 1/4 HP, single-phase. Fits most split and package units.' },
+  { id: 'pcb', name: 'Universal AC Control Board', price: 380, img: 'images/product-pcb.jpg', category: 'Control Boards', description: 'Universal indoor unit control board with configurable DIP settings for major brands.' },
+  { id: 'filterdrier', name: 'Filter Drier 3/8" (Pack of 5)', price: 95, img: 'images/product-filterdrier.jpg', category: 'Filters & Driers', description: 'Bi-flow filter drier, 3/8" solder connections. Removes moisture and particulates from the refrigerant line.' },
+  { id: 'thermostat', name: 'Digital Room Thermostat', price: 120, img: 'images/product-thermostat.jpg', category: 'Thermostats', description: 'Programmable digital thermostat with backlit display, compatible with most split unit systems.' },
+  { id: 'copperpipe', name: 'Copper Refrigerant Pipe 3/8" (15m)', price: 260, img: 'images/product-copperpipe.jpg', category: 'Copper & Fittings', description: 'Refrigeration-grade soft copper coil, 3/8" OD, 15m length, nitrogen-purged.' },
 ];
 
+const CATEGORIES = [...new Set(PRODUCTS.map((p) => p.category))];
+const filters = { categories: new Set(), min: null, max: null, sort: 'default' };
+
+const categoryFiltersEl = document.getElementById('category-filters');
+CATEGORIES.forEach((cat) => {
+  const label = document.createElement('label');
+  label.className = 'flex items-center gap-2 cursor-pointer';
+  label.innerHTML = `<input type="checkbox" value="${cat}" class="category-checkbox accent-brand" /> <span>${cat}</span>`;
+  categoryFiltersEl.appendChild(label);
+});
+categoryFiltersEl.querySelectorAll('.category-checkbox').forEach((cb) => {
+  cb.addEventListener('change', () => {
+    cb.checked ? filters.categories.add(cb.value) : filters.categories.delete(cb.value);
+    renderProducts();
+  });
+});
+document.getElementById('price-min').addEventListener('input', (e) => { filters.min = e.target.value ? Number(e.target.value) : null; renderProducts(); });
+document.getElementById('price-max').addEventListener('input', (e) => { filters.max = e.target.value ? Number(e.target.value) : null; renderProducts(); });
+document.getElementById('sort-select').addEventListener('change', (e) => { filters.sort = e.target.value; renderProducts(); });
+document.getElementById('filters-reset').addEventListener('click', () => {
+  filters.categories.clear(); filters.min = null; filters.max = null; filters.sort = 'default';
+  categoryFiltersEl.querySelectorAll('.category-checkbox').forEach((cb) => { cb.checked = false; });
+  document.getElementById('price-min').value = '';
+  document.getElementById('price-max').value = '';
+  document.getElementById('sort-select').value = 'default';
+  renderProducts();
+});
+
 const grid = document.getElementById('product-grid');
-PRODUCTS.forEach((p) => {
-  const card = document.createElement('div');
-  card.className = 'product-card reveal-card';
-  card.innerHTML = `
-    <div class="product-img-wrap"><img src="${p.img}" alt="${p.name}" /></div>
-    <div class="p-5 flex flex-col gap-3 flex-1">
-      <h3 class="font-display font-semibold text-sm leading-snug">${p.name}</h3>
-      <div class="mt-auto flex items-center justify-between">
-        <span class="font-bold tabular">AED ${p.price}</span>
-        <button class="add-to-cart bg-[--ink] hover:bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full transition-colors" data-id="${p.id}">Add to Cart</button>
-      </div>
-    </div>`;
-  grid.appendChild(card);
+function renderProducts() {
+  let list = PRODUCTS.filter((p) => {
+    if (filters.categories.size && !filters.categories.has(p.category)) return false;
+    if (filters.min !== null && p.price < filters.min) return false;
+    if (filters.max !== null && p.price > filters.max) return false;
+    return true;
+  });
+  if (filters.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+  if (filters.sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+  if (filters.sort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name));
+
+  document.getElementById('results-count').textContent = `${list.length} part${list.length === 1 ? '' : 's'}`;
+  grid.innerHTML = '';
+  if (!list.length) {
+    grid.innerHTML = '<p class="text-sm text-[--ink-soft] col-span-full">No parts match these filters.</p>';
+    return;
+  }
+  list.forEach((p) => {
+    const card = document.createElement('div');
+    card.className = 'product-card reveal-up cursor-pointer';
+    card.innerHTML = `
+      <div class="product-img-wrap"><img src="${p.img}" alt="${p.name}" /></div>
+      <div class="p-5 flex flex-col gap-2 flex-1">
+        <p class="text-[11px] font-semibold uppercase tracking-wide text-brand">${p.category}</p>
+        <h3 class="font-display font-semibold text-sm leading-snug">${p.name}</h3>
+        <div class="mt-auto flex items-center justify-between pt-2">
+          <span class="font-bold tabular">AED ${p.price}</span>
+          <button class="add-to-cart bg-[--ink] hover:bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full transition-colors" data-id="${p.id}">Add to Cart</button>
+        </div>
+      </div>`;
+    card.addEventListener('click', () => openQuickView(p));
+    card.querySelector('.add-to-cart').addEventListener('click', (e) => {
+      e.stopPropagation();
+      addToCart(p.id);
+    });
+    grid.appendChild(card);
+  });
+}
+renderProducts();
+
+/* ---------------- Quick view ---------------- */
+
+let qvProduct = null;
+let qvQty = 1;
+function openQuickView(p) {
+  qvProduct = p;
+  qvQty = 1;
+  document.getElementById('qv-img').src = p.img;
+  document.getElementById('qv-img').alt = p.name;
+  document.getElementById('qv-category').textContent = p.category;
+  document.getElementById('qv-name').textContent = p.name;
+  document.getElementById('qv-desc').textContent = p.description;
+  document.getElementById('qv-price').textContent = `AED ${p.price}`;
+  document.getElementById('qv-qty').textContent = qvQty;
+  document.getElementById('quickview-overlay').classList.add('open-qv');
+  document.getElementById('quickview-modal').classList.add('open-qv');
+}
+function closeQuickView() {
+  document.getElementById('quickview-overlay').classList.remove('open-qv');
+  document.getElementById('quickview-modal').classList.remove('open-qv');
+}
+document.getElementById('quickview-close').addEventListener('click', closeQuickView);
+document.getElementById('quickview-overlay').addEventListener('click', closeQuickView);
+document.getElementById('qv-inc').addEventListener('click', () => { qvQty++; document.getElementById('qv-qty').textContent = qvQty; });
+document.getElementById('qv-dec').addEventListener('click', () => { qvQty = Math.max(1, qvQty - 1); document.getElementById('qv-qty').textContent = qvQty; });
+document.getElementById('qv-add').addEventListener('click', () => {
+  if (!qvProduct) return;
+  addToCart(qvProduct.id, qvQty);
+  closeQuickView();
 });
 
 let cart = JSON.parse(localStorage.getItem('pc_cart') || '{}');
@@ -458,13 +603,11 @@ function renderCart() {
   }));
 }
 
-document.querySelectorAll('.add-to-cart').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    cart[btn.dataset.id] = (cart[btn.dataset.id] || 0) + 1;
-    saveCart(); renderCart(); openCart();
-    gsap.fromTo('#cart-count', { scale: 1.5 }, { scale: 1, duration: 0.35, ease: 'back.out(3)' });
-  });
-});
+function addToCart(id, qty = 1) {
+  cart[id] = (cart[id] || 0) + qty;
+  saveCart(); renderCart(); openCart();
+  gsap.fromTo('#cart-count', { scale: 1.5 }, { scale: 1, duration: 0.35, ease: 'back.out(3)' });
+}
 
 function openCart() { document.getElementById('cart-drawer').classList.add('open'); document.getElementById('cart-overlay').classList.add('open'); }
 function closeCart() { document.getElementById('cart-drawer').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); }
