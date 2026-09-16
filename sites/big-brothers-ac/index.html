@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ Remove this line at close, once the client has paid -->
+<title>Big Brothers AC Supply Installations | Reliable AC repair and installation, done right, across Dubai</title>
+<meta name="description" content="Big Brothers AC Supply Installations — Reliable AC repair and installation, done right, across Dubai. Serving International City, Dubai Marina, JLT and across Dubai. Call +971 50 769 4891." />
+<link rel="icon" href="data:," />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: "#0891B2", brandDark: "#0B4F5C" },
+        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
+      }
+    }
+  }
+</script>
+
+<!-- GSAP core + ScrollTrigger only. ScrollSmoother/SplitText are NOT actually
+     bundled in the public npm package's dist/ folder despite being free to
+     use -- that path 404s. Smooth scroll and text-split are hand-rolled
+     below instead of depending on either plugin. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<style>
+  :root{
+    --ink: #14181B;
+    --ink-soft: #545B60;
+    --paper: #FAF9F6;
+    --line: rgba(20,24,27,0.08);
+  }
+  html{ background:var(--paper); }
+  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
+  h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
+  h1,h2{ text-wrap:balance; }
+  ::selection{ background:#0891B2; color:#fff; }
+
+  #smooth-wrapper{ overflow:hidden; }
+  #smooth-content{ overflow:visible; }
+
+  .word{ display:inline-block; will-change:transform; }
+  .clip-reveal{ clip-path: inset(0 0 100% 0); }
+  .star{ color:#F5A524; letter-spacing:1px; }
+  .tabular{ font-variant-numeric: tabular-nums; }
+
+  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease; }
+  #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+
+  .magnetic{ display:inline-flex; will-change:transform; }
+
+  /* ---- Trust marquee ---- */
+  .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
+  .marquee-track:hover{ animation-play-state: paused; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---- Bento services grid ---- */
+  .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
+  @media (min-width:1024px){
+    .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; }
+    .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
+    .bento .t-wide{ grid-column:span 4; }
+  }
+  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; }
+  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .tile:hover .tile-img{ transform:scale(1.06); }
+  .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,24,27,0) 30%, rgba(20,24,27,0.82) 100%); }
+
+  .card-glow{ position:relative; }
+  .card-glow::before{
+    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
+    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), #0891B233, transparent 70%);
+    pointer-events:none;
+  }
+  .card-glow:hover::before{ opacity:1; }
+
+  /* ---- Work gallery (asymmetric) ---- */
+  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+  @media (min-width:768px){
+    .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; }
+    .gallery .g-tall{ grid-row:span 2; }
+  }
+
+  /* ---- Reviews marquee ---- */
+  .review-track{ display:flex; gap:1.5rem; width:max-content; animation: marquee-rev 40s linear infinite; }
+  .review-track:hover{ animation-play-state:paused; }
+  @keyframes marquee-rev{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+    .marquee-track, .review-track{ animation:none !important; }
+  }
+</style>
+</head>
+<body class="bg-[--paper] text-[--ink]">
+
+  <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-display font-extrabold text-lg tracking-tight">Big Brothers AC Supply Installations</span>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
+        <a href="#work" class="hover:text-[--ink] transition-colors">Our Work</a>
+        <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
+        <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
+        <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
+      </nav>
+      <a href="tel:971507694891" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+        +971 50 769 4891
+      </a>
+    </div>
+  </header>
+
+  <a href="tel:971507694891" id="mobile-call-bar" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)] translate-y-full">
+    Call now — +971 50 769 4891
+  </a>
+
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+
+  <!-- Hero: full-width headline over an asymmetric layered visual, not a plain two-column split -->
+  <section class="relative pt-32 md:pt-40 pb-10">
+    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#0891B2"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
+        <span class="star">★★★★★</span> 4.8 Google rating · Dubai
+      </div>
+
+      <h1 id="hero-headline" class="text-[15vw] leading-[0.94] md:text-[7.5vw] md:leading-[0.92] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
+        Reliable AC repair and installation, done right, across Dubai
+      </h1>
+
+      <div class="mt-10 grid md:grid-cols-[1.1fr_1.4fr] gap-10 items-end">
+        <div>
+          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">Installation, repair, maintenance and deep cleaning for every major AC brand — punctual, fairly priced, and ready when you call.</p>
+          <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
+            <a href="tel:971507694891" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #0891B2aa">
+              Call +971 50 769 4891
+            </a>
+            <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
+              Request a quote
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
+            <img src="images/hero.jpg" alt="Big Brothers AC Supply Installations at work" class="w-full aspect-[16/10] object-cover" />
+          </div>
+          <!-- Floating overlap card: the single biggest "someone designed this" tell -->
+          <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
+            <div class="font-display font-extrabold text-3xl tabular"><span data-counter="6">0</span>+</div>
+            <div class="text-xs text-white/70 leading-tight">years serving<br>Dubai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust marquee -->
+  <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
+    <div class="marquee-track text-sm font-semibold text-[--ink-soft] tracking-wide">
+      <div class="flex items-center gap-10 pr-10">
+        <span>★ 4.8 on Google</span><span>•</span>
+        <span>Licensed &amp; Insured</span><span>•</span>
+        <span>24/7 Emergency Calls</span><span>•</span>
+        <span>All Major AC Brands Serviced</span><span>•</span>
+        <span>Serving International City, Dubai Marina, JLT and across Dubai</span><span>•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+        <span>★ 4.8 on Google</span><span>•</span>
+        <span>Licensed &amp; Insured</span><span>•</span>
+        <span>24/7 Emergency Calls</span><span>•</span>
+        <span>All Major AC Brands Serviced</span><span>•</span>
+        <span>Serving International City, Dubai Marina, JLT and across Dubai</span><span>•</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: bento grid, mixed tile sizes, one image-backed feature tile -->
+  <section id="services" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal-up mb-12 max-w-lg">
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
+        <p class="text-[--ink-soft] text-lg">From emergency repairs to full system installation — we service every major AC brand in Dubai.</p>
+      </div>
+
+      <div class="bento">
+        <div class="reveal-card tile t-feature min-h-[280px]">
+          <img src="images/hero.jpg" alt="" class="tile-img" />
+          <div class="tile-overlay"></div>
+          <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
+            <h3 class="font-display font-bold text-2xl mb-2">AC Installation & Supply</h3>
+            <p class="text-sm text-white/80 max-w-xs">New split, ducted and central AC systems installed for every major brand — Daikin, Carrier, LG, Mitsubishi and more.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">AC Repair</h3>
+          <p class="text-sm text-[--ink-soft]">Fast fault-finding and repair for AC units that have stopped cooling.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">AC Maintenance & AMC</h3>
+          <p class="text-sm text-[--ink-soft]">Annual maintenance contracts to keep your system running all year.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">AC Deep Cleaning</h3>
+          <p class="text-sm text-[--ink-soft]">Deep and soft cleaning to restore fresh, healthy airflow.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Gas Top-Up & Compressor</h3>
+          <p class="text-sm text-[--ink-soft]">Refrigerant top-ups, compressor repair and replacement.</p>
+        </div>
+
+        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#0891B2">
+          <div>
+            <h3 class="font-display font-bold text-xl mb-1">Emergency AC Repair</h3>
+            <p class="text-sm text-white/80 max-w-md">AC down in the Dubai heat? We respond fast, 7 days a week.</p>
+          </div>
+          <a href="tel:971507694891" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call +971 50 769 4891</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark stat band — section-rhythm contrast, oversized numerals as the visual -->
+  <section class="py-24" style="background:var(--ink);">
+    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="6">0</span>+</div>
+        <p class="text-white/60 mt-2">Years in business</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="25">0</span>+</div>
+        <p class="text-white/60 mt-2">AC brands serviced</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="4.8">0</span></div>
+        <p class="text-white/60 mt-2">Average Google rating</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work gallery -->
+  <section id="work" class="py-24 bg-white border-b border-[--line]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
+      <div class="gallery">
+        <div class="reveal-card tile g-tall">
+          <img src="images/gallery-1.jpg" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile">
+          <img src="images/gallery-2.jpg" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile">
+          <img src="images/gallery-3.jpg" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile g-tall">
+          <img src="images/gallery-4.jpg" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile hidden md:block">
+          <img src="images/about.jpg" alt="" class="tile-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1">
+        <img src="images/about.jpg" alt="Big Brothers AC Supply Installations team" class="w-full aspect-[4/3] object-cover" />
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Dubai's punctual AC specialists</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">Big Brothers Technical Services LLC has been keeping Dubai homes and businesses cool for years — with the latest diagnostic tools, technicians who know exactly why an AC has stopped cooling, and pricing that stays reasonable, not inflated. We show up on schedule and get the job done right the first time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews: infinite marquee row + one featured pull-quote -->
+  <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold">What Dubai says</h2>
+      <div class="reveal-up border-l-4 pl-6" style="border-color:#0891B2">
+        <p class="text-xl font-display leading-snug">"Really had a very good experience with these guys. They know what they're doing — great knowledge of the services they offer, very nice guys, and good value for quality work."</p>
+        <p class="text-sm text-[--ink-soft] mt-3 font-semibold">Grace Fajardo — Local Guide</p>
+      </div>
+    </div>
+
+    <div class="review-track px-6">
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Such a great service for us in Dubai. Whenever I need any service, this company responds fast and has great workers who complete the work on time.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Zain L.</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Ever best service providing company in the Emirates.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Muhammad Hassan Usman</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Really had a very good experience with these guys. They know what they're doing — great knowledge of the services they offer, very nice guys, and good value for quality work.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Grace Fajardo — Local Guide</p>
+      </div>
+      <!-- duplicated for a seamless loop -->
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Such a great service for us in Dubai. Whenever I need any service, this company responds fast and has great workers who complete the work on time.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Zain L.</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Ever best service providing company in the Emirates.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Muhammad Hassan Usman</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Really had a very good experience with these guys. They know what they're doing — great knowledge of the services they offer, very nice guys, and good value for quality work.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Grace Fajardo — Local Guide</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area / map -->
+  <section id="area" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving International City, Dubai Marina, JLT and across Dubai</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">Warsan First, International City, Dubai, UAE</p>
+        <a href="tel:971507694891" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
+          Call +971 50 769 4891
+        </a>
+      </div>
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
+        <iframe src="https://www.google.com/maps?q=Big+Brothers+AC+Supply+Installations+Warsan+First+International+City+Dubai&output=embed" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact: diagonal top edge instead of a plain rectangle -->
+  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#0891B2; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative">
+      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
+      <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
+      <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:971507694891" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call +971 50 769 4891</a>
+        <a href="mailto:Bigbrothers2030@gmail.com" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-sm text-[--ink-soft]">
+    © 2026 Big Brothers AC Supply Installations. Warsan First, International City, Dubai, UAE.
+  </footer>
+
+  </div>
+  </div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+});
+
+const nav = document.getElementById('site-nav');
+ScrollTrigger.create({ start: 0, end: 99999, onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40) });
+
+const callBar = document.getElementById('mobile-call-bar');
+ScrollTrigger.create({
+  trigger: '#hero-headline', start: 'bottom top',
+  onEnter: () => gsap.to(callBar, { yPercent: 0, duration: 0.5, ease: 'power3.out' }),
+  onLeaveBack: () => gsap.to(callBar, { yPercent: 100, duration: 0.4, ease: 'power3.in' }),
+});
+
+const heroTl = gsap.timeline({ delay: 0.15 });
+const headline = document.getElementById('hero-headline');
+gsap.set(headline, { opacity: 1 });
+if (!reduceMotion) {
+  const words = headline.textContent.trim().split(/\s+/);
+  headline.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
+  heroTl.from(headline.querySelectorAll('.word'), { yPercent: 130, opacity: 0, duration: 1, stagger: 0.05, ease: 'power4.out' });
+}
+heroTl
+  .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
+  .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+  .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
+  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
+  .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+
+gsap.utils.toArray('.reveal-up').forEach((el) => {
+  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+});
+
+gsap.utils.toArray('.reveal-card').forEach((el, i) => {
+  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
+    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.out', delay: (i % 4) * 0.07,
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+  });
+});
+
+gsap.utils.toArray('.clip-reveal').forEach((el) => {
+  if (el.id === 'hero-image-wrap') return;
+  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power4.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
+});
+
+document.querySelectorAll('[data-counter]').forEach((el) => {
+  const target = parseFloat(el.dataset.counter);
+  if (!target) return;
+  const obj = { val: 0 };
+  ScrollTrigger.create({
+    trigger: el, start: 'top 90%', once: true,
+    onEnter: () => gsap.to(obj, { val: target, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); } }),
+  });
+});
+
+document.querySelectorAll('.magnetic').forEach((btn) => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: 'power3.out' });
+  });
+  btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
+});
+
+document.querySelectorAll('.card-glow').forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    card.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+});
+</script>
+</body>
+</html>
