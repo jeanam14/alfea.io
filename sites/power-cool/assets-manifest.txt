@@ -1,14 +1,12 @@
 # One line per image: output_path|prompt|image_size
 # Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
-# Lines below are commented out so a workflow_dispatch run only regenerates
-# about.jpg (its prompt was just changed) — uncomment before a full rebuild.
-# images/hero.jpg|wide interior photo of a well-organized AC spare parts warehouse showroom in Dubai, shelves stocked with compressors and refrigeration components, a technician in navy workwear checking inventory, bright industrial lighting, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
+images/hero.jpg|wide interior photo of a well-organized AC spare parts warehouse showroom in Dubai, shelves stocked with compressors and refrigeration components, a technician in navy workwear checking inventory, bright industrial lighting, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
 images/about.jpg|wide-angle photo of an organized HVAC warehouse aisle in Dubai, tall industrial shelving stacked with boxed AC compressors and spare parts, forklift pallet in the background, natural daylight from overhead skylights, realistic editorial photography, no people, no text, no logos, no watermark|landscape_4_3
-# images/product-compressor.jpg|studio product photo of a scroll air conditioning compressor unit, copper pipes, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-capacitor.jpg|studio product photo of a cylindrical electrical run capacitor for air conditioning units, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-gas.jpg|studio product photo of a refrigerant gas cylinder tank, blue and yellow industrial coloring, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-fanmotor.jpg|studio product photo of a small electric condenser fan motor with blades for air conditioning units, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-pcb.jpg|studio product photo of an electronic control circuit board for an air conditioner, green PCB with components, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-filterdrier.jpg|studio product photo of a small copper filter drier cylinder used in refrigeration systems, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-thermostat.jpg|studio product photo of a modern digital wall thermostat controller for air conditioning, clean white background, professional catalog photography, no text, no watermark|square_hd
-# images/product-copperpipe.jpg|studio product photo of a coil of copper refrigerant tubing pipe, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-compressor.jpg|studio product photo of a scroll air conditioning compressor unit, copper pipes, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-capacitor.jpg|studio product photo of a cylindrical electrical run capacitor for air conditioning units, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-gas.jpg|studio product photo of a refrigerant gas cylinder tank, blue and yellow industrial coloring, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-fanmotor.jpg|studio product photo of a small electric condenser fan motor with blades for air conditioning units, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-pcb.jpg|studio product photo of an electronic control circuit board for an air conditioner, green PCB with components, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-filterdrier.jpg|studio product photo of a small copper filter drier cylinder used in refrigeration systems, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-thermostat.jpg|studio product photo of a modern digital wall thermostat controller for air conditioning, clean white background, professional catalog photography, no text, no watermark|square_hd
+images/product-copperpipe.jpg|studio product photo of a coil of copper refrigerant tubing pipe, clean white background, professional catalog photography, no text, no watermark|square_hd
