@@ -25,84 +25,17 @@
 <!-- GSAP core + ScrollTrigger only -- ScrollSmoother/SplitText 404 at this
      CDN path despite being free to use; not actually bundled in the public
      npm package's dist/ folder. Smooth scroll and text-split are hand-rolled
-     below instead. -->
+     in js/app.js instead. -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-<style>
-  :root{ --ink:#12181B; --ink-soft:#556065; --paper:#F7FAFB; --line:rgba(18,24,27,0.08); }
-  html{ background:var(--paper); }
-  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
-  h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
-  h1,h2{ text-wrap:balance; }
-  ::selection{ background:#2856F2; color:#fff; }
-  #smooth-wrapper{ overflow:hidden; }
-  #smooth-content{ overflow:visible; }
-  .word{ display:inline-block; will-change:transform; }
-  .clip-reveal{ clip-path: inset(0 0 100% 0); }
-  .star{ color:#F5A524; letter-spacing:1px; }
-  .tabular{ font-variant-numeric: tabular-nums; }
-  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease; }
-  #site-nav.scrolled{ background:rgba(247,250,251,0.9); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
-  .magnetic{ display:inline-flex; will-change:transform; }
-
-  .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
-  .marquee-track:hover{ animation-play-state: paused; }
-  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-
-  .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
-  @media (min-width:1024px){
-    .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; }
-    .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
-  }
-  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; }
-  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
-  .tile:hover .tile-img{ transform:scale(1.06); }
-  .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,24,27,0) 30%, rgba(18,24,27,0.82) 100%); }
-
-  .product-card{ background:#fff; border:1px solid var(--line); border-radius:1.1rem; overflow:hidden; display:flex; flex-direction:column; }
-  .product-img-wrap{ aspect-ratio:1/1; overflow:hidden; background:#EEF3F4; }
-  .product-img-wrap img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
-  .product-card:hover .product-img-wrap img{ transform:scale(1.08); }
-
-  .qty-btn{ width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:9999px; }
-
-  #cart-drawer{ transform:translateX(100%); transition:transform .45s cubic-bezier(.2,.9,.2,1); }
-  #cart-drawer.open{ transform:translateX(0); }
-  #cart-overlay{ opacity:0; pointer-events:none; transition:opacity .35s ease; }
-  #cart-overlay.open{ opacity:1; pointer-events:auto; }
-
-  #checkout-section{ display:none; }
-  #checkout-section.active{ display:block; }
-
-  #quickview-overlay.open-qv, #quickview-modal.open-qv{ opacity:1; pointer-events:auto; }
-  .spec-row{ display:flex; justify-content:space-between; padding:.6rem 0; border-bottom:1px solid var(--line); }
-  .spec-row span:first-child{ color:var(--ink-soft); }
-  .badge-pill{ background:var(--paper); border:1px solid var(--line); border-radius:9999px; padding:.3rem .7rem; }
-  .compat-pill{ background:#EEF2FF; color:var(--ink); border-radius:9999px; padding:.3rem .7rem; }
-  .stock-badge{ position:absolute; top:.6rem; left:.6rem; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:.2rem .55rem; border-radius:9999px; background:#F97316; color:#fff; }
-  .rating-badge{ position:absolute; top:.6rem; right:.6rem; background:rgba(255,255,255,0.92); border-radius:9999px; padding:.2rem .55rem; font-size:11px; font-weight:700; display:flex; align-items:center; gap:.2rem; }
-  .quick-add-btn{ position:absolute; bottom:.6rem; right:.6rem; width:34px; height:34px; border-radius:9999px; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; transition:background-color .2s ease; }
-  .quick-add-btn:hover{ background:#2856F2; }
-  .category-pill{ border:1px solid var(--line); border-radius:9999px; padding:.5rem 1.1rem; font-size:.875rem; font-weight:600; background:#fff; transition:background-color .2s ease, color .2s ease; }
-  .category-pill.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
-  .category-cell{ padding:1.75rem; }
-  .category-icon{ width:44px; height:44px; border-radius:.9rem; background:#EEF2FF; color:#2856F2; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
-
-  .pay-option{ border:1px solid var(--line); border-radius:.9rem; padding:.9rem 1rem; cursor:pointer; }
-  .pay-option.selected{ border-color:#2856F2; box-shadow:0 0 0 3px #2856F21a; }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
-    .marquee-track{ animation:none !important; }
-  }
-</style>
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body class="bg-[--paper] text-[--ink]">
 
   <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
-      <a href="#" class="flex items-center gap-3 shrink-0">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
         <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
         </span>
@@ -112,17 +45,35 @@
         </span>
       </a>
       <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[--ink-soft]">
-        <a href="#shop" class="hover:text-[--ink] transition-colors">Catalog</a>
+        <a href="shop.html" class="hover:text-[--ink] transition-colors">Catalog</a>
         <a href="#categories" class="hover:text-[--ink] transition-colors">Categories</a>
         <a href="#brands" class="hover:text-[--ink] transition-colors">Brands</a>
         <a href="#about" class="hover:text-[--ink] transition-colors">About</a>
         <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
         <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
       </nav>
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-1.5 shrink-0">
+        <select class="currency-select hidden md:block" aria-label="Currency">
+          <option value="AED">AED</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+        </select>
         <button id="nav-search-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Search parts">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         </button>
+        <div class="relative">
+          <button id="account-toggle" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Account">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </button>
+          <div id="account-dropdown" class="account-dropdown">
+            <p class="text-sm font-semibold mb-1">Welcome</p>
+            <p class="text-xs text-[--ink-soft] mb-4">Sign in to track orders and save your details.</p>
+            <button data-account-action="signin" class="w-full bg-[--ink] text-white text-sm font-semibold py-2.5 rounded-full mb-2">Sign In</button>
+            <button data-account-action="signup" class="w-full border border-[--line] text-sm font-semibold py-2.5 rounded-full">Create Account</button>
+            <p class="text-[11px] text-[--ink-soft] mt-4 text-center">Customer accounts coming soon</p>
+          </div>
+        </div>
         <a href="tel:+971503563100" class="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-[--paper] transition-colors" aria-label="Call the store">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </a>
@@ -150,20 +101,54 @@
     </div>
   </aside>
 
+  <!-- Quick view -->
+  <div id="quickview-overlay" class="fixed inset-0 bg-black/50 z-[80] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="quickview-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-2xl max-w-3xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
+      <button id="quickview-close" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 border border-[--line] z-10">✕</button>
+      <img id="qv-img" src="" alt="" class="w-full h-72 sm:h-full object-cover bg-[--paper]" />
+      <div class="p-8 flex flex-col">
+        <div class="flex items-center gap-2 mb-1">
+          <span id="qv-brand" class="text-xs font-bold uppercase tracking-wide text-brand"></span>
+          <span class="text-xs text-[--ink-soft]">·</span>
+          <span id="qv-sku" class="text-xs text-[--ink-soft] font-mono"></span>
+        </div>
+        <h3 id="qv-name" class="font-display font-bold text-xl mb-2"></h3>
+        <div class="flex items-center gap-1 text-sm mb-4">
+          <span class="star">★★★★★</span>
+          <span id="qv-rating" class="text-[--ink-soft]"></span>
+        </div>
+        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-4"></p>
+
+        <div id="qv-badges" class="flex flex-wrap gap-2 mb-5 text-xs font-medium"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Technical Specifications</p>
+        <div id="qv-specs" class="text-sm mb-5 border-t border-[--line]"></div>
+
+        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Compatibility</p>
+        <div id="qv-compat" class="flex flex-wrap gap-2 mb-6 text-xs"></div>
+
+        <div class="mt-auto flex items-center justify-between gap-4 pt-2">
+          <div>
+            <p id="qv-price" class="font-display font-bold text-2xl tabular"></p>
+            <p class="text-[11px] text-[--ink-soft]">VAT included · ex-warehouse Dubai</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="qv-dec" class="qty-btn">−</button>
+            <span id="qv-qty" class="w-5 text-center tabular">1</span>
+            <button id="qv-inc" class="qty-btn">+</button>
+          </div>
+        </div>
+        <button id="qv-add" class="mt-4 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
   <div id="smooth-wrapper">
   <div id="smooth-content">
 
-  <!-- Brands -->
-  <section id="brands" class="pt-28 pb-14 bg-[--paper] border-b border-[--line]">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">Authorized Stockist</p>
-      <h2 class="reveal-up text-2xl md:text-3xl font-display font-bold mb-8">Brands we trust and stock</h2>
-      <div id="brand-pills" class="reveal-up flex flex-wrap justify-center gap-3"></div>
-    </div>
-  </section>
-
   <!-- Hero -->
-  <section class="relative pt-16 md:pt-20 pb-10">
+  <section class="relative pt-32 md:pt-40 pb-10">
     <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl bg-brand"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
       <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
@@ -176,7 +161,7 @@
         <div>
           <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">Compressors, capacitors, refrigerant gas, fan motors and more — trusted by technicians across the UAE.</p>
           <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
-            <a href="#shop" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #2856F2aa;">Shop Parts</a>
+            <a href="shop.html" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #2856F2aa;">Shop Parts</a>
             <a href="https://wa.me/971508854100" target="_blank" rel="noopener" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">Chat on WhatsApp</a>
           </div>
         </div>
@@ -221,92 +206,35 @@
       <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">The Component Atlas</p>
       <div class="reveal-up mb-12 max-w-lg">
         <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Browse by component type</h2>
-        <p class="text-[--ink-soft] text-lg">Every category stocked and ready in our Deira warehouse.</p>
+        <p class="text-[--ink-soft] text-lg">Every category stocked and ready in our Deira warehouse — click one to shop it.</p>
       </div>
       <div id="category-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-[--line] border border-[--line] rounded-2xl overflow-hidden bg-white"></div>
     </div>
   </section>
 
-  <!-- Shop -->
-  <section id="shop" class="bg-white border-y border-[--line] py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">In Stock · Dubai</p>
-      <div class="reveal-up flex flex-wrap items-end justify-between gap-6 mb-10">
-        <div class="max-w-lg">
-          <h2 class="text-3xl md:text-5xl font-display font-bold mb-3">The Component Atlas</h2>
-          <p class="text-[--ink-soft] text-lg">Sample catalog for review — swap in your real SKUs and pricing before this goes live.</p>
-        </div>
-        <div class="relative w-full sm:w-72">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="absolute left-4 top-1/2 -translate-y-1/2 text-[--ink-soft]"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <input id="search-input" type="text" placeholder="Search part number or brand" class="w-full border border-[--line] rounded-full pl-10 pr-4 py-3 text-sm" />
-        </div>
-      </div>
-
-      <!-- Category pills -->
-      <div id="category-pills" class="reveal-up flex flex-wrap gap-2 mb-8"></div>
-
-      <!-- Secondary filters -->
-      <div class="reveal-up flex flex-wrap items-center gap-3 mb-8 text-sm">
-        <span class="text-[--ink-soft]">Price (AED)</span>
-        <input id="price-min" type="number" min="0" placeholder="Min" class="w-24 border border-[--line] rounded-lg px-3 py-2" />
-        <span class="text-[--ink-soft]">–</span>
-        <input id="price-max" type="number" min="0" placeholder="Max" class="w-24 border border-[--line] rounded-lg px-3 py-2" />
-        <select id="sort-select" class="border border-[--line] rounded-lg px-3 py-2 bg-white">
-          <option value="default">Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="name-asc">Name: A–Z</option>
-        </select>
-        <button id="filters-reset" class="font-semibold text-brand">Clear filters</button>
-      </div>
-
-      <p id="results-count" class="reveal-up text-sm text-[--ink-soft] mb-4"></p>
-      <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+  <!-- Brands -->
+  <section id="brands" class="pb-24 bg-[--paper]">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="reveal-up text-xs font-bold uppercase tracking-widest text-brand mb-3">Authorized Stockist</p>
+      <h2 class="reveal-up text-2xl md:text-3xl font-display font-bold mb-8">Brands we trust and stock</h2>
+      <div id="brand-pills" class="reveal-up flex flex-wrap justify-center gap-3"></div>
     </div>
   </section>
 
-  <!-- Quick view -->
-  <div id="quickview-overlay" class="fixed inset-0 bg-black/50 z-[80] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <div id="quickview-modal" class="fixed inset-0 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="bg-white rounded-2xl max-w-3xl w-full grid sm:grid-cols-2 overflow-hidden relative max-h-[90vh] overflow-y-auto">
-      <button id="quickview-close" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 border border-[--line] z-10">✕</button>
-      <img id="qv-img" src="" alt="" class="w-full h-72 sm:h-full object-cover bg-[--paper]" />
-      <div class="p-8 flex flex-col">
-        <div class="flex items-center gap-2 mb-1">
-          <span id="qv-brand" class="text-xs font-bold uppercase tracking-wide text-brand"></span>
-          <span class="text-xs text-[--ink-soft]">·</span>
-          <span id="qv-sku" class="text-xs text-[--ink-soft] font-mono"></span>
+  <!-- Featured products -->
+  <section id="featured" class="bg-white border-y border-[--line] py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal-up flex flex-wrap items-end justify-between gap-6 mb-10">
+        <div class="max-w-lg">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand mb-3">In Stock · Dubai</p>
+          <h2 class="text-3xl md:text-5xl font-display font-bold mb-3">Popular right now</h2>
+          <p class="text-[--ink-soft] text-lg">Sample catalog for review — swap in your real SKUs and pricing before this goes live.</p>
         </div>
-        <h3 id="qv-name" class="font-display font-bold text-xl mb-2"></h3>
-        <div class="flex items-center gap-1 text-sm mb-4">
-          <span class="star">★★★★★</span>
-          <span id="qv-rating" class="text-[--ink-soft]"></span>
-        </div>
-        <p id="qv-desc" class="text-sm text-[--ink-soft] mb-4"></p>
-
-        <div id="qv-badges" class="flex flex-wrap gap-2 mb-5 text-xs font-medium"></div>
-
-        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Technical Specifications</p>
-        <div id="qv-specs" class="text-sm mb-5 border-t border-[--line]"></div>
-
-        <p class="text-[11px] font-bold uppercase tracking-wide text-[--ink-soft] mb-2">Compatibility</p>
-        <div id="qv-compat" class="flex flex-wrap gap-2 mb-6 text-xs"></div>
-
-        <div class="mt-auto flex items-center justify-between gap-4 pt-2">
-          <div>
-            <p id="qv-price" class="font-display font-bold text-2xl tabular"></p>
-            <p class="text-[11px] text-[--ink-soft]">VAT included · ex-warehouse Dubai</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <button id="qv-dec" class="qty-btn">−</button>
-            <span id="qv-qty" class="w-5 text-center tabular">1</span>
-            <button id="qv-inc" class="qty-btn">+</button>
-          </div>
-        </div>
-        <button id="qv-add" class="mt-4 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Add to Cart</button>
+        <a href="shop.html" class="magnetic shrink-0 border border-[--ink]/15 hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">View Full Catalog →</a>
       </div>
+      <div id="featured-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
     </div>
-  </div>
+  </section>
 
   <!-- About -->
   <section id="about" class="py-24">
@@ -364,7 +292,7 @@
       <button id="checkout-back" class="text-sm font-semibold text-[--ink-soft] mb-8">← Back to shop</button>
       <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Checkout</h2>
 
-      <div id="checkout-empty" class="hidden text-[--ink-soft]">Your cart is empty. <a href="#shop" class="text-brand font-semibold">Browse parts</a> to get started.</div>
+      <div id="checkout-empty" class="hidden text-[--ink-soft]">Your cart is empty. <a href="shop.html" class="text-brand font-semibold">Browse parts</a> to get started.</div>
 
       <div id="checkout-filled" class="grid lg:grid-cols-[1.3fr_1fr] gap-12">
         <div>
@@ -380,7 +308,7 @@
           </div>
 
           <h3 class="font-display font-bold text-lg mb-4">Payment method</h3>
-          <p class="text-xs text-[--ink-soft] mb-4">Preview only — card payments aren't wired up yet. WhatsApp ordering below works for real.</p>
+          <p class="text-xs text-[--ink-soft] mb-4">Preview only — card payments aren't wired up yet. WhatsApp ordering below works for real, and is always confirmed in AED.</p>
           <div class="space-y-3 mb-4">
             <label class="pay-option flex items-center gap-3 selected" data-pay="card">
               <input type="radio" name="pay" checked class="accent-brand" /> Credit / Debit Card
@@ -405,41 +333,92 @@
             <div id="checkout-items" class="space-y-3 mb-4 text-sm"></div>
             <div class="border-t border-[--line] pt-4 space-y-1 text-sm">
               <div class="flex justify-between"><span class="text-[--ink-soft]">Subtotal</span><span id="ck-subtotal" class="tabular font-semibold">AED 0</span></div>
-              <div class="flex justify-between"><span class="text-[--ink-soft]">Delivery</span><span class="tabular">AED 25</span></div>
+              <div class="flex justify-between"><span class="text-[--ink-soft]">Delivery</span><span id="ck-delivery" class="tabular">AED 25</span></div>
               <div class="flex justify-between text-base font-bold pt-2"><span>Total</span><span id="ck-total" class="tabular">AED 0</span></div>
             </div>
             <button id="ck-place-order" class="mt-6 w-full bg-brand hover:bg-brandDark text-white font-semibold py-3.5 rounded-full transition-colors">Complete Order via WhatsApp</button>
-            <p class="text-[11px] text-[--ink-soft] mt-3 text-center">Opens WhatsApp with your order pre-filled — sends straight to Power Cool.</p>
+            <p class="text-[11px] text-[--ink-soft] mt-3 text-center">Opens WhatsApp with your order pre-filled, in AED — sends straight to Power Cool.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="py-10 text-center text-sm text-[--ink-soft]">
-    © 2026 Power Cool AC Spare Parts Trading LLC. Fish Roundabout, Al Rigga, Deira, Dubai.
+  </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-[1.3fr_1fr_1fr] gap-14 pb-14 border-b border-white/10">
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20M6 6l3 3M18 6l-3 3M6 18l3-3M18 18l-3-3"/></svg>
+            </span>
+            <span class="leading-tight">
+              <span class="block font-display font-extrabold text-lg text-white">Power Cool</span>
+              <span class="block text-[10px] font-semibold tracking-wider text-white/50 uppercase">AC Spare Parts Trading LLC</span>
+            </span>
+          </a>
+          <p class="text-sm leading-relaxed mb-7 max-w-sm">Dubai's leading importer, wholesaler and distributor of HVAC air conditioning, refrigeration and spare parts. In stock, ready today — from the world's best brands.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://wa.me/971508854100" target="_blank" rel="noopener" class="flex items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+              WhatsApp Support
+            </a>
+            <a href="mailto:info@powercooltrd.com" class="flex items-center gap-2 border border-white/15 hover:border-white/35 text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              Email Us
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-heading">Visit Us</p>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-start gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Fish Roundabout - Al Rigga - Deira, Dubai, United Arab Emirates
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +971 50 885 4100
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              info@powercooltrd.com
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Open daily · Closes 9 PM
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Catalog</p>
+          <ul id="footer-catalog-links" class="space-y-3"></ul>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-8 text-xs text-white/40">
+        <p>© 2026 Power Cool AC Spare Parts Trading LLC. All rights reserved.</p>
+        <button id="back-to-top" class="flex items-center gap-2 text-white/60 hover:text-white transition-colors">Back to top ↑</button>
+      </div>
+    </div>
   </footer>
 
-  </div>
-  </div>
+  <!-- WhatsApp sticky button -->
+  <a href="https://wa.me/971508854100" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
+    <span class="wa-sticky-ring" aria-hidden="true"></span>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+  </a>
+  <div id="toast"></div>
 
+<script src="js/app.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener('click', (e) => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    closeCart();
-    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-  });
-});
-
-const nav = document.getElementById('site-nav');
-ScrollTrigger.create({ start: 0, end: 99999, onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40) });
-
+/* ---------------- Hero animation (index only) ---------------- */
 const heroTl = gsap.timeline({ delay: 0.15 });
 const headline = document.getElementById('hero-headline');
 gsap.set(headline, { opacity: 1 });
@@ -455,276 +434,23 @@ heroTl
   .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
   .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
 
-gsap.utils.toArray('.reveal-up').forEach((el) => {
-  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
-});
-gsap.utils.toArray('.reveal-card').forEach((el, i) => {
-  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
-    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.out', delay: (i % 4) * 0.07,
-    scrollTrigger: { trigger: el, start: 'top 88%' },
-  });
-});
-gsap.utils.toArray('.clip-reveal').forEach((el) => {
-  if (el.id === 'hero-image-wrap') return;
-  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power4.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
-});
-document.querySelectorAll('[data-counter]').forEach((el) => {
-  const target = parseFloat(el.dataset.counter);
-  const isDecimal = !Number.isInteger(target);
-  const obj = { val: 0 };
-  ScrollTrigger.create({
-    trigger: el, start: 'top 90%', once: true,
-    onEnter: () => gsap.to(obj, { val: target, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = isDecimal ? obj.val.toFixed(1) : Math.round(obj.val); } }),
-  });
-});
-document.querySelectorAll('.magnetic').forEach((btn) => {
-  btn.addEventListener('mousemove', (e) => {
-    const r = btn.getBoundingClientRect();
-    gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: 'power3.out' });
-  });
-  btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
-});
-
-/* ---------------- Data: brands, categories, products ---------------- */
-/* Brand names, specs and compatibility below are realistic placeholders for
-   the demo. Before this goes live, confirm with Power Cool exactly which
-   brands they're authorized to claim as stockist. */
-
-const BRANDS = ['Copeland', 'Danfoss', 'Bristol', 'Tecumseh', 'LG', 'Samsung', 'Panasonic', 'Honeywell', 'Genetron', 'Briton', 'DuPont', 'Forane', 'Mafron', 'Maksal', 'Mueller', 'Klima', 'Siemens', 'Omron', 'Rothenberger', 'Uniweld', 'AO Smith', 'EBM', 'Sporlan', 'Mitsubishi'];
-
-document.getElementById('brand-pills').innerHTML = BRANDS.map((b) => `<span class="category-pill">${b}</span>`).join('');
-
-const CATEGORY_META = {
-  'Compressors': { icon: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>', brands: ['Copeland', 'Danfoss', 'Bristol', 'Tecumseh'] },
-  'Capacitors & Relays': { icon: '<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>', brands: ['Danfoss', 'Mueller', 'Omron'] },
-  'Refrigerant Gas': { icon: '<path d="M12 2.7l5.7 5.7a8 8 0 11-11.4 0z"/>', brands: ['Honeywell Genetron', 'Briton', 'DuPont', 'Forane'] },
-  'Fan Motors': { icon: '<circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="7" rx="2" ry="4"/><ellipse cx="17" cy="12" rx="4" ry="2"/><ellipse cx="12" cy="17" rx="2" ry="4"/><ellipse cx="7" cy="12" rx="4" ry="2"/>', brands: ['AO Smith', 'EBM'] },
-  'Control Boards': { icon: '<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>', brands: ['Honeywell', 'Siemens'] },
-  'Filters & Driers': { icon: '<path d="M22 4H2l8 9v6l4 2v-8z"/>', brands: ['Sporlan', 'Danfoss'] },
-  'Thermostats': { icon: '<path d="M14 14.8V4a2 2 0 00-4 0v10.8a4 4 0 104 0z"/>', brands: ['Siemens', 'Honeywell', 'Omron'] },
-  'Copper & Fittings': { icon: '<circle cx="8" cy="12" r="4"/><circle cx="16" cy="12" r="4"/>', brands: ['Maksal', 'Mueller', 'Klima'] },
-};
-
-const PRODUCTS = [
-  { id: 'compressor', brand: 'Copeland', sku: 'ZR125KCE-TFD', name: 'Copeland Scroll Compressor 3TR', price: 1850, img: 'images/product-compressor.jpg', category: 'Compressors', rating: 4.9, reviews: 21, stock: 'in-stock',
-    description: 'Genuine 3-ton scroll compressor for residential and light commercial split systems. R-410A compatible.',
-    specs: { 'Capacity': '3 Ton (36,000 BTU)', 'Refrigerant': 'R-410A', 'Voltage': '208-230V / 1-Phase', 'Displacement': '12.62 cc/rev' },
-    compatibility: ['Split systems', 'Package units', 'Commercial A/C'] },
-  { id: 'capacitor', brand: 'Danfoss', sku: 'CAP-3505-370', name: 'Run Capacitor 35+5 MFD', price: 45, img: 'images/product-capacitor.jpg', category: 'Capacitors & Relays', rating: 4.6, reviews: 58, stock: 'in-stock',
-    description: 'Dual-rated run capacitor for compressor and fan motor circuits. 370/440V rated.',
-    specs: { 'Capacitance': '35+5 MFD', 'Voltage': '370/440V', 'Type': 'Dual round can' },
-    compatibility: ['Split systems', 'Package units'] },
-  { id: 'gas', brand: 'Honeywell Genetron', sku: 'R410A-11.3KG', name: 'R-410A Refrigerant Gas 11.3kg', price: 320, img: 'images/product-gas.jpg', category: 'Refrigerant Gas', rating: 4.7, reviews: 39, stock: 'low-stock',
-    description: 'Virgin R-410A refrigerant, 11.3kg disposable cylinder. Sealed, batch-tested.',
-    specs: { 'Refrigerant': 'R-410A', 'Cylinder': '11.3kg disposable', 'Purity': '99.98%' },
-    compatibility: ['Split systems', 'Ducted systems', 'Commercial A/C'] },
-  { id: 'fanmotor', brand: 'AO Smith', sku: 'FM-14-208', name: 'Condenser Fan Motor 1/4 HP', price: 210, img: 'images/product-fanmotor.jpg', category: 'Fan Motors', rating: 4.5, reviews: 17, stock: 'in-stock',
-    description: 'Weatherproof condenser fan motor, 1/4 HP, single-phase. Fits most split and package units.',
-    specs: { 'Power': '1/4 HP', 'Voltage': '208-230V', 'Speed': '1075 RPM', 'Rating': 'IP54 weatherproof' },
-    compatibility: ['Split systems', 'Package units'] },
-  { id: 'pcb', brand: 'Honeywell', sku: 'PCB-UNI-24V', name: 'Universal AC Control Board', price: 380, img: 'images/product-pcb.jpg', category: 'Control Boards', rating: 4.4, reviews: 12, stock: 'in-stock',
-    description: 'Universal indoor unit control board with configurable DIP settings for major brands.',
-    specs: { 'Voltage': '24V control / 230V line', 'Compatibility': 'Multi-brand DIP config', 'Outputs': '4-speed fan control' },
-    compatibility: ['Ducted systems', 'Split systems'] },
-  { id: 'filterdrier', brand: 'Sporlan', sku: 'FD-38-5PK', name: 'Filter Drier 3/8" (Pack of 5)', price: 95, img: 'images/product-filterdrier.jpg', category: 'Filters & Driers', rating: 4.8, reviews: 26, stock: 'in-stock',
-    description: 'Bi-flow filter drier, 3/8" solder connections. Removes moisture and particulates from the refrigerant line.',
-    specs: { 'Connection': '3/8" solder (ODF)', 'Flow': 'Bi-flow', 'Pack size': '5 units' },
-    compatibility: ['Refrigeration', 'Split systems', 'Commercial A/C'] },
-  { id: 'thermostat', brand: 'Siemens', sku: 'TH-DIG-24V', name: 'Digital Room Thermostat', price: 120, img: 'images/product-thermostat.jpg', category: 'Thermostats', rating: 4.6, reviews: 33, stock: 'in-stock',
-    description: 'Programmable digital thermostat with backlit display, compatible with most split unit systems.',
-    specs: { 'Display': 'Backlit LCD', 'Power': '24V / battery backup', 'Programs': '7-day scheduling' },
-    compatibility: ['Split systems', 'Ducted systems'] },
-  { id: 'copperpipe', brand: 'Maksal', sku: 'CU-3/8-15M', name: 'Copper Refrigerant Pipe 3/8" (15m)', price: 260, img: 'images/product-copperpipe.jpg', category: 'Copper & Fittings', rating: 4.7, reviews: 39, stock: 'in-stock',
-    description: 'Refrigeration-grade soft copper coil, 3/8" OD, 15m length, nitrogen-purged.',
-    specs: { 'Outer Diameter': '3/8" (9.5mm)', 'Length': '15m', 'Purity': '99.9% Cu', 'Origin': 'South Africa' },
-    compatibility: ['Package units', 'Ducted systems', 'Commercial A/C'] },
-];
-
-const CATEGORIES = [...new Set(PRODUCTS.map((p) => p.category))];
-
-/* Categories section */
-document.getElementById('category-grid').innerHTML = CATEGORIES.map((cat) => `
-  <div class="category-cell">
-    <div class="category-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${CATEGORY_META[cat].icon}</svg></div>
-    <h3 class="font-display font-bold text-base mb-1">${cat}</h3>
-    <p class="text-xs text-[--ink-soft]">${CATEGORY_META[cat].brands.join(', ')}</p>
-  </div>`).join('');
-
-/* Shop filters */
-const filters = { category: 'all', min: null, max: null, sort: 'default', query: '' };
-
-const pillsEl = document.getElementById('category-pills');
-pillsEl.innerHTML = ['all', ...CATEGORIES].map((cat) =>
-  `<button class="category-pill${cat === 'all' ? ' active' : ''}" data-cat="${cat}">${cat === 'all' ? 'All Parts' : cat}</button>`
-).join('');
-pillsEl.querySelectorAll('.category-pill').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    filters.category = btn.dataset.cat;
-    pillsEl.querySelectorAll('.category-pill').forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderProducts();
-  });
-});
-document.getElementById('search-input').addEventListener('input', (e) => { filters.query = e.target.value.trim().toLowerCase(); renderProducts(); });
-document.getElementById('price-min').addEventListener('input', (e) => { filters.min = e.target.value ? Number(e.target.value) : null; renderProducts(); });
-document.getElementById('price-max').addEventListener('input', (e) => { filters.max = e.target.value ? Number(e.target.value) : null; renderProducts(); });
-document.getElementById('sort-select').addEventListener('change', (e) => { filters.sort = e.target.value; renderProducts(); });
-document.getElementById('filters-reset').addEventListener('click', () => {
-  filters.category = 'all'; filters.min = null; filters.max = null; filters.sort = 'default'; filters.query = '';
-  pillsEl.querySelectorAll('.category-pill').forEach((b) => b.classList.toggle('active', b.dataset.cat === 'all'));
-  document.getElementById('search-input').value = '';
-  document.getElementById('price-min').value = '';
-  document.getElementById('price-max').value = '';
-  document.getElementById('sort-select').value = 'default';
-  renderProducts();
-});
-document.getElementById('nav-search-toggle').addEventListener('click', () => {
-  document.getElementById('shop').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-  setTimeout(() => document.getElementById('search-input').focus(), 400);
-});
-
-const grid = document.getElementById('product-grid');
-function renderProducts() {
-  let list = PRODUCTS.filter((p) => {
-    if (filters.category !== 'all' && p.category !== filters.category) return false;
-    if (filters.min !== null && p.price < filters.min) return false;
-    if (filters.max !== null && p.price > filters.max) return false;
-    if (filters.query && !`${p.name} ${p.brand} ${p.sku}`.toLowerCase().includes(filters.query)) return false;
-    return true;
-  });
-  if (filters.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
-  if (filters.sort === 'price-desc') list.sort((a, b) => b.price - a.price);
-  if (filters.sort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name));
-
-  document.getElementById('results-count').textContent = `${list.length} part${list.length === 1 ? '' : 's'}`;
+/* ---------------- Featured products ---------------- */
+function renderFeatured() {
+  const grid = document.getElementById('featured-grid');
   grid.innerHTML = '';
-  if (!list.length) {
-    grid.innerHTML = '<p class="text-sm text-[--ink-soft] col-span-full">No parts match these filters.</p>';
-    return;
-  }
-  list.forEach((p) => {
-    const card = document.createElement('div');
-    card.className = 'product-card reveal-up cursor-pointer';
-    card.innerHTML = `
-      <div class="product-img-wrap relative">
-        <img src="${p.img}" alt="${p.name}" />
-        ${p.stock === 'low-stock' ? '<span class="stock-badge">Low Stock</span>' : ''}
-        <span class="rating-badge"><span class="star">★</span>${p.rating}</span>
-        <button class="quick-add-btn add-to-cart" data-id="${p.id}" aria-label="Add to cart">+</button>
-      </div>
-      <div class="p-5 flex flex-col gap-1 flex-1">
-        <p class="text-[11px] font-semibold uppercase tracking-wide text-[--ink-soft]">${p.brand}</p>
-        <h3 class="font-display font-semibold text-sm leading-snug mb-1">${p.name}</h3>
-        <span class="font-bold tabular mt-auto">AED ${p.price}</span>
-      </div>`;
-    card.addEventListener('click', () => openQuickView(p));
-    card.querySelector('.add-to-cart').addEventListener('click', (e) => {
-      e.stopPropagation();
-      addToCart(p.id);
-    });
-    grid.appendChild(card);
-  });
+  PRODUCTS.slice(0, 4).forEach((p) => grid.appendChild(makeProductCard(p)));
 }
-renderProducts();
+renderFeatured();
 
-/* ---------------- Quick view ---------------- */
-
-let qvProduct = null;
-let qvQty = 1;
-function openQuickView(p) {
-  qvProduct = p;
-  qvQty = 1;
-  document.getElementById('qv-img').src = p.img;
-  document.getElementById('qv-img').alt = p.name;
-  document.getElementById('qv-brand').textContent = p.brand;
-  document.getElementById('qv-sku').textContent = p.sku;
-  document.getElementById('qv-name').textContent = p.name;
-  document.getElementById('qv-rating').textContent = `${p.rating} · ${p.reviews} reviews`;
-  document.getElementById('qv-desc').textContent = p.description;
-  document.getElementById('qv-price').textContent = `AED ${p.price}`;
-  document.getElementById('qv-qty').textContent = qvQty;
-
-  document.getElementById('qv-badges').innerHTML = [
-    'Dubai Warehouse', 'In-Store Pickup', 'Delivery Available',
-    p.stock === 'low-stock' ? 'Low Stock' : 'In Stock',
-  ].map((b) => `<span class="badge-pill">${b}</span>`).join('');
-
-  document.getElementById('qv-specs').innerHTML = Object.entries(p.specs)
-    .map(([k, v]) => `<div class="spec-row"><span>${k}</span><span class="font-medium">${v}</span></div>`).join('');
-
-  document.getElementById('qv-compat').innerHTML = p.compatibility
-    .map((c) => `<span class="compat-pill">✓ ${c}</span>`).join('');
-
-  document.getElementById('quickview-overlay').classList.add('open-qv');
-  document.getElementById('quickview-modal').classList.add('open-qv');
+/* ---------------- Checkout (index only) ---------------- */
+function refreshCheckoutTotals() {
+  const section = document.getElementById('checkout-section');
+  if (!section.classList.contains('active')) return;
+  const subtotal = cartSubtotal();
+  document.getElementById('ck-subtotal').textContent = formatPrice(subtotal);
+  document.getElementById('ck-delivery').textContent = formatPrice(25);
+  document.getElementById('ck-total').textContent = formatPrice(subtotal ? subtotal + 25 : 0);
 }
-function closeQuickView() {
-  document.getElementById('quickview-overlay').classList.remove('open-qv');
-  document.getElementById('quickview-modal').classList.remove('open-qv');
-}
-document.getElementById('quickview-close').addEventListener('click', closeQuickView);
-document.getElementById('quickview-overlay').addEventListener('click', closeQuickView);
-document.getElementById('qv-inc').addEventListener('click', () => { qvQty++; document.getElementById('qv-qty').textContent = qvQty; });
-document.getElementById('qv-dec').addEventListener('click', () => { qvQty = Math.max(1, qvQty - 1); document.getElementById('qv-qty').textContent = qvQty; });
-document.getElementById('qv-add').addEventListener('click', () => {
-  if (!qvProduct) return;
-  addToCart(qvProduct.id, qvQty);
-  closeQuickView();
-});
-
-let cart = JSON.parse(localStorage.getItem('pc_cart') || '{}');
-function saveCart() { localStorage.setItem('pc_cart', JSON.stringify(cart)); }
-function cartLines() {
-  return Object.entries(cart).map(([id, qty]) => ({ ...PRODUCTS.find((p) => p.id === id), qty }));
-}
-function cartSubtotal() { return cartLines().reduce((sum, l) => sum + l.price * l.qty, 0); }
-
-function renderCart() {
-  const count = Object.values(cart).reduce((a, b) => a + b, 0);
-  document.getElementById('cart-count').textContent = count;
-
-  const itemsEl = document.getElementById('cart-items');
-  const lines = cartLines();
-  itemsEl.innerHTML = lines.length ? '' : '<p class="text-sm text-[--ink-soft]">Your cart is empty.</p>';
-  lines.forEach((l) => {
-    const row = document.createElement('div');
-    row.className = 'flex gap-4 items-center';
-    row.innerHTML = `
-      <img src="${l.img}" class="w-16 h-16 rounded-lg object-cover border border-[--line]" />
-      <div class="flex-1">
-        <p class="text-sm font-semibold leading-snug">${l.name}</p>
-        <p class="text-xs text-[--ink-soft] tabular">AED ${l.price}</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <button class="qty-btn dec" data-id="${l.id}">−</button>
-        <span class="w-5 text-center text-sm tabular">${l.qty}</span>
-        <button class="qty-btn inc" data-id="${l.id}">+</button>
-      </div>`;
-    itemsEl.appendChild(row);
-  });
-  document.getElementById('cart-subtotal').textContent = `AED ${cartSubtotal()}`;
-
-  itemsEl.querySelectorAll('.inc').forEach((b) => b.addEventListener('click', () => { cart[b.dataset.id]++; saveCart(); renderCart(); }));
-  itemsEl.querySelectorAll('.dec').forEach((b) => b.addEventListener('click', () => {
-    cart[b.dataset.id]--;
-    if (cart[b.dataset.id] <= 0) delete cart[b.dataset.id];
-    saveCart(); renderCart();
-  }));
-}
-
-function addToCart(id, qty = 1) {
-  cart[id] = (cart[id] || 0) + qty;
-  saveCart(); renderCart(); openCart();
-  gsap.fromTo('#cart-count', { scale: 1.5 }, { scale: 1, duration: 0.35, ease: 'back.out(3)' });
-}
-
-function openCart() { document.getElementById('cart-drawer').classList.add('open'); document.getElementById('cart-overlay').classList.add('open'); }
-function closeCart() { document.getElementById('cart-drawer').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); }
-document.getElementById('cart-toggle').addEventListener('click', () => document.getElementById('cart-drawer').classList.contains('open') ? closeCart() : openCart());
-document.getElementById('cart-close').addEventListener('click', closeCart);
-document.getElementById('cart-overlay').addEventListener('click', closeCart);
-
-/* ---------------- Checkout ---------------- */
 
 function showCheckout() {
   closeCart();
@@ -739,20 +465,17 @@ function showCheckout() {
   lines.forEach((l) => {
     const row = document.createElement('div');
     row.className = 'flex justify-between';
-    row.innerHTML = `<span>${l.qty}× ${l.name}</span><span class="tabular">AED ${l.price * l.qty}</span>`;
+    row.innerHTML = `<span>${l.qty}× ${l.name}</span><span class="tabular">${formatPrice(l.price * l.qty)}</span>`;
     itemsEl.appendChild(row);
   });
-  const subtotal = cartSubtotal();
-  document.getElementById('ck-subtotal').textContent = `AED ${subtotal}`;
-  document.getElementById('ck-total').textContent = `AED ${subtotal ? subtotal + 25 : 0}`;
-
+  refreshCheckoutTotals();
   section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
 }
-document.getElementById('cart-checkout-btn').addEventListener('click', showCheckout);
 document.getElementById('checkout-back').addEventListener('click', (e) => {
   e.preventDefault();
   document.getElementById('checkout-section').classList.remove('active');
-  document.getElementById('shop').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  window.location.hash = '';
+  document.getElementById('featured').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
 });
 
 document.querySelectorAll('.pay-option').forEach((opt) => {
@@ -777,7 +500,7 @@ document.getElementById('ck-place-order').addEventListener('click', () => {
   window.open(`https://wa.me/971508854100?text=${message}`, '_blank');
 });
 
-renderCart();
+if (window.location.hash === '#open-checkout') showCheckout();
 </script>
 </body>
 </html>
