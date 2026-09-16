@@ -38,15 +38,6 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: DEBUG - confirm the fix is actually live
-        run: |
-          curl -s "https://power-cool.web-creation.alfea.io/" -o /tmp/live.html
-          echo "--- ScrollSmoother/SplitText references left? (should be none) ---"
-          grep -c "ScrollSmoother\|SplitText" /tmp/live.html || echo "0 (clean)"
-          echo "--- product-grid + PRODUCTS still present? ---"
-          grep -c 'id="product-grid"' /tmp/live.html
-          grep -c "const PRODUCTS" /tmp/live.html
-
       - name: Detect changed sites
         id: changed
         run: |
