@@ -50,6 +50,22 @@
   .star{ color:#F5A524; letter-spacing:1px; }
   .tabular{ font-variant-numeric: tabular-nums; }
 
+  /* ---- Premium polish: thin brand-colored scrollbar ---- */
+  html{ scrollbar-color:{{PRIMARY_COLOR}}66 var(--paper); scrollbar-width:thin; }
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--paper); }
+  ::-webkit-scrollbar-thumb{ background:{{PRIMARY_COLOR}}66; border-radius:99px; border:2px solid var(--paper); background-clip:padding-box; }
+  ::-webkit-scrollbar-thumb:hover{ background:{{PRIMARY_COLOR}}; background-clip:padding-box; }
+
+  /* ---- Premium polish: subtle grain texture for depth on dark/flat fields ---- */
+  .grain{ position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* ---- Premium polish: fade the marquee edges instead of a hard clip ---- */
+  .marquee-fade{ mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+
+  /* ---- Premium polish: section headline word-reveal (same language as the hero) ---- */
+  .reveal-heading{ overflow:hidden; }
+
   #site-nav{ transition: background-color .4s ease, box-shadow .4s ease; }
   #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
 
@@ -67,18 +83,20 @@
     .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
     .bento .t-wide{ grid-column:span 4; }
   }
-  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; }
+  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); }
   .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .tile:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -30px rgba(20,24,27,0.35); }
   .tile:hover .tile-img{ transform:scale(1.06); }
   .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,24,27,0) 30%, rgba(20,24,27,0.82) 100%); }
 
-  .card-glow{ position:relative; }
+  .card-glow{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease; }
   .card-glow::before{
     content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
     background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), {{PRIMARY_COLOR}}33, transparent 70%);
     pointer-events:none;
   }
   .card-glow:hover::before{ opacity:1; }
+  .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:{{PRIMARY_COLOR}}55; }
 
   /* ---- Work gallery (asymmetric) ---- */
   .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
@@ -171,7 +189,7 @@
 
   <!-- Trust marquee -->
   <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
-    <div class="marquee-track text-sm font-semibold text-[--ink-soft] tracking-wide">
+    <div class="marquee-track marquee-fade text-sm font-semibold text-[--ink-soft] tracking-wide">
       <div class="flex items-center gap-10 pr-10">
         <span>★ {{RATING}} on Google</span><span>•</span>
         <span>Licensed &amp; Insured</span><span>•</span>
@@ -193,7 +211,7 @@
   <section id="services" class="py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal-up mb-12 max-w-lg">
-        <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
+        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
         <p class="text-[--ink-soft] text-lg">{{SERVICES_INTRO}}</p>
       </div>
 
@@ -236,7 +254,8 @@
   </section>
 
   <!-- Dark stat band — section-rhythm contrast, oversized numerals as the visual -->
-  <section class="py-24" style="background:var(--ink);">
+  <section class="relative py-24 overflow-hidden" style="background:var(--ink);">
+    <div class="grain" aria-hidden="true"></div>
     <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
       <div class="reveal-up">
         <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="{{YEARS}}">0</span>+</div>
@@ -256,7 +275,7 @@
   <!-- Work gallery -->
   <section id="work" class="py-24 bg-white border-b border-[--line]">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
       <div class="gallery">
         <div class="reveal-card tile g-tall">
           <img src="{{GALLERY_IMAGE_1}}" alt="" class="tile-img" />
@@ -284,7 +303,7 @@
         <img src="{{ABOUT_IMAGE}}" alt="{{BUSINESS_NAME}} team" class="w-full aspect-[4/3] object-cover" />
       </div>
       <div class="order-1 md:order-2">
-        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">{{ABOUT_HEADLINE}}</h2>
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">{{ABOUT_HEADLINE}}</h2>
         <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">{{ABOUT_TEXT}}</p>
       </div>
     </div>
@@ -293,14 +312,14 @@
   <!-- Reviews: infinite marquee row + one featured pull-quote -->
   <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
-      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold">What {{CITY}} says</h2>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold">What {{CITY}} says</h2>
       <div class="reveal-up border-l-4 pl-6" style="border-color:{{PRIMARY_COLOR}}">
         <p class="text-xl font-display leading-snug">"{{REVIEW_1_TEXT}}"</p>
         <p class="text-sm text-[--ink-soft] mt-3 font-semibold">{{REVIEW_1_AUTHOR}}</p>
       </div>
     </div>
 
-    <div class="review-track px-6">
+    <div class="review-track marquee-fade px-6">
       <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">{{REVIEW_2_TEXT}}</p>
@@ -339,7 +358,7 @@
   <section id="area" class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
       <div>
-        <h2 class="reveal-up text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving {{SERVICE_AREA}}</h2>
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving {{SERVICE_AREA}}</h2>
         <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">{{ADDRESS}}</p>
         <a href="tel:{{PHONE_HREF}}" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
           Call {{PHONE}}
@@ -353,9 +372,10 @@
 
   <!-- Contact: diagonal top edge instead of a plain rectangle -->
   <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:{{PRIMARY_COLOR}}; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
-    <div aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div id="contact-orb" aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
     <div class="max-w-3xl mx-auto px-6 text-center relative">
-      <h2 class="reveal-up text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
       <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
       <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
         <a href="tel:{{PHONE_HREF}}" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call {{PHONE}}</a>
@@ -416,20 +436,44 @@ heroTl
   .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
 
 gsap.utils.toArray('.reveal-up').forEach((el) => {
-  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
 });
 
 gsap.utils.toArray('.reveal-card').forEach((el, i) => {
   gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
-    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.out', delay: (i % 4) * 0.07,
+    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'expo.out', delay: (i % 4) * 0.07,
     scrollTrigger: { trigger: el, start: 'top 88%' },
   });
 });
 
 gsap.utils.toArray('.clip-reveal').forEach((el) => {
   if (el.id === 'hero-image-wrap') return;
-  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power4.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
+  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'expo.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
 });
+
+/* Section headline word-reveal — same language as the hero, on scroll */
+gsap.utils.toArray('.reveal-heading').forEach((el) => {
+  if (reduceMotion) { gsap.set(el, { opacity: 1 }); return; }
+  const words = el.textContent.trim().split(/\s+/);
+  el.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
+  const wordEls = el.querySelectorAll('.word');
+  gsap.set(wordEls, { yPercent: 60, opacity: 0 });
+  gsap.to(wordEls, {
+    yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.03, ease: 'expo.out',
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+  });
+});
+
+/* Parallax depth: hero image drifts slower than scroll, ambient orbs drift slightly */
+if (!reduceMotion) {
+  gsap.to('#hero-image-wrap img', {
+    yPercent: 12, ease: 'none',
+    scrollTrigger: { trigger: '#hero-image-wrap', start: 'top top', end: 'bottom top', scrub: 0.5 },
+  });
+  gsap.utils.toArray('section .blur-3xl').forEach((orb) => {
+    gsap.to(orb, { yPercent: -18, ease: 'none', scrollTrigger: { trigger: orb.parentElement, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+  });
+}
 
 document.querySelectorAll('[data-counter]').forEach((el) => {
   const target = parseFloat(el.dataset.counter);
@@ -437,7 +481,7 @@ document.querySelectorAll('[data-counter]').forEach((el) => {
   const obj = { val: 0 };
   ScrollTrigger.create({
     trigger: el, start: 'top 90%', once: true,
-    onEnter: () => gsap.to(obj, { val: target, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); } }),
+    onEnter: () => gsap.to(obj, { val: target, duration: 1.6, ease: 'expo.out', onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); } }),
   });
 });
 
