@@ -147,11 +147,7 @@
     <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#4338CA"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative">
-      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
-        <span class="star">★</span> 4.0 Google rating · Dubai
-      </div>
-
-      <h1 id="hero-headline" class="text-[15vw] leading-[0.94] md:text-[7.5vw] md:leading-[0.92] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
+      <h1 id="hero-headline" class="text-[12vw] leading-[0.96] md:text-[6vw] md:leading-[0.98] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
         Power solutions and products for the UAE, backed by Legrand
       </h1>
 
@@ -383,7 +379,6 @@ if (!reduceMotion) {
   heroTl.from(headline.querySelectorAll('.word'), { yPercent: 130, opacity: 0, duration: 1, stagger: 0.05, ease: 'power4.out' });
 }
 heroTl
-  .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
   .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
   .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
   .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
