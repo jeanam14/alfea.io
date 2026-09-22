@@ -2,12 +2,9 @@
 # Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
 # All equipment-focused, no people at all — this business asked for every
 # photo across the site to be people-free.
-# Lines below are commented out so a workflow_dispatch run only regenerates
-# about.jpg and gallery-4.jpg (the two that had people) — uncomment the
-# rest before a full rebuild.
-# images/hero.jpg|wide photo of a modern UPS (uninterruptible power supply) room in a UAE commercial building, rows of white and grey UPS cabinets, clean industrial lighting, no people, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
+images/hero.jpg|wide photo of a modern UPS (uninterruptible power supply) room in a UAE commercial building, rows of white and grey UPS cabinets, clean industrial lighting, no people, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
 images/about.jpg|photo of an open electrical distribution panel in a modern UAE facility, neatly wired circuit breakers and labeled switches, clean industrial lighting, no people, realistic editorial photography, no text, no watermark|landscape_4_3
-# images/gallery-1.jpg|close-up photo of neatly organized cable management trays and power cables in a data center, clean and professional, no people, realistic editorial photography, no text, no watermark|portrait_4_3
-# images/gallery-2.jpg|photo of a modern electrical control panel with circuit breakers and switches, clean industrial design, no people, realistic editorial photography, no text, no watermark|square_hd
-# images/gallery-3.jpg|photo of server racks with power distribution units in a data center, cool blue ambient lighting, no people, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-1.jpg|close-up photo of neatly organized cable management trays and power cables in a data center, clean and professional, no people, realistic editorial photography, no text, no watermark|portrait_4_3
+images/gallery-2.jpg|photo of a modern electrical control panel with circuit breakers and switches, clean industrial design, no people, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-3.jpg|photo of server racks with power distribution units in a data center, cool blue ambient lighting, no people, realistic editorial photography, no text, no watermark|square_hd
 images/gallery-4.jpg|close-up photo of an open UPS battery cabinet with rows of sealed lead-acid batteries neatly installed, clean industrial lighting, no people, realistic editorial photography, no text, no watermark|portrait_4_3
