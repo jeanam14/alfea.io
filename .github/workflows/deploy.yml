@@ -64,16 +64,11 @@ jobs:
           npm install -g wrangler
 
           # Resolve the Netlify DNS zone id for alfea.io once.
-          zones_response=$(curl -s -w '\n%{http_code}' "https://api.netlify.com/api/v1/dns_zones" \
-            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN")
-          zones_status=$(echo "$zones_response" | tail -n1)
-          zones_body=$(echo "$zones_response" | sed '$d')
-          echo "DEBUG: Netlify dns_zones response status: $zones_status"
-          echo "DEBUG: Netlify dns_zones response body: $zones_body"
-          zone_id=$(echo "$zones_body" | \
-            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const z=arr.find(x=>x.name==='alfea.io');console.log(z?z.id:'')}catch(e){console.log('')}})")
+          zone_id=$(curl -s "https://api.netlify.com/api/v1/dns_zones" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const z=JSON.parse(d).find(x=>x.name==='alfea.io');console.log(z?z.id:'')})")
           if [ -z "$zone_id" ]; then
-            echo "::error::Could not find the alfea.io zone in Netlify DNS — check NETLIFY_AUTH_TOKEN. See DEBUG lines above for the raw API response."
+            echo "::error::Could not find the alfea.io zone in Netlify DNS — check NETLIFY_AUTH_TOKEN."
             exit 1
           fi
 
