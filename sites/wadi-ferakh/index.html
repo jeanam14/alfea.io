@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <!-- ^ Remove this line at close, once the client has paid -->
-<title>{{BUSINESS_NAME}} | {{TAGLINE}}</title>
-<meta name="description" content="{{BUSINESS_NAME}} — {{TAGLINE}}. Serving {{SERVICE_AREA}}. Call {{PHONE}}." />
+<title>Wadi Ferakh Technical Services | Home maintenance and repairs, done right, 24/7 in Dubai</title>
+<meta name="description" content="Wadi Ferakh Technical Services — Home maintenance and repairs, done right, 24/7 in Dubai. Serving Al Quoz and across Dubai. Call +971 50 835 9726." />
 <link rel="icon" href="data:," />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
@@ -15,7 +15,7 @@
   tailwind.config = {
     theme: {
       extend: {
-        colors: { brand: "{{PRIMARY_COLOR}}", brandDark: "{{PRIMARY_COLOR_DARK}}" },
+        colors: { brand: "#EA580C", brandDark: "#9A3412" },
         fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
       }
     }
@@ -40,7 +40,7 @@
   body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
   h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
   h1,h2{ text-wrap:balance; }
-  ::selection{ background:{{PRIMARY_COLOR}}; color:#fff; }
+  ::selection{ background:#EA580C; color:#fff; }
 
   #smooth-wrapper{ overflow:hidden; }
   #smooth-content{ overflow:visible; }
@@ -51,11 +51,11 @@
   .tabular{ font-variant-numeric: tabular-nums; }
 
   /* ---- Premium polish: thin brand-colored scrollbar ---- */
-  html{ scrollbar-color:{{PRIMARY_COLOR}}66 var(--paper); scrollbar-width:thin; }
+  html{ scrollbar-color:#EA580C66 var(--paper); scrollbar-width:thin; }
   ::-webkit-scrollbar{ width:10px; height:10px; }
   ::-webkit-scrollbar-track{ background:var(--paper); }
-  ::-webkit-scrollbar-thumb{ background:{{PRIMARY_COLOR}}66; border-radius:99px; border:2px solid var(--paper); background-clip:padding-box; }
-  ::-webkit-scrollbar-thumb:hover{ background:{{PRIMARY_COLOR}}; background-clip:padding-box; }
+  ::-webkit-scrollbar-thumb{ background:#EA580C66; border-radius:99px; border:2px solid var(--paper); background-clip:padding-box; }
+  ::-webkit-scrollbar-thumb:hover{ background:#EA580C; background-clip:padding-box; }
 
   /* ---- Premium polish: subtle grain texture for depth on dark/flat fields ---- */
   .grain{ position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
@@ -92,11 +92,11 @@
   .card-glow{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease; }
   .card-glow::before{
     content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
-    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), {{PRIMARY_COLOR}}33, transparent 70%);
+    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), #EA580C33, transparent 70%);
     pointer-events:none;
   }
   .card-glow:hover::before{ opacity:1; }
-  .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:{{PRIMARY_COLOR}}55; }
+  .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:#EA580C55; }
 
   /* ---- Work gallery (asymmetric) ---- */
   .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
@@ -127,21 +127,21 @@
 
   <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-display font-extrabold text-lg tracking-tight">{{BUSINESS_NAME}}</span>
+      <span class="font-display font-extrabold text-lg tracking-tight">Wadi Ferakh Technical Services</span>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
         <a href="#work" class="hover:text-[--ink] transition-colors">Our Work</a>
         <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
-        <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
+        <a href="#about" class="hover:text-[--ink] transition-colors">About</a>
         <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
       </nav>
-      <a href="tel:{{PHONE_HREF}}" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
-        {{PHONE}}
+      <a href="tel:971508359726" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+        +971 50 835 9726
       </a>
     </div>
   </header>
 
-  <a href="tel:{{PHONE_HREF}}" id="mobile-call-bar" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)] translate-y-full">
-    Call now — {{PHONE}}
+  <a href="tel:971508359726" id="mobile-call-bar" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)] translate-y-full">
+    Call now — +971 50 835 9726
   </a>
 
   <div id="smooth-wrapper">
@@ -149,23 +149,23 @@
 
   <!-- Hero: full-width headline over an asymmetric layered visual, not a plain two-column split -->
   <section class="relative pt-32 md:pt-40 pb-10">
-    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:{{PRIMARY_COLOR}}"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#EA580C"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative">
       <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
-        <span class="star">★★★★★</span> {{RATING}} · {{REVIEW_COUNT}} Google reviews · {{CITY}}
+        <span class="star">★</span> 5.0 Google rating · Dubai
       </div>
 
       <h1 id="hero-headline" class="text-[12vw] leading-[0.96] md:text-[6vw] md:leading-[0.98] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
-        {{TAGLINE}}
+        Home maintenance and repairs, done right, 24/7 in Dubai
       </h1>
 
       <div class="mt-10 grid md:grid-cols-[1.1fr_1.4fr] gap-10 items-end">
         <div>
-          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">{{HERO_SUBTEXT}}</p>
+          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">Painting, carpentry, plumbing, electrical, AC repair and more — one call for every home repair in Dubai, any time, day or night.</p>
           <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
-            <a href="tel:{{PHONE_HREF}}" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px {{PRIMARY_COLOR}}aa">
-              Call {{PHONE}}
+            <a href="tel:971508359726" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #EA580Caa">
+              Call +971 50 835 9726
             </a>
             <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
               Request a quote
@@ -175,12 +175,12 @@
 
         <div class="relative">
           <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
-            <img src="{{HERO_IMAGE}}" alt="{{BUSINESS_NAME}} at work" class="w-full aspect-[16/10] object-cover" />
+            <img src="images/hero.jpg" alt="Wadi Ferakh Technical Services at work" class="w-full aspect-[16/10] object-cover" />
           </div>
           <!-- Floating overlap card: the single biggest "someone designed this" tell -->
           <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
-            <div class="font-display font-extrabold text-3xl tabular"><span data-counter="{{YEARS}}">0</span>+</div>
-            <div class="text-xs text-white/70 leading-tight">years serving<br>{{CITY}}</div>
+            <div class="font-display font-extrabold text-3xl tabular"><span data-counter="24">0</span>/7</div>
+            <div class="text-xs text-white/70 leading-tight">always on call<br>in Dubai</div>
           </div>
         </div>
       </div>
@@ -191,18 +191,18 @@
   <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
     <div class="marquee-track marquee-fade text-sm font-semibold text-[--ink-soft] tracking-wide">
       <div class="flex items-center gap-10 pr-10">
-        <span>★ {{RATING}} on Google</span><span>•</span>
+        <span>★ 5.0 on Google</span><span>•</span>
         <span>Licensed &amp; Insured</span><span>•</span>
         <span>24/7 Emergency Calls</span><span>•</span>
-        <span>{{REVIEW_COUNT}}+ Happy Customers</span><span>•</span>
-        <span>Serving {{SERVICE_AREA}}</span><span>•</span>
+        <span>All Trades Under One Roof</span><span>•</span>
+        <span>Serving Al Quoz and across Dubai</span><span>•</span>
       </div>
       <div class="flex items-center gap-10 pr-10" aria-hidden="true">
-        <span>★ {{RATING}} on Google</span><span>•</span>
+        <span>★ 5.0 on Google</span><span>•</span>
         <span>Licensed &amp; Insured</span><span>•</span>
         <span>24/7 Emergency Calls</span><span>•</span>
-        <span>{{REVIEW_COUNT}}+ Happy Customers</span><span>•</span>
-        <span>Serving {{SERVICE_AREA}}</span><span>•</span>
+        <span>All Trades Under One Roof</span><span>•</span>
+        <span>Serving Al Quoz and across Dubai</span><span>•</span>
       </div>
     </div>
   </section>
@@ -212,42 +212,42 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal-up mb-12 max-w-lg">
         <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
-        <p class="text-[--ink-soft] text-lg">{{SERVICES_INTRO}}</p>
+        <p class="text-[--ink-soft] text-lg">From a leaking pipe to a full renovation — one team, every trade, available around the clock.</p>
       </div>
 
       <div class="bento">
         <div class="reveal-card tile t-feature min-h-[280px]">
-          <img src="{{HERO_IMAGE}}" alt="" class="tile-img" />
+          <img src="images/hero.jpg" alt="" class="tile-img" />
           <div class="tile-overlay"></div>
           <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
-            <h3 class="font-display font-bold text-2xl mb-2">{{SERVICE_1_NAME}}</h3>
-            <p class="text-sm text-white/80 max-w-xs">{{SERVICE_1_DESC}}</p>
+            <h3 class="font-display font-bold text-2xl mb-2">Home Renovation</h3>
+            <p class="text-sm text-white/80 max-w-xs">Full renovation and refurbishment for homes and villas across Dubai — kitchens, bathrooms, and complete makeovers.</p>
           </div>
         </div>
 
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">{{SERVICE_2_NAME}}</h3>
-          <p class="text-sm text-[--ink-soft]">{{SERVICE_2_DESC}}</p>
+          <h3 class="font-display font-bold text-base">Painting</h3>
+          <p class="text-sm text-[--ink-soft]">Interior and exterior painting for apartments and villas, finished to a clean professional standard.</p>
         </div>
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">{{SERVICE_3_NAME}}</h3>
-          <p class="text-sm text-[--ink-soft]">{{SERVICE_3_DESC}}</p>
+          <h3 class="font-display font-bold text-base">Carpentry & Woodwork</h3>
+          <p class="text-sm text-[--ink-soft]">Custom carpentry, furniture assembly, and woodwork repairs.</p>
         </div>
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">{{SERVICE_4_NAME}}</h3>
-          <p class="text-sm text-[--ink-soft]">{{SERVICE_4_DESC}}</p>
+          <h3 class="font-display font-bold text-base">Plumbing & Electrical</h3>
+          <p class="text-sm text-[--ink-soft]">Leak repairs, fixture installs, wiring and power socket fixes.</p>
         </div>
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">{{SERVICE_5_NAME}}</h3>
-          <p class="text-sm text-[--ink-soft]">{{SERVICE_5_DESC}}</p>
+          <h3 class="font-display font-bold text-base">AC Repair & Maintenance</h3>
+          <p class="text-sm text-[--ink-soft]">Air conditioning servicing, cooling faults, and duct cleaning.</p>
         </div>
 
-        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:{{PRIMARY_COLOR}}">
+        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#EA580C">
           <div>
-            <h3 class="font-display font-bold text-xl mb-1">{{SERVICE_6_NAME}}</h3>
-            <p class="text-sm text-white/80 max-w-md">{{SERVICE_6_DESC}}</p>
+            <h3 class="font-display font-bold text-xl mb-1">Gypsum, Ceiling & Glass Partition</h3>
+            <p class="text-sm text-white/80 max-w-md">Gypsum ceilings, partitions, and glass work for home and office fit-outs.</p>
           </div>
-          <a href="tel:{{PHONE_HREF}}" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call {{PHONE}}</a>
+          <a href="tel:971508359726" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call +971 50 835 9726</a>
         </div>
       </div>
     </div>
@@ -258,15 +258,15 @@
     <div class="grain" aria-hidden="true"></div>
     <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
       <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="{{YEARS}}">0</span>+</div>
-        <p class="text-white/60 mt-2">Years in business</p>
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="24">0</span>/7</div>
+        <p class="text-white/60 mt-2">Available for callouts</p>
       </div>
       <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="{{REVIEW_COUNT}}">0</span>+</div>
-        <p class="text-white/60 mt-2">Jobs completed</p>
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="8">0</span>+</div>
+        <p class="text-white/60 mt-2">Home services offered</p>
       </div>
       <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="{{RATING}}">0</span></div>
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="5.0">0</span></div>
         <p class="text-white/60 mt-2">Average Google rating</p>
       </div>
     </div>
@@ -275,81 +275,36 @@
   <!-- Work gallery -->
   <section id="work" class="py-24 bg-white border-b border-[--line]">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Our Work</h2>
       <div class="gallery">
         <div class="reveal-card tile g-tall">
-          <img src="{{GALLERY_IMAGE_1}}" alt="" class="tile-img" />
+          <img src="images/gallery-1.jpg" alt="" class="tile-img" />
         </div>
         <div class="reveal-card tile">
-          <img src="{{GALLERY_IMAGE_2}}" alt="" class="tile-img" />
+          <img src="images/gallery-2.jpg" alt="" class="tile-img" />
         </div>
         <div class="reveal-card tile">
-          <img src="{{GALLERY_IMAGE_3}}" alt="" class="tile-img" />
+          <img src="images/gallery-3.jpg" alt="" class="tile-img" />
         </div>
         <div class="reveal-card tile g-tall">
-          <img src="{{GALLERY_IMAGE_4}}" alt="" class="tile-img" />
+          <img src="images/gallery-4.jpg" alt="" class="tile-img" />
         </div>
         <div class="reveal-card tile hidden md:block">
-          <img src="{{ABOUT_IMAGE}}" alt="" class="tile-img" />
+          <img src="images/about.jpg" alt="" class="tile-img" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section class="py-24">
+  <section id="about" class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
       <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1">
-        <img src="{{ABOUT_IMAGE}}" alt="{{BUSINESS_NAME}} team" class="w-full aspect-[4/3] object-cover" />
+        <img src="images/about.jpg" alt="Wadi Ferakh Technical Services at work" class="w-full aspect-[4/3] object-cover" />
       </div>
       <div class="order-1 md:order-2">
-        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">{{ABOUT_HEADLINE}}</h2>
-        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">{{ABOUT_TEXT}}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews: infinite marquee row + one featured pull-quote -->
-  <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold">What {{CITY}} says</h2>
-      <div class="reveal-up border-l-4 pl-6" style="border-color:{{PRIMARY_COLOR}}">
-        <p class="text-xl font-display leading-snug">"{{REVIEW_1_TEXT}}"</p>
-        <p class="text-sm text-[--ink-soft] mt-3 font-semibold">{{REVIEW_1_AUTHOR}}</p>
-      </div>
-    </div>
-
-    <div class="review-track marquee-fade px-6">
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">{{REVIEW_2_TEXT}}</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">{{REVIEW_2_AUTHOR}}</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">{{REVIEW_3_TEXT}}</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">{{REVIEW_3_AUTHOR}}</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">{{REVIEW_1_TEXT}}</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">{{REVIEW_1_AUTHOR}}</p>
-      </div>
-      <!-- duplicated for a seamless loop -->
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">{{REVIEW_2_TEXT}}</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">{{REVIEW_2_AUTHOR}}</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">{{REVIEW_3_TEXT}}</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">{{REVIEW_3_AUTHOR}}</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">{{REVIEW_1_TEXT}}</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">{{REVIEW_1_AUTHOR}}</p>
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Dubai's round-the-clock home maintenance team</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">Wadi Ferakh Technical Services handles everything a Dubai home needs — renovation, painting, carpentry, plumbing, electrical, AC repair and more — from a single call, any time of day. Based in Al Quoz, the team works across apartments and villas throughout Dubai, available 24 hours a day, seven days a week.</p>
       </div>
     </div>
   </section>
@@ -358,41 +313,41 @@
   <section id="area" class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
       <div>
-        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving {{SERVICE_AREA}}</h2>
-        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">{{ADDRESS}}</p>
-        <a href="tel:{{PHONE_HREF}}" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
-          Call {{PHONE}}
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving Al Quoz and across Dubai</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">Al Quoz Industrial First, Al Quoz, Dubai, UAE</p>
+        <a href="tel:971508359726" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
+          Call +971 50 835 9726
         </a>
       </div>
       <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
-        <iframe src="{{MAP_EMBED_SRC}}" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps?q=Wadi+Ferakh+Technical+Services+Al+Quoz+Industrial+First+Dubai&output=embed" class="w-full h-full" style="border:0" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
   <!-- Contact: diagonal top edge instead of a plain rectangle -->
-  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:{{PRIMARY_COLOR}}; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
+  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#EA580C; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
     <div class="grain" aria-hidden="true"></div>
     <div id="contact-orb" aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
     <div class="max-w-3xl mx-auto px-6 text-center relative">
       <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
       <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
       <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:{{PHONE_HREF}}" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call {{PHONE}}</a>
-        <a href="mailto:{{EMAIL}}" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
+        <a href="tel:971508359726" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call +971 50 835 9726</a>
+        <a href="https://wa.me/971508359726" target="_blank" rel="noopener" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">WhatsApp Us</a>
       </div>
     </div>
   </section>
 
   <footer class="py-10 text-center text-sm text-[--ink-soft]">
-    © {{YEAR}} {{BUSINESS_NAME}}. {{ADDRESS}}.
+    © 2026 Wadi Ferakh Technical Services. Al Quoz Industrial First, Al Quoz, Dubai, UAE.
   </footer>
 
   </div>
   </div>
 
   <!-- WhatsApp sticky button -->
-  <a href="https://wa.me/{{WHATSAPP_NUMBER}}" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/971508359726" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
     <span class="wa-sticky-ring" aria-hidden="true"></span>
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
   </a>

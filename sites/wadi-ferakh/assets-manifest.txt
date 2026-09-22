@@ -1,0 +1,10 @@
+# One line per image: output_path|prompt|image_size
+# Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
+# Kept to a single person per shot (or none) — multi-person AI-generated
+# scenes have repeatedly produced crowding/scale errors on other sites.
+images/hero.jpg|wide photo of a single handyman in navy workwear painting an interior wall of a bright modern Dubai apartment living room, ladder and paint tray nearby, realistic human body proportions, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
+images/about.jpg|photo of a single carpenter in navy workwear finishing custom wood cabinetry in a bright modern Dubai apartment, tools laid out, realistic human body proportions, realistic editorial photography, no text, no watermark|landscape_4_3
+images/gallery-1.jpg|photo of a single painter rolling fresh white paint onto an interior wall, ladder beside them, realistic editorial photography, no text, no watermark|portrait_4_3
+images/gallery-2.jpg|close-up photo of an electrician's gloved hands installing a wall socket and switch plate, no face visible, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-3.jpg|photo of a single plumber fixing an under-sink pipe in a modern bathroom, tools laid out on the floor, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-4.jpg|photo of a single technician on a ladder installing a gypsum ceiling panel in a bright modern room, realistic human body proportions, realistic editorial photography, no text, no watermark|portrait_4_3
