@@ -31,6 +31,13 @@ jobs:
           chmod +x scripts/generate-image.sh scripts/generate-site-assets.sh
           ./scripts/generate-site-assets.sh "${{ github.event.inputs.site }}"
 
+      - name: TEMP - fetch person-removed about.jpg for wadi-ferakh
+        if: github.event.inputs.site == 'wadi-ferakh'
+        run: |
+          curl -sS -o sites/wadi-ferakh/images/about.jpg \
+            "https://d8j0ntlcm91z4.cloudfront.net/user_35AF9A2SSRZINZ9LXx6S0twsLM4/hf_20260923_102200_ca315cc6-420f-461e-99e7-fbb30bed6d50.png"
+          ls -la sites/wadi-ferakh/images/about.jpg
+
       - name: Commit generated images
         run: |
           git config user.name "alfea-bot"
