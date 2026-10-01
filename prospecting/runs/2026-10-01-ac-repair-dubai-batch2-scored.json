@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Elite Climate Care",
+    "website": "https://eliteclimatecare.ae/",
+    "phone": "+971 52 824 8453",
+    "rating": 5,
+    "reviewsCount": 8,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elite%20Climate%20Care&query_place_id=ChIJKZu11ZtpXz4RJz_bxE31V28",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The page displays an error message stating the store is unavailable, making it impossible to assess the actual design quality of the website."
+    }
+  },
+  {
+    "name": "Saad Maaz Technical Services CO. L.L.C",
+    "website": "https://saadmaaz.com/",
+    "phone": "+971 50 826 8637",
+    "rating": 5,
+    "reviewsCount": 122,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saad%20Maaz%20Technical%20Services%20CO.%20L.L.C&query_place_id=ChIJ4yHim5NDXz4RNpIFyJKk4Sc",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "Modern gradient background, clean typography hierarchy, contemporary card-based UI elements, professional imagery, and current design patterns all indicate active maintenance and current web design standards."
+    }
+  },
+  {
+    "name": "Rose River Technical Services LLC",
+    "website": "https://www.roseriver.ae/",
+    "phone": "+971 54 429 4039",
+    "rating": 5,
+    "reviewsCount": 3,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rose%20River%20Technical%20Services%20LLC&query_place_id=ChIJvWO2e-RDXz4R1Ob5Mp41LE8",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot appears to be blank or failed to load any visible content."
+    }
+  },
+  {
+    "name": "Faizan Attari technical service",
+    "website": "https://homeappliancesrepairindubai.com/",
+    "phone": "+971 56 955 4864",
+    "rating": 4.6,
+    "reviewsCount": 19,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faizan%20Attari%20technical%20service&query_place_id=ChIJpdTdoTBdXz4RAWpDWO7OhI8",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a security check loading screen, not the actual website homepage, making it impossible to assess visual design or polish."
+    }
+  },
+  {
+    "name": "Saith Technical Services - Emergency AC Service & Repair Dubai",
+    "website": "https://homefixituae.com/24hr-emergency-ac-repair-dubai/",
+    "phone": "+971 55 204 1300",
+    "rating": 4.7,
+    "reviewsCount": 57,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saith%20Technical%20Services%20-%20Emergency%20AC%20Service%20%26%20Repair%20Dubai&query_place_id=ChIJy1i8LTZDXz4RaySE_8unzAw",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "The design uses a dated purple-and-yellow color scheme with generic stock imagery, basic typography treatments, and a layout pattern that feels like a 2015-era service website template rather than contemporary web design."
+    }
+  },
+  {
+    "name": "Muhammad Hasnain AC Repairing Center",
+    "website": "https://mhasnainrepair.com/",
+    "phone": "+971 52 245 1145",
+    "rating": 4.8,
+    "reviewsCount": 598,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Muhammad%20Hasnain%20AC%20Repairing%20Center%20%2F%2F%20Washing%20machine%20Gas%20stove%20Refrigerator%20repair%20near%20me%20Dubai&query_place_id=ChIJVd2rEsJDXz4RtDwRRX2bIM4",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The layout is modern with clean geometric shapes, contemporary typography, professional photography, and a current color scheme with good visual hierarchy that reads as actively maintained."
+    }
+  },
+  {
+    "name": "Al Bareeq Technical Services",
+    "website": "https://albareeqservices.com/",
+    "phone": "+971 56 721 2180",
+    "rating": 4.9,
+    "reviewsCount": 70,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Bareeq%20Technical%20Services&query_place_id=ChIJl-wy4IxdXz4RmSeL2WDyGC8",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "The navigation menu is duplicated, the layout appears cluttered with repetitive links, and the overall design lacks modern visual hierarchy and spacing conventions typical of contemporary websites."
+    }
+  },
+  {
+    "name": "Shahid pervaiz technical services llc",
+    "website": "http://www.actechniciandubai.ae/",
+    "phone": "+971 55 874 9086",
+    "rating": 5,
+    "reviewsCount": 32,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shahid%20pervaiz%20technical%20services%20llc&query_place_id=ChIJCYdpBCVDXz4RA5GKtPDVXUg",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "The cartoon mascot illustration, generic stock imagery of AC units, and typography treatment belong to the early 2010s era of web design rather than current design standards."
+    }
+  },
+  {
+    "name": "ABDS AC Repair and Maintenance Services in Dubai",
+    "website": "https://www.homeappliancesrepairsuae.com/",
+    "phone": "+971 55 489 5108",
+    "rating": 4.8,
+    "reviewsCount": 208,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ABDS%20AC%20Repair%20and%20Maintenance%20Services%20in%20Dubai&query_place_id=ChIJmd_qvldDXz4RA4yooVz7fN4",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The design uses modern color blocking, clean typography, professional imagery, and a contemporary layout that appears current and well-maintained."
+    }
+  },
+  {
+    "name": "Saifee Air Conditioners",
+    "website": "http://www.saifeeac.com/",
+    "phone": "+971 4 273 3033",
+    "rating": 5,
+    "reviewsCount": 3,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saifee%20Air%20Conditioners&query_place_id=ChIJGZdsoxFDXz4RdBnOHtAI8m0",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The navigation is clean and modern, the hero image is high-quality and professionally composed, typography appears current, and the overall layout demonstrates contemporary web design standards."
+    }
+  },
+  {
+    "name": "Naseem Baig Technical Services",
+    "website": "https://www.nbtech.ae/",
+    "phone": "+971 52 590 9130",
+    "rating": 4.9,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naseem%20Baig%20Technical%20Services&query_place_id=ChIJt6ifvupDXz4R_ovktUgvbZc",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "The dark blue gradient background with grid overlay and large semi-transparent text are hallmarks of mid-2010s web design trends that feel dated compared to modern minimalist and clean aesthetic standards."
+    }
+  },
+  {
+    "name": "Mazhar Air Conditioner Repair Service",
+    "website": "https://quickrepairservicesdubai.com/",
+    "phone": "+971 50 768 6200",
+    "rating": 4.9,
+    "reviewsCount": 43,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mazhar%20Air%20Conditioner%20Repair%20Service&query_place_id=ChIJkYnlqAOXaiQR1YdAk_O9zTw",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site features modern turquoise/cyan branding, clean typography, a professional hero layout with image, current card-based design patterns, and appears actively maintained with contemporary web design conventions."
+    }
+  }
+]
