@@ -33,7 +33,7 @@ PROMPT='You are screening a small business website for a web design agency that 
 
 Judge it the way a visitor forms a snap impression in the first few seconds - overall visual polish, whether the layout and type choices look like they are from the current decade, image quality, and whether it reads as actively maintained. Do not check technical things you cannot see in a screenshot (load speed, HTTPS, mobile responsiveness). A site can be visually dated even if the business itself is reputable and well-reviewed - rating and review count are not part of this judgment.
 
-Respond with ONLY a JSON object, no markdown fences, no other text:
+Respond with ONLY a raw JSON object - do not wrap it in ```json code fences, do not add any other text:
 {"verdict": "outdated", "reason": "one short concrete sentence about what in THIS image makes it look that way"}
 verdict must be exactly one of: "outdated", "fine", "uncertain" (uncertain = screenshot failed to load content, blocked by a cookie banner covering everything, etc).'
 
@@ -102,7 +102,7 @@ with open(out_path, "w") as f:
     continue
   fi
 
-  verdict_json=$(echo "$resp_body" | jq -r '.content[0].text')
+  verdict_json=$(echo "$resp_body" | jq -r '.content[0].text' | sed -e 's/^```json//' -e 's/^```//' -e 's/```$//')
   if ! echo "$verdict_json" | jq -e . >/dev/null 2>&1; then
     scored=$(echo "$item" | jq --arg r "model did not return valid JSON: $verdict_json" \
       '. + {visionScore: {verdict: "error", reason: $r}}')
