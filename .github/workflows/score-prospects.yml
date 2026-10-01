@@ -43,14 +43,17 @@ jobs:
         run: |
           out="${{ github.event.inputs.batch_file }}"
           out="${out%.json}-scored.json"
-          bash scripts/prospecting/score-screenshots.sh "${{ github.event.inputs.batch_file }}" "$out" shots
+          batch_name=$(basename "${{ github.event.inputs.batch_file }}" .json)
+          shots_dir="prospecting/shots/$batch_name"
+          bash scripts/prospecting/score-screenshots.sh "${{ github.event.inputs.batch_file }}" "$out" "$shots_dir"
           echo "RESULT_FILE=$out" >> "$GITHUB_ENV"
+          echo "SHOTS_DIR=$shots_dir" >> "$GITHUB_ENV"
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: shots/*-desktop.png
+          path: ${{ env.SHOTS_DIR }}/*-desktop.png
           if-no-files-found: ignore
           retention-days: 7
 
@@ -59,5 +62,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "$RESULT_FILE"
+          # Only the final screenshots, not the raw fetched HTML/base64/API-body
+          # scratch files score-screenshots.sh also drops in this dir.
+          git add "$SHOTS_DIR"/*-desktop.png 2>/dev/null || true
           git commit -m "Score prospect batch: $(basename "$RESULT_FILE")" || echo "Nothing to commit"
           git push
