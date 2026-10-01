@@ -43,8 +43,16 @@ jobs:
         run: |
           out="${{ github.event.inputs.batch_file }}"
           out="${out%.json}-scored.json"
-          bash scripts/prospecting/score-screenshots.sh "${{ github.event.inputs.batch_file }}" "$out"
+          bash scripts/prospecting/score-screenshots.sh "${{ github.event.inputs.batch_file }}" "$out" shots
           echo "RESULT_FILE=$out" >> "$GITHUB_ENV"
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: shots/*-desktop.png
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Commit results
         run: |

@@ -23,13 +23,16 @@
 #  2. A vision pass over a screenshot, prompted with that supporting
 #     evidence, producing one of: outdated / borderline / fine / uncertain.
 #
-# Usage: scripts/prospecting/score-screenshots.sh <batch.json> <output.json>
+# Usage: scripts/prospecting/score-screenshots.sh <batch.json> <output.json> [shot_dir]
 # batch.json: array of {name, website, phone, rating, reviewsCount, mapsUrl}
+# shot_dir: where screenshots are written (default "shots", workspace-relative
+#   so a CI step can upload them afterward as a build artifact).
 # output.json: same objects, each with an added "visionScore" field:
 #   {"verdict": "outdated"|"borderline"|"fine"|"uncertain", "reason": "<one line>"}
 # or {"verdict": "error", "reason": "<what failed>"} if screenshotting or
 # scoring that one business failed - it still gets a row, never silently
-# dropped.
+# dropped. Also adds "screenshotFile": a path under shot_dir, or null when no
+# screenshot was taken (modern-builder skip, or a screenshot/scoring failure).
 #
 # Requires ANTHROPIC_API_KEY in the environment. Requires `playwright` +
 # Chromium installed (npx playwright install --with-deps chromium).
@@ -38,7 +41,11 @@ set -euo pipefail
 
 BATCH="${1:?Usage: $0 <batch.json> <output.json>}"
 OUT="${2:?Usage: $0 <batch.json> <output.json>}"
-SHOT_DIR="$(mktemp -d)"
+# Screenshots live under a workspace-relative dir (not mktemp) so a CI step
+# can upload them afterward - the scored output records each business's
+# screenshot filename (relative to this dir) so they can be matched back up.
+SHOT_DIR="${3:-shots}"
+mkdir -p "$SHOT_DIR"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ -z "${ANTHROPIC_API_KEY:-}" ]]; then
@@ -133,6 +140,7 @@ while IFS= read -r item; do
   name=$(echo "$item" | jq -r '.name')
   website=$(echo "$item" | jq -r '.website')
   prefix="$SHOT_DIR/site-$i"
+  screenshot_file="site-$i-desktop.png"
 
   echo "[$i] $name -> $website" >&2
 
@@ -143,14 +151,14 @@ while IFS= read -r item; do
 
   if [[ "$modern_builder" != "null" ]]; then
     scored=$(echo "$item" | jq --arg r "Built with $modern_builder, an AI coding tool - its output is current-generation design by construction, not a redesign prospect regardless of any single stylistic impression." \
-      '. + {visionScore: {verdict: "fine", reason: $r}}')
+      '. + {visionScore: {verdict: "fine", reason: $r}, screenshotFile: null}')
     results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
     continue
   fi
 
   if ! node "$SCRIPT_DIR/screenshot-site.js" "$website" "$prefix" >&2; then
     scored=$(echo "$item" | jq --arg r "screenshot failed to load" \
-      '. + {visionScore: {verdict: "error", reason: $r}}')
+      '. + {visionScore: {verdict: "error", reason: $r}, screenshotFile: null}')
     results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
     continue
   fi
@@ -158,7 +166,7 @@ while IFS= read -r item; do
   shot_path="$prefix-desktop.png"
   if [[ ! -s "$shot_path" ]]; then
     scored=$(echo "$item" | jq --arg r "no screenshot file produced" \
-      '. + {visionScore: {verdict: "error", reason: $r}}')
+      '. + {visionScore: {verdict: "error", reason: $r}, screenshotFile: null}')
     results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
     continue
   fi
@@ -196,8 +204,8 @@ with open(out_path, "w") as f:
 
   if [[ "$status" != "200" ]]; then
     echo "  API error ($status): $resp_body" >&2
-    scored=$(echo "$item" | jq --arg r "Anthropic API returned HTTP $status" \
-      '. + {visionScore: {verdict: "error", reason: $r}}')
+    scored=$(echo "$item" | jq --arg r "Anthropic API returned HTTP $status" --arg f "$screenshot_file" \
+      '. + {visionScore: {verdict: "error", reason: $r}, screenshotFile: $f}')
     results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
     continue
   fi
@@ -215,10 +223,10 @@ except Exception:
     sys.exit(1)
 ' <<< "$raw_text")
   if [[ -z "$verdict_json" ]] || ! echo "$verdict_json" | jq -e . >/dev/null 2>&1; then
-    scored=$(echo "$item" | jq --arg r "model did not return valid JSON: $raw_text" \
-      '. + {visionScore: {verdict: "error", reason: $r}}')
+    scored=$(echo "$item" | jq --arg r "model did not return valid JSON: $raw_text" --arg f "$screenshot_file" \
+      '. + {visionScore: {verdict: "error", reason: $r}, screenshotFile: $f}')
   else
-    scored=$(echo "$item" | jq --argjson v "$verdict_json" '. + {visionScore: $v}')
+    scored=$(echo "$item" | jq --argjson v "$verdict_json" --arg f "$screenshot_file" '. + {visionScore: $v, screenshotFile: $f}')
   fi
   results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
 done < "$SHOT_DIR/items.jsonl"
