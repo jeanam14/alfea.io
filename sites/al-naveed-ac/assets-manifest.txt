@@ -2,12 +2,14 @@
 # Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
 # Kept to a single person per shot (or none) — multi-person AI-generated
 # scenes have repeatedly produced crowding/scale errors on other sites.
-# gallery-1 and gallery-3 prompts were revised after the first pass produced
-# an unsupported floating pose and a kneeling-on-the-bed reach that couldn't
-# physically touch the unit — both now pin the technician to a step ladder.
-images/hero.jpg|wide photo of a single AC technician in navy branded workwear servicing an outdoor condenser unit on a Dubai villa rooftop, clear blue sky, realistic human body proportions, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
+# Regenerated with fal-ai/flux-pro/v1.1 (see scripts/generate-image.sh) after
+# the cheaper Schnell model rendered an indoor-style wall unit mounted
+# outdoors on a rooftop in hero.jpg — prompts below now explicitly describe
+# the physical shape of outdoor condenser units vs. indoor wall units so the
+# model can't conflate them even on a weaker model.
+images/hero.jpg|wide photo of a single AC technician in navy branded workwear kneeling beside a large rectangular outdoor AC condenser unit on a Dubai villa rooftop — a metal box roughly waist-high with a big circular fan grille on top, not a wall-mounted indoor unit — technician holding a gauge to the unit's side valves, clear blue sky, realistic human body proportions, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
 images/about.jpg|photo of a professional technician's van parked outside a modern Dubai villa with AC tools and spare parts visible in the open back of the van, no people, no visible logos or text, realistic editorial photography, no watermark|landscape_4_3
-images/gallery-1.jpg|photo of a single technician standing on a step ladder with both feet planted firmly on the ladder steps, cleaning the coils of a split AC indoor wall unit in a bright modern Dubai living room, realistic human body proportions and balance, realistic editorial photography, no text, no watermark|portrait_4_3
-images/gallery-2.jpg|close-up photo of a technician's gloved hands checking refrigerant gas pressure gauges on an AC outdoor condenser unit, no face visible, realistic editorial photography, no text, no watermark|square_hd
-images/gallery-3.jpg|photo of a single technician standing on a step ladder with both feet planted firmly on the ladder steps beside a bed, installing a new split AC indoor wall unit mounted on the wall within arm's reach, tools laid out on a nearby surface, realistic human body proportions and balance, realistic editorial photography, no text, no watermark|square_hd
-images/gallery-4.jpg|photo of a single technician on a rooftop in Dubai servicing a central AC condenser unit, city skyline visible in the background, realistic human body proportions, realistic editorial photography, no text, no watermark|portrait_4_3
+images/gallery-1.jpg|photo of a single technician standing on a step ladder with both feet planted firmly on the ladder steps, cleaning the coils of an indoor split AC wall unit — a slim white rectangular unit mounted high on the wall with a front louvered flap — in a bright modern Dubai living room, realistic human body proportions and balance, realistic editorial photography, no text, no watermark|portrait_4_3
+images/gallery-2.jpg|close-up photo of a technician's gloved hands checking refrigerant gas pressure gauges connected to an outdoor AC condenser unit's service valves, the unit's metal fan grille visible in the background, no face visible, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-3.jpg|photo of a single technician standing on a step ladder with both feet planted firmly on the ladder steps beside a bed, installing an indoor split AC wall unit — a slim white rectangular unit mounted on the wall within arm's reach — tools laid out on a nearby surface, realistic human body proportions and balance, realistic editorial photography, no text, no watermark|square_hd
+images/gallery-4.jpg|photo of a single technician on a rooftop in Dubai kneeling beside a large rectangular outdoor AC condenser unit — a metal box with a big circular fan grille on top, clearly distinct from an indoor wall unit — city skyline visible in the background, realistic human body proportions, realistic editorial photography, no text, no watermark|portrait_4_3

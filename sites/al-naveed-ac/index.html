@@ -106,6 +106,22 @@
   /* ---- AMC pricing cards ---- */
   .pricing-card{ background:#fff; border:1px solid var(--line); border-radius:1.5rem; padding:2rem; display:flex; flex-direction:column; position:relative; }
   .pricing-card.featured{ border-color:#0E8FA6; box-shadow:0 30px 60px -30px rgba(14,143,166,0.35); }
+
+  /* ---- Animated border beam (featured pricing card) ---- */
+  @property --beam-angle{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+  .border-beam::after{
+    content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+    background: conic-gradient(from var(--beam-angle,0deg), transparent 0%, #0E8FA6 8%, #5EEAD4 12%, transparent 22%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: beam-rotate 3.5s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes beam-rotate{ to{ --beam-angle:360deg; } }
+
+  /* ---- Hero cursor spotlight ---- */
+  .hero-spotlight{ position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .5s ease; background: radial-gradient(640px circle at var(--sx,50%) var(--sy,20%), #0E8FA61f, transparent 70%); }
+  .hero-spotlight.active{ opacity:1; }
   .pricing-card .tag{ position:absolute; top:-0.9rem; left:2rem; background:#0E8FA6; color:#fff; font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:.3rem .8rem; border-radius:999px; }
   .pricing-card ul{ display:flex; flex-direction:column; gap:.6rem; margin:1.5rem 0; flex:1; }
   .pricing-card li{ font-size:.9rem; color:var(--ink-soft); display:flex; gap:.5rem; align-items:flex-start; }
@@ -179,8 +195,9 @@
   <div id="smooth-content">
 
   <!-- Hero: full-width headline over an asymmetric layered visual, not a plain two-column split -->
-  <section class="relative pt-32 md:pt-40 pb-10">
+  <section id="hero" class="relative pt-32 md:pt-40 pb-10">
     <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#0E8FA6"></div>
+    <div id="hero-spotlight" class="hero-spotlight" aria-hidden="true"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative">
       <div class="flex flex-wrap gap-3 mb-8">
@@ -361,7 +378,7 @@
           <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20the%20Essential%20AMC%20plan" class="magnetic bg-[--ink] text-white font-semibold px-6 py-3 rounded-full text-sm text-center">Choose Essential</a>
         </div>
 
-        <div class="reveal-card pricing-card featured">
+        <div class="reveal-card pricing-card featured border-beam">
           <span class="tag">Best value</span>
           <h3 class="font-display font-bold text-lg">Annual Contract</h3>
           <p class="text-sm text-[--ink-soft] mt-1">Four scheduled visits — the smart choice for Dubai homes.</p>
@@ -738,6 +755,19 @@ function updateAmcSlider() {
 if (amcSlider) {
   amcSlider.addEventListener('input', updateAmcSlider);
   updateAmcSlider();
+}
+
+/* Hero cursor spotlight — same mouse-follow technique as .card-glow, applied to the whole hero */
+const heroSection = document.getElementById('hero');
+const heroSpotlight = document.getElementById('hero-spotlight');
+if (heroSection && heroSpotlight && !reduceMotion) {
+  heroSection.addEventListener('mousemove', (e) => {
+    const r = heroSection.getBoundingClientRect();
+    heroSpotlight.style.setProperty('--sx', `${e.clientX - r.left}px`);
+    heroSpotlight.style.setProperty('--sy', `${e.clientY - r.top}px`);
+    heroSpotlight.classList.add('active');
+  });
+  heroSection.addEventListener('mouseleave', () => heroSpotlight.classList.remove('active'));
 }
 
 /* Callback form compiles into a prefilled WhatsApp message — no backend needed */

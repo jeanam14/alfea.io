@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
-# Generate one AI image via fal.ai's Flux Schnell model and save it to a file.
+# Generate one AI image via fal.ai's FLUX1.1 [pro] model and save it to a file.
 #
 # Usage: scripts/generate-image.sh "<prompt>" <output-path> [image_size]
 # image_size defaults to landscape_16_9. Other valid values: square,
 # square_hd, portrait_4_3, portrait_16_9, landscape_4_3.
+#
+# Uses fal-ai/flux-pro/v1.1 rather than the cheaper flux/schnell: Schnell
+# repeatedly produced physically wrong results on technical/product scenes
+# (e.g. an indoor-only wall unit rendered mounted outdoors on a rooftop) —
+# Pro's much stronger prompt adherence is worth the ~$0.04-0.08/image cost
+# for client-facing work. Same input schema as Schnell, drop-in compatible.
 #
 # Requires FAL_API_KEY in the environment. In CI this comes from the
 # FAL_API_KEY repository secret; never hardcode a key here.
@@ -24,7 +30,7 @@ import json, sys
 print(json.dumps({"prompt": sys.argv[1], "image_size": sys.argv[2], "num_images": 1}))
 ' "$PROMPT" "$SIZE")
 
-RESPONSE=$(curl -s -X POST "https://fal.run/fal-ai/flux/schnell" \
+RESPONSE=$(curl -s -X POST "https://fal.run/fal-ai/flux-pro/v1.1" \
   -H "Authorization: Key $FAL_API_KEY" \
   -H "Content-Type: application/json" \
   -d "$BODY")
