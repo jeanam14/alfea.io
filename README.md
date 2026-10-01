@@ -2,7 +2,9 @@
 
 This repo holds every client preview/production site as a plain static page
 under `sites/`, built from a vertical starter under `templates/`. Pushing to
-`main` auto-deploys whatever changed, to its own
+`main` or `claude/agency-website-scale-bat25b` (the working branch Claude
+Code develops on — there's no PR flow here, that branch is pushed to
+directly) auto-deploys whatever changed, to its own
 `<slug>.web-creation.alfea.io` — scoped under the website-creation service
 branch, separate from the AI-receptionist service on the main domain.
 

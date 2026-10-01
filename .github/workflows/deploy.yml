@@ -23,7 +23,7 @@ name: Deploy client sites
 
 on:
   push:
-    branches: [main]
+    branches: [main, claude/agency-website-scale-bat25b]
     paths:
       - 'sites/**'
   workflow_dispatch: {}
