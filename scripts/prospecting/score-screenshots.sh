@@ -29,13 +29,16 @@ fi
 
 VISION_MODEL="claude-haiku-4-5"
 
-PROMPT='You are screening a small business website for a web design agency that cold-pitches free redesigns to businesses whose current site looks dated. You are shown one screenshot of a homepage.
+PROMPT='You are screening a small business website for a web design agency that cold-pitches free redesigns ONLY to businesses whose current site is a genuinely bad prospect - calling a site "outdated" when it is not wastes the agency sales time, so be conservative: when in doubt, say "fine". You are shown one screenshot of a homepage.
 
-Judge it the way a visitor forms a snap impression in the first few seconds - overall visual polish, whether the layout and type choices look like they are from the current decade, image quality, and whether it reads as actively maintained. Do not check technical things you cannot see in a screenshot (load speed, HTTPS, mobile responsiveness). A site can be visually dated even if the business itself is reputable and well-reviewed - rating and review count are not part of this judgment.
+Calibration from the agency owner reviewing your past calls:
+- A real "outdated" site looks like: a cluttered wall of near-identical generic icon-boxes (dozens of tiny stock icons each paired with 1-2 sentences of near-duplicate text), visible leftover template/builder artifacts (placeholder-looking image filenames, inconsistent spacing between sections, no single coherent visual identity tying the page together), or a massive irrelevant keyword-stuffed text block dumped somewhere on the page. That combination of clutter + no design system + spam-like content is the real bar - one site like this is bigbrothersme.com.
+- NOT enough on its own to call something "outdated": a single dated-looking color gradient, one old-fashioned icon or mascot, a slightly dated nav style, or general "this feels like 2015" vibes with nothing else wrong. A site that is clean, organized, and has ONE stylistic quirk is "fine", even if a sharper redesign is imaginable - the agency owner rejected several of your past "outdated" calls that were exactly this: single-issue, otherwise coherent sites. Only call "outdated" when you can point to multiple concrete, structural problems, not a stylistic impression of "era."
+- Rating and review count are never part of this judgment - a well-reviewed business can still have a bad site, and a new business can have a fine one.
 
 Respond with ONLY a raw JSON object - do not wrap it in ```json code fences, do not add any other text:
-{"verdict": "outdated", "reason": "one short concrete sentence about what in THIS image makes it look that way"}
-verdict must be exactly one of: "outdated", "fine", "uncertain" (uncertain = screenshot failed to load content, blocked by a cookie banner covering everything, etc).'
+{"verdict": "outdated", "reason": "one short concrete sentence naming the SPECIFIC structural problems in THIS image, not a vague era impression"}
+verdict must be exactly one of: "outdated", "fine", "uncertain" (uncertain = screenshot failed to load content, blocked by a cookie/security-check screen covering everything, etc).'
 
 jq -c '.[]' "$BATCH" > "$SHOT_DIR/items.jsonl"
 
