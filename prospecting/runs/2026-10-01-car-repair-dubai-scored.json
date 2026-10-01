@@ -8,8 +8,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Car%20Repair%20Near%20me%20Dubai&query_place_id=ChIJZcTL6tn-NAIRs1q-FMJq5UQ",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, organized layout with a clear visual hierarchy, coherent color scheme (orange and dark blue), professional typography, and well-structured sections with appropriate spacing and imagery."
-    }
+      "reason": "The site has a clean, coherent visual identity with professional typography, a modern color scheme (orange and dark navy), clear hierarchy, and a well-organized layout with no clutter or template artifacts visible."
+    },
+    "screenshotFile": "site-1-desktop.jpg"
   },
   {
     "name": "Toufan Auto Service Center - Deira Auto Repair",
@@ -20,8 +21,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Toufan%20Auto%20Service%20Center%20-%20Deira%20Auto%20Repair&query_place_id=ChIJ-4M7ZtNdXz4RfcU0hwxPa7A",
     "visionScore": {
       "verdict": "fine",
-      "reason": "Clean layout with coherent visual identity, professional typography hierarchy, clear CTA, and organized content sections; the dark diagonal design element and color scheme are stylistically modern and intentional rather than cluttered or template-artifact debris."
-    }
+      "reason": "The site has a clean, modern design with coherent visual hierarchy, professional typography, a clear call-to-action, and contemporary layout—no structural clutter, template artifacts, or spam-like content visible."
+    },
+    "screenshotFile": "site-2-desktop.jpg"
   },
   {
     "name": "Free Look Auto Repairing",
@@ -32,8 +34,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Free%20Look%20Auto%20Repairing&query_place_id=ChIJNQtwwyNdXz4RmeIJHPo1EvA",
     "visionScore": {
       "verdict": "uncertain",
-      "reason": "screenshot shows only a single red sports car icon centered on a black background with no visible website content, navigation, or layout structure"
-    }
+      "reason": "The screenshot shows only a loading state with a single car icon on a black background, with no actual homepage content visible to evaluate design quality or coherence."
+    },
+    "screenshotFile": "site-3-desktop.jpg"
   },
   {
     "name": "PAL AUTO GARAGE",
@@ -44,8 +47,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=PAL%20AUTO%20GARAGE&query_place_id=ChIJ_SjMNulcXz4RZQ_QIlDaqjk",
     "visionScore": {
       "verdict": "uncertain",
-      "reason": "Screenshot appears to be a solid red screen with only a loading spinner visible - unable to assess actual website content, design structure, or layout"
-    }
+      "reason": "The screenshot shows only a loading spinner on a red background with no actual site content visible, making design assessment impossible."
+    },
+    "screenshotFile": "site-4-desktop.jpg"
   },
   {
     "name": "Al Yezeya auto repair and mechanic",
@@ -56,8 +60,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Yezeya%20auto%20repair%20and%20mechanic&query_place_id=ChIJFY1MnQ9DXz4RS7AsS6fFyaE",
     "visionScore": {
       "verdict": "fine",
-      "reason": "Clean layout with coherent visual identity, professional hero section with clear call-to-action, organized statistics display, and consistent dark theme with red accent color throughout - no structural clutter or design system issues despite the red being a bold choice."
-    }
+      "reason": "The site has a coherent dark-themed design with clear typography, modern layout structure, and professional visual hierarchy; the dated appearance of the hero image and basic statistics counters are minor styling choices, not structural or systemic design problems."
+    },
+    "screenshotFile": "site-5-desktop.jpg"
   },
   {
     "name": "Quick Lane Service",
@@ -67,9 +72,10 @@
     "reviewsCount": 206,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Quick%20Lane%20Service&query_place_id=ChIJZSC6SDxDXz4Rmv1xiED_ymk",
     "visionScore": {
-      "verdict": "fine",
-      "reason": "The site has a clean layout with consistent branding, organized sections (Services, Locations, Special Offers), a functional registration modal, and no visible template artifacts or clutter—the blue color scheme and styling are cohesive despite being somewhat conservative."
-    }
+      "verdict": "borderline",
+      "reason": "The site has a clean, modern design with coherent visual identity and professional layout, but the footer copyright year of 2021 signals lack of maintenance, and the registration modal overlay appears somewhat dated in its styling and approach."
+    },
+    "screenshotFile": "site-6-desktop.jpg"
   },
   {
     "name": "Doctor Cars Auto Garage",
@@ -80,7 +86,8 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Doctor%20Cars%20Auto%20Garage&query_place_id=ChIJgz-WIuhcXz4Rl5wYYqpUJGs",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean layout with a clear navigation structure, professional header, readable typography, and organized content sections; while the large semi-transparent text overlay and color scheme may feel slightly dated stylistically, there are no structural problems, clutter, template artifacts, or multiple design system failures present."
-    }
+      "reason": "Built with base44, an AI coding tool - its output is current-generation design by construction, not a redesign prospect regardless of any single stylistic impression."
+    },
+    "screenshotFile": null
   }
 ]
