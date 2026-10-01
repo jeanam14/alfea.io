@@ -2,7 +2,12 @@
 // Capture desktop + mobile screenshots of a page for human/visual review.
 //
 // Usage: node scripts/prospecting/screenshot-site.js <url> <out-prefix>
-// Writes <out-prefix>-desktop.png and <out-prefix>-mobile.png.
+// Writes <out-prefix>-desktop.jpg and <out-prefix>-mobile.jpg.
+//
+// JPEG, not PNG: these get committed to the repo and fetched back one file
+// at a time via the GitHub API, which fails outright above 1MB with no
+// fallback available in that session - a full-viewport PNG screenshot
+// routinely exceeds that, a JPEG at quality 82 essentially never does.
 //
 // Requires `playwright` + its Chromium build to be installed wherever this
 // runs (`npm install playwright && npx playwright install --with-deps
@@ -25,8 +30,8 @@ async function shoot(url, outPrefix) {
     } catch (e) {
       console.error(`  [${label}] navigation issue: ${e.message}`);
     }
-    const outPath = `${outPrefix}-${label}.png`;
-    await page.screenshot({ path: outPath, fullPage: false });
+    const outPath = `${outPrefix}-${label}.jpg`;
+    await page.screenshot({ path: outPath, fullPage: false, type: "jpeg", quality: 82 });
     console.log(`  [${label}] saved ${outPath}`);
     await page.close();
   }

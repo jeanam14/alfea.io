@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: ${{ env.SHOTS_DIR }}/*-desktop.png
+          path: ${{ env.SHOTS_DIR }}/*-desktop.jpg
           if-no-files-found: ignore
           retention-days: 7
 
@@ -64,6 +64,6 @@ jobs:
           git add "$RESULT_FILE"
           # Only the final screenshots, not the raw fetched HTML/base64/API-body
           # scratch files score-screenshots.sh also drops in this dir.
-          git add "$SHOTS_DIR"/*-desktop.png 2>/dev/null || true
+          git add "$SHOTS_DIR"/*-desktop.jpg 2>/dev/null || true
           git commit -m "Score prospect batch: $(basename "$RESULT_FILE")" || echo "Nothing to commit"
           git push

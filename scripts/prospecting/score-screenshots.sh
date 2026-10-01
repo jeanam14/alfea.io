@@ -140,7 +140,7 @@ while IFS= read -r item; do
   name=$(echo "$item" | jq -r '.name')
   website=$(echo "$item" | jq -r '.website')
   prefix="$SHOT_DIR/site-$i"
-  screenshot_file="site-$i-desktop.png"
+  screenshot_file="site-$i-desktop.jpg"
 
   echo "[$i] $name -> $website" >&2
 
@@ -163,7 +163,7 @@ while IFS= read -r item; do
     continue
   fi
 
-  shot_path="$prefix-desktop.png"
+  shot_path="$prefix-desktop.jpg"
   if [[ ! -s "$shot_path" ]]; then
     scored=$(echo "$item" | jq --arg r "no screenshot file produced" \
       '. + {visionScore: {verdict: "error", reason: $r}, screenshotFile: null}')
@@ -187,7 +187,7 @@ with open(out_path, "w") as f:
         "messages": [{
             "role": "user",
             "content": [
-                {"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": image_b64}},
+                {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": image_b64}},
                 {"type": "text", "text": prompt},
             ],
         }],
