@@ -5,14 +5,21 @@
 # never removes a business from that list by itself.
 #
 # Two layers, in order:
-#  1. A cheap HTML-level pre-check. If the site was built on a modern
-#     AI/no-code builder (base44, lovable, webflow, wix, squarespace,
-#     shopify, carrd, framer, bubble, softr) it is auto-verdicted "fine" and
-#     never screenshotted/vision-scored - these are current-generation by
-#     construction, whatever a single screenshot might suggest. Otherwise,
-#     legacy signals (stale copyright year, raw .html/.php pages, heavily
-#     keyword-stuffed title) are extracted and handed to the vision step as
-#     supporting evidence, not a verdict.
+#  1. A cheap HTML-level pre-check. If the site was built by an AI coding
+#     tool (base44, lovable, emergent) it is auto-verdicted "fine" and never
+#     screenshotted/vision-scored - these generate current-looking design by
+#     construction, whatever a single screenshot might suggest. This is
+#     deliberately narrow: ordinary no-code builders (Wix, Webflow,
+#     Squarespace, Shopify, ...) are NOT on this list - their output quality
+#     varies entirely by what the business owner did with the template, so a
+#     Wix site can absolutely still be a genuine outdated-design prospect and
+#     must go through normal vision scoring like anything else. Cursor-built
+#     sites can't be detected this way at all: Cursor is an editor, not a
+#     hosting platform, so a Cursor-generated site deploys anywhere and
+#     leaves no fingerprint to check - it falls through to normal scoring.
+#     Otherwise, legacy signals (stale copyright year, raw .html/.php pages,
+#     heavily keyword-stuffed title) are extracted and handed to the vision
+#     step as supporting evidence, not a verdict.
 #  2. A vision pass over a screenshot, prompted with that supporting
 #     evidence, producing one of: outdated / borderline / fine / uncertain.
 #
@@ -81,14 +88,7 @@ low = html.lower()
 builders = {
     "base44": ["base44.app", "base44.com", "edit with base44"],
     "lovable": ["lovable.app", "lovable.dev", "made with lovable"],
-    "webflow": ["webflow.io", "powered by webflow"],
-    "wix": ["wixsite.com", "wix.com/website"],
-    "squarespace": ["squarespace.com"],
-    "shopify": ["myshopify.com"],
-    "carrd": ["carrd.co"],
-    "framer": ["framer.app", "framer.website"],
-    "bubble": ["bubbleapps.io"],
-    "softr": ["softr.app"],
+    "emergent": ["emergent.host", "emergentagent.com"],
 }
 modern_builder = None
 haystack = low + " " + final_url.lower()
@@ -142,7 +142,7 @@ while IFS= read -r item; do
   echo "  html check: builder=$modern_builder signals=$signals" >&2
 
   if [[ "$modern_builder" != "null" ]]; then
-    scored=$(echo "$item" | jq --arg r "Built on $modern_builder, a current AI/no-code website builder - not a redesign prospect regardless of any single stylistic impression." \
+    scored=$(echo "$item" | jq --arg r "Built with $modern_builder, an AI coding tool - its output is current-generation design by construction, not a redesign prospect regardless of any single stylistic impression." \
       '. + {visionScore: {verdict: "fine", reason: $r}}')
     results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
     continue
