@@ -7,9 +7,10 @@
     "reviewsCount": 11,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Newell%20Electromechanical%20Works%20LLC&query_place_id=ChIJlXXM9nRbXz4RXyIb1I_ofsI",
     "visionScore": {
-      "verdict": "fine",
-      "reason": "The homepage has a clean, organized layout with a clear navigation bar, professional logo, and a coherent dark theme; while the background appears minimal/empty, there are no visible structural problems like cluttered icon boxes, template artifacts, or spam content."
-    }
+      "verdict": "uncertain",
+      "reason": "the screenshot shows only a dark header with navigation and logo, with no meaningful content visible to assess the site's design quality or technical approach"
+    },
+    "screenshotFile": "site-1-desktop.jpg"
   },
   {
     "name": "Fresh Life Technical Services",
@@ -20,8 +21,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fresh%20Life%20Technical%20Services&query_place_id=ChIJZy2cnCpDXz4Rv9q95FGW_dU",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a cohesive design system with consistent branding, clean layout, and organized navigation—while the color palette and anime aesthetic may feel niche, there are no structural problems like clutter, placeholder artifacts, or duplicate generic content boxes."
-    }
+      "reason": "The site has a clean, coherent visual identity with a modern pink/mauve color scheme, professional typography, clear navigation, and organized product layout - the aesthetic is intentional and contemporary, not outdated."
+    },
+    "screenshotFile": "site-2-desktop.jpg"
   },
   {
     "name": "Kamrul Sikdar Technical Services LLC",
@@ -32,8 +34,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kamrul%20Sikdar%20Technical%20Services%20LLC&query_place_id=ChIJi66un3BDXz4RPxmFWYfRxz0",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, cohesive dark blue design with clear hierarchy, professional imagery, readable typography, and a single strong call-to-action; the cookie banner overlay is standard and temporary, not a structural design flaw."
-    }
+      "reason": "The site displays a clean, coherent visual design with professional typography, a clear navigation structure, a strong hero section with construction imagery, and modern button styling—the cookie banner overlay is a standard compliance feature, not a design flaw."
+    },
+    "screenshotFile": "site-3-desktop.jpg"
   },
   {
     "name": "Dilawar Technical Services LLC",
@@ -43,9 +46,10 @@
     "reviewsCount": 48,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dilawar%20Technical%20Services%20LLC&query_place_id=ChIJ4S9jejFDXz4Rinj2IEX1lFo",
     "visionScore": {
-      "verdict": "error",
-      "reason": "model did not return valid JSON: I'm unable to see any content in the screenshot provided - it appears to be completely blank or failed to load. I cannot evaluate the website design without visible content.\n\n{\"verdict\": \"uncertain\", \"reason\": \"screenshot appears blank or failed to load - no website content visible to evaluate\"}"
-    }
+      "verdict": "uncertain",
+      "reason": "The screenshot appears to be blank or contains no visible content, making it impossible to assess the design quality regardless of the missing viewport meta tag."
+    },
+    "screenshotFile": "site-4-desktop.jpg"
   },
   {
     "name": "DAKEEK TECHNICAL SERVICES CO. L.L.C",
@@ -56,8 +60,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=DAKEEK%20TECHNICAL%20SERVICES%20CO.%20L.L.C&query_place_id=ChIJSdsD5_xdXz4RrHzTng2Y8X4",
     "visionScore": {
       "verdict": "uncertain",
-      "reason": "Screenshot shows only a black background with the text 'DAKEEK' - insufficient content to evaluate site structure, design system, or layout quality"
-    }
+      "reason": "Screenshot shows only a text logo on a black background with no actual website content, layout, or design elements visible to evaluate."
+    },
+    "screenshotFile": "site-5-desktop.jpg"
   },
   {
     "name": "AlSibah Technical Services",
@@ -68,8 +73,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AlSibah%20Technical%20Services&query_place_id=ChIJEynMqrtDXz4RPb584QdHGXc",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, organized layout with a professional HVAC/MEP hero image, clear navigation, and a cohesive visual identity with consistent branding - no structural clutter, no template artifacts, and no spam-like content patterns visible."
-    }
+      "reason": "The site displays a clean, professional layout with a coherent visual identity (blue color scheme, clear navigation, professional HVAC/MEP imagery) and no visible structural clutter, keyword stuffing, or template artifacts."
+    },
+    "screenshotFile": "site-6-desktop.jpg"
   },
   {
     "name": "MNA CONTRACTING L.L.C",
@@ -79,9 +85,10 @@
     "reviewsCount": 28,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MNA%20CONTRACTING%20L.L.C&query_place_id=ChIJywgdsnlDXz4RFKxyvuQNWXk",
     "visionScore": {
-      "verdict": "fine",
-      "reason": "Clean layout with cohesive green/dark blue color scheme, clear navigation structure, and organized content sections with no visible template artifacts or keyword-stuffing clutter."
-    }
+      "verdict": "uncertain",
+      "reason": "screenshot shows only a green gradient background and navigation header with a cookie banner overlay obscuring any actual content below, preventing meaningful assessment of design quality or coherence"
+    },
+    "screenshotFile": "site-7-desktop.jpg"
   },
   {
     "name": "Techsa Technical Services LLC",
@@ -91,9 +98,10 @@
     "reviewsCount": 19,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Techsa%20Technical%20Services%20LLC&query_place_id=ChIJX6dWF1s3O6wRW22bLolp2_w",
     "visionScore": {
-      "verdict": "fine",
-      "reason": "The image appears to be blank or failed to load, making assessment impossible."
-    }
+      "verdict": "uncertain",
+      "reason": "The screenshot appears to be blank or not fully loaded, making it impossible to assess the site's design quality; the missing mobile viewport meta tag is a technical concern but cannot be evaluated without visible content."
+    },
+    "screenshotFile": "site-8-desktop.jpg"
   },
   {
     "name": "Home Renovation Experts Dubai",
@@ -104,7 +112,8 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Home%20Renovation%20Experts%20Dubai&query_place_id=ChIJifbfb8Ypmw0R0QVgQiIjW9g",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean layout with coherent visual identity (red accent color, professional typography, organized navigation), a clear hero section with call-to-action, and professional imagery—the design is modern and functional despite the pink color overlay effect on the hero image."
-    }
+      "reason": "Clean, modern design with coherent visual identity, professional typography, and a clear call-to-action; no structural clutter, template artifacts, or dated design patterns evident."
+    },
+    "screenshotFile": "site-9-desktop.jpg"
   }
 ]
