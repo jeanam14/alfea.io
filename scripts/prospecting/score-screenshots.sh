@@ -4,7 +4,15 @@
 # auto-accept/reject gate. Output feeds Jean's own yes/no review list; it
 # never removes a business from that list by itself.
 #
-# Two layers, in order:
+# Three layers, in order:
+#  0. No website at all (batch item has no "website", or it's null/empty) -
+#     verdicted "no-website" immediately, no network call made. Also checked
+#     after the HTML pre-check below: a domain that no longer resolves /
+#     refuses connections, or resolves to a parked/for-sale registrar page,
+#     gets the same "no-website" verdict (reason text says which case it
+#     is) - the business used to have, or still lists, a website but there's
+#     nothing there to redesign anymore, which is functionally the same
+#     prospect as never having had one.
 #  1. A cheap HTML-level pre-check. If the site was built by an AI coding
 #     tool (base44, lovable, emergent) it is auto-verdicted "fine" and never
 #     screenshotted/vision-scored - these generate current-looking design by
@@ -25,14 +33,19 @@
 #
 # Usage: scripts/prospecting/score-screenshots.sh <batch.json> <output.json> [shot_dir]
 # batch.json: array of {name, website, phone, rating, reviewsCount, mapsUrl}
+#   - "website" may be null/missing/"" for a business with no website listed
+#     on its Google Maps profile.
 # shot_dir: where screenshots are written (default "shots", workspace-relative
 #   so a CI step can upload them afterward as a build artifact).
 # output.json: same objects, each with an added "visionScore" field:
-#   {"verdict": "outdated"|"borderline"|"fine"|"uncertain", "reason": "<one line>"}
+#   {"verdict": "outdated"|"borderline"|"fine"|"uncertain"|"no-website", "reason": "<one line>"}
 # or {"verdict": "error", "reason": "<what failed>"} if screenshotting or
 # scoring that one business failed - it still gets a row, never silently
 # dropped. Also adds "screenshotFile": a path under shot_dir, or null when no
-# screenshot was taken (modern-builder skip, or a screenshot/scoring failure).
+# screenshot was taken (no website, modern-builder skip, unreachable domain,
+# or a screenshot/scoring failure). A parked/for-sale domain still gets
+# screenshotted (the registrar page is evidence worth seeing) even though its
+# verdict is "no-website".
 #
 # Requires ANTHROPIC_API_KEY in the environment. Requires `playwright` +
 # Chromium installed (npx playwright install --with-deps chromium).
@@ -73,21 +86,33 @@ Respond with ONLY a raw JSON object - do not wrap it in ```json code fences, do 
 verdict must be exactly one of: "outdated", "borderline", "fine", "uncertain".'
 
 # Checks the site's HTML for a modern-builder fingerprint (auto "fine", skip
-# vision) or legacy signals (stale copyright, raw .html/.php pages,
-# keyword-stuffed title) to hand to the vision prompt as supporting evidence.
-# Prints one JSON object: {"modernBuilder": "<name>"|null, "signals": "<text>"}
+# vision), legacy signals (stale copyright, raw .html/.php pages,
+# keyword-stuffed title) to hand to the vision prompt as supporting evidence,
+# and whether the domain is actually alive (vs. unreachable or parked/for
+# sale - a dead domain that used to be a website, functionally a "no
+# website" prospect). Prints one JSON object:
+# {"modernBuilder": "<name>"|null, "signals": "<text>", "siteStatus": "active"|"unreachable"|"parked"}
 check_site_html() {
   local url="$1"
   local html_file="$2"
-  local final_url
-  curl -sL --max-time 15 -A "$UA" "$url" -o "$html_file" 2>/dev/null || : > "$html_file"
+  local final_url http_code curl_exit=0
+
+  # The `|| curl_exit=$?` form (not a bare assignment) matters under
+  # `set -e`: an unguarded `http_code=$(curl ...)` would abort the whole
+  # script the moment one site is unreachable, instead of just scoring that
+  # one business as unreachable and moving to the next.
+  http_code=$(curl -sL --max-time 15 -A "$UA" -o "$html_file" -w '%{http_code}' "$url" 2>/dev/null) || curl_exit=$?
+  http_code="${http_code:-000}"
+  if [[ $curl_exit -ne 0 ]]; then
+    : > "$html_file"
+  fi
   final_url=$(curl -sL --max-time 15 -A "$UA" -o /dev/null -w '%{url_effective}' "$url" 2>/dev/null) || final_url="$url"
 
   python3 -c '
 import json, re, sys
 from datetime import datetime, timezone
 
-html_path, final_url = sys.argv[1], sys.argv[2]
+html_path, final_url, curl_exit, http_code = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4]
 with open(html_path, encoding="utf-8", errors="replace") as f:
     html = f.read()
 low = html.lower()
@@ -103,6 +128,29 @@ for name, hints in builders.items():
     if any(h in haystack for h in hints):
         modern_builder = name
         break
+
+# Registrar / domain-marketplace parking pages - the business used to have a
+# site at this domain but it is gone; curl still succeeds (200) so this is
+# invisible to a plain reachability check and needs its own fingerprint.
+parked_hints = [
+    "domain is for sale", "buy this domain", "this domain may be for sale",
+    "domain name has expired", "is available for purchase",
+    "godaddy.com/domains", "dan.com", "afternic.com", "hugedomains.com",
+    "sedo.com", "domain parking", "this web page is parked",
+    "checkout the full domain", "page is parked free, courtesy of",
+    "namecheap.com/domains/parking", "buy-domains",
+]
+is_parked = any(h in low for h in parked_hints)
+
+site_status = "active"
+if curl_exit != 0 or http_code == "000":
+    site_status = "unreachable"
+elif is_parked:
+    site_status = "parked"
+elif http_code[:1] in ("4", "5") and len(html.strip()) < 200:
+    # A persistent HTTP error with a near-empty body - not a real page
+    # misconfigured, just dead.
+    site_status = "unreachable"
 
 signals = []
 years = [int(y) for y in re.findall(r"(?:\xa9|copyright)\D{0,10}(\d{4})", html, re.I)]
@@ -127,8 +175,9 @@ if not re.search(r"<meta[^>]+name=[\"\x27]viewport[\"\x27]", html, re.I):
 print(json.dumps({
     "modernBuilder": modern_builder,
     "signals": "; ".join(signals) if signals else "none detected",
+    "siteStatus": site_status,
 }))
-' "$html_file" "$final_url"
+' "$html_file" "$final_url" "$curl_exit" "$http_code"
 }
 
 jq -c '.[]' "$BATCH" > "$SHOT_DIR/items.jsonl"
@@ -144,10 +193,39 @@ while IFS= read -r item; do
 
   echo "[$i] $name -> $website" >&2
 
+  if [[ "$website" == "null" || -z "$website" ]]; then
+    scored=$(echo "$item" | jq --arg r "No website listed on this business's Google Maps profile." \
+      '. + {visionScore: {verdict: "no-website", reason: $r}, screenshotFile: null}')
+    results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
+    continue
+  fi
+
   html_check=$(check_site_html "$website" "$prefix-page.html")
   modern_builder=$(echo "$html_check" | jq -r '.modernBuilder')
   signals=$(echo "$html_check" | jq -r '.signals')
-  echo "  html check: builder=$modern_builder signals=$signals" >&2
+  site_status=$(echo "$html_check" | jq -r '.siteStatus')
+  echo "  html check: builder=$modern_builder signals=$signals status=$site_status" >&2
+
+  if [[ "$site_status" == "unreachable" ]]; then
+    scored=$(echo "$item" | jq --arg r "Website domain does not resolve or refuses connections - likely expired or taken offline." \
+      '. + {visionScore: {verdict: "no-website", reason: $r}, screenshotFile: null}')
+    results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
+    continue
+  fi
+
+  if [[ "$site_status" == "parked" ]]; then
+    # Still screenshot the parked/for-sale page as visible evidence, but
+    # skip the vision call entirely - there's no design to judge.
+    if node "$SCRIPT_DIR/screenshot-site.js" "$website" "$prefix" >&2 && [[ -s "$prefix-desktop.jpg" ]]; then
+      scored=$(echo "$item" | jq --arg r "Domain now shows a parked/for-sale page - the business's old website is gone." --arg f "$screenshot_file" \
+        '. + {visionScore: {verdict: "no-website", reason: $r}, screenshotFile: $f}')
+    else
+      scored=$(echo "$item" | jq --arg r "Domain now shows a parked/for-sale page - the business's old website is gone." \
+        '. + {visionScore: {verdict: "no-website", reason: $r}, screenshotFile: null}')
+    fi
+    results=$(echo "$results" | jq --argjson s "$scored" '. + [$s]')
+    continue
+  fi
 
   if [[ "$modern_builder" != "null" ]]; then
     scored=$(echo "$item" | jq --arg r "Built with $modern_builder, an AI coding tool - its output is current-generation design by construction, not a redesign prospect regardless of any single stylistic impression." \
