@@ -63,13 +63,22 @@ jobs:
         run: |
           npm install -g wrangler
 
-          # Resolve the Netlify DNS zone id for alfea.io once.
-          zone_id=$(curl -s "https://api.netlify.com/api/v1/dns_zones" \
-            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
-            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const z=JSON.parse(d).find(x=>x.name==='alfea.io');console.log(z?z.id:'')})")
+          # Resolve the Netlify DNS zone id for alfea.io once. This is
+          # best-effort: a broken/expired NETLIFY_AUTH_TOKEN must never block
+          # the Cloudflare Pages deploy below, which is what actually hosts
+          # each site. If this lookup fails, every site still deploys and
+          # gets its *.pages.dev URL; only the pretty custom-domain DNS
+          # record is skipped, with a clear warning per site.
+          zones_response=$(curl -s -w '\n%{http_code}' "https://api.netlify.com/api/v1/dns_zones" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN")
+          zones_status=$(echo "$zones_response" | tail -n1)
+          zones_body=$(echo "$zones_response" | sed '$d')
+          zone_id=$(echo "$zones_body" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const z=arr.find(x=>x.name==='alfea.io');console.log(z?z.id:'')}catch(e){console.log('')}})")
           if [ -z "$zone_id" ]; then
-            echo "::error::Could not find the alfea.io zone in Netlify DNS — check NETLIFY_AUTH_TOKEN."
-            exit 1
+            echo "::warning::Could not resolve the alfea.io zone in Netlify DNS (HTTP $zones_status: $zones_body)."
+            echo "::warning::NETLIFY_AUTH_TOKEN is likely expired/invalid — refresh it in GitHub repo secrets."
+            echo "::warning::Continuing with Cloudflare Pages deploys; custom-domain DNS records will be skipped."
           fi
 
           while IFS= read -r slug; do
@@ -83,6 +92,7 @@ jobs:
             echo "=== $slug ==="
             wrangler pages project create "$project" --production-branch main 2>/dev/null || true
             wrangler pages deploy "$dir" --project-name "$project" --branch main
+            echo "Live now at: https://$target (custom domain https://$hostname pending DNS below)"
 
             echo "Adding custom domain $hostname to Cloudflare Pages project $project"
             curl -s -o /dev/null -w "cf custom domain: %{http_code}\n" -X POST \
@@ -91,10 +101,15 @@ jobs:
               -H "Content-Type: application/json" \
               --data "{\"name\":\"$hostname\"}"
 
+            if [ -z "$zone_id" ]; then
+              echo "::warning::Skipping Netlify DNS record for $hostname — no valid zone_id (see warning above)."
+              continue
+            fi
+
             # Create the CNAME in Netlify DNS, only if it doesn't already exist.
             existing=$(curl -s "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
               -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
-              node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const r=JSON.parse(d).find(x=>x.hostname==='$hostname');console.log(r?r.id:'')})")
+              node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const r=arr.find(x=>x.hostname==='$hostname');console.log(r?r.id:'')}catch(e){console.log('')}})")
 
             if [ -z "$existing" ]; then
               echo "Creating Netlify DNS CNAME: $hostname -> $target"
