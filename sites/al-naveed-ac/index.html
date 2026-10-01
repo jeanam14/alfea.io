@@ -360,13 +360,15 @@
         <p class="text-[--ink-soft] text-lg">A poorly maintained AC can spike your bill by up to 30% — Al Naveed's own words. Regular servicing keeps it running efficiently all year.</p>
       </div>
 
-      <div class="reveal-up bg-[--paper] border border-[--line] rounded-2xl p-7 mb-12 max-w-2xl">
-        <div class="flex justify-between text-sm font-semibold text-[--ink-soft] mb-3">
-          <span>Unmaintained</span>
-          <span>Optimized</span>
+      <div class="reveal-up bg-[--paper] border border-[--line] rounded-2xl p-7 mb-12 grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
+        <div>
+          <div class="flex justify-between text-sm font-semibold text-[--ink-soft] mb-3">
+            <span>Unmaintained</span>
+            <span>Optimized</span>
+          </div>
+          <input type="range" min="0" max="100" value="60" id="amc-slider" class="amc-slider" />
         </div>
-        <input type="range" min="0" max="100" value="60" id="amc-slider" class="amc-slider" />
-        <div class="grid grid-cols-2 gap-5 mt-6">
+        <div class="grid grid-cols-2 gap-4">
           <div class="stat-card">
             <div class="icon-badge mx-auto mb-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 11v6h-6"/></svg></div>
             <div class="font-display font-extrabold text-3xl text-brand"><span id="bill-reduction">18</span>%</div>
@@ -797,8 +799,11 @@ gsap.utils.toArray('.reveal-up').forEach((el) => {
 });
 
 gsap.utils.toArray('.reveal-card').forEach((el, i) => {
-  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
-    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'expo.out', delay: (i % 4) * 0.07,
+  // Top inset stays at -2.5rem (not 0) in both states so elements that
+  // intentionally sit above their own card edge — e.g. the "Best value"
+  // pricing tag — never get clipped by this reveal mask, at rest or mid-animation.
+  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(-2.5rem 0 100% 0)' }, {
+    opacity: 1, y: 0, clipPath: 'inset(-2.5rem 0 0% 0)', duration: 0.9, ease: 'expo.out', delay: (i % 4) * 0.07,
     scrollTrigger: { trigger: el, start: 'top 88%' },
   });
 });
