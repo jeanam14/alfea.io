@@ -7,9 +7,10 @@
     "reviewsCount": 70,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunmar%20Sky%20Electromechanical&query_place_id=ChIJuRHPBUtDXz4RcGa6L8zBcnk",
     "visionScore": {
-      "verdict": "fine",
-      "reason": "The site has a clean layout with consistent branding, organized navigation, and professional presentation despite some modest stylistic choices like the compass logo and color scheme that could be fresher."
-    }
+      "verdict": "outdated",
+      "reason": "Footer copyright stuck at 2019, combined with generic template-style layout, flat icon design language, and lack of visual hierarchy or modern design system coherence"
+    },
+    "screenshotFile": "site-1-desktop.jpg"
   },
   {
     "name": "Inzoone Technical services co.",
@@ -20,8 +21,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Inzoone%20Technical%20services%20co.&query_place_id=ChIJJXIFIR5dXz4R7KeYYVkl5Ys",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, modern layout with a clear visual hierarchy, coherent design system (dark theme with blue/green accent colors), professional hero section with strong call-to-action buttons, and organized content presentation without clutter or template artifacts."
-    }
+      "reason": "Clean, modern design with coherent visual identity, professional hero layout, clear CTAs, and no structural clutter or technical decay signals."
+    },
+    "screenshotFile": "site-2-desktop.jpg"
   },
   {
     "name": "Mohammed Mamun Biplab Technical Services",
@@ -31,9 +33,10 @@
     "reviewsCount": 1,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mohammed%20Mamun%20Biplab%20Technical%20Services&query_place_id=ChIJYcBN3R1DXz4RuhO39_CUnyE",
     "visionScore": {
-      "verdict": "fine",
-      "reason": "The image appears to be blank or failed to load any visible content, making it impossible to assess the site's design quality."
-    }
+      "verdict": "uncertain",
+      "reason": "The screenshot appears to be blank or not fully loaded, making it impossible to assess the site's design quality; combined with the missing mobile viewport meta tag, a full page view is needed to make a reliable judgment."
+    },
+    "screenshotFile": "site-3-desktop.jpg"
   },
   {
     "name": "Al Murjan Electrical Installations LLC",
@@ -44,8 +47,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Murjan%20Electrical%20Installations%20LLC&query_place_id=ChIJHZztdUxDXz4RoAmQCpK4_Lc",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The homepage shows a clean carousel of professional work photos with consistent branding, organized navigation, and a coherent visual identity—no structural clutter, template artifacts, or content problems visible."
-    }
+      "reason": "The site displays a clean, professional layout with a coherent visual identity, modern navigation structure, and a clear focus on the company's work; the screenshot shows genuine business content (team training/installation work) with no cluttered template artifacts or structural design problems."
+    },
+    "screenshotFile": "site-4-desktop.jpg"
   },
   {
     "name": "RAMZ AL WAFA TECHNICAL SERVICES",
@@ -56,7 +60,8 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=RAMZ%20AL%20WAFA%20TECHNICAL%20SERVICES&query_place_id=ChIJ5WwygbNDXz4R7nalZg8Cj3s",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, modern layout with a clear hero section, consistent navigation, professional typography, and a coherent visual identity built around the blue logo and red accent color—no structural clutter, template artifacts, or spam-like content visible."
-    }
+      "reason": "The site has a clean, modern design with a coherent visual identity, professional hero section with clear messaging, functional navigation, and contemporary styling despite minor dated color choices in some text elements."
+    },
+    "screenshotFile": "site-5-desktop.jpg"
   }
 ]
