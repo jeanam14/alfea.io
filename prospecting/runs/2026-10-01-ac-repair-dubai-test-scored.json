@@ -8,9 +8,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brave%20Cool%20AC%20Installatoin%2C%20AC%20Repair%20and%20Systems%20Fixing%20L.L.C&query_place_id=ChIJ34eh7WRdXz4RjQrrF4NP54U",
     "visionScore": {
       "verdict": "uncertain",
-      "reason": "The screenshot shows only a security check loading page with no actual website content visible, making design assessment impossible."
+      "reason": "The screenshot shows only a security check page with a loading spinner, providing no visibility into the actual website design or content."
     },
-    "screenshotFile": "site-1-desktop.png"
+    "screenshotFile": "site-1-desktop.jpg"
   },
   {
     "name": "Al Naveed AC Repair & Maintenance",
@@ -21,9 +21,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Naveed%20AC%20Repair%20%26%20Maintenance&query_place_id=ChIJm16B2bRcXz4RTKObo1ozLt0",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean layout, coherent visual identity with consistent branding, organized navigation, and professional presentation of key metrics and contact information - while the design is straightforward rather than trendy, it is not outdated."
+      "reason": "The site has a clean, coherent design with a modern color scheme, clear navigation, and professional layout that effectively communicates the business value proposition without clutter or spam-like content."
     },
-    "screenshotFile": "site-2-desktop.png"
+    "screenshotFile": "site-2-desktop.jpg"
   },
   {
     "name": "Happy Brothers Air Conditioning Services",
@@ -34,9 +34,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Brothers%20Air%20Conditioning%20Services&query_place_id=ChIJocT6Mm1DXz4RDglMxbvdHMI",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, modern design with coherent visual identity, professional typography, clear hierarchy, and contemporary gradient use—no structural clutter, outdated technical stack indicators, or spam-like content patterns present."
+      "reason": "The site has a clean, modern design with a coherent visual identity, professional layout, clear typography hierarchy, and contemporary gradient use—no structural clutter, no template artifacts, and no spam-like content."
     },
-    "screenshotFile": "site-3-desktop.png"
+    "screenshotFile": "site-3-desktop.jpg"
   },
   {
     "name": "Muhammad Sajid Ali Air Conditioning Service Installation LLC",
@@ -47,9 +47,9 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Muhammad%20Sajid%20Ali%20Air%20Conditioning%20Service%20Installation%20LLC&query_place_id=ChIJlUk9rkldXz4Rc5aV-LRYtC8",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, coherent visual identity with consistent branding, professional layout, and modern service presentation despite some stylistic elements (gradient background, semi-dated icon) that are not structurally problematic."
+      "reason": "The site has a coherent visual identity with a professional logo, clear service listings, consistent branding, and a functional layout; while the sky-gradient background and some icon styles show modest age, the overall design is clean and organized without structural clutter or spam-like content."
     },
-    "screenshotFile": "site-4-desktop.png"
+    "screenshotFile": "site-4-desktop.jpg"
   },
   {
     "name": "Al Ajwa Al Hadiya",
@@ -60,8 +60,8 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Ajwa%20Al%20Hadiya&query_place_id=ChIJvWoiBoK-UaMRjBvjTAqOK2Q",
     "visionScore": {
       "verdict": "fine",
-      "reason": "The site has a clean, modern design with coherent visual identity, professional photography, clear hierarchy, and contemporary styling throughout—no structural clutter, generic icon-spam, or technical staleness detected."
+      "reason": "The site has a clean, modern design with a coherent visual identity, professional typography, clear hierarchy, and contemporary layout—no structural clutter, template artifacts, or dated elements that would warrant a redesign pitch."
     },
-    "screenshotFile": "site-5-desktop.png"
+    "screenshotFile": "site-5-desktop.jpg"
   }
 ]
