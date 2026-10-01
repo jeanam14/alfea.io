@@ -135,23 +135,8 @@
   /* ---- Area chips ---- */
   .chip{ display:inline-flex; font-size:.78rem; font-weight:500; color:var(--ink-soft); background:#fff; border:1px solid var(--line); padding:.4rem .9rem; border-radius:999px; }
 
-  /* ---- Work gallery (asymmetric) ---- */
-  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-  @media (min-width:768px){
-    .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; }
-    .gallery .g-tall{ grid-row:span 2; }
-  }
-  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); }
-  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
-  .tile:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -30px rgba(20,24,27,0.35); }
-  .tile:hover .tile-img{ transform:scale(1.06); }
-
-  /* ---- Reviews marquee ---- */
-  .review-track{ display:flex; gap:1.5rem; width:max-content; animation: marquee-rev 40s linear infinite; }
-  .review-track:hover{ animation-play-state:paused; }
-  @keyframes marquee-rev{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-
-  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
+  /* ---- Review cards ---- */
+  .review-card{ background:#fff; border:1px solid var(--line); border-radius:1.5rem; padding:1.75rem; display:flex; flex-direction:column; }
 
   /* ---- Sticky WhatsApp button ---- */
   .wa-sticky{ position:fixed; right:1.35rem; bottom:1.35rem; z-index:65; width:58px; height:58px; border-radius:9999px; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -8px rgba(37,211,102,.65); }
@@ -481,30 +466,6 @@
     </div>
   </section>
 
-  <!-- Work gallery -->
-  <section id="work" class="py-24 bg-white border-y border-[--line]">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
-      <div class="gallery">
-        <div class="reveal-card tile g-tall">
-          <img src="images/gallery-1.jpg" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile">
-          <img src="images/gallery-2.jpg" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile">
-          <img src="images/gallery-3.jpg" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile g-tall">
-          <img src="images/gallery-4.jpg" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile hidden md:block">
-          <img src="images/about.jpg" alt="" class="tile-img" />
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- About -->
   <section class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
@@ -560,58 +521,28 @@
     </div>
   </section>
 
-  <!-- Reviews: keyword tags + infinite marquee row + one featured pull-quote -->
-  <section id="reviews" class="py-24 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 mb-10">
+  <!-- Reviews: plain grid, no aggregate rating shown — each card is a real review -->
+  <section id="reviews" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
       <p class="eyebrow">/ 05 — Dubai Proof</p>
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-6">4.5 from 203 reviews</h2>
-      <div class="reveal-up flex flex-wrap gap-2.5">
-        <span class="chip">compressor change · 4</span>
-        <span class="chip">professional technical staff · 14</span>
-        <span class="chip">professional team · 27</span>
-        <span class="chip">quick response · 8</span>
-      </div>
-    </div>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">What our clients say</h2>
 
-    <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
-      <div></div>
-      <div class="reveal-up border-l-4 pl-6" style="border-color:#0E8FA6">
-        <p class="text-xl font-display leading-snug">"Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better."</p>
-        <p class="text-sm text-[--ink-soft] mt-3 font-semibold">Maddie Justine</p>
-      </div>
-    </div>
-
-    <div class="review-track marquee-fade px-6">
-      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Exceptional service! The technician was punctual, professional, and fixed my AC in no time. It's cooling perfectly now and running smoother than ever. I really appreciated the honest advice and the clean workspace.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Sadaf Khan</p>
-      </div>
-      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Thanks for your service, my AC is working perfectly 👍</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Asif Hanif</p>
-      </div>
-      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maddie Justine</p>
-      </div>
-      <!-- duplicated for a seamless loop -->
-      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Exceptional service! The technician was punctual, professional, and fixed my AC in no time. It's cooling perfectly now and running smoother than ever. I really appreciated the honest advice and the clean workspace.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Sadaf Khan</p>
-      </div>
-      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Thanks for your service, my AC is working perfectly 👍</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Asif Hanif</p>
-      </div>
-      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maddie Justine</p>
+      <div class="grid md:grid-cols-3 gap-7">
+        <div class="reveal-card review-card">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-[--ink] flex-1">Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better.</p>
+          <p class="text-sm font-semibold mt-5">Maddie Justine</p>
+        </div>
+        <div class="reveal-card review-card">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-[--ink] flex-1">Exceptional service! The technician was punctual, professional, and fixed my AC in no time. It's cooling perfectly now and running smoother than ever. I really appreciated the honest advice and the clean workspace.</p>
+          <p class="text-sm font-semibold mt-5">Sadaf Khan</p>
+        </div>
+        <div class="reveal-card review-card">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-[--ink] flex-1">Thanks for your service, my AC is working perfectly 👍</p>
+          <p class="text-sm font-semibold mt-5">Asif Hanif</p>
+        </div>
       </div>
     </div>
   </section>
