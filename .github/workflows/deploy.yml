@@ -1,25 +1,25 @@
 name: Deploy client sites
 
 # Deploys every site under sites/<slug>/ that changed in this push to its own
-# Cloudflare Pages project (alfea-<slug>), adds <slug>.web-creation.alfea.io
-# as that project's custom domain, then creates the matching CNAME record in
-# Netlify DNS (which stays authoritative for the whole alfea.io zone — this
-# workflow never touches Netlify sites, only one DNS record per client).
-# Static sites only — no build step.
+# Cloudflare Pages project (alfea-<slug>). That's it — this workflow no
+# longer touches Netlify DNS or custom domains. Every deploy gets a free,
+# zero-DNS-footprint preview at https://alfea-<slug>.pages.dev, which is
+# what gets sent to a prospect. The branded <slug>.web-creation.alfea.io
+# hostname (one Netlify DNS record per site) is only created later, by
+# activate-client-domain.yml, once a prospect actually closes — so the
+# alfea.io DNS zone only ever grows with paying clients, not every cold
+# pitch. Static sites only — no build step.
 #
-# Why split like this: Netlify's 2026 credit-based free plan (300
+# Why Cloudflare Pages: Netlify's 2026 credit-based free plan (300
 # credits/month, ~20 deploys) is shared with julaide.io on the same account
 # and can't sustain this project's deploy frequency. Cloudflare Pages' free
 # tier (500 builds/month, unlimited bandwidth) can, and is fully separate
-# from julaide.io's usage. DNS stays on Netlify untouched.
+# from julaide.io's usage.
 #
-# Requires three repository secrets (Settings -> Secrets and variables ->
+# Requires two repository secrets (Settings -> Secrets and variables ->
 # Actions), set directly in GitHub — never pasted into chat:
 #   CLOUDFLARE_API_TOKEN   - scoped to Account.Cloudflare Pages: Edit
 #   CLOUDFLARE_ACCOUNT_ID  - Cloudflare dashboard -> Workers & Pages overview
-#   NETLIFY_AUTH_TOKEN     - used ONLY to create one DNS record per client in
-#                            the alfea.io zone. Same account-wide caveat as
-#                            before: never touches julaide.io's sites.
 
 on:
   push:
@@ -59,66 +59,18 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           npm install -g wrangler
-
-          # Resolve the Netlify DNS zone id for alfea.io once. This is
-          # best-effort: a broken/expired NETLIFY_AUTH_TOKEN must never block
-          # the Cloudflare Pages deploy below, which is what actually hosts
-          # each site. If this lookup fails, every site still deploys and
-          # gets its *.pages.dev URL; only the pretty custom-domain DNS
-          # record is skipped, with a clear warning per site.
-          zones_response=$(curl -s -w '\n%{http_code}' "https://api.netlify.com/api/v1/dns_zones" \
-            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN")
-          zones_status=$(echo "$zones_response" | tail -n1)
-          zones_body=$(echo "$zones_response" | sed '$d')
-          zone_id=$(echo "$zones_body" | \
-            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const z=arr.find(x=>x.name==='alfea.io');console.log(z?z.id:'')}catch(e){console.log('')}})")
-          if [ -z "$zone_id" ]; then
-            echo "::warning::Could not resolve the alfea.io zone in Netlify DNS (HTTP $zones_status: $zones_body)."
-            echo "::warning::NETLIFY_AUTH_TOKEN is likely expired/invalid — refresh it in GitHub repo secrets."
-            echo "::warning::Continuing with Cloudflare Pages deploys; custom-domain DNS records will be skipped."
-          fi
 
           while IFS= read -r slug; do
             [ -z "$slug" ] && continue
             dir="sites/$slug"
             [ -d "$dir" ] || { echo "skip $slug (removed)"; continue; }
             project="alfea-$slug"
-            hostname="$slug.web-creation.alfea.io"
-            target="$project.pages.dev"
 
             echo "=== $slug ==="
             wrangler pages project create "$project" --production-branch main 2>/dev/null || true
             wrangler pages deploy "$dir" --project-name "$project" --branch main
-            echo "Live now at: https://$target (custom domain https://$hostname pending DNS below)"
-
-            echo "Adding custom domain $hostname to Cloudflare Pages project $project"
-            curl -s -o /dev/null -w "cf custom domain: %{http_code}\n" -X POST \
-              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project/domains" \
-              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-              -H "Content-Type: application/json" \
-              --data "{\"name\":\"$hostname\"}"
-
-            if [ -z "$zone_id" ]; then
-              echo "::warning::Skipping Netlify DNS record for $hostname — no valid zone_id (see warning above)."
-              continue
-            fi
-
-            # Create the CNAME in Netlify DNS, only if it doesn't already exist.
-            existing=$(curl -s "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
-              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
-              node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const r=arr.find(x=>x.hostname==='$hostname');console.log(r?r.id:'')}catch(e){console.log('')}})")
-
-            if [ -z "$existing" ]; then
-              echo "Creating Netlify DNS CNAME: $hostname -> $target"
-              curl -s -o /dev/null -w "netlify dns record: %{http_code}\n" -X POST \
-                "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
-                -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
-                -H "Content-Type: application/json" \
-                --data "{\"type\":\"CNAME\",\"hostname\":\"$hostname\",\"value\":\"$target\",\"ttl\":3600}"
-            else
-              echo "DNS record for $hostname already exists, leaving it as-is"
-            fi
+            echo "Preview live at: https://$project.pages.dev — send this to the prospect."
+            echo "(No custom domain or DNS record created yet. Once this prospect closes, run the 'Activate client domain' workflow with site=$slug.)"
           done <<< "${{ steps.changed.outputs.slugs }}"

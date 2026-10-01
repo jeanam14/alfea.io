@@ -1,0 +1,92 @@
+name: Activate client domain
+
+# Run this ONCE a prospect actually closes. The site is already live at
+# https://alfea-<slug>.pages.dev from the normal deploy (deploy.yml) — this
+# workflow adds the pretty <slug>.web-creation.alfea.io hostname on top: it
+# attaches that hostname as a custom domain on the site's existing
+# Cloudflare Pages project, then creates the matching CNAME record in
+# Netlify DNS.
+#
+# Why this is a separate, manually-triggered step: creating the DNS record
+# at build time meant every cold prospect site got a permanent record in
+# the alfea.io zone, closed deal or not — hundreds of records for sites
+# nobody ever paid for. Gating this behind "they actually closed" means the
+# zone only ever grows with paying clients.
+#
+# Run manually: Actions tab -> Activate client domain -> Run workflow,
+# entering the site slug (e.g. "al-naveed-ac"). The site must already have
+# been deployed by deploy.yml (its Cloudflare Pages project must exist).
+#
+# Requires the same CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID and
+# NETLIFY_AUTH_TOKEN repository secrets as deploy.yml used to use.
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site slug under sites/ that just closed (must already be deployed)'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Attach custom domain + create DNS record
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          SLUG: ${{ github.event.inputs.site }}
+        run: |
+          project="alfea-$SLUG"
+          hostname="$SLUG.web-creation.alfea.io"
+          target="$project.pages.dev"
+
+          echo "Adding custom domain $hostname to Cloudflare Pages project $project"
+          cf_response=$(curl -s -w '\n%{http_code}' -X POST \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project/domains" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "{\"name\":\"$hostname\"}")
+          cf_status=$(echo "$cf_response" | tail -n1)
+          cf_body=$(echo "$cf_response" | sed '$d')
+          echo "cf custom domain: $cf_status"
+          echo "$cf_body"
+          # 200 = newly attached, 400 commonly means it's already attached
+          # from a previous run — both are fine to continue past.
+          if [ "$cf_status" != "200" ] && [ "$cf_status" != "400" ]; then
+            echo "::error::Unexpected response attaching the custom domain. Check CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID and that $project exists (run deploy.yml for $SLUG first)."
+            exit 1
+          fi
+
+          echo "Resolving the Netlify DNS zone id for alfea.io"
+          zones_response=$(curl -s -w '\n%{http_code}' "https://api.netlify.com/api/v1/dns_zones" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN")
+          zones_status=$(echo "$zones_response" | tail -n1)
+          zones_body=$(echo "$zones_response" | sed '$d')
+          zone_id=$(echo "$zones_body" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const z=arr.find(x=>x.name==='alfea.io');console.log(z?z.id:'')}catch(e){console.log('')}})")
+          if [ -z "$zone_id" ]; then
+            echo "::error::Could not resolve the alfea.io zone in Netlify DNS (HTTP $zones_status: $zones_body). NETLIFY_AUTH_TOKEN is likely expired — refresh it in GitHub repo secrets and re-run."
+            exit 1
+          fi
+
+          existing=$(curl -s "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{try{const j=JSON.parse(d);const arr=Array.isArray(j)?j:[];const r=arr.find(x=>x.hostname==='$hostname');console.log(r?r.id:'')}catch(e){console.log('')}})")
+
+          if [ -z "$existing" ]; then
+            echo "Creating Netlify DNS CNAME: $hostname -> $target"
+            curl -s -o /dev/null -w "netlify dns record: %{http_code}\n" -X POST \
+              "https://api.netlify.com/api/v1/dns_zones/$zone_id/dns_records" \
+              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"type\":\"CNAME\",\"hostname\":\"$hostname\",\"value\":\"$target\",\"ttl\":3600}"
+          else
+            echo "DNS record for $hostname already exists, leaving it as-is"
+          fi
+
+          echo "Done — https://$hostname should resolve within a few minutes."

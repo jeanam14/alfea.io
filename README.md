@@ -4,9 +4,10 @@ This repo holds every client preview/production site as a plain static page
 under `sites/`, built from a vertical starter under `templates/`. Pushing to
 `main` or `claude/agency-website-scale-bat25b` (the working branch Claude
 Code develops on — there's no PR flow here, that branch is pushed to
-directly) auto-deploys whatever changed, to its own
-`<slug>.web-creation.alfea.io` — scoped under the website-creation service
-branch, separate from the AI-receptionist service on the main domain.
+directly) auto-deploys whatever changed to its own free Cloudflare Pages
+preview at `alfea-<slug>.pages.dev` — that's the link that goes out to
+prospects. The branded `<slug>.web-creation.alfea.io` hostname is **not**
+created at this stage (see "At close" below).
 
 No build step, no framework, no Higgsfield credits spent, no Claude branding
 anywhere in the delivered site.
@@ -17,8 +18,13 @@ julaide.io on the same account and can't sustain this project's deploy
 frequency. Cloudflare Pages' free tier (500 builds/month, unlimited
 bandwidth, no shared quota) can — so client sites deploy there, while
 alfea.io's DNS, email, and main site stay exactly as they are on Netlify.
-Each new client gets one Cloudflare Pages project plus one DNS record added
-to the existing Netlify zone; nothing about Netlify's own sites is touched.
+
+Every prospect site gets a Cloudflare Pages project — that part's free and
+unlimited. A Netlify DNS record in the alfea.io zone is a separate, later
+step reserved for sites that actually close (see "At close"), specifically
+so the zone doesn't accumulate one record per cold pitch — hundreds of
+records for prospects who never signed. Nothing about Netlify's own sites
+is ever touched.
 
 ## How a new site gets made
 
@@ -42,23 +48,29 @@ to the existing Netlify zone; nothing about Netlify's own sites is touched.
    address, services, real Google reviews, real photos.
 4. Jean commits and pushes to `main`.
 5. GitHub Actions deploys `sites/rivera-plumbing` to its own Cloudflare Pages
-   project and points `rivera-plumbing.web-creation.alfea.io` at it via a new
-   record in Netlify DNS.
-6. Jean hands you back that URL to email the prospect.
+   project. No DNS record or branded hostname yet — just the free preview
+   at `alfea-rivera-plumbing.pages.dev`.
+6. Jean hands you back that `.pages.dev` URL to email the prospect.
 
 Steps 2-5 are all done inside this Claude Code session — you never touch
 Cloudflare, Netlify, GitHub Actions, or a terminal yourself.
 
 ## At close
 
-Same site, same deploy — nothing gets rebuilt:
+Same site, same deploy — nothing gets rebuilt. First, wire up the branded
+hostname, which only happens now, not at preview time:
 
+- Run the **Activate client domain** workflow (Actions tab → Activate client
+  domain → Run workflow), entering the site's slug. This attaches
+  `<slug>.web-creation.alfea.io` as a custom domain on the existing
+  Cloudflare Pages project and creates the one Netlify DNS record it needs —
+  the only time either happens for that site.
 - Remove the `<meta name="robots" content="noindex, nofollow">` line at the
   top of the client's `index.html`.
 - Either attach their own domain as an additional custom domain on the same
   Cloudflare Pages project (their registrar needs a CNAME to
-  `alfea-<slug>.pages.dev`, same pattern as the preview subdomain), or keep
-  them on `*.web-creation.alfea.io` and bill hosting.
+  `alfea-<slug>.pages.dev`), or keep them on `*.web-creation.alfea.io` and
+  bill hosting.
 
 ## One-time setup — what needs to happen outside this repo
 
@@ -76,8 +88,8 @@ Same site, same deploy — nothing gets rebuilt:
 - [ ] **The Cloudflare Account ID** — visible on the right sidebar of the
       Workers & Pages overview page in the dashboard.
 - [ ] **A Netlify Personal Access Token** — Netlify → User settings →
-      Applications → Personal access tokens → New access token. (Used only
-      for adding DNS records — see the note above.)
+      Applications → Personal access tokens → New access token. (Only used
+      by the Activate client domain workflow, at close — see above.)
 - [ ] **Add all three as GitHub repo secrets** — this repo's Settings →
       Secrets and variables → Actions → New repository secret:
       - `CLOUDFLARE_API_TOKEN`
@@ -85,8 +97,10 @@ Same site, same deploy — nothing gets rebuilt:
       - `NETLIFY_AUTH_TOKEN`
 
       Set these yourself in the GitHub UI — they should never be pasted into
-      chat. Once all three are set, every push to `sites/**` deploys
-      automatically; nothing further needs sharing with Claude.
+      chat. Once the two Cloudflare secrets are set, every push to `sites/**`
+      deploys automatically to a `.pages.dev` preview; nothing further needs
+      sharing with Claude. `NETLIFY_AUTH_TOKEN` only needs to be valid when
+      you actually run Activate client domain for a closed deal.
 
 Everything else (templates, new sites, content, pushes) happens inside this
 Claude Code session.
@@ -104,9 +118,11 @@ templates/
                        "picks a template deliberately" note above.
   (more verticals added as needed: legal, medical, salon, generic)
 sites/
-  <client-slug>/      one folder per client, deployed to <slug>.web-creation.alfea.io
+  <client-slug>/      one folder per client, previewed at alfea-<slug>.pages.dev
+                       until it closes, then also on <slug>.web-creation.alfea.io
 scripts/
   new-site.sh          scaffolds sites/<slug> from a template
 .github/workflows/
-  deploy.yml           deploys changed sites/* folders on push to main
+  deploy.yml                  deploys changed sites/* folders to Cloudflare Pages
+  activate-client-domain.yml  wires up the branded hostname + DNS, at close only
 ```
