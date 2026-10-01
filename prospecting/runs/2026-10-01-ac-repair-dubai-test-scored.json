@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Brave Cool AC Installatoin, AC Repair and Systems Fixing L.L.C",
+    "website": "https://bravecoolac.com/",
+    "phone": "+971 56 272 4299",
+    "rating": 4.5,
+    "reviewsCount": 46,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brave%20Cool%20AC%20Installatoin%2C%20AC%20Repair%20and%20Systems%20Fixing%20L.L.C&query_place_id=ChIJ34eh7WRdXz4RjQrrF4NP54U",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "model did not return valid JSON: ```json\n{\"verdict\": \"uncertain\", \"reason\": \"The page is displaying a security check loading screen, so no actual website content is visible to evaluate.\"}\n```"
+    }
+  },
+  {
+    "name": "Al Naveed AC Repair & Maintenance",
+    "website": "https://www.acmaintenancedubai.ae/",
+    "phone": "+971 50 297 7603",
+    "rating": 4.5,
+    "reviewsCount": 203,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Naveed%20AC%20Repair%20%26%20Maintenance&query_place_id=ChIJm16B2bRcXz4RTKObo1ozLt0",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "model did not return valid JSON: ```json\n{\"verdict\": \"outdated\", \"reason\": \"The gradient overlay, typography choices, and layout style are characteristic of mid-2010s web design rather than current design trends.\"}\n```"
+    }
+  },
+  {
+    "name": "Happy Brothers Air Conditioning Services",
+    "website": "https://happybrotherac.com/",
+    "phone": "+971 50 217 5305",
+    "rating": 4.9,
+    "reviewsCount": 129,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Brothers%20Air%20Conditioning%20Services&query_place_id=ChIJocT6Mm1DXz4RDglMxbvdHMI",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "model did not return valid JSON: ```json\n{\"verdict\": \"fine\", \"reason\": \"Modern gradient typography, clean layout, contemporary button styles, and current web design conventions are evident throughout the homepage.\"}\n```"
+    }
+  },
+  {
+    "name": "Muhammad Sajid Ali Air Conditioning Service Installation LLC",
+    "website": "https://sajidacservice.com/",
+    "phone": "+971 58 100 9017",
+    "rating": 5,
+    "reviewsCount": 43,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Muhammad%20Sajid%20Ali%20Air%20Conditioning%20Service%20Installation%20LLC&query_place_id=ChIJlUk9rkldXz4Rc5aV-LRYtC8",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "model did not return valid JSON: ```json\n{\"verdict\": \"outdated\", \"reason\": \"The layout uses a dated banner-heavy design with generic stock imagery, basic typography hierarchy, and a visual style typical of early-to-mid 2010s web design rather than contemporary standards.\"}\n```"
+    }
+  },
+  {
+    "name": "Al Ajwa Al Hadiya",
+    "website": "http://www.alajwaalhadiya.com/",
+    "phone": "+971 56 691 4877",
+    "rating": 4.7,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Ajwa%20Al%20Hadiya&query_place_id=ChIJvWoiBoK-UaMRjBvjTAqOK2Q",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "model did not return valid JSON: ```json\n{\"verdict\": \"fine\", \"reason\": \"The design uses modern typography, clean layout, contemporary color scheme, professional imagery, and current UI patterns that all read as current decade work.\"}\n```"
+    }
+  }
+]
