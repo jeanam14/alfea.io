@@ -64,29 +64,33 @@ while IFS= read -r item; do
     continue
   fi
 
-  image_b64=$(base64 -w0 "$shot_path")
+  base64 -w0 "$shot_path" > "$prefix.b64"
+  body_file="$prefix-body.json"
 
-  body=$(python3 -c '
+  python3 -c '
 import json, sys
-model, prompt, image_b64 = sys.argv[1], sys.argv[2], sys.argv[3]
-print(json.dumps({
-    "model": model,
-    "max_tokens": 200,
-    "messages": [{
-        "role": "user",
-        "content": [
-            {"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": image_b64}},
-            {"type": "text", "text": prompt},
-        ],
-    }],
-}))
-' "$VISION_MODEL" "$PROMPT" "$image_b64")
+model, prompt, b64_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+with open(b64_path) as f:
+    image_b64 = f.read()
+with open(out_path, "w") as f:
+    json.dump({
+        "model": model,
+        "max_tokens": 200,
+        "messages": [{
+            "role": "user",
+            "content": [
+                {"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": image_b64}},
+                {"type": "text", "text": prompt},
+            ],
+        }],
+    }, f)
+' "$VISION_MODEL" "$PROMPT" "$prefix.b64" "$body_file"
 
   response=$(curl -s -w '\n%{http_code}' https://api.anthropic.com/v1/messages \
     -H "Content-Type: application/json" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
-    -d "$body")
+    -d @"$body_file")
   status=$(echo "$response" | tail -n1)
   resp_body=$(echo "$response" | sed '$d')
 
