@@ -1,0 +1,46 @@
+name: Test Anthropic API key
+
+# One-off smoke test: confirms the ANTHROPIC_API_KEY repo secret is set and
+# valid by making a trivial text request. Not part of the prospecting
+# pipeline itself - delete once the real vision-scoring workflow exists and
+# has been run successfully (that run is proof enough on its own).
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the Messages API with a trivial prompt
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY secret is not set on this repo."
+            exit 1
+          fi
+
+          response=$(curl -s -w '\n%{http_code}' https://api.anthropic.com/v1/messages \
+            -H "Content-Type: application/json" \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -d '{
+              "model": "claude-haiku-4-5",
+              "max_tokens": 32,
+              "messages": [{"role": "user", "content": "Reply with exactly: OK"}]
+            }')
+          status=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          if [ "$status" != "200" ]; then
+            echo "::error::Anthropic API returned HTTP $status - the key is likely missing or invalid."
+            echo "$body"
+            exit 1
+          fi
+
+          echo "Anthropic API key is valid. Model replied:"
+          echo "$body" | jq -r '.content[0].text'
