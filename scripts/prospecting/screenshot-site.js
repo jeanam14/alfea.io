@@ -4,16 +4,16 @@
 // Usage: node scripts/prospecting/screenshot-site.js <url> <out-prefix>
 // Writes <out-prefix>-desktop.png and <out-prefix>-mobile.png.
 //
-// Uses the globally installed Playwright + pre-downloaded Chromium in this
-// environment (no npm install needed here).
+// Requires `playwright` + its Chromium build to be installed wherever this
+// runs (`npm install playwright && npx playwright install --with-deps
+// chromium`) - this targets a GitHub Actions runner, not the Claude Code
+// sandbox, since prospect sites are arbitrary external domains the sandbox's
+// network policy blocks.
 
-const path = require("path");
-const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const { chromium } = require("playwright");
 
 async function shoot(url, outPrefix) {
-  const browser = await chromium.launch({
-    executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
-  });
+  const browser = await chromium.launch();
 
   for (const [label, viewport] of Object.entries({
     desktop: { width: 1440, height: 900 },

@@ -1,0 +1,55 @@
+name: Score prospects (screenshot + vision)
+
+# Takes a sourced batch of businesses (name/website/phone/rating/reviews -
+# see prospecting/runs/*.json for the shape) and annotates each with a
+# vision-model verdict on whether its website looks outdated. This is a
+# ranking/annotation pass, not an accept/reject gate - every business keeps
+# its row in the output, verdict included, for Jean's own yes/no review.
+#
+# Runs here (not in the Claude Code session) because screenshotting
+# arbitrary prospect websites needs a real headless browser and unrestricted
+# network access, neither of which the sandboxed session has.
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_file:
+        description: 'Path to the batch JSON under prospecting/runs/, e.g. prospecting/runs/2026-10-01-ac-repair-dubai-test.json'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm install playwright@latest
+          npx playwright install --with-deps chromium
+
+      - name: Score each business
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          out="${{ github.event.inputs.batch_file }}"
+          out="${out%.json}-scored.json"
+          bash scripts/prospecting/score-screenshots.sh "${{ github.event.inputs.batch_file }}" "$out"
+          echo "RESULT_FILE=$out" >> "$GITHUB_ENV"
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$RESULT_FILE"
+          git commit -m "Score prospect batch: $(basename "$RESULT_FILE")" || echo "Nothing to commit"
+          git push
