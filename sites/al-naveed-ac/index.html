@@ -71,6 +71,9 @@
 
   .magnetic{ display:inline-flex; will-change:transform; }
 
+  /* ---- Section eyebrow / chapter numbering ---- */
+  .eyebrow{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Sora',sans-serif; font-weight:700; font-size:.8rem; letter-spacing:.08em; color:#0E8FA6; text-transform:uppercase; margin-bottom:.75rem; }
+
   /* ---- Trust marquee ---- */
   .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
   .marquee-track:hover{ animation-play-state: paused; }
@@ -97,6 +100,27 @@
   }
   .card-glow:hover::before{ opacity:1; }
   .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:#0E8FA655; }
+  .service-cta{ font-size:.78rem; font-weight:600; color:#0A6575; }
+  .service-cta:hover{ text-decoration:underline; }
+
+  /* ---- AMC pricing cards ---- */
+  .pricing-card{ background:#fff; border:1px solid var(--line); border-radius:1.5rem; padding:2rem; display:flex; flex-direction:column; position:relative; }
+  .pricing-card.featured{ border-color:#0E8FA6; box-shadow:0 30px 60px -30px rgba(14,143,166,0.35); }
+  .pricing-card .tag{ position:absolute; top:-0.9rem; left:2rem; background:#0E8FA6; color:#fff; font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:.3rem .8rem; border-radius:999px; }
+  .pricing-card ul{ display:flex; flex-direction:column; gap:.6rem; margin:1.5rem 0; flex:1; }
+  .pricing-card li{ font-size:.9rem; color:var(--ink-soft); display:flex; gap:.5rem; align-items:flex-start; }
+  .pricing-card li::before{ content:'✓'; color:#0E8FA6; font-weight:700; flex-shrink:0; }
+
+  /* ---- Maintenance savings slider ---- */
+  .amc-slider{ -webkit-appearance:none; appearance:none; width:100%; height:8px; border-radius:999px; background:linear-gradient(90deg, #0E8FA6, var(--line)); outline:none; }
+  .amc-slider::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:#fff; border:3px solid #0E8FA6; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.2); }
+  .amc-slider::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:#fff; border:3px solid #0E8FA6; cursor:pointer; }
+
+  /* ---- Why-us grid ---- */
+  .why-item{ padding:1.75rem 0; border-top:1px solid var(--line); }
+
+  /* ---- Area chips ---- */
+  .chip{ display:inline-flex; font-size:.78rem; font-weight:500; color:var(--ink-soft); background:#fff; border:1px solid var(--line); padding:.4rem .9rem; border-radius:999px; }
 
   /* ---- Work gallery (asymmetric) ---- */
   .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
@@ -117,6 +141,11 @@
   .wa-sticky-ring{ position:absolute; inset:0; border-radius:9999px; background:#25D366; opacity:.55; animation:wa-pulse 2.4s ease-out infinite; z-index:-1; }
   @keyframes wa-pulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.8); opacity:0; } }
 
+  /* ---- Callback form ---- */
+  .form-field{ width:100%; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; border-radius:0.9rem; padding:0.85rem 1.1rem; font-size:.95rem; }
+  .form-field::placeholder{ color:rgba(255,255,255,0.65); }
+  .form-field:focus{ outline:none; border-color:#fff; background:rgba(255,255,255,0.18); }
+
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
     .marquee-track, .review-track{ animation:none !important; }
@@ -128,9 +157,11 @@
   <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <span class="font-display font-extrabold text-lg tracking-tight">Al Naveed AC Repair & Maintenance</span>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
-        <a href="#work" class="hover:text-[--ink] transition-colors">Our Work</a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-[--ink-soft]">
         <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
+        <a href="#amc" class="hover:text-[--ink] transition-colors">AMC Plans</a>
+        <a href="#why" class="hover:text-[--ink] transition-colors">Why Us</a>
+        <a href="#areas" class="hover:text-[--ink] transition-colors">Areas</a>
         <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
         <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
       </nav>
@@ -152,8 +183,13 @@
     <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#0E8FA6"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative">
-      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
-        <span class="star">★★★★★</span> 4.5 · 203 Google reviews · Dubai
+      <div class="flex flex-wrap gap-3 mb-8">
+        <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full opacity-0">
+          <span class="star">★★★★★</span> 4.5 · 203 Google reviews · Dubai
+        </div>
+        <div class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full">
+          Open 24 hours
+        </div>
       </div>
 
       <h1 id="hero-headline" class="text-[12vw] leading-[0.96] md:text-[6vw] md:leading-[0.98] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
@@ -187,22 +223,25 @@
     </div>
   </section>
 
-  <!-- Trust marquee -->
-  <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
-    <div class="marquee-track marquee-fade text-sm font-semibold text-[--ink-soft] tracking-wide">
-      <div class="flex items-center gap-10 pr-10">
-        <span>★ 4.5 on Google</span><span>•</span>
-        <span>Licensed &amp; Insured</span><span>•</span>
-        <span>24/7 Emergency Calls</span><span>•</span>
-        <span>203+ Happy Customers</span><span>•</span>
-        <span>Serving Dubai, Sharjah &amp; Abu Dhabi</span><span>•</span>
+  <!-- Stat band — Al Naveed's own published figures, right up top like a company at scale -->
+  <section class="relative py-20 overflow-hidden" style="background:var(--ink);">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-8 text-white text-center">
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-4xl md:text-5xl tabular"><span data-counter="45000">0</span>+</div>
+        <p class="text-white/60 mt-2 text-sm">Happy customers</p>
       </div>
-      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
-        <span>★ 4.5 on Google</span><span>•</span>
-        <span>Licensed &amp; Insured</span><span>•</span>
-        <span>24/7 Emergency Calls</span><span>•</span>
-        <span>203+ Happy Customers</span><span>•</span>
-        <span>Serving Dubai, Sharjah &amp; Abu Dhabi</span><span>•</span>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-4xl md:text-5xl tabular"><span data-counter="16">0</span></div>
+        <p class="text-white/60 mt-2 text-sm">Years of service</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-4xl md:text-5xl tabular">24/7</div>
+        <p class="text-white/60 mt-2 text-sm">Customer service</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-4xl md:text-5xl tabular"><span data-counter="253287">0</span></div>
+        <p class="text-white/60 mt-2 text-sm">Jobs since 2010</p>
       </div>
     </div>
   </section>
@@ -211,8 +250,9 @@
   <section id="services" class="py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal-up mb-12 max-w-lg">
-        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
-        <p class="text-[--ink-soft] text-lg">From emergency repairs to annual maintenance contracts, we keep every type of AC system running at its best.</p>
+        <p class="eyebrow">/ 01 — Services</p>
+        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">Full-spectrum cooling, engineered for Dubai</h2>
+        <p class="text-[--ink-soft] text-lg">From a single split unit to entire commercial HVAC systems, our certified technicians handle every part of your air conditioning.</p>
       </div>
 
       <div class="bento">
@@ -220,26 +260,52 @@
           <img src="images/hero.jpg" alt="" class="tile-img" />
           <div class="tile-overlay"></div>
           <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
-            <h3 class="font-display font-bold text-2xl mb-2">AC Repair</h3>
-            <p class="text-sm text-white/80 max-w-xs">Fast diagnosis and repair for split, central, ducted and commercial AC systems — day or night.</p>
+            <span class="text-xs font-semibold uppercase tracking-wide text-white/70 mb-1">Preventive</span>
+            <h3 class="font-display font-bold text-2xl mb-2">Routine AC Maintenance</h3>
+            <p class="text-sm text-white/80 max-w-xs mb-3">Filter cleaning, coil inspection, thermostat checks, electrical testing and drain line clearing to prevent breakdowns.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20routine%20AC%20maintenance" class="text-xs font-semibold text-white underline underline-offset-2 w-fit">Book this service →</a>
           </div>
         </div>
 
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">AMC Packages</h3>
-          <p class="text-sm text-[--ink-soft]">Annual maintenance contracts covering cleaning, filter checks and gas levels — and lower electricity bills.</p>
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Same-day</span>
+            <h3 class="font-display font-bold text-base mt-1">AC Repair</h3>
+            <p class="text-sm text-[--ink-soft] mt-1">Fast diagnosis and repair for split, central, ducted and commercial AC systems — day or night.</p>
+          </div>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20AC%20repair" class="service-cta mt-3 w-fit">Book this service →</a>
         </div>
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">AC Installation</h3>
-          <p class="text-sm text-[--ink-soft]">New unit installation and replacement for homes, offices and commercial properties.</p>
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">New units</span>
+            <h3 class="font-display font-bold text-base mt-1">AC Installation</h3>
+            <p class="text-sm text-[--ink-soft] mt-1">New unit installation and replacement for homes, offices and commercial properties.</p>
+          </div>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20AC%20installation" class="service-cta mt-3 w-fit">Book this service →</a>
         </div>
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">Coil &amp; Duct Cleaning</h3>
-          <p class="text-sm text-[--ink-soft]">Deep coil cleaning and duct clearing to restore airflow and improve indoor air quality.</p>
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Air quality</span>
+            <h3 class="font-display font-bold text-base mt-1">AC Duct Cleaning</h3>
+            <p class="text-sm text-[--ink-soft] mt-1">Removes dust and allergens from ductwork for cleaner air and better airflow.</p>
+          </div>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20duct%20cleaning" class="service-cta mt-3 w-fit">Book this service →</a>
         </div>
         <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">Gas Top-Up</h3>
-          <p class="text-sm text-[--ink-soft]">Leak detection, pressure testing and safe refrigerant recharge to restore full cooling power.</p>
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Efficiency</span>
+            <h3 class="font-display font-bold text-base mt-1">AC Coil Cleaning</h3>
+            <p class="text-sm text-[--ink-soft] mt-1">Deep cleaning of evaporator and condenser coils to restore efficient cooling.</p>
+          </div>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20coil%20cleaning" class="service-cta mt-3 w-fit">Book this service →</a>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Refrigerant</span>
+            <h3 class="font-display font-bold text-base mt-1">Gas Top-Up</h3>
+            <p class="text-sm text-[--ink-soft] mt-1">Leak detection, pressure testing and safe refrigerant recharge.</p>
+          </div>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20a%20gas%20top-up" class="service-cta mt-3 w-fit">Book this service →</a>
         </div>
 
         <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#0E8FA6">
@@ -253,27 +319,123 @@
     </div>
   </section>
 
-  <!-- Dark stat band — section-rhythm contrast, oversized numerals as the visual -->
-  <section class="relative py-24 overflow-hidden" style="background:var(--ink);">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
-      <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="16">0</span>+</div>
-        <p class="text-white/60 mt-2">Years in business</p>
+  <!-- AMC Plans: real pricing tiers + an interactive savings slider -->
+  <section id="amc" class="py-24 bg-white border-y border-[--line]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal-up mb-12 max-w-xl">
+        <p class="eyebrow">/ 02 — Annual Maintenance Contracts</p>
+        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">Save up to 30% on your electricity bill</h2>
+        <p class="text-[--ink-soft] text-lg">A poorly maintained AC can spike your bill by up to 30% — Al Naveed's own words. Regular servicing keeps it running efficiently all year.</p>
       </div>
-      <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="203">0</span>+</div>
-        <p class="text-white/60 mt-2">Jobs completed</p>
+
+      <div class="reveal-up bg-[--paper] border border-[--line] rounded-2xl p-7 mb-12 max-w-2xl">
+        <div class="flex justify-between text-sm font-semibold text-[--ink-soft] mb-3">
+          <span>Unmaintained</span>
+          <span>Optimized</span>
+        </div>
+        <input type="range" min="0" max="100" value="60" id="amc-slider" class="amc-slider" />
+        <div class="grid grid-cols-2 gap-6 mt-6 text-center">
+          <div>
+            <div class="font-display font-extrabold text-3xl text-brand"><span id="bill-reduction">18</span>%</div>
+            <p class="text-xs text-[--ink-soft] mt-1">Bill reduction</p>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-3xl"><span id="energy-waste">40</span>%</div>
+            <p class="text-xs text-[--ink-soft] mt-1">Energy waste</p>
+          </div>
+        </div>
       </div>
-      <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="4.5">0</span></div>
-        <p class="text-white/60 mt-2">Average Google rating</p>
+
+      <div class="grid md:grid-cols-3 gap-7">
+        <div class="reveal-card pricing-card">
+          <h3 class="font-display font-bold text-lg">Essential</h3>
+          <p class="text-sm text-[--ink-soft] mt-1">Single comprehensive maintenance visit for one unit.</p>
+          <div class="mt-5"><span class="font-display font-extrabold text-3xl">AED 199</span><span class="text-sm text-[--ink-soft]"> / visit</span></div>
+          <ul>
+            <li>Filter cleaning</li>
+            <li>Coil inspection</li>
+            <li>Drain line check</li>
+            <li>Thermostat calibration</li>
+            <li>Cooling performance test</li>
+          </ul>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20the%20Essential%20AMC%20plan" class="magnetic bg-[--ink] text-white font-semibold px-6 py-3 rounded-full text-sm text-center">Choose Essential</a>
+        </div>
+
+        <div class="reveal-card pricing-card featured">
+          <span class="tag">Best value</span>
+          <h3 class="font-display font-bold text-lg">Annual Contract</h3>
+          <p class="text-sm text-[--ink-soft] mt-1">Four scheduled visits — the smart choice for Dubai homes.</p>
+          <div class="mt-5"><span class="font-display font-extrabold text-3xl">AED 749</span><span class="text-sm text-[--ink-soft]"> / year</span></div>
+          <ul>
+            <li>4 scheduled maintenance visits</li>
+            <li>Priority same-day response</li>
+            <li>15% off all repairs</li>
+            <li>Gas level inspection</li>
+            <li>Electrical &amp; component check</li>
+            <li>Extended equipment lifespan</li>
+          </ul>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20the%20Annual%20Contract%20AMC%20plan" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-6 py-3 rounded-full text-sm text-center transition-colors">Choose Annual Contract</a>
+        </div>
+
+        <div class="reveal-card pricing-card">
+          <h3 class="font-display font-bold text-lg">Commercial</h3>
+          <p class="text-sm text-[--ink-soft] mt-1">Tailored AMC for offices, retail &amp; residential buildings.</p>
+          <div class="mt-5"><span class="font-display font-extrabold text-3xl">Custom</span></div>
+          <ul>
+            <li>Unlimited maintenance calls</li>
+            <li>Dedicated account manager</li>
+            <li>24/7 emergency support</li>
+            <li>Full HVAC system coverage</li>
+            <li>Quarterly performance reports</li>
+          </ul>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20a%20Commercial%20AMC%20plan" class="magnetic bg-[--ink] text-white font-semibold px-6 py-3 rounded-full text-sm text-center">Choose Commercial</a>
+        </div>
+      </div>
+      <p class="text-xs text-[--ink-soft]/70 mt-6 max-w-lg">Pricing shown is a starting-point example within Al Naveed's own publicly stated AMC range — confirm exact figures before this goes live.</p>
+    </div>
+  </section>
+
+  <!-- Why Al Naveed -->
+  <section id="why" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-start">
+      <div class="reveal-up md:sticky md:top-32">
+        <p class="eyebrow">/ 03 — Why Al Naveed</p>
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">The team Dubai calls when comfort matters</h2>
+        <div class="clip-reveal rounded-[1.75rem] overflow-hidden mt-8">
+          <img src="images/gallery-4.jpg" alt="Al Naveed technician servicing a unit" class="w-full aspect-[4/3] object-cover" />
+        </div>
+      </div>
+      <div>
+        <div class="why-item reveal-up">
+          <h3 class="font-display font-bold text-lg mb-1">24/7 Emergency Response</h3>
+          <p class="text-[--ink-soft]">AC never breaks at a convenient time. Our team is on call around the clock, every day of the year.</p>
+        </div>
+        <div class="why-item reveal-up">
+          <h3 class="font-display font-bold text-lg mb-1">Certified Technicians</h3>
+          <p class="text-[--ink-soft]">16 years of hands-on Dubai HVAC experience, across split, central, ducted and commercial systems.</p>
+        </div>
+        <div class="why-item reveal-up">
+          <h3 class="font-display font-bold text-lg mb-1">Transparent Pricing</h3>
+          <p class="text-[--ink-soft]">Clear quotes before we start — no hidden charges, no unnecessary repairs.</p>
+        </div>
+        <div class="why-item reveal-up">
+          <h3 class="font-display font-bold text-lg mb-1">Energy Efficiency Focus</h3>
+          <p class="text-[--ink-soft]">Every service is tuned to lower your electricity bill and extend the life of your equipment.</p>
+        </div>
+        <div class="why-item reveal-up">
+          <h3 class="font-display font-bold text-lg mb-1">All of Dubai Covered</h3>
+          <p class="text-[--ink-soft]">From Deira to Marina, Downtown to the Palm — our technicians reach you fast, anywhere in the city.</p>
+        </div>
+        <div class="why-item reveal-up">
+          <h3 class="font-display font-bold text-lg mb-1">Real Customer Support</h3>
+          <p class="text-[--ink-soft]">Talk to a real person, not a call center. We follow up after every job.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Work gallery -->
-  <section id="work" class="py-24 bg-white border-b border-[--line]">
+  <section id="work" class="py-24 bg-white border-y border-[--line]">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
       <div class="gallery">
@@ -309,10 +471,63 @@
     </div>
   </section>
 
-  <!-- Reviews: infinite marquee row + one featured pull-quote -->
-  <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
+  <!-- Areas we cover -->
+  <section id="areas" class="py-24 bg-white border-y border-[--line]">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="eyebrow">/ 04 — Coverage</p>
+      <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Everywhere in Dubai</h2>
+      <p class="reveal-up text-[--ink-soft] leading-relaxed mb-8 max-w-2xl text-lg">Based in Naif, Deira — our technicians cover every neighborhood across the city, plus Sharjah and Abu Dhabi.</p>
+
+      <div class="reveal-up flex flex-wrap gap-2.5 mb-12">
+        <span class="chip">Deira</span><span class="chip">Naif</span><span class="chip">Dubai Marina</span>
+        <span class="chip">Downtown Dubai</span><span class="chip">Business Bay</span><span class="chip">Palm Jumeirah</span>
+        <span class="chip">JBR</span><span class="chip">JLT</span><span class="chip">JVC</span>
+        <span class="chip">Al Barsha</span><span class="chip">Al Quoz</span><span class="chip">Al Wasl</span>
+        <span class="chip">Al Warqa</span><span class="chip">Al Nahda</span><span class="chip">Al Rashidiya</span>
+        <span class="chip">Al Furjan</span><span class="chip">Al Khawaneej</span><span class="chip">Al Satwa</span>
+        <span class="chip">Al Karama</span><span class="chip">Al Mirdif</span><span class="chip">Al Sufouh</span>
+        <span class="chip">Bur Dubai</span><span class="chip">Burj Khalifa</span><span class="chip">DIFC</span>
+        <span class="chip">Dubai Design District</span><span class="chip">Dubai Creek Harbour</span><span class="chip">Festival City</span>
+        <span class="chip">Silicon Oasis</span><span class="chip">Motor City</span><span class="chip">Remraam</span>
+        <span class="chip">The Springs</span><span class="chip">The Greens</span><span class="chip">The Meadows</span>
+        <span class="chip">Jumeirah Park</span><span class="chip">Arabian Ranches</span><span class="chip">Sports City</span>
+        <span class="chip">Discovery Gardens</span><span class="chip">International City</span><span class="chip">Healthcare City</span>
+        <span class="chip">Nad Al Sheba</span><span class="chip">Sharjah</span><span class="chip">Abu Dhabi</span>
+      </div>
+
+      <div class="grid md:grid-cols-[1fr_1fr] gap-10 items-center">
+        <div class="reveal-up grid grid-cols-2 gap-6">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70 mb-1">Base</p>
+            <p class="font-display font-bold">Naif, Deira — Dubai</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70 mb-1">Operating hours</p>
+            <p class="font-display font-bold">Open 24 hours</p>
+          </div>
+        </div>
+        <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
+          <iframe src="https://www.google.com/maps?q=Al+Naveed+AC+Repair+Maintenance+28C+St+Naif+Deira+Dubai&output=embed" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews: keyword tags + infinite marquee row + one featured pull-quote -->
+  <section id="reviews" class="py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-10">
+      <p class="eyebrow">/ 05 — Dubai Proof</p>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-6">4.5 from 203 reviews</h2>
+      <div class="reveal-up flex flex-wrap gap-2.5">
+        <span class="chip">compressor change · 4</span>
+        <span class="chip">professional technical staff · 14</span>
+        <span class="chip">professional team · 27</span>
+        <span class="chip">quick response · 8</span>
+      </div>
+    </div>
+
     <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold">What Dubai says</h2>
+      <div></div>
       <div class="reveal-up border-l-4 pl-6" style="border-color:#0E8FA6">
         <p class="text-xl font-display leading-snug">"Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better."</p>
         <p class="text-sm text-[--ink-soft] mt-3 font-semibold">Maddie Justine</p>
@@ -320,52 +535,36 @@
     </div>
 
     <div class="review-track marquee-fade px-6">
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">Exceptional service! The technician was punctual, professional, and fixed my AC in no time. It's cooling perfectly now and running smoother than ever. I really appreciated the honest advice and the clean workspace.</p>
         <p class="text-xs font-semibold text-[--ink-soft] mt-4">Sadaf Khan</p>
       </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">Thanks for your service, my AC is working perfectly 👍</p>
         <p class="text-xs font-semibold text-[--ink-soft] mt-4">Asif Hanif</p>
       </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better.</p>
         <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maddie Justine</p>
       </div>
       <!-- duplicated for a seamless loop -->
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]" aria-hidden="true">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">Exceptional service! The technician was punctual, professional, and fixed my AC in no time. It's cooling perfectly now and running smoother than ever. I really appreciated the honest advice and the clean workspace.</p>
         <p class="text-xs font-semibold text-[--ink-soft] mt-4">Sadaf Khan</p>
       </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]" aria-hidden="true">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">Thanks for your service, my AC is working perfectly 👍</p>
         <p class="text-xs font-semibold text-[--ink-soft] mt-4">Asif Hanif</p>
       </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+      <div class="min-w-[300px] bg-white rounded-2xl p-7 border border-[--line]" aria-hidden="true">
         <div class="star mb-2">★★★★★</div>
         <p class="text-sm text-[--ink]">Excellent service! Al Naveed AC Repair &amp; Maintenance fixed my AC quickly and professionally. The technician was very polite, explained everything clearly, and used good quality parts. My AC is now working perfectly and cooling much better.</p>
         <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maddie Justine</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Service area / map -->
-  <section id="area" class="py-24">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
-      <div>
-        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving Dubai, Sharjah &amp; Abu Dhabi</h2>
-        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">28C Street, Naif, Deira, Dubai, UAE</p>
-        <a href="tel:971502977603" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
-          Call +971 50 297 7603
-        </a>
-      </div>
-      <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
-        <iframe src="https://www.google.com/maps?q=Al+Naveed+AC+Repair+Maintenance+28C+St+Naif+Deira+Dubai&output=embed" class="w-full h-full" style="border:0" loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -374,12 +573,37 @@
   <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#0E8FA6; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
     <div class="grain" aria-hidden="true"></div>
     <div id="contact-orb" aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
-    <div class="max-w-3xl mx-auto px-6 text-center relative">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
-      <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
-      <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:971502977603" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call +971 50 297 7603</a>
-        <a href="mailto:info@alnaveedac.com" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">Email us</a>
+    <div class="max-w-5xl mx-auto px-6 relative">
+      <p class="eyebrow text-white/80 justify-center md:justify-start" style="color:#fff">/ 06 — Book a Service</p>
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5 text-center md:text-left">Let's restore your comfort</h2>
+      <p class="reveal-up text-white/80 mb-10 text-lg text-center md:text-left">Call us, message on WhatsApp, or send the form — a technician will reach out to confirm your booking.</p>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div class="reveal-up">
+          <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <a href="tel:971502977603" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full text-center">Call / 24 hours · +971 50 297 7603</a>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20booking%20an%20AC%20service" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full text-center">WhatsApp · Chat now</a>
+          </div>
+          <div class="grid grid-cols-2 gap-6 text-white">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-white/60 mb-1">Location</p>
+              <p class="font-display font-bold">28C St, Naif, Deira — Dubai</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-white/60 mb-1">Hours</p>
+              <p class="font-display font-bold">Open 24 hours · 7 days</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="callback-form" class="reveal-up bg-white/10 border border-white/25 rounded-2xl p-7 space-y-4">
+          <h3 class="font-display font-bold text-white mb-1">Request a callback</h3>
+          <p class="text-sm text-white/70 mb-3">Fill this in and we'll confirm your booking on WhatsApp.</p>
+          <input type="text" id="cb-name" placeholder="Full name" class="form-field" required />
+          <input type="tel" id="cb-phone" placeholder="Phone" class="form-field" required />
+          <textarea id="cb-message" placeholder="What do you need help with?" rows="3" class="form-field"></textarea>
+          <button type="submit" class="magnetic w-full bg-white text-brandDark font-semibold px-6 py-3.5 rounded-full justify-center">Send via WhatsApp</button>
+        </form>
       </div>
     </div>
   </section>
@@ -500,6 +724,34 @@ document.querySelectorAll('.card-glow').forEach((card) => {
     card.style.setProperty('--my', `${e.clientY - r.top}px`);
   });
 });
+
+/* AMC savings slider: "up to 30%" is Al Naveed's own published claim — the
+   slider's max bill-reduction value is capped there, never invented higher. */
+const amcSlider = document.getElementById('amc-slider');
+const billReductionEl = document.getElementById('bill-reduction');
+const energyWasteEl = document.getElementById('energy-waste');
+function updateAmcSlider() {
+  const val = Number(amcSlider.value);
+  billReductionEl.textContent = Math.round((val / 100) * 30);
+  energyWasteEl.textContent = Math.round(100 - val * 0.6);
+}
+if (amcSlider) {
+  amcSlider.addEventListener('input', updateAmcSlider);
+  updateAmcSlider();
+}
+
+/* Callback form compiles into a prefilled WhatsApp message — no backend needed */
+const callbackForm = document.getElementById('callback-form');
+if (callbackForm) {
+  callbackForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('cb-name').value.trim();
+    const phone = document.getElementById('cb-phone').value.trim();
+    const message = document.getElementById('cb-message').value.trim();
+    const text = `Hello! My name is ${name} (${phone}). ${message || "I'd like to book an AC service."}`;
+    window.open(`https://wa.me/971502977603?text=${encodeURIComponent(text)}`, '_blank');
+  });
+}
 </script>
 </body>
 </html>
