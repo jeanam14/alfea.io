@@ -74,33 +74,32 @@
   /* ---- Section eyebrow / chapter numbering ---- */
   .eyebrow{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Sora',sans-serif; font-weight:700; font-size:.8rem; letter-spacing:.08em; color:#0E8FA6; text-transform:uppercase; margin-bottom:.75rem; }
 
-  /* ---- Trust marquee ---- */
-  .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
-  .marquee-track:hover{ animation-play-state: paused; }
-  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  /* ---- Icon badges (reused: services, why-us, contact info rows) ---- */
+  .icon-badge{ width:2.75rem; height:2.75rem; min-width:2.75rem; border-radius:0.85rem; background:#0E8FA614; color:#0E8FA6; display:flex; align-items:center; justify-content:center; transition:background-color .3s ease, color .3s ease; }
+  .icon-badge svg{ width:1.35rem; height:1.35rem; }
+  .pill-tag{ display:inline-flex; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); border:1px solid var(--line); padding:.25rem .7rem; border-radius:999px; }
 
-  /* ---- Bento services grid ---- */
-  .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
-  @media (min-width:1024px){
-    .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; }
-    .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
-    .bento .t-wide{ grid-column:span 4; }
+  /* ---- Unified grid panel: one bordered container with internal dividers,
+          used for Services and Why-Us instead of separate floating cards ---- */
+  .grid-panel{ background:#fff; border:1px solid var(--line); border-radius:1.5rem; overflow:hidden; }
+  .cell-grid{ display:grid; grid-template-columns:1fr; }
+  @media (min-width:768px){
+    .cell-grid.cols-2{ grid-template-columns:repeat(2,1fr); }
+    .cell-grid.cols-3{ grid-template-columns:repeat(3,1fr); }
   }
-  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); }
-  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
-  .tile:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -30px rgba(20,24,27,0.35); }
-  .tile:hover .tile-img{ transform:scale(1.06); }
-  .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,24,27,0) 30%, rgba(20,24,27,0.82) 100%); }
-
-  .card-glow{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease; }
-  .card-glow::before{
-    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
-    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), #0E8FA633, transparent 70%);
-    pointer-events:none;
+  .cell-grid .cell{ padding:2.25rem; border-bottom:1px solid var(--line); transition:background-color .3s ease; }
+  .cell-grid .cell:last-child{ border-bottom:none; }
+  .cell-grid .cell:hover{ background:#0E8FA609; }
+  .cell-grid .cell:hover .icon-badge{ background:#0E8FA6; color:#fff; }
+  @media (min-width:768px){
+    .cell-grid.cols-3 .cell{ border-right:1px solid var(--line); }
+    .cell-grid.cols-3 .cell:nth-child(3n){ border-right:none; }
+    .cell-grid.cols-3 .cell:nth-child(n+4){ border-bottom:none; }
+    .cell-grid.cols-2 .cell{ border-right:1px solid var(--line); }
+    .cell-grid.cols-2 .cell:nth-child(2n){ border-right:none; }
+    .cell-grid.cols-2 .cell:nth-child(n+5){ border-bottom:none; }
   }
-  .card-glow:hover::before{ opacity:1; }
-  .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:#0E8FA655; }
-  .service-cta{ font-size:.78rem; font-weight:600; color:#0A6575; }
+  .service-cta{ font-size:.8rem; font-weight:600; color:#0A6575; display:inline-flex; align-items:center; gap:.3rem; }
   .service-cta:hover{ text-decoration:underline; }
 
   /* ---- AMC pricing cards ---- */
@@ -122,7 +121,7 @@
   /* ---- Hero cursor spotlight ---- */
   .hero-spotlight{ position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .5s ease; background: radial-gradient(640px circle at var(--sx,50%) var(--sy,20%), #0E8FA61f, transparent 70%); }
   .hero-spotlight.active{ opacity:1; }
-  .pricing-card .tag{ position:absolute; top:-0.9rem; left:2rem; background:#0E8FA6; color:#fff; font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:.3rem .8rem; border-radius:999px; }
+  .pricing-card .tag{ position:absolute; top:-0.9rem; left:50%; transform:translateX(-50%); background:#0E8FA6; color:#fff; font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:.35rem 1rem; border-radius:999px; white-space:nowrap; }
   .pricing-card ul{ display:flex; flex-direction:column; gap:.6rem; margin:1.5rem 0; flex:1; }
   .pricing-card li{ font-size:.9rem; color:var(--ink-soft); display:flex; gap:.5rem; align-items:flex-start; }
   .pricing-card li::before{ content:'✓'; color:#0E8FA6; font-weight:700; flex-shrink:0; }
@@ -131,9 +130,7 @@
   .amc-slider{ -webkit-appearance:none; appearance:none; width:100%; height:8px; border-radius:999px; background:linear-gradient(90deg, #0E8FA6, var(--line)); outline:none; }
   .amc-slider::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:#fff; border:3px solid #0E8FA6; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.2); }
   .amc-slider::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:#fff; border:3px solid #0E8FA6; cursor:pointer; }
-
-  /* ---- Why-us grid ---- */
-  .why-item{ padding:1.75rem 0; border-top:1px solid var(--line); }
+  .stat-card{ background:#F4F6F7; border:1px solid var(--line); border-radius:1rem; padding:1.5rem; text-align:center; }
 
   /* ---- Area chips ---- */
   .chip{ display:inline-flex; font-size:.78rem; font-weight:500; color:var(--ink-soft); background:#fff; border:1px solid var(--line); padding:.4rem .9rem; border-radius:999px; }
@@ -144,6 +141,10 @@
     .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; }
     .gallery .g-tall{ grid-row:span 2; }
   }
+  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); }
+  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .tile:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -30px rgba(20,24,27,0.35); }
+  .tile:hover .tile-img{ transform:scale(1.06); }
 
   /* ---- Reviews marquee ---- */
   .review-track{ display:flex; gap:1.5rem; width:max-content; animation: marquee-rev 40s linear infinite; }
@@ -157,10 +158,12 @@
   .wa-sticky-ring{ position:absolute; inset:0; border-radius:9999px; background:#25D366; opacity:.55; animation:wa-pulse 2.4s ease-out infinite; z-index:-1; }
   @keyframes wa-pulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.8); opacity:0; } }
 
-  /* ---- Callback form ---- */
-  .form-field{ width:100%; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; border-radius:0.9rem; padding:0.85rem 1.1rem; font-size:.95rem; }
-  .form-field::placeholder{ color:rgba(255,255,255,0.65); }
-  .form-field:focus{ outline:none; border-color:#fff; background:rgba(255,255,255,0.18); }
+  /* ---- Contact: light info rows + labeled form (matches reference, not a dark diagonal band) ---- */
+  .info-row{ display:flex; align-items:center; gap:1.1rem; background:#fff; border:1px solid var(--line); border-radius:1.1rem; padding:1.1rem 1.3rem; }
+  .field-label{ font-size:.7rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); margin-bottom:.4rem; display:block; }
+  .form-field{ width:100%; background:#F4F6F7; border:1px solid var(--line); color:var(--ink); border-radius:0.85rem; padding:0.8rem 1rem; font-size:.95rem; }
+  .form-field::placeholder{ color:#9AA3A8; }
+  .form-field:focus{ outline:none; border-color:#0E8FA6; background:#fff; box-shadow:0 0 0 3px #0E8FA61a; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
@@ -263,75 +266,87 @@
     </div>
   </section>
 
-  <!-- Services: bento grid, mixed tile sizes, one image-backed feature tile -->
+  <!-- Services: unified bordered grid with icon badges, not floating bento tiles -->
   <section id="services" class="py-24">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal-up mb-12 max-w-lg">
-        <p class="eyebrow">/ 01 — Services</p>
-        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">Full-spectrum cooling, engineered for Dubai</h2>
+      <div class="reveal-up mb-12 grid md:grid-cols-2 gap-6 items-end">
+        <div>
+          <p class="eyebrow">/ 01 — Services</p>
+          <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold"><span class="text-[--ink]">Full-spectrum cooling,</span> <span class="text-[--ink-soft]">engineered for Dubai.</span></h2>
+        </div>
         <p class="text-[--ink-soft] text-lg">From a single split unit to entire commercial HVAC systems, our certified technicians handle every part of your air conditioning.</p>
       </div>
 
-      <div class="bento">
-        <div class="reveal-card tile t-feature min-h-[280px]">
-          <img src="images/hero.jpg" alt="" class="tile-img" />
-          <div class="tile-overlay"></div>
-          <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
-            <span class="text-xs font-semibold uppercase tracking-wide text-white/70 mb-1">Preventive</span>
-            <h3 class="font-display font-bold text-2xl mb-2">Routine AC Maintenance</h3>
-            <p class="text-sm text-white/80 max-w-xs mb-3">Filter cleaning, coil inspection, thermostat checks, electrical testing and drain line clearing to prevent breakdowns.</p>
-            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20routine%20AC%20maintenance" class="text-xs font-semibold text-white underline underline-offset-2 w-fit">Book this service →</a>
+      <div class="reveal-card grid-panel">
+        <div class="cell-grid cols-3">
+          <div class="cell">
+            <div class="flex items-start justify-between mb-5">
+              <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19 12h2.5M12 19v2.5M5 12H2.5M12 5V2.5M16.95 16.95l1.77 1.77M16.95 7.05l1.77-1.77M7.05 16.95l-1.77 1.77M7.05 7.05L5.28 5.28"/></svg></div>
+              <span class="pill-tag">Preventive</span>
+            </div>
+            <h3 class="font-display font-bold text-lg mb-2">Routine AC Maintenance</h3>
+            <p class="text-sm text-[--ink-soft] mb-4">Filter cleaning, coil inspection, thermostat checks, electrical testing and drain line clearing to prevent breakdowns.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20routine%20AC%20maintenance" class="service-cta">Book this service <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </div>
-        </div>
 
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Same-day</span>
-            <h3 class="font-display font-bold text-base mt-1">AC Repair</h3>
-            <p class="text-sm text-[--ink-soft] mt-1">Fast diagnosis and repair for split, central, ducted and commercial AC systems — day or night.</p>
+          <div class="cell">
+            <div class="flex items-start justify-between mb-5">
+              <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.1 9.1l5.8 5.8"/></svg></div>
+              <span class="pill-tag">Same-day</span>
+            </div>
+            <h3 class="font-display font-bold text-lg mb-2">AC Repair</h3>
+            <p class="text-sm text-[--ink-soft] mb-4">Fast diagnosis and repair for split, central, ducted and commercial AC systems — day or night.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20AC%20repair" class="service-cta">Book this service <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </div>
-          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20AC%20repair" class="service-cta mt-3 w-fit">Book this service →</a>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">New units</span>
-            <h3 class="font-display font-bold text-base mt-1">AC Installation</h3>
-            <p class="text-sm text-[--ink-soft] mt-1">New unit installation and replacement for homes, offices and commercial properties.</p>
-          </div>
-          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20AC%20installation" class="service-cta mt-3 w-fit">Book this service →</a>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Air quality</span>
-            <h3 class="font-display font-bold text-base mt-1">AC Duct Cleaning</h3>
-            <p class="text-sm text-[--ink-soft] mt-1">Removes dust and allergens from ductwork for cleaner air and better airflow.</p>
-          </div>
-          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20duct%20cleaning" class="service-cta mt-3 w-fit">Book this service →</a>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Efficiency</span>
-            <h3 class="font-display font-bold text-base mt-1">AC Coil Cleaning</h3>
-            <p class="text-sm text-[--ink-soft] mt-1">Deep cleaning of evaporator and condenser coils to restore efficient cooling.</p>
-          </div>
-          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20coil%20cleaning" class="service-cta mt-3 w-fit">Book this service →</a>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <div>
-            <span class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Refrigerant</span>
-            <h3 class="font-display font-bold text-base mt-1">Gas Top-Up</h3>
-            <p class="text-sm text-[--ink-soft] mt-1">Leak detection, pressure testing and safe refrigerant recharge.</p>
-          </div>
-          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20a%20gas%20top-up" class="service-cta mt-3 w-fit">Book this service →</a>
-        </div>
 
-        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#0E8FA6">
-          <div>
-            <h3 class="font-display font-bold text-xl mb-1">24/7 Emergency Call-Out</h3>
-            <p class="text-sm text-white/80 max-w-md">AC down in the heat? We're on call around the clock across Dubai, Sharjah and Abu Dhabi.</p>
+          <div class="cell">
+            <div class="flex items-start justify-between mb-5">
+              <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+              <span class="pill-tag">New units</span>
+            </div>
+            <h3 class="font-display font-bold text-lg mb-2">AC Installation</h3>
+            <p class="text-sm text-[--ink-soft] mb-4">New unit installation and replacement for homes, offices and commercial properties.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20AC%20installation" class="service-cta">Book this service <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </div>
-          <a href="tel:971502977603" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call +971 50 297 7603</a>
+
+          <div class="cell">
+            <div class="flex items-start justify-between mb-5">
+              <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3"/><path d="M3 12h14a3 3 0 1 1-3 3"/><path d="M3 16h8a2 2 0 1 0-2-2"/></svg></div>
+              <span class="pill-tag">Air quality</span>
+            </div>
+            <h3 class="font-display font-bold text-lg mb-2">AC Duct Cleaning</h3>
+            <p class="text-sm text-[--ink-soft] mb-4">Removes dust and allergens from ductwork for cleaner air and better airflow.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20duct%20cleaning" class="service-cta">Book this service <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+
+          <div class="cell">
+            <div class="flex items-start justify-between mb-5">
+              <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>
+              <span class="pill-tag">Efficiency</span>
+            </div>
+            <h3 class="font-display font-bold text-lg mb-2">AC Coil Cleaning</h3>
+            <p class="text-sm text-[--ink-soft] mb-4">Deep cleaning of evaporator and condenser coils to restore efficient cooling.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20coil%20cleaning" class="service-cta">Book this service <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+
+          <div class="cell">
+            <div class="flex items-start justify-between mb-5">
+              <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13l4-4"/><path d="M8 13h.01M12 5v.01M16 13h.01"/></svg></div>
+              <span class="pill-tag">Refrigerant</span>
+            </div>
+            <h3 class="font-display font-bold text-lg mb-2">Gas Top-Up</h3>
+            <p class="text-sm text-[--ink-soft] mb-4">Leak detection, pressure testing and safe refrigerant recharge.</p>
+            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20a%20gas%20top-up" class="service-cta">Book this service <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
         </div>
+      </div>
+
+      <div class="reveal-card mt-5 p-7 rounded-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white" style="background:#0E8FA6">
+        <div>
+          <h3 class="font-display font-bold text-xl mb-1">24/7 Emergency Call-Out</h3>
+          <p class="text-sm text-white/80 max-w-md">AC down in the heat? We're on call around the clock across Dubai, Sharjah and Abu Dhabi.</p>
+        </div>
+        <a href="tel:971502977603" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call +971 50 297 7603</a>
       </div>
     </div>
   </section>
@@ -351,12 +366,14 @@
           <span>Optimized</span>
         </div>
         <input type="range" min="0" max="100" value="60" id="amc-slider" class="amc-slider" />
-        <div class="grid grid-cols-2 gap-6 mt-6 text-center">
-          <div>
+        <div class="grid grid-cols-2 gap-5 mt-6">
+          <div class="stat-card">
+            <div class="icon-badge mx-auto mb-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 11v6h-6"/></svg></div>
             <div class="font-display font-extrabold text-3xl text-brand"><span id="bill-reduction">18</span>%</div>
             <p class="text-xs text-[--ink-soft] mt-1">Bill reduction</p>
           </div>
-          <div>
+          <div class="stat-card">
+            <div class="icon-badge mx-auto mb-2" style="background:#F2600014;color:#EA580C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
             <div class="font-display font-extrabold text-3xl"><span id="energy-waste">40</span>%</div>
             <p class="text-xs text-[--ink-soft] mt-1">Energy waste</p>
           </div>
@@ -412,40 +429,51 @@
     </div>
   </section>
 
-  <!-- Why Al Naveed -->
+  <!-- Why Al Naveed: unified bordered grid with icon badges, not plain stacked list -->
   <section id="why" class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-start">
       <div class="reveal-up md:sticky md:top-32">
         <p class="eyebrow">/ 03 — Why Al Naveed</p>
         <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">The team Dubai calls when comfort matters</h2>
-        <div class="clip-reveal rounded-[1.75rem] overflow-hidden mt-8">
+        <p class="text-[--ink-soft] text-lg mb-8">We're not just a repair service — precise, reliable, and always on time.</p>
+        <div class="clip-reveal rounded-[1.75rem] overflow-hidden relative">
           <img src="images/gallery-4.jpg" alt="Al Naveed technician servicing a unit" class="w-full aspect-[4/3] object-cover" />
+          <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur text-xs font-semibold px-3 py-1.5 rounded-full">On-site · Dubai</div>
         </div>
       </div>
-      <div>
-        <div class="why-item reveal-up">
-          <h3 class="font-display font-bold text-lg mb-1">24/7 Emergency Response</h3>
-          <p class="text-[--ink-soft]">AC never breaks at a convenient time. Our team is on call around the clock, every day of the year.</p>
-        </div>
-        <div class="why-item reveal-up">
-          <h3 class="font-display font-bold text-lg mb-1">Certified Technicians</h3>
-          <p class="text-[--ink-soft]">16 years of hands-on Dubai HVAC experience, across split, central, ducted and commercial systems.</p>
-        </div>
-        <div class="why-item reveal-up">
-          <h3 class="font-display font-bold text-lg mb-1">Transparent Pricing</h3>
-          <p class="text-[--ink-soft]">Clear quotes before we start — no hidden charges, no unnecessary repairs.</p>
-        </div>
-        <div class="why-item reveal-up">
-          <h3 class="font-display font-bold text-lg mb-1">Energy Efficiency Focus</h3>
-          <p class="text-[--ink-soft]">Every service is tuned to lower your electricity bill and extend the life of your equipment.</p>
-        </div>
-        <div class="why-item reveal-up">
-          <h3 class="font-display font-bold text-lg mb-1">All of Dubai Covered</h3>
-          <p class="text-[--ink-soft]">From Deira to Marina, Downtown to the Palm — our technicians reach you fast, anywhere in the city.</p>
-        </div>
-        <div class="why-item reveal-up">
-          <h3 class="font-display font-bold text-lg mb-1">Real Customer Support</h3>
-          <p class="text-[--ink-soft]">Talk to a real person, not a call center. We follow up after every job.</p>
+
+      <div class="reveal-card grid-panel">
+        <div class="cell-grid cols-2">
+          <div class="cell">
+            <div class="icon-badge mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+            <h3 class="font-display font-bold text-lg mb-1">24/7 Emergency Response</h3>
+            <p class="text-[--ink-soft] text-sm">AC never breaks at a convenient time. Our team is on call around the clock, every day of the year.</p>
+          </div>
+          <div class="cell">
+            <div class="icon-badge mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3 class="font-display font-bold text-lg mb-1">Certified Technicians</h3>
+            <p class="text-[--ink-soft] text-sm">16 years of hands-on Dubai HVAC experience, across split, central, ducted and commercial systems.</p>
+          </div>
+          <div class="cell">
+            <div class="icon-badge mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="19" height="13" rx="2"/><path d="M2.5 10.5h19"/><circle cx="17" cy="14.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+            <h3 class="font-display font-bold text-lg mb-1">Transparent Pricing</h3>
+            <p class="text-[--ink-soft] text-sm">Clear quotes before we start — no hidden charges, no unnecessary repairs.</p>
+          </div>
+          <div class="cell">
+            <div class="icon-badge mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+            <h3 class="font-display font-bold text-lg mb-1">Energy Efficiency Focus</h3>
+            <p class="text-[--ink-soft] text-sm">Every service is tuned to lower your electricity bill and extend the life of your equipment.</p>
+          </div>
+          <div class="cell">
+            <div class="icon-badge mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <h3 class="font-display font-bold text-lg mb-1">All of Dubai Covered</h3>
+            <p class="text-[--ink-soft] text-sm">From Deira to Marina, Downtown to the Palm — our technicians reach you fast, anywhere in the city.</p>
+          </div>
+          <div class="cell">
+            <div class="icon-badge mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="7" rx="1.5"/><rect x="17" y="13" width="4" height="7" rx="1.5"/></svg></div>
+            <h3 class="font-display font-bold text-lg mb-1">Real Customer Support</h3>
+            <p class="text-[--ink-soft] text-sm">Talk to a real person, not a call center. We follow up after every job.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -586,42 +614,74 @@
     </div>
   </section>
 
-  <!-- Contact: diagonal top edge instead of a plain rectangle -->
-  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#0E8FA6; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
-    <div class="grain" aria-hidden="true"></div>
-    <div id="contact-orb" aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
-    <div class="max-w-5xl mx-auto px-6 relative">
-      <p class="eyebrow text-white/80 justify-center md:justify-start" style="color:#fff">/ 06 — Book a Service</p>
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5 text-center md:text-left">Let's restore your comfort</h2>
-      <p class="reveal-up text-white/80 mb-10 text-lg text-center md:text-left">Call us, message on WhatsApp, or send the form — a technician will reach out to confirm your booking.</p>
+  <!-- Contact: light info rows + a labeled callback form, not a dark diagonal band -->
+  <section id="contact" class="relative py-24 overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute top-0 right-[-10%] w-[600px] h-[600px] rounded-full opacity-[0.08] blur-3xl" style="background:#0E8FA6"></div>
+    <div class="max-w-7xl mx-auto px-6 relative grid md:grid-cols-[1fr_1.1fr] gap-14 items-start">
+      <div class="reveal-up">
+        <p class="eyebrow">/ 06 — Book a Service</p>
+        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-5">Let's restore your comfort.</h2>
+        <p class="text-[--ink-soft] mb-10 text-lg">Call us, message on WhatsApp, or send the form — a technician will reach out to confirm your booking.</p>
 
-      <div class="grid md:grid-cols-2 gap-10 items-start">
-        <div class="reveal-up">
-          <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="tel:971502977603" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full text-center">Call / 24 hours · +971 50 297 7603</a>
-            <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20booking%20an%20AC%20service" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full text-center">WhatsApp · Chat now</a>
-          </div>
-          <div class="grid grid-cols-2 gap-6 text-white">
+        <div class="space-y-3">
+          <a href="tel:971502977603" class="info-row">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L15 14l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
             <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-white/60 mb-1">Location</p>
-              <p class="font-display font-bold">28C St, Naif, Deira — Dubai</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Call / 24 hours</p>
+              <p class="font-display font-bold text-lg">050 297 7603</p>
             </div>
+          </a>
+          <a href="https://wa.me/971502977603?text=Hello!%20I%27m%20interested%20in%20booking%20an%20AC%20service" class="info-row">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.3 0-2.5-.3-3.6-.8L3 21l1.8-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
             <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-white/60 mb-1">Hours</p>
-              <p class="font-display font-bold">Open 24 hours · 7 days</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">WhatsApp</p>
+              <p class="font-display font-bold text-lg">Chat now</p>
+            </div>
+          </a>
+          <div class="info-row">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Location</p>
+              <p class="font-display font-bold text-lg">28C St, Naif, Deira — Dubai</p>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-[--ink-soft]/70">Hours</p>
+              <p class="font-display font-bold text-lg">Open 24 hours · 7 days</p>
             </div>
           </div>
         </div>
-
-        <form id="callback-form" class="reveal-up bg-white/10 border border-white/25 rounded-2xl p-7 space-y-4">
-          <h3 class="font-display font-bold text-white mb-1">Request a callback</h3>
-          <p class="text-sm text-white/70 mb-3">Fill this in and we'll confirm your booking on WhatsApp.</p>
-          <input type="text" id="cb-name" placeholder="Full name" class="form-field" required />
-          <input type="tel" id="cb-phone" placeholder="Phone" class="form-field" required />
-          <textarea id="cb-message" placeholder="What do you need help with?" rows="3" class="form-field"></textarea>
-          <button type="submit" class="magnetic w-full bg-white text-brandDark font-semibold px-6 py-3.5 rounded-full justify-center">Send via WhatsApp</button>
-        </form>
       </div>
+
+      <form id="callback-form" class="reveal-up bg-white border border-[--line] rounded-[1.75rem] p-8 shadow-[0_30px_60px_-30px_rgba(20,24,27,0.2)]">
+        <h3 class="font-display font-bold text-xl mb-1">Request a callback</h3>
+        <p class="text-sm text-[--ink-soft] mb-6">Fill this in and we'll confirm your booking on WhatsApp.</p>
+
+        <label class="block mb-4">
+          <span class="field-label">Full name</span>
+          <input type="text" id="cb-name" placeholder="Your name" class="form-field" required />
+        </label>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <label class="block">
+            <span class="field-label">Phone</span>
+            <input type="tel" id="cb-phone" placeholder="+971 5X XXX XXXX" class="form-field" required />
+          </label>
+          <label class="block">
+            <span class="field-label">Email</span>
+            <input type="email" id="cb-email" placeholder="you@email.com" class="form-field" />
+          </label>
+        </div>
+        <label class="block mb-6">
+          <span class="field-label">Message</span>
+          <textarea id="cb-message" placeholder="Tell us about your AC issue or the service you need…" rows="3" class="form-field"></textarea>
+        </label>
+        <button type="submit" class="magnetic w-full bg-brand hover:bg-brandDark text-white font-semibold px-6 py-3.5 rounded-full justify-center items-center gap-2 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          Send via WhatsApp
+        </button>
+      </form>
     </div>
   </section>
 
@@ -734,14 +794,6 @@ document.querySelectorAll('.magnetic').forEach((btn) => {
   btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
 });
 
-document.querySelectorAll('.card-glow').forEach((card) => {
-  card.addEventListener('mousemove', (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    card.style.setProperty('--my', `${e.clientY - r.top}px`);
-  });
-});
-
 /* AMC savings slider: "up to 30%" is Al Naveed's own published claim — the
    slider's max bill-reduction value is capped there, never invented higher. */
 const amcSlider = document.getElementById('amc-slider');
@@ -777,8 +829,10 @@ if (callbackForm) {
     e.preventDefault();
     const name = document.getElementById('cb-name').value.trim();
     const phone = document.getElementById('cb-phone').value.trim();
+    const email = document.getElementById('cb-email').value.trim();
     const message = document.getElementById('cb-message').value.trim();
-    const text = `Hello! My name is ${name} (${phone}). ${message || "I'd like to book an AC service."}`;
+    const emailPart = email ? ` Email: ${email}.` : '';
+    const text = `Hello! My name is ${name} (${phone}).${emailPart} ${message || "I'd like to book an AC service."}`;
     window.open(`https://wa.me/971502977603?text=${encodeURIComponent(text)}`, '_blank');
   });
 }
