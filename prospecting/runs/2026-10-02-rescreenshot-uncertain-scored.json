@@ -1,0 +1,167 @@
+[
+  {
+    "niche": "ac-repair",
+    "docId": "ac-repair-brave-cool-ac-installatoin-ac-repair-and-systems-fixing-l-l-c",
+    "name": "Brave Cool AC Installatoin, AC Repair and Systems Fixing L.L.C",
+    "website": "https://bravecoolac.com/",
+    "phone": "+971 56 272 4299",
+    "rating": 4.5,
+    "reviewsCount": 46,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brave%20Cool%20AC%20Installatoin%2C%20AC%20Repair%20and%20Systems%20Fixing%20L.L.C&query_place_id=ChIJ34eh7WRdXz4RjQrrF4NP54U",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "Screenshot shows only an error message with no actual website content visible, making design assessment impossible despite the technical signal of missing mobile viewport meta tag."
+    },
+    "screenshotFile": "site-1-desktop.jpg"
+  },
+  {
+    "niche": "ac-repair",
+    "docId": "ac-repair-elite-climate-care",
+    "name": "Elite Climate Care",
+    "website": "https://eliteclimatecare.ae/",
+    "phone": "+971 52 824 8453",
+    "rating": 5,
+    "reviewsCount": 8,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elite%20Climate%20Care&query_place_id=ChIJKZu11ZtpXz4RJz_bxE31V28",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a Shopify error page indicating the store is unavailable, not actual site content, making design assessment impossible."
+    },
+    "screenshotFile": "site-2-desktop.jpg"
+  },
+  {
+    "niche": "ac-repair",
+    "docId": "ac-repair-faizan-attari-technical-service",
+    "name": "Faizan Attari technical service",
+    "website": "https://homeappliancesrepairindubai.com/",
+    "phone": "+971 56 955 4864",
+    "rating": 4.6,
+    "reviewsCount": 19,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Faizan%20Attari%20technical%20service&query_place_id=ChIJpdTdoTBdXz4RAWpDWO7OhI8",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "Screenshot shows only an error message with no actual website content visible, making visual assessment impossible despite the missing viewport meta tag being a technical red flag."
+    },
+    "screenshotFile": "site-3-desktop.jpg"
+  },
+  {
+    "niche": "ac-repair",
+    "docId": "ac-repair-naseem-baig-technical-services",
+    "name": "Naseem Baig Technical Services",
+    "website": "https://www.nbtech.ae/",
+    "phone": "+971 52 590 9130",
+    "rating": 4.9,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naseem%20Baig%20Technical%20Services&query_place_id=ChIJt6ifvupDXz4R_ovktUgvbZc",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern dark theme with coherent visual design, professional typography, clear CTAs, and a well-organized layout with team imagery and social proof—no structural clutter, template artifacts, or dated elements that would justify a redesign pitch."
+    },
+    "screenshotFile": "site-4-desktop.jpg"
+  },
+  {
+    "niche": "ac-repair",
+    "docId": "ac-repair-rose-river-technical-services-llc",
+    "name": "Rose River Technical Services LLC",
+    "website": "https://www.roseriver.ae/",
+    "phone": "+971 54 429 4039",
+    "rating": 5,
+    "reviewsCount": 3,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rose%20River%20Technical%20Services%20LLC&query_place_id=ChIJvWO2e-RDXz4R1Ob5Mp41LE8",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot appears blank or is not loading, preventing visual assessment of the site's design quality, though the missing mobile viewport meta tag is a technical concern that cannot be fully evaluated without seeing the actual content."
+    },
+    "screenshotFile": "site-5-desktop.jpg"
+  },
+  {
+    "niche": "plumbing",
+    "docId": "plumbing-dakeek-technical-services-co-l-l-c",
+    "name": "DAKEEK TECHNICAL SERVICES CO. L.L.C",
+    "website": "https://dakeek.ae/",
+    "phone": "+971 54 247 2147",
+    "rating": 4.7,
+    "reviewsCount": 12,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=DAKEEK%20TECHNICAL%20SERVICES%20CO.%20L.L.C&query_place_id=ChIJSdsD5_xdXz4RrHzTng2Y8X4",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "Clean, modern layout with coherent visual identity, professional typography, and clear hierarchy; no structural clutter, template artifacts, or dated design elements visible."
+    },
+    "screenshotFile": "site-6-desktop.jpg"
+  },
+  {
+    "niche": "plumbing",
+    "docId": "plumbing-dilawar-technical-services-llc",
+    "name": "Dilawar Technical Services LLC",
+    "website": "https://dilawartek.ae/",
+    "phone": "+971 55 255 7484",
+    "rating": 4.9,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dilawar%20Technical%20Services%20LLC&query_place_id=ChIJ4S9jejFDXz4Rinj2IEX1lFo",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot appears blank or is not loading properly, making it impossible to evaluate the site's design quality or outdatedness."
+    },
+    "screenshotFile": "site-7-desktop.jpg"
+  },
+  {
+    "niche": "plumbing",
+    "docId": "plumbing-techsa-technical-services-llc",
+    "name": "Techsa Technical Services LLC",
+    "website": "https://techsatechnical.ae/",
+    "phone": "",
+    "rating": 4.5,
+    "reviewsCount": 19,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Techsa%20Technical%20Services%20LLC&query_place_id=ChIJX6dWF1s3O6wRW22bLolp2_w",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot appears to be blank or contains no visible content, making it impossible to assess the design quality or identify specific problems."
+    },
+    "screenshotFile": "site-8-desktop.jpg"
+  },
+  {
+    "niche": "car-repair",
+    "docId": "car-repair-free-look-auto-repairing",
+    "name": "Free Look Auto Repairing",
+    "website": "http://www.fccuae.com/",
+    "phone": "+971 56 962 8626",
+    "rating": 4.6,
+    "reviewsCount": 226,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Free%20Look%20Auto%20Repairing&query_place_id=ChIJNQtwwyNdXz4RmeIJHPo1EvA",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent visual identity, professional layout, clear hierarchy, and contemporary styling despite some minor design choices that could be refreshed."
+    },
+    "screenshotFile": "site-9-desktop.jpg"
+  },
+  {
+    "niche": "car-repair",
+    "docId": "car-repair-pal-auto-garage",
+    "name": "PAL AUTO GARAGE",
+    "website": "https://palautogarage.com/",
+    "phone": "+971 4 297 1222",
+    "rating": 4.3,
+    "reviewsCount": 879,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=PAL%20AUTO%20GARAGE&query_place_id=ChIJ_SjMNulcXz4RZQ_QIlDaqjk",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent modern visual identity with a clean hero layout, professional typography, Tesla branding integration, and a clear call-to-action; the red gradient background and contemporary design system show intentional professional design rather than dated elements."
+    },
+    "screenshotFile": "site-10-desktop.jpg"
+  },
+  {
+    "niche": "electrician",
+    "docId": "electrician-mohammed-mamun-biplab-technical-services",
+    "name": "Mohammed Mamun Biplab Technical Services",
+    "website": "https://mamunbiplabtech.ae/",
+    "phone": "+971 55 166 2572",
+    "rating": 5,
+    "reviewsCount": 1,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mohammed%20Mamun%20Biplab%20Technical%20Services&query_place_id=ChIJYcBN3R1DXz4RuhO39_CUnyE",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot appears to be blank or not fully loaded, making it impossible to assess the site's design quality or visual coherence despite the technical signal of a missing mobile viewport meta tag."
+    },
+    "screenshotFile": "site-11-desktop.jpg"
+  }
+]
