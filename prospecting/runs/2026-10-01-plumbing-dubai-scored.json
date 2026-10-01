@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Newell Electromechanical Works LLC",
+    "website": "https://www.newellmepco.com/",
+    "phone": "+971 4 884 3367",
+    "rating": 5,
+    "reviewsCount": 11,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Newell%20Electromechanical%20Works%20LLC&query_place_id=ChIJlXXM9nRbXz4RXyIb1I_ofsI",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The homepage has a clean, organized layout with a clear navigation bar, professional logo, and a coherent dark theme; while the background appears minimal/empty, there are no visible structural problems like cluttered icon boxes, template artifacts, or spam content."
+    }
+  },
+  {
+    "name": "Fresh Life Technical Services",
+    "website": "https://freshlifetechnical.com/",
+    "phone": "+971 55 122 6040",
+    "rating": 5,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fresh%20Life%20Technical%20Services&query_place_id=ChIJZy2cnCpDXz4Rv9q95FGW_dU",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a cohesive design system with consistent branding, clean layout, and organized navigation—while the color palette and anime aesthetic may feel niche, there are no structural problems like clutter, placeholder artifacts, or duplicate generic content boxes."
+    }
+  },
+  {
+    "name": "Kamrul Sikdar Technical Services LLC",
+    "website": "https://www.kamrulsikdartechnicalservicesllc.ae/",
+    "phone": "+971 4 273 5920",
+    "rating": 5,
+    "reviewsCount": 2,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kamrul%20Sikdar%20Technical%20Services%20LLC&query_place_id=ChIJi66un3BDXz4RPxmFWYfRxz0",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, cohesive dark blue design with clear hierarchy, professional imagery, readable typography, and a single strong call-to-action; the cookie banner overlay is standard and temporary, not a structural design flaw."
+    }
+  },
+  {
+    "name": "Dilawar Technical Services LLC",
+    "website": "https://dilawartek.ae/",
+    "phone": "+971 55 255 7484",
+    "rating": 4.9,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dilawar%20Technical%20Services%20LLC&query_place_id=ChIJ4S9jejFDXz4Rinj2IEX1lFo",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "model did not return valid JSON: I'm unable to see any content in the screenshot provided - it appears to be completely blank or failed to load. I cannot evaluate the website design without visible content.\n\n{\"verdict\": \"uncertain\", \"reason\": \"screenshot appears blank or failed to load - no website content visible to evaluate\"}"
+    }
+  },
+  {
+    "name": "DAKEEK TECHNICAL SERVICES CO. L.L.C",
+    "website": "https://dakeek.ae/",
+    "phone": "+971 54 247 2147",
+    "rating": 4.7,
+    "reviewsCount": 12,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=DAKEEK%20TECHNICAL%20SERVICES%20CO.%20L.L.C&query_place_id=ChIJSdsD5_xdXz4RrHzTng2Y8X4",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "Screenshot shows only a black background with the text 'DAKEEK' - insufficient content to evaluate site structure, design system, or layout quality"
+    }
+  },
+  {
+    "name": "AlSibah Technical Services",
+    "website": "https://www.alsibah.com/",
+    "phone": "",
+    "rating": 5,
+    "reviewsCount": 3,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AlSibah%20Technical%20Services&query_place_id=ChIJEynMqrtDXz4RPb584QdHGXc",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, organized layout with a professional HVAC/MEP hero image, clear navigation, and a cohesive visual identity with consistent branding - no structural clutter, no template artifacts, and no spam-like content patterns visible."
+    }
+  },
+  {
+    "name": "MNA CONTRACTING L.L.C",
+    "website": "https://mnagroup.ae/",
+    "phone": "+971 55 400 9420",
+    "rating": 4.9,
+    "reviewsCount": 28,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MNA%20CONTRACTING%20L.L.C&query_place_id=ChIJywgdsnlDXz4RFKxyvuQNWXk",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "Clean layout with cohesive green/dark blue color scheme, clear navigation structure, and organized content sections with no visible template artifacts or keyword-stuffing clutter."
+    }
+  },
+  {
+    "name": "Techsa Technical Services LLC",
+    "website": "https://techsatechnical.ae/",
+    "phone": "",
+    "rating": 4.5,
+    "reviewsCount": 19,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Techsa%20Technical%20Services%20LLC&query_place_id=ChIJX6dWF1s3O6wRW22bLolp2_w",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The image appears to be blank or failed to load, making assessment impossible."
+    }
+  },
+  {
+    "name": "Home Renovation Experts Dubai",
+    "website": "https://homerenovationexpertsdubai.com/",
+    "phone": "+971 54 548 0934",
+    "rating": 5,
+    "reviewsCount": 5,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Home%20Renovation%20Experts%20Dubai&query_place_id=ChIJifbfb8Ypmw0R0QVgQiIjW9g",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean layout with coherent visual identity (red accent color, professional typography, organized navigation), a clear hero section with call-to-action, and professional imagery—the design is modern and functional despite the pink color overlay effect on the hero image."
+    }
+  }
+]
