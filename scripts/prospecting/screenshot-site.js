@@ -30,6 +30,15 @@ async function shoot(url, outPrefix) {
     } catch (e) {
       console.error(`  [${label}] navigation issue: ${e.message}`);
     }
+    // Many sites are still mid-render at "load" (hero animations, lazy
+    // images, client-side frameworks) - screenshotting immediately captures
+    // loading spinners/blank frames that bias the vision scorer toward
+    // "uncertain" regardless of the site's real design. Give it time to settle.
+    try {
+      await page.waitForTimeout(5000);
+    } catch (e) {
+      console.error(`  [${label}] settle wait issue: ${e.message}`);
+    }
     const outPath = `${outPrefix}-${label}.jpg`;
     await page.screenshot({ path: outPath, fullPage: false, type: "jpeg", quality: 82 });
     console.log(`  [${label}] saved ${outPath}`);
