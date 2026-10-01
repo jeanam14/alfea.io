@@ -105,9 +105,20 @@ with open(out_path, "w") as f:
     continue
   fi
 
-  verdict_json=$(echo "$resp_body" | jq -r '.content[0].text' | sed -e 's/^```json//' -e 's/^```//' -e 's/```$//')
-  if ! echo "$verdict_json" | jq -e . >/dev/null 2>&1; then
-    scored=$(echo "$item" | jq --arg r "model did not return valid JSON: $verdict_json" \
+  raw_text=$(echo "$resp_body" | jq -r '.content[0].text')
+  verdict_json=$(python3 -c '
+import json, re, sys
+text = sys.stdin.read()
+m = re.search(r"\{.*\}", text, re.S)
+if not m:
+    sys.exit(1)
+try:
+    json.dump(json.loads(m.group(0)), sys.stdout)
+except Exception:
+    sys.exit(1)
+' <<< "$raw_text")
+  if [[ -z "$verdict_json" ]] || ! echo "$verdict_json" | jq -e . >/dev/null 2>&1; then
+    scored=$(echo "$item" | jq --arg r "model did not return valid JSON: $raw_text" \
       '. + {visionScore: {verdict: "error", reason: $r}}')
   else
     scored=$(echo "$item" | jq --argjson v "$verdict_json" '. + {visionScore: $v}')
