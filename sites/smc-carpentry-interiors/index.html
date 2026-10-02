@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- ^ Remove this line at close, once the client has paid -->
+<title>SMC Carpentry &amp; Interiors | Dubai's 24-hour kitchen and carpentry specialists.</title>
+<meta name="description" content="SMC Carpentry &amp; Interiors — Dubai's 24-hour kitchen and carpentry specialists.. Serving Al Satwa &amp; Dubai. Call 056 291 1712." />
+<link rel="icon" href="data:," />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: "#1F3A5F", brandDark: "#13253D" },
+        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
+      }
+    }
+  }
+</script>
+
+<!-- GSAP core + ScrollTrigger only. ScrollSmoother/SplitText are NOT actually
+     bundled in the public npm package's dist/ folder despite being free to
+     use -- that path 404s. Smooth scroll and text-split are hand-rolled
+     below instead of depending on either plugin. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<style>
+  :root{
+    --ink: #14181B;
+    --ink-soft: #545B60;
+    --paper: #FAF9F6;
+    --line: rgba(20,24,27,0.08);
+  }
+  html{ background:var(--paper); }
+  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
+  h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
+  h1,h2{ text-wrap:balance; }
+  ::selection{ background:#1F3A5F; color:#fff; }
+
+  #smooth-wrapper{ overflow:hidden; }
+  #smooth-content{ overflow:visible; }
+
+  .word{ display:inline-block; will-change:transform; }
+  .clip-reveal{ clip-path: inset(0 0 100% 0); }
+  .star{ color:#F5A524; letter-spacing:1px; }
+  .tabular{ font-variant-numeric: tabular-nums; }
+
+  /* ---- Premium polish: thin brand-colored scrollbar ---- */
+  html{ scrollbar-color:#1F3A5F66 var(--paper); scrollbar-width:thin; }
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--paper); }
+  ::-webkit-scrollbar-thumb{ background:#1F3A5F66; border-radius:99px; border:2px solid var(--paper); background-clip:padding-box; }
+  ::-webkit-scrollbar-thumb:hover{ background:#1F3A5F; background-clip:padding-box; }
+
+  /* ---- Premium polish: subtle grain texture for depth on dark/flat fields ---- */
+  .grain{ position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* ---- Premium polish: fade the marquee edges instead of a hard clip ---- */
+  .marquee-fade{ mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+
+  /* ---- Premium polish: section headline word-reveal (same language as the hero) ---- */
+  .reveal-heading{ overflow:hidden; }
+
+  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease; }
+  #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+
+  .magnetic{ display:inline-flex; will-change:transform; }
+
+  /* ---- Trust marquee ---- */
+  .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
+  .marquee-track:hover{ animation-play-state: paused; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---- Bento services grid ---- */
+  .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
+  @media (min-width:1024px){
+    .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; }
+    .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
+    .bento .t-wide{ grid-column:span 4; }
+  }
+  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); }
+  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .tile:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -30px rgba(20,24,27,0.35); }
+  .tile:hover .tile-img{ transform:scale(1.06); }
+  .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,24,27,0) 30%, rgba(20,24,27,0.82) 100%); }
+
+  .card-glow{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease; }
+  .card-glow::before{
+    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
+    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), #1F3A5F33, transparent 70%);
+    pointer-events:none;
+  }
+  .card-glow:hover::before{ opacity:1; }
+  .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:#1F3A5F55; }
+
+  /* ---- Work gallery (asymmetric) ---- */
+  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+  @media (min-width:768px){
+    .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; }
+    .gallery .g-tall{ grid-row:span 2; }
+  }
+
+  /* ---- Reviews marquee ---- */
+  .review-track{ display:flex; gap:1.5rem; width:max-content; animation: marquee-rev 40s linear infinite; }
+  .review-track:hover{ animation-play-state:paused; }
+  @keyframes marquee-rev{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
+
+  /* ---- Sticky WhatsApp button ---- */
+  .wa-sticky{ position:fixed; right:1.35rem; bottom:1.35rem; z-index:65; width:58px; height:58px; border-radius:9999px; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -8px rgba(37,211,102,.65); }
+  .wa-sticky-ring{ position:absolute; inset:0; border-radius:9999px; background:#25D366; opacity:.55; animation:wa-pulse 2.4s ease-out infinite; z-index:-1; }
+  @keyframes wa-pulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.8); opacity:0; } }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+    .marquee-track, .review-track{ animation:none !important; }
+  }
+</style>
+</head>
+<body class="bg-[--paper] text-[--ink]">
+
+  <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-display font-extrabold text-lg tracking-tight">SMC Carpentry &amp; Interiors</span>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
+        <a href="#work" class="hover:text-[--ink] transition-colors">Our Work</a>
+        <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
+        <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
+        <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
+      </nav>
+      <a href="tel:971562911712" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+        056 291 1712
+      </a>
+    </div>
+  </header>
+
+  <a href="tel:971562911712" id="mobile-call-bar" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)] translate-y-full">
+    Call now — 056 291 1712
+  </a>
+
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+
+  <!-- Hero: full-width headline over an asymmetric layered visual, not a plain two-column split -->
+  <section class="relative pt-32 md:pt-40 pb-10">
+    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#1F3A5F"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
+        <span class="star">★★★★★</span> 4.8 · 142 Google reviews · Dubai
+      </div>
+
+      <h1 id="hero-headline" class="text-[12vw] leading-[0.96] md:text-[6vw] md:leading-[0.98] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
+        Dubai's 24-hour kitchen and carpentry specialists.
+      </h1>
+
+      <div class="mt-10 grid md:grid-cols-[1.1fr_1.4fr] gap-10 items-end">
+        <div>
+          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">Kitchens, cabinets, doors, and custom joinery — fitted by one team, open around the clock.</p>
+          <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
+            <a href="tel:971562911712" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #1F3A5Faa">
+              Call 056 291 1712
+            </a>
+            <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
+              Request a quote
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
+            <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNpZrR4AuxzDctyLi77O9AQDh1JAzPA4SWJPZvlYMvekEWcZOB9h60Tul1ssXzTV_rtKEx6i3W7fLY6bC1v5BDa0JuKIwKxvl6jgW5axIUkCRrQq4YFP79Vrnx1dVBusnyYjd1hYACIhKiy=k-no" alt="SMC Carpentry &amp; Interiors at work" class="w-full aspect-[16/10] object-cover" />
+          </div>
+          <!-- Floating overlap card: the single biggest "someone designed this" tell -->
+          <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
+            <div class="font-display font-extrabold text-3xl tabular">4.8★</div>
+            <div class="text-xs text-white/70 leading-tight">on Google<br>142 reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust marquee -->
+  <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
+    <div class="marquee-track marquee-fade text-sm font-semibold text-[--ink-soft] tracking-wide">
+      <div class="flex items-center gap-10 pr-10">
+        <span>★ 4.8 on Google</span><span>•</span>
+        <span>Open 24 Hours, Every Day</span><span>•</span>
+        <span>142+ Happy Customers</span><span>•</span>
+        <span>Serving Al Satwa &amp; Dubai</span><span>•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+        <span>★ 4.8 on Google</span><span>•</span>
+        <span>Open 24 Hours, Every Day</span><span>•</span>
+        <span>142+ Happy Customers</span><span>•</span>
+        <span>Serving Al Satwa &amp; Dubai</span><span>•</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: bento grid, mixed tile sizes, one image-backed feature tile -->
+  <section id="services" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal-up mb-12 max-w-lg">
+        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
+        <p class="text-[--ink-soft] text-lg">Kitchens, cabinets, doors, and custom joinery — handled by one team, open 24 hours.</p>
+      </div>
+
+      <div class="bento">
+        <div class="reveal-card tile t-feature min-h-[280px]">
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNpZrR4AuxzDctyLi77O9AQDh1JAzPA4SWJPZvlYMvekEWcZOB9h60Tul1ssXzTV_rtKEx6i3W7fLY6bC1v5BDa0JuKIwKxvl6jgW5axIUkCRrQq4YFP79Vrnx1dVBusnyYjd1hYACIhKiy=k-no" alt="" class="tile-img" />
+          <div class="tile-overlay"></div>
+          <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
+            <h3 class="font-display font-bold text-2xl mb-2">Kitchen Remodeling</h3>
+            <p class="text-sm text-white/80 max-w-xs">Full kitchen cabinet replacement and refitting, finished to measure.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Custom Cabinetry</h3>
+          <p class="text-sm text-[--ink-soft]">Wardrobes, cabinets, and built-in storage designed for your space.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Door Installation</h3>
+          <p class="text-sm text-[--ink-soft]">Interior doors and frames, supplied, fitted, and finished.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Custom Furniture</h3>
+          <p class="text-sm text-[--ink-soft]">Made-to-order furniture built to match your home.</p>
+        </div>
+        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
+          <h3 class="font-display font-bold text-base">Interior Woodwork</h3>
+          <p class="text-sm text-[--ink-soft]">Paneling, arches, and detailed joinery finished on site.</p>
+        </div>
+
+        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#1F3A5F">
+          <div>
+            <h3 class="font-display font-bold text-xl mb-1">24/7 Callouts</h3>
+            <p class="text-sm text-white/80 max-w-md">Open around the clock — call anytime, any day.</p>
+          </div>
+          <a href="tel:971562911712" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call 056 291 1712</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark stat band — section-rhythm contrast, oversized numerals as the visual -->
+  <section class="relative py-24 overflow-hidden" style="background:var(--ink);">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="4.8">0</span></div>
+        <p class="text-white/60 mt-2">Average Google rating</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="142">0</span>+</div>
+        <p class="text-white/60 mt-2">Jobs completed</p>
+      </div>
+      <div class="reveal-up">
+        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="24">0</span></div>
+        <p class="text-white/60 mt-2">Hours open, every day</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work gallery -->
+  <section id="work" class="py-24 bg-white border-b border-[--line]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
+      <div class="gallery">
+        <div class="reveal-card tile g-tall">
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN4uOKS6_pgaI1c_IDlaxmCTgPqaqnMl7zxpn1_MB3s-bVDmrrnRSStAm5jM81XUkazCFd41787OyEA0Y2wwMlMKnBcULm2qw7BPi6jLA53Yd9LPfq8meVFEmPrOZnIiQ2_P22YqTAbLCja=k-no" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile">
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNLvgxxxahch8vkKLmDA4CkLLsoF81CkAPqHZae1jjC6PJxaH0Wif9ABree4pwoxd_PxaAFO_La4iQ9uSTZb8B7ivGq5BGSYxm87rRoev-c1ADMuSwFsVfkiDo8X-1fwu2Wm9VDMQpcl4s=k-no" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile">
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmM9td6wG0_HyFWJmjQChryRhcrWirJUCjWLZQN9Ints9KBRWUwIolp-zNCpYOWDe4n7xhgkO3JxkYD5KGR6CHVTi2UA8bwiTtMkaqMIwfNi92jo7Rk1xG8QknEQUWop3wJq7Q2XaP-YE__0=k-no" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile g-tall">
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN5VstskAZgSTx6n_iJnE1FxrL4PwF-viyIRPOeNzhW9_wfILzV6zQV8Ewu4DJhvsss9VkASY-NsqhWlHrOq0JYJRBY3Xsxh7Sy7sSf_2vYgPuUSORjhxr1fZrK7BGHIN-DMLUbQgWjRIcp=k-no" alt="" class="tile-img" />
+        </div>
+        <div class="reveal-card tile hidden md:block">
+          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOccMulxke5kAaHHkRQXl9c2z_pAh_ZhqiYVJLKkwSWVZKZvzlBaVmCtp7MGOd5HFYbyskJg1WqOMkOobKE6brHPz0-MXn5KLqWi5FDMDNCbgjIcKcVOcm913hmEesP7pvZ8L6DXA9tzGc=k-no" alt="" class="tile-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1">
+        <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOccMulxke5kAaHHkRQXl9c2z_pAh_ZhqiYVJLKkwSWVZKZvzlBaVmCtp7MGOd5HFYbyskJg1WqOMkOobKE6brHPz0-MXn5KLqWi5FDMDNCbgjIcKcVOcm913hmEesP7pvZ8L6DXA9tzGc=k-no" alt="SMC Carpentry &amp; Interiors team" class="w-full aspect-[4/3] object-cover" />
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">142+ five-star jobs across Dubai</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">SMC Carpentry &amp; Interiors builds and fits kitchens, cabinets, wardrobes, and custom joinery across Dubai — open 24 hours, every day. Clients consistently point to the same things: punctual teams, fair pricing, and finishing work that holds up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews: infinite marquee row + one featured pull-quote -->
+  <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold">What Dubai says</h2>
+      <div class="reveal-up border-l-4 pl-6" style="border-color:#1F3A5F">
+        <p class="text-xl font-display leading-snug">"They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything."</p>
+        <p class="text-sm text-[--ink-soft] mt-3 font-semibold">Maryam Yusuf</p>
+      </div>
+    </div>
+
+    <div class="review-track marquee-fade px-6">
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Well recommended for carpentry work. The team delivered the full scope on time and was very responsive throughout the project. Communication was efficient and smooth, both with the on-site team and the manager.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Łukasz Sosna</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The best service ever. I have never come across a more reliable and friendly team, who are professional and excellent at their craft. The prices are reasonable and you feel you can completely trust their services and advice.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">S M</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maryam Yusuf</p>
+      </div>
+      <!-- duplicated for a seamless loop -->
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">Well recommended for carpentry work. The team delivered the full scope on time and was very responsive throughout the project. Communication was efficient and smooth, both with the on-site team and the manager.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Łukasz Sosna</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">The best service ever. I have never come across a more reliable and friendly team, who are professional and excellent at their craft. The prices are reasonable and you feel you can completely trust their services and advice.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">S M</p>
+      </div>
+      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
+        <div class="star mb-2">★★★★★</div>
+        <p class="text-sm text-[--ink]">They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything.</p>
+        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maryam Yusuf</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area / map -->
+  <section id="area" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving Al Satwa &amp; Dubai</h2>
+        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">18 4A St, Al Satwa, Dubai, UAE</p>
+        <a href="tel:971562911712" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
+          Call 056 291 1712
+        </a>
+      </div>
+      <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
+        <iframe src="https://www.google.com/maps?q=25.2326956,55.2795054&output=embed" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact: diagonal top edge instead of a plain rectangle -->
+  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#1F3A5F; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
+    <div class="grain" aria-hidden="true"></div>
+    <div id="contact-orb" aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative">
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
+      <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
+      <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:971562911712" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call 056 291 1712</a>
+        <a href="https://wa.me/971562911712" target="_blank" rel="noopener" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-sm text-[--ink-soft]">
+    © 2026 SMC Carpentry &amp; Interiors. 18 4A St, Al Satwa, Dubai, UAE.
+  </footer>
+
+  </div>
+  </div>
+
+  <!-- WhatsApp sticky button -->
+  <a href="https://wa.me/971562911712" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
+    <span class="wa-sticky-ring" aria-hidden="true"></span>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+  </a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+});
+
+const nav = document.getElementById('site-nav');
+ScrollTrigger.create({ start: 0, end: 99999, onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40) });
+
+const callBar = document.getElementById('mobile-call-bar');
+ScrollTrigger.create({
+  trigger: '#hero-headline', start: 'bottom top',
+  onEnter: () => gsap.to(callBar, { yPercent: 0, duration: 0.5, ease: 'power3.out' }),
+  onLeaveBack: () => gsap.to(callBar, { yPercent: 100, duration: 0.4, ease: 'power3.in' }),
+});
+
+const heroTl = gsap.timeline({ delay: 0.15 });
+const headline = document.getElementById('hero-headline');
+gsap.set(headline, { opacity: 1 });
+if (!reduceMotion) {
+  const words = headline.textContent.trim().split(/\s+/);
+  headline.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
+  heroTl.from(headline.querySelectorAll('.word'), { yPercent: 130, opacity: 0, duration: 1, stagger: 0.05, ease: 'power4.out' });
+}
+heroTl
+  .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
+  .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+  .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
+  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
+  .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+
+gsap.utils.toArray('.reveal-up').forEach((el) => {
+  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+});
+
+gsap.utils.toArray('.reveal-card').forEach((el, i) => {
+  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
+    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'expo.out', delay: (i % 4) * 0.07,
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+  });
+});
+
+gsap.utils.toArray('.clip-reveal').forEach((el) => {
+  if (el.id === 'hero-image-wrap') return;
+  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'expo.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
+});
+
+/* Section headline word-reveal — same language as the hero, on scroll */
+gsap.utils.toArray('.reveal-heading').forEach((el) => {
+  if (reduceMotion) { gsap.set(el, { opacity: 1 }); return; }
+  const words = el.textContent.trim().split(/\s+/);
+  el.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
+  const wordEls = el.querySelectorAll('.word');
+  gsap.set(wordEls, { yPercent: 60, opacity: 0 });
+  gsap.to(wordEls, {
+    yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.03, ease: 'expo.out',
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+  });
+});
+
+/* Parallax depth: hero image drifts slower than scroll, ambient orbs drift slightly */
+if (!reduceMotion) {
+  gsap.to('#hero-image-wrap img', {
+    yPercent: 12, ease: 'none',
+    scrollTrigger: { trigger: '#hero-image-wrap', start: 'top top', end: 'bottom top', scrub: 0.5 },
+  });
+  gsap.utils.toArray('section .blur-3xl').forEach((orb) => {
+    gsap.to(orb, { yPercent: -18, ease: 'none', scrollTrigger: { trigger: orb.parentElement, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+  });
+}
+
+document.querySelectorAll('[data-counter]').forEach((el) => {
+  const target = parseFloat(el.dataset.counter);
+  if (!target) return;
+  const obj = { val: 0 };
+  ScrollTrigger.create({
+    trigger: el, start: 'top 90%', once: true,
+    onEnter: () => gsap.to(obj, { val: target, duration: 1.6, ease: 'expo.out', onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); } }),
+  });
+});
+
+document.querySelectorAll('.magnetic').forEach((btn) => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: 'power3.out' });
+  });
+  btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
+});
+
+document.querySelectorAll('.card-glow').forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    card.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+});
+</script>
+</body>
+</html>

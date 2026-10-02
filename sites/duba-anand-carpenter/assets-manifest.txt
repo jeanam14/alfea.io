@@ -1,0 +1,8 @@
+# One line per image: output_path|prompt|image_size
+# Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
+images/hero.jpg|wide interior photo of a small carpentry workshop in Dubai, a carpenter in work clothes sanding a wooden cabinet door at a workbench, tools and wood pieces around, warm natural light, realistic editorial photography, no text, no logos, no watermark|landscape_16_9
+images/about.jpg|photo of a carpenter fitting a wooden door frame in a Dubai apartment, focused on hands and tools, realistic editorial photography, no text, no logos, no watermark|landscape_4_3
+images/gallery-1.jpg|photo of a repaired wooden cabinet with new hinges in a home, clean finish, realistic photography, no text, no watermark|square_hd
+images/gallery-2.jpg|photo of a carpenter installing a curtain rod above a window in a bright room, realistic photography, no text, no watermark|square_hd
+images/gallery-3.jpg|photo of a freshly fitted wooden wardrobe interior with shelves, realistic photography, no text, no watermark|square_hd
+images/gallery-4.jpg|close-up photo of hand tools, wood shavings and a measuring tape on a carpenter's workbench, realistic photography, no text, no watermark|square_hd
