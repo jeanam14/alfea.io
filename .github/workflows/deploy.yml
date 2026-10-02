@@ -69,7 +69,7 @@ jobs:
             project="alfea-$slug"
 
             echo "=== $slug ==="
-            wrangler pages project create "$project" --production-branch main 2>/dev/null || true
+            wrangler pages project create "$project" --production-branch main || true
             wrangler pages deploy "$dir" --project-name "$project" --branch main
             echo "Preview live at: https://$project.pages.dev — send this to the prospect."
             echo "(No custom domain or DNS record created yet. Once this prospect closes, run the 'Activate client domain' workflow with site=$slug.)"
