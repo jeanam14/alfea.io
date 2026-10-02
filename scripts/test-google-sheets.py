@@ -58,7 +58,9 @@ def main():
     first_sheet = meta["sheets"][0]["properties"]["title"]
     print(f"Read access OK - sheet title: {title!r} (first tab: {first_sheet!r})")
 
-    test_cell = f"'{first_sheet}'!ZZ1"
+    # Z1000: last column/row of a brand-new sheet's default 1000x26 grid -
+    # out of the way, but guaranteed to exist (ZZ1 doesn't on a fresh sheet).
+    test_cell = f"'{first_sheet}'!Z1000"
     marker = "alfea-sync-test-ok"
     service.spreadsheets().values().update(
         spreadsheetId=spreadsheet_id, range=test_cell,
