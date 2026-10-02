@@ -60,9 +60,6 @@
   /* ---- Premium polish: subtle grain texture for depth on dark/flat fields ---- */
   .grain{ position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-  /* ---- Premium polish: fade the marquee edges instead of a hard clip ---- */
-  .marquee-fade{ mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
-
   /* ---- Premium polish: section headline word-reveal (same language as the hero) ---- */
   .reveal-heading{ overflow:hidden; }
 
@@ -70,11 +67,6 @@
   #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
 
   .magnetic{ display:inline-flex; will-change:transform; }
-
-  /* ---- Trust marquee ---- */
-  .marquee-track{ display:flex; width:max-content; animation: marquee 26s linear infinite; }
-  .marquee-track:hover{ animation-play-state: paused; }
-  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
   /* ---- Bento services grid ---- */
   .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
@@ -98,19 +90,8 @@
   .card-glow:hover::before{ opacity:1; }
   .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:#1F3A5F55; }
 
-  /* ---- Work gallery (asymmetric) ---- */
-  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-  @media (min-width:768px){
-    .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; }
-    .gallery .g-tall{ grid-row:span 2; }
-  }
-
-  /* ---- Reviews marquee ---- */
-  .review-track{ display:flex; gap:1.5rem; width:max-content; animation: marquee-rev 40s linear infinite; }
-  .review-track:hover{ animation-play-state:paused; }
-  @keyframes marquee-rev{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-
-  .quote-mark{ font-family:'Sora',sans-serif; line-height:1; }
+  /* ---- Review cards ---- */
+  .review-card{ background:#fff; border:1px solid var(--line); border-radius:1.5rem; padding:1.75rem; display:flex; flex-direction:column; }
 
   /* ---- Sticky WhatsApp button ---- */
   .wa-sticky{ position:fixed; right:1.35rem; bottom:1.35rem; z-index:65; width:58px; height:58px; border-radius:9999px; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -8px rgba(37,211,102,.65); }
@@ -119,7 +100,6 @@
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
-    .marquee-track, .review-track{ animation:none !important; }
   }
 </style>
 </head>
@@ -177,30 +157,7 @@
           <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
             <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNpZrR4AuxzDctyLi77O9AQDh1JAzPA4SWJPZvlYMvekEWcZOB9h60Tul1ssXzTV_rtKEx6i3W7fLY6bC1v5BDa0JuKIwKxvl6jgW5axIUkCRrQq4YFP79Vrnx1dVBusnyYjd1hYACIhKiy=k-no" alt="SMC Carpentry &amp; Interiors at work" class="w-full aspect-[16/10] object-cover" />
           </div>
-          <!-- Floating overlap card: the single biggest "someone designed this" tell -->
-          <div id="hero-float-card" class="hidden sm:flex absolute -bottom-8 -left-8 bg-[--ink] text-white rounded-2xl px-6 py-5 shadow-xl items-center gap-4 opacity-0">
-            <div class="font-display font-extrabold text-3xl tabular">4.8★</div>
-            <div class="text-xs text-white/70 leading-tight">on Google<br>142 reviews</div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust marquee -->
-  <section class="border-y border-[--line] py-5 bg-white overflow-hidden">
-    <div class="marquee-track marquee-fade text-sm font-semibold text-[--ink-soft] tracking-wide">
-      <div class="flex items-center gap-10 pr-10">
-        <span>★ 4.8 on Google</span><span>•</span>
-        <span>Open 24 Hours, Every Day</span><span>•</span>
-        <span>142+ Happy Customers</span><span>•</span>
-        <span>Serving Al Satwa &amp; Dubai</span><span>•</span>
-      </div>
-      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
-        <span>★ 4.8 on Google</span><span>•</span>
-        <span>Open 24 Hours, Every Day</span><span>•</span>
-        <span>142+ Happy Customers</span><span>•</span>
-        <span>Serving Al Satwa &amp; Dubai</span><span>•</span>
       </div>
     </div>
   </section>
@@ -251,49 +208,6 @@
     </div>
   </section>
 
-  <!-- Dark stat band — section-rhythm contrast, oversized numerals as the visual -->
-  <section class="relative py-24 overflow-hidden" style="background:var(--ink);">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-10 text-white text-center">
-      <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="4.8">0</span></div>
-        <p class="text-white/60 mt-2">Average Google rating</p>
-      </div>
-      <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="142">0</span>+</div>
-        <p class="text-white/60 mt-2">Jobs completed</p>
-      </div>
-      <div class="reveal-up">
-        <div class="font-display font-extrabold text-6xl md:text-7xl tabular"><span data-counter="24">0</span></div>
-        <p class="text-white/60 mt-2">Hours open, every day</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work gallery -->
-  <section id="work" class="py-24 bg-white border-b border-[--line]">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">Recent work</h2>
-      <div class="gallery">
-        <div class="reveal-card tile g-tall">
-          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN4uOKS6_pgaI1c_IDlaxmCTgPqaqnMl7zxpn1_MB3s-bVDmrrnRSStAm5jM81XUkazCFd41787OyEA0Y2wwMlMKnBcULm2qw7BPi6jLA53Yd9LPfq8meVFEmPrOZnIiQ2_P22YqTAbLCja=k-no" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile">
-          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmNLvgxxxahch8vkKLmDA4CkLLsoF81CkAPqHZae1jjC6PJxaH0Wif9ABree4pwoxd_PxaAFO_La4iQ9uSTZb8B7ivGq5BGSYxm87rRoev-c1ADMuSwFsVfkiDo8X-1fwu2Wm9VDMQpcl4s=k-no" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile">
-          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmM9td6wG0_HyFWJmjQChryRhcrWirJUCjWLZQN9Ints9KBRWUwIolp-zNCpYOWDe4n7xhgkO3JxkYD5KGR6CHVTi2UA8bwiTtMkaqMIwfNi92jo7Rk1xG8QknEQUWop3wJq7Q2XaP-YE__0=k-no" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile g-tall">
-          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmN5VstskAZgSTx6n_iJnE1FxrL4PwF-viyIRPOeNzhW9_wfILzV6zQV8Ewu4DJhvsss9VkASY-NsqhWlHrOq0JYJRBY3Xsxh7Sy7sSf_2vYgPuUSORjhxr1fZrK7BGHIN-DMLUbQgWjRIcp=k-no" alt="" class="tile-img" />
-        </div>
-        <div class="reveal-card tile hidden md:block">
-          <img src="https://lh3.googleusercontent.com/grass-cs/ACvplmOccMulxke5kAaHHkRQXl9c2z_pAh_ZhqiYVJLKkwSWVZKZvzlBaVmCtp7MGOd5HFYbyskJg1WqOMkOobKE6brHPz0-MXn5KLqWi5FDMDNCbgjIcKcVOcm913hmEesP7pvZ8L6DXA9tzGc=k-no" alt="" class="tile-img" />
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- About -->
   <section class="py-24">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
@@ -307,47 +221,26 @@
     </div>
   </section>
 
-  <!-- Reviews: infinite marquee row + one featured pull-quote -->
-  <section id="reviews" class="bg-white border-y border-[--line] py-24 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 mb-12 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold">What Dubai says</h2>
-      <div class="reveal-up border-l-4 pl-6" style="border-color:#1F3A5F">
-        <p class="text-xl font-display leading-snug">"They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything."</p>
-        <p class="text-sm text-[--ink-soft] mt-3 font-semibold">Maryam Yusuf</p>
-      </div>
-    </div>
-
-    <div class="review-track marquee-fade px-6">
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Well recommended for carpentry work. The team delivered the full scope on time and was very responsive throughout the project. Communication was efficient and smooth, both with the on-site team and the manager.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Łukasz Sosna</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">The best service ever. I have never come across a more reliable and friendly team, who are professional and excellent at their craft. The prices are reasonable and you feel you can completely trust their services and advice.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">S M</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maryam Yusuf</p>
-      </div>
-      <!-- duplicated for a seamless loop -->
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">Well recommended for carpentry work. The team delivered the full scope on time and was very responsive throughout the project. Communication was efficient and smooth, both with the on-site team and the manager.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Łukasz Sosna</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">The best service ever. I have never come across a more reliable and friendly team, who are professional and excellent at their craft. The prices are reasonable and you feel you can completely trust their services and advice.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">S M</p>
-      </div>
-      <div class="min-w-[300px] bg-[--paper] rounded-2xl p-7 border border-[--line]" aria-hidden="true">
-        <div class="star mb-2">★★★★★</div>
-        <p class="text-sm text-[--ink]">They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything.</p>
-        <p class="text-xs font-semibold text-[--ink-soft] mt-4">Maryam Yusuf</p>
+  <!-- Reviews: plain grid, no aggregate rating repeated here — each card is a real review -->
+  <section id="reviews" class="bg-white border-y border-[--line] py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">What Dubai says</h2>
+      <div class="grid md:grid-cols-3 gap-7">
+        <div class="reveal-card review-card">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-[--ink] flex-1">They did a great job. They added an arched door in the house on an existing setup and the finishing was very good. The manager came first to visit, explained the expectations, timeline, and price, and was very fair about everything.</p>
+          <p class="text-sm font-semibold mt-5">Maryam Yusuf</p>
+        </div>
+        <div class="reveal-card review-card">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-[--ink] flex-1">Well recommended for carpentry work. The team delivered the full scope on time and was very responsive throughout the project. Communication was efficient and smooth, both with the on-site team and the manager.</p>
+          <p class="text-sm font-semibold mt-5">Łukasz Sosna</p>
+        </div>
+        <div class="reveal-card review-card">
+          <div class="star mb-3">★★★★★</div>
+          <p class="text-sm text-[--ink] flex-1">The best service ever. I have never come across a more reliable and friendly team, who are professional and excellent at their craft. The prices are reasonable and you feel you can completely trust their services and advice.</p>
+          <p class="text-sm font-semibold mt-5">S M</p>
+        </div>
       </div>
     </div>
   </section>
@@ -430,8 +323,7 @@ heroTl
   .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
   .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
   .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
-  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9')
-  .to('#hero-float-card', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9');
 
 gsap.utils.toArray('.reveal-up').forEach((el) => {
   gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });

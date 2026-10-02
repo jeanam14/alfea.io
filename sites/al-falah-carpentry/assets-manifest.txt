@@ -2,7 +2,3 @@
 # Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
 images/hero.jpg|wide photo of an elegant custom wood-paneled feature wall in a modern Dubai living room, warm wood tones, clean joinery lines, realistic editorial interior photography, no text, no logos, no watermark|landscape_16_9
 images/about.jpg|close-up photo of a carpenter's hands finishing a custom wooden furniture piece with fine detail, realistic editorial photography, no text, no logos, no watermark|landscape_4_3
-images/gallery-1.jpg|photo of a custom-built wardrobe with decorative wood paneling in a bedroom, realistic photography, no text, no watermark|square_hd
-images/gallery-2.jpg|photo of an elegant decorative wood ceiling detail in a Dubai home, realistic photography, no text, no watermark|square_hd
-images/gallery-3.jpg|photo of a bespoke wooden console table with detailed joinery, clean modern interior, realistic photography, no text, no watermark|square_hd
-images/gallery-4.jpg|photo of a carpenter sanding and polishing a wood furniture surface, realistic photography, no text, no watermark|square_hd
