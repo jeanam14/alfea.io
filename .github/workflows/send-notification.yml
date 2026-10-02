@@ -1,0 +1,40 @@
+name: Send notification email
+
+# Sends a batched notification email (prospects ready to evaluate / sites
+# ready to review) via Gmail SMTP app password - no OAuth, just two repo
+# secrets. The first manual run of this workflow doubles as the smoke test
+# for those secrets.
+#
+# Requires two repository secrets (Settings -> Secrets and variables ->
+# Actions):
+#   GMAIL_SENDER_ADDRESS - jean@alfea.io (also the recipient)
+#   GMAIL_APP_PASSWORD   - 16-char app password from
+#                          myaccount.google.com/apppasswords (needs 2-Step
+#                          Verification enabled on that account)
+
+on:
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: 'Email subject'
+        required: true
+      body:
+        description: 'Email body (plain text)'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Send the email
+        env:
+          GMAIL_SENDER_ADDRESS: ${{ secrets.GMAIL_SENDER_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          printf '%s' "${{ github.event.inputs.body }}" > /tmp/body.txt
+          python3 scripts/send-notification.py "${{ github.event.inputs.subject }}" /tmp/body.txt
