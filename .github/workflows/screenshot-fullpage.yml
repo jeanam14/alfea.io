@@ -1,0 +1,47 @@
+name: Screenshot a page (full page)
+
+# One-off: screenshots a given URL end-to-end (not just the first fold) and
+# commits the result, for visually verifying a design/site before showing
+# it or shipping it - the Claude Code sandbox can't reach arbitrary URLs or
+# render JS, so this runs here instead.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to screenshot'
+        required: true
+      out_path:
+        description: 'Where to save it in the repo, e.g. prospecting/shots/_manual/preview.jpg'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  shoot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm install playwright@latest
+          npx playwright install --with-deps chromium
+
+      - name: Screenshot
+        run: node scripts/prospecting/screenshot-fullpage.js "${{ github.event.inputs.url }}" "${{ github.event.inputs.out_path }}"
+
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ github.event.inputs.out_path }}"
+          git commit -m "Screenshot: ${{ github.event.inputs.url }}" || echo "Nothing to commit"
+          git push
