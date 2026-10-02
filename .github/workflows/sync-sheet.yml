@@ -1,0 +1,38 @@
+name: Sync prospects to tracker Sheet
+
+# Upserts prospect rows into the shared Google Sheet by name. Run manually:
+# Actions tab -> Sync prospects to tracker Sheet -> Run workflow, pointing
+# rows_file at a committed JSON file of rows (see scripts/sync-sheet.py for
+# the expected shape).
+#
+# Requires the GOOGLE_SHEETS_CREDENTIALS repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      spreadsheet_id:
+        description: 'Tracker Sheet ID (from its URL, between /d/ and /edit)'
+        required: true
+      rows_file:
+        description: 'Path to a committed JSON file of rows to upsert'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Upsert rows into the tracker Sheet
+        env:
+          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+        run: |
+          pip install --quiet google-auth google-api-python-client
+          python3 scripts/sync-sheet.py "${{ github.event.inputs.spreadsheet_id }}" "${{ github.event.inputs.rows_file }}"

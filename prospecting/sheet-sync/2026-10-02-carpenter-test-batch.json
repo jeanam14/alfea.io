@@ -1,0 +1,38 @@
+[
+  {
+    "name": "DUBA ANAND CARPENTER",
+    "niche": "carpenter",
+    "phone": "+971 56 259 7118",
+    "rating": 4.7,
+    "reviews_count": 44,
+    "verdict": "no-website",
+    "old_website": "",
+    "new_site_url": "https://alfea-duba-anand-carpenter.pages.dev",
+    "status": "built",
+    "updated_at": "2026-10-02"
+  },
+  {
+    "name": "AL FALAH CARPENTRY & DECOR",
+    "niche": "carpenter",
+    "phone": "+971 55 919 7277",
+    "rating": 5,
+    "reviews_count": 1,
+    "verdict": "no-website (dead domain)",
+    "old_website": "http://www.am/alfalah.com",
+    "new_site_url": "https://alfea-al-falah-carpentry.pages.dev",
+    "status": "built",
+    "updated_at": "2026-10-02"
+  },
+  {
+    "name": "SMC CARPENTRY & INTERIORS",
+    "niche": "carpenter",
+    "phone": "+971 56 291 1712",
+    "rating": 4.8,
+    "reviews_count": 142,
+    "verdict": "outdated",
+    "old_website": "http://www.samiramohdcarpentry.com/",
+    "new_site_url": "https://alfea-smc-carpentry-interiors.pages.dev",
+    "status": "built",
+    "updated_at": "2026-10-02"
+  }
+]
