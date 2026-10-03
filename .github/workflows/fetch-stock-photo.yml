@@ -1,0 +1,45 @@
+name: Fetch stock photo
+
+# Fetches one real stock photo from Pixabay and commits it - used in place
+# of AI-generated images whenever a photo shows people, per house rule.
+#
+# Run manually: Actions tab -> Fetch stock photo -> Run workflow, with a
+# search query and the destination path under sites/.
+#
+# Requires the PIXABAY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      query:
+        description: 'Pixabay search query, e.g. "electrician panel"'
+        required: true
+      out_path:
+        description: 'Where to save it, e.g. sites/sunmar-sky-electromechanical/images/hero.jpg'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Fetch image
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: |
+          chmod +x scripts/fetch-pixabay-image.sh
+          ./scripts/fetch-pixabay-image.sh "${{ github.event.inputs.query }}" "${{ github.event.inputs.out_path }}"
+
+      - name: Commit result
+        run: |
+          git config user.name "alfea-bot"
+          git config user.email "bot@alfea.io"
+          git add "${{ github.event.inputs.out_path }}"
+          git diff --cached --quiet && echo "Nothing to commit" || git commit -m "Fetch stock photo: ${{ github.event.inputs.query }}"
+          git push origin HEAD:${{ github.ref_name }}
