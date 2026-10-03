@@ -25,13 +25,7 @@
     border: 1px solid rgba(255,255,255,0.65);
     box-shadow: 0 1px 1px rgba(255,255,255,0.8) inset, 0 12px 32px -8px rgba(36,28,20,0.18);
   }
-  .glow-orb {
-    position: absolute; top: -220px; left: 50%; transform: translateX(-50%);
-    width: 1000px; height: 560px; border-radius: 50%;
-    filter: blur(10px); pointer-events: none; z-index: 0;
-    background: radial-gradient(closest-side, #A8642E33, transparent 72%);
-  }
-  .badge { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #DCC9A6; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 500; color: #55483A; background: #FFF8EC; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 500; }
   .wa-bubble {
     position: fixed; right: 24px; bottom: 24px; z-index: 60; width: 56px; height: 56px; border-radius: 999px;
     background: #25D366; display: flex; align-items: center; justify-content: center;
@@ -49,12 +43,11 @@
 <body>
 
 <div style="position: relative; width: 100%; overflow: hidden;">
-<div class="glow-orb" aria-hidden="true"></div>
 
 <header class="glass-nav">
   <div style="font-family: 'Lora', serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;">Duba Anand Carpenter</div>
   <nav style="display: flex; align-items: center; gap: 22px;">
-    <a href="#diagnose" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #3D3124;">What do you need?</a>
+    <a href="#work" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #3D3124;">Our Work</a>
     <a href="#services" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #3D3124;">Services</a>
     <a href="#reviews" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #3D3124;">Reviews</a>
     <a href="#contact" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #3D3124;">Contact</a>
@@ -62,30 +55,56 @@
   </nav>
 </header>
 
-<div style="position: relative; z-index: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 0;">
-
-  <section style="display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr); gap: 56px; align-items: center; padding: 136px 0 64px;">
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <div class="badge"><span id="status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F5C; display: inline-block;"></span> <span id="status-label">Checking hours…</span></div>
-        <div class="badge" style="color: #A8642E;">★★★★★ 5-Star Service</div>
-      </div>
-      <h1 style="font-size: 52px; line-height: 1.04; font-weight: 600; letter-spacing: -0.01em; color: #1D1710;">Bur Dubai's carpenter for fast, honest work.</h1>
-      <p style="font-size: 18px; line-height: 1.55; color: #6B5D4D; max-width: 440px;">Furniture repair, custom carpentry, and fittings for homes and businesses — open seven days a week, 6&nbsp;AM to 10&nbsp;PM.</p>
-      <div style="display: flex; gap: 14px; padding-top: 8px;">
-        <a href="https://wa.me/971562597118?text=Hello!%20I%27d%20like%20to%20book%20a%20job." style="background: #A8642E; color: #FFF8EC; display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
-          WhatsApp us
-        </a>
-        <a href="tel:971562597118" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px; border: 1px solid #DCC9A6; color: #241C14;">Call 056 259 7118</a>
+<!-- Hero: full-bleed poster photo with overlaid headline -->
+<section style="position: relative;">
+  <div style="position: relative; height: 620px; overflow: hidden;">
+    <img src="images/hero.jpg" alt="Carpenter sanding a cabinet door in a Bur Dubai workshop" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(29,23,16,0.92) 0%, rgba(29,23,16,0.45) 48%, rgba(29,23,16,0.05) 75%);"></div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 48px max(32px, calc((100% - 1180px) / 2 + 32px)) 56px;">
+      <div style="max-width: 720px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <div class="badge" style="background: rgba(255,248,236,0.14); border: 1px solid rgba(255,248,236,0.3); color: #FFF8EC;"><span id="status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F5C; display: inline-block;"></span> <span id="status-label">Checking hours…</span></div>
+          <div class="badge" style="background: rgba(255,248,236,0.14); border: 1px solid rgba(255,248,236,0.3); color: #FFF8EC;">★★★★★ 5-Star Service</div>
+        </div>
+        <h1 style="font-size: 46px; line-height: 1.06; font-weight: 600; letter-spacing: -0.01em; color: #FFF8EC;">Bur Dubai's carpenter for fast, honest work.</h1>
+        <p style="font-size: 16.5px; line-height: 1.55; color: #E7D7BA; max-width: 460px;">Furniture repair, custom carpentry, and fittings for homes and businesses — open seven days a week, 6&nbsp;AM to 10&nbsp;PM.</p>
+        <div style="display: flex; gap: 14px; padding-top: 4px;">
+          <a href="https://wa.me/971562597118?text=Hello!%20I%27d%20like%20to%20book%20a%20job." style="background: #A8642E; color: #FFF8EC; display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+            WhatsApp us
+          </a>
+          <a href="tel:971562597118" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px; border: 1px solid rgba(255,248,236,0.4); color: #FFF8EC;">Call 056 259 7118</a>
+        </div>
       </div>
     </div>
-    <div style="border-radius: 28px; overflow: hidden; aspect-ratio: 4/3;">
-      <img src="images/hero.jpg" alt="Carpenter sanding a cabinet door in a Bur Dubai workshop" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+</section>
+
+<div style="position: relative; z-index: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 0;">
+
+  <!-- Our Work: asymmetric portfolio gallery -->
+  <section id="work" style="padding: 56px 0; border-top: 1px solid #E7D7BA;">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 28px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #A8642E;">Our Work</div>
+      <h2 style="font-size: 32px; font-weight: 600; letter-spacing: -0.01em; color: #1D1710;">Real jobs, real finishes</h2>
+      <p style="font-size: 16px; line-height: 1.6; color: #6B5D4D; margin: 0;">Duba Anand Carpenter has been fixing, building, and fitting for homes and businesses across Bur Dubai. Open seven days a week, 6&nbsp;AM to 10&nbsp;PM, we show up when you need us.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 16px;">
+      <div style="border-radius: 24px; overflow: hidden; aspect-ratio: 4/3;">
+        <img src="images/about.jpg" alt="Carpenter's hands fitting a wooden door frame" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="border-radius: 18px; overflow: hidden; flex: 1;">
+          <img src="images/cabinet-after.jpg" alt="A freshly repaired and refinished cabinet door" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div style="border-radius: 18px; overflow: hidden; flex: 1;">
+          <img src="images/hero.jpg" alt="Carpentry workshop in Bur Dubai" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Diagnose: interactive need picker -->
+  <!-- Need picker -->
   <section id="diagnose" style="padding: 56px 0; border-top: 1px solid #E7D7BA;">
     <div style="display: flex; flex-direction: column; gap: 8px; max-width: 560px; margin-bottom: 28px;">
       <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #A8642E;">Not sure what you need?</div>
@@ -100,41 +119,60 @@
     </div>
   </section>
 
+  <!-- Services: photo catalog list -->
   <section id="services" style="padding: 56px 0; border-top: 1px solid #E7D7BA;">
-    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 520px; margin-bottom: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 520px; margin-bottom: 20px;">
       <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #A8642E;">What we do</div>
       <h2 style="font-size: 32px; font-weight: 600; letter-spacing: -0.01em; color: #1D1710;">From quick repairs to custom builds</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px;">
-      <div style="background: #FFF8EC; border: 1px solid #E7D7BA; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Lora', serif; font-size: 14px; color: #9C7A4E;">01</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E; background: #A8642E1a; border-radius: 999px; padding: 3px 10px;">Quick Fix</div></div>
-        <h3 style="font-size: 18px; font-weight: 600; color: #1D1710;">Furniture Repair</h3>
-        <p style="font-size: 14.5px; line-height: 1.5; color: #6B5D4D; margin: 0;">Quick, reliable fixes for broken or worn furniture, any make or style.</p>
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; gap: 20px; padding: 20px 0; border-top: 1px solid #E7D7BA;">
+        <div style="width: 72px; height: 72px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="images/cabinet-before.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E;">Quick Fix</div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #1D1710;">Furniture Repair</h3>
+          <p style="font-size: 14px; line-height: 1.45; color: #6B5D4D; margin: 0;">Quick, reliable fixes for broken or worn furniture, any make or style.</p>
+        </div>
       </div>
-      <div style="background: #FFF8EC; border: 1px solid #E7D7BA; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Lora', serif; font-size: 14px; color: #9C7A4E;">02</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E; background: #A8642E1a; border-radius: 999px; padding: 3px 10px;">Custom</div></div>
-        <h3 style="font-size: 18px; font-weight: 600; color: #1D1710;">Custom Carpentry</h3>
-        <p style="font-size: 14.5px; line-height: 1.5; color: #6B5D4D; margin: 0;">Made-to-measure furniture and fittings built to fit your space exactly.</p>
+      <div style="display: flex; align-items: center; gap: 20px; padding: 20px 0; border-top: 1px solid #E7D7BA;">
+        <div style="width: 72px; height: 72px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="images/cabinet-after.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E;">Custom</div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #1D1710;">Custom Carpentry</h3>
+          <p style="font-size: 14px; line-height: 1.45; color: #6B5D4D; margin: 0;">Made-to-measure furniture and fittings built to fit your space exactly.</p>
+        </div>
       </div>
-      <div style="background: #FFF8EC; border: 1px solid #E7D7BA; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Lora', serif; font-size: 14px; color: #9C7A4E;">03</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E; background: #A8642E1a; border-radius: 999px; padding: 3px 10px;">Install</div></div>
-        <h3 style="font-size: 18px; font-weight: 600; color: #1D1710;">Door &amp; Window Fitting</h3>
-        <p style="font-size: 14.5px; line-height: 1.5; color: #6B5D4D; margin: 0;">Precise installation and repair of doors, windows, and frames.</p>
+      <div style="display: flex; align-items: center; gap: 20px; padding: 20px 0; border-top: 1px solid #E7D7BA;">
+        <div style="width: 72px; height: 72px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="images/hero.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E;">Install</div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #1D1710;">Door &amp; Window Fitting</h3>
+          <p style="font-size: 14px; line-height: 1.45; color: #6B5D4D; margin: 0;">Precise installation and repair of doors, windows, and frames.</p>
+        </div>
       </div>
-      <div style="background: #FFF8EC; border: 1px solid #E7D7BA; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Lora', serif; font-size: 14px; color: #9C7A4E;">04</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E; background: #A8642E1a; border-radius: 999px; padding: 3px 10px;">Install</div></div>
-        <h3 style="font-size: 18px; font-weight: 600; color: #1D1710;">Curtain Rods &amp; Fittings</h3>
-        <p style="font-size: 14.5px; line-height: 1.5; color: #6B5D4D; margin: 0;">Clean, secure curtain rod and track installation for any room.</p>
+      <div style="display: flex; align-items: center; gap: 20px; padding: 20px 0; border-top: 1px solid #E7D7BA;">
+        <div style="width: 72px; height: 72px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="images/about.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E;">Install</div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #1D1710;">Curtain Rods &amp; Fittings</h3>
+          <p style="font-size: 14px; line-height: 1.45; color: #6B5D4D; margin: 0;">Clean, secure curtain rod and track installation for any room.</p>
+        </div>
       </div>
-      <div style="background: #FFF8EC; border: 1px solid #E7D7BA; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Lora', serif; font-size: 14px; color: #9C7A4E;">05</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E; background: #A8642E1a; border-radius: 999px; padding: 3px 10px;">Custom</div></div>
-        <h3 style="font-size: 18px; font-weight: 600; color: #1D1710;">Cabinets &amp; Wardrobes</h3>
-        <p style="font-size: 14.5px; line-height: 1.5; color: #6B5D4D; margin: 0;">Built-in storage solutions designed and fitted on site.</p>
+      <div style="display: flex; align-items: center; gap: 20px; padding: 20px 0; border-top: 1px solid #E7D7BA;">
+        <div style="width: 72px; height: 72px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="images/cabinet-after.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E;">Custom</div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #1D1710;">Cabinets &amp; Wardrobes</h3>
+          <p style="font-size: 14px; line-height: 1.45; color: #6B5D4D; margin: 0;">Built-in storage solutions designed and fitted on site.</p>
+        </div>
       </div>
-      <div style="background: #FFF8EC; border: 1px solid #E7D7BA; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Lora', serif; font-size: 14px; color: #9C7A4E;">06</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E; background: #A8642E1a; border-radius: 999px; padding: 3px 10px;">Same-Day</div></div>
-        <h3 style="font-size: 18px; font-weight: 600; color: #1D1710;">Same-Day Callouts</h3>
-        <p style="font-size: 14.5px; line-height: 1.5; color: #6B5D4D; margin: 0;">Fast response across Bur Dubai, open 6 AM to 10 PM every day.</p>
+      <div style="display: flex; align-items: center; gap: 20px; padding: 20px 0; border-top: 1px solid #E7D7BA;">
+        <div style="width: 72px; height: 72px; border-radius: 14px; overflow: hidden; flex-shrink: 0;"><img src="images/hero.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #A8642E;">Same-Day</div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #1D1710;">Same-Day Callouts</h3>
+          <p style="font-size: 14px; line-height: 1.45; color: #6B5D4D; margin: 0;">Fast response across Bur Dubai, open 6 AM to 10 PM every day.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -176,17 +214,6 @@
       <span style="font-size: 13px; font-weight: 600; color: #6B5D4D;">Drag to compare before / after</span>
       <input id="slider-input" type="range" min="0" max="100" value="50" class="slider-input" />
     </label>
-  </section>
-
-  <section style="display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: 56px; align-items: center; padding: 56px 0; border-top: 1px solid #E7D7BA;">
-    <div style="border-radius: 28px; overflow: hidden; aspect-ratio: 4/3;">
-      <img src="images/about.jpg" alt="Carpenter's hands fitting a wooden door frame" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-    </div>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #A8642E;">About</div>
-      <h2 style="font-size: 30px; font-weight: 600; letter-spacing: -0.01em; color: #1D1710;">Recommended by Bur Dubai, one job at a time</h2>
-      <p style="font-size: 16px; line-height: 1.6; color: #6B5D4D;">Duba Anand Carpenter has been fixing, building, and fitting for homes and businesses across Bur Dubai. Open seven days a week from 6&nbsp;AM to 10&nbsp;PM, we show up when you need us and get the job done without the runaround.</p>
-    </div>
   </section>
 
   <section id="reviews" style="padding: 56px 0; border-top: 1px solid #E7D7BA;">
@@ -264,7 +291,7 @@ function computeStatus() {
   var now = new Date();
   var hour = now.getHours() + now.getMinutes() / 60;
   var isOpen = hour >= 6 && hour < 22;
-  document.getElementById('status-dot').style.background = isOpen ? '#3F8F5C' : '#B5564A';
+  document.getElementById('status-dot').style.background = isOpen ? '#3F8F5C' : '#D98C7E';
   document.getElementById('status-label').textContent = isOpen ? 'Open now · 6 AM – 10 PM' : 'Closed now · opens 6 AM';
 }
 computeStatus();
