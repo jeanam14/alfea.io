@@ -1,0 +1,47 @@
+name: Screenshot interactive elements
+
+# Verifies real page interactivity (clicking a chip, dragging a slider)
+# by actually driving the page with Playwright and capturing before/after
+# screenshots - the Claude Code sandbox can't render JS or click anything,
+# so this runs here instead.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to test'
+        required: true
+      out_prefix:
+        description: 'Path prefix for outputs, e.g. prospecting/shots/_manual/sunmar-interact'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  shoot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm install playwright@latest
+          npx playwright install --with-deps chromium
+
+      - name: Screenshot interactions
+        run: node scripts/prospecting/screenshot-interact.js "${{ github.event.inputs.url }}" "${{ github.event.inputs.out_prefix }}"
+
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ github.event.inputs.out_prefix }}"*.jpg
+          git commit -m "Interaction screenshots: ${{ github.event.inputs.url }}" || echo "Nothing to commit"
+          git push
