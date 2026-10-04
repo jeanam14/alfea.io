@@ -6,7 +6,11 @@ name: List Instantly campaigns
 # Requires the INSTANTLY_API_KEY repository secret.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      starting_after:
+        description: 'Pagination cursor (campaign id) to continue from'
+        required: false
 
 permissions:
   contents: read
@@ -20,6 +24,7 @@ jobs:
       - name: List campaigns
         env:
           INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+          STARTING_AFTER: ${{ github.event.inputs.starting_after }}
         run: |
           chmod +x scripts/list-instantly-campaigns.sh
           ./scripts/list-instantly-campaigns.sh

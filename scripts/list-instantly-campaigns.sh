@@ -5,8 +5,12 @@
 set -euo pipefail
 : "${INSTANTLY_API_KEY:?INSTANTLY_API_KEY not set}"
 
-curl -sS -H "Authorization: Bearer ${INSTANTLY_API_KEY}" \
-  "https://api.instantly.ai/api/v2/campaigns?limit=100" | python3 -c "
+URL="https://api.instantly.ai/api/v2/campaigns?limit=100"
+if [[ -n "${STARTING_AFTER:-}" ]]; then
+  URL="${URL}&starting_after=${STARTING_AFTER}"
+fi
+
+curl -sS -H "Authorization: Bearer ${INSTANTLY_API_KEY}" "$URL" | python3 -c "
 import json, sys
 d = json.load(sys.stdin)
 items = d.get('items', d) if isinstance(d, dict) else d
