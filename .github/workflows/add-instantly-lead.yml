@@ -1,0 +1,29 @@
+name: Add Instantly lead
+
+# Adds one lead to an Instantly campaign (status stays whatever the campaign
+# already is - this never activates sending, it just appends a lead to a
+# draft campaign's list).
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload_path:
+        description: 'Path to the JSON payload, e.g. prospecting/instantly/leads/<slug>.json'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add lead
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          python3 scripts/add-instantly-lead.py "${{ github.event.inputs.payload_path }}"
