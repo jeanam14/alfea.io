@@ -1,30 +1,20 @@
 {
-  "campaign_schedule": {
-    "schedules": [
-      {
-        "name": "UAE",
-        "timing": { "from": "09:00", "to": "18:00" },
-        "days": { "0": true, "1": true, "2": true, "3": true, "4": true },
-        "timezone": "Asia/Dubai"
-      }
-    ],
-    "start_date": null,
-    "end_date": null
-  },
   "sequences": [
     {
       "steps": [
         {
           "type": "email",
-          "delay": 0,
+          "delay": 2,
           "variants": [
             {
-              "subject": "Quick note about {{companyName}}'s website",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I was looking at {{companyName}}'s website and noticed {{flaw}}. Thought it was worth fixing, so I went ahead and built a new version:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>Have a look when you get a chance &mdash; happy to walk you through it either way.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+              "subject": "I did a new website for {{companyName}}",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I was looking at {{companyName}}'s website and noticed {{flaw}}. Thought it was worth fixing, so I went ahead and built a new version:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>Have a look when you get a chance ; happy to walk you through it either way.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>",
+              "v_disabled": false
             },
             {
               "subject": "Built something for {{companyName}}",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I'm building out a portfolio of Dubai business redesigns this month, and {{companyName}} is one of the ones I picked. Here's what I put together:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>No obligation at all &mdash; just wanted to show you directly rather than describe it.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I'm building out a portfolio of Dubai business redesigns this month, and {{companyName}} is one of the ones I picked. Here's what I put together:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>No obligation at all, just wanted to show you directly rather than describe it.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>",
+              "v_disabled": false
             }
           ],
           "delay_unit": "days",
@@ -36,7 +26,8 @@
           "variants": [
             {
               "subject": "",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Circling back on this &mdash; {{website}}</div><div><br /></div><div>I personalized it using the information I could find about {{companyName}} &mdash; the structure's fully custom too, so it can be adjusted further however you'd like. If you want to actually launch it, it's 1,900 AED all-in. Happy to answer any questions.</div><div><br /></div><div>Jean</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Circling back on this &mdash; {{website}}</div><div><br /></div><div>I personalized it using the information I could find about {{companyName}}. The structure is fully custom too, so it can be adjusted further however you'd like. If you want to actually launch it, it's only 1,900 AED all-in. Happy to answer any questions.</div><div><br /></div><div>Jean</div>",
+              "v_disabled": false
             }
           ],
           "delay_unit": "days",
@@ -48,7 +39,8 @@
           "variants": [
             {
               "subject": "",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Most people searching for a business like {{companyName}} on Google decide within seconds &mdash; and a lot of that decision comes down to how the site feels, not just how it looks. A clean, well-designed experience makes a business feel more established and trustworthy before anyone even calls.</div><div><br /></div><div>That's the real reason I put this together &mdash; not just to look modern, but to shift how people perceive {{companyName}} the moment they land on it: {{website}}</div><div><br /></div><div>Jean</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Most people searching for a business like {{companyName}} on Google decide within seconds &mdash; and a lot of that decision comes down to how the site feels, not just how it looks. A clean, well-designed experience makes a business feel more established and trustworthy before anyone even calls.</div><div><br /></div><div>That's the real reason I put this together. Not just to look modern, but to shift how people perceive {{companyName}} the moment they land on it: {{website}}</div><div><br /></div><div>Jean</div>",
+              "v_disabled": false
             }
           ],
           "delay_unit": "days",
@@ -60,7 +52,8 @@
           "variants": [
             {
               "subject": "",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Last note from me on this &mdash; if the timing isn't right, no worries at all. The new site is still here whenever you want it:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>Take care,</div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Last note from me on this, if the timing isn't right, no worries at all. The new site is still here whenever you want it:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>Take care,</div><div>Jean</div><div>WhatsApp: +352621990289</div>",
+              "v_disabled": false
             }
           ],
           "delay_unit": "days",
