@@ -1,12 +1,11 @@
 {
-  "campaign_id": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
   "email": "info@sajidacservice.com",
   "first_name": "there",
   "company_name": "Muhammad Sajid Ali Air Conditioning Service Installation LLC",
   "website": "https://alfea-sajid-ac-service.pages.dev/",
   "custom_variables": {
-    "website": "https://alfea-sajid-ac-service.pages.dev/",
     "flaw": "the footer copyright frozen at 2024, and every photo in your gallery still shows the unedited placeholder \"Our Gallery Title\""
   },
-  "skip_if_in_workspace": false
+  "skip_if_in_workspace": true
 }

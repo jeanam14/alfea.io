@@ -1,11 +1,10 @@
 {
-  "campaign_id": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
   "email": "info@alsibah.com",
   "first_name": "there",
   "company_name": "AlSibah Technical Services",
   "website": "https://alfea-alsibah-technical.pages.dev/",
   "custom_variables": {
-    "website": "https://alfea-alsibah-technical.pages.dev/",
     "flaw": "your services page uses plain emoji characters as the icons for every service, and there's no project photo or client review anywhere on the site"
   },
   "skip_if_in_workspace": true

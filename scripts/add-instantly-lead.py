@@ -6,13 +6,21 @@ Requires INSTANTLY_API_KEY in the environment.
 
 payload.json shape:
 {
-  "campaign_id": "...",
+  "campaign": "...",
   "email": "...",
   "first_name": "...",
   "company_name": "...",
-  "custom_variables": {"website": "...", "flaw": "..."},
+  "website": "...",
+  "custom_variables": {"flaw": "..."},
   "skip_if_in_workspace": true
 }
+
+The field is "campaign", not "campaign_id" - the latter is silently
+ignored by the API, which creates an unattached workspace lead that
+never shows up in the campaign (confirmed the hard way on 2026-10-04).
+"website" must be a top-level field too, not just inside
+custom_variables, or {{website}} renders blank - "website" is a
+reserved merge-field name custom_variables.website doesn't override.
 """
 import json
 import os
