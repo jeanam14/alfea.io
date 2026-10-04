@@ -1,0 +1,4 @@
+# One line per image: output_path|prompt|image_size
+# Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
+images/tub-before.jpg|close-up product photo of an old cracked and stained bathtub with visible chips and discoloration in the enamel, worn surface, no people in the photo, no hands, realistic documentary photography, even bathroom lighting, no text, no logos, no watermark|landscape_4_3
+images/tub-after.jpg|close-up product photo of a freshly reglazed bathtub with a smooth glossy white enamel surface, pristine and like-new finish, same bathtub shape and framing as a before shot, no people in the photo, no hands, realistic documentary photography, even bathroom lighting, no text, no logos, no watermark|landscape_4_3
