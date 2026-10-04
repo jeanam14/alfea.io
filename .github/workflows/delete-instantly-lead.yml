@@ -1,0 +1,28 @@
+name: Delete Instantly lead
+
+# Deletes one lead by id. Used to clean up duplicates created by retrying
+# an add-lead call with skip_if_in_workspace: false.
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      lead_id:
+        description: 'Instantly lead id to delete'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Delete lead
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          python3 scripts/delete-instantly-lead.py "${{ github.event.inputs.lead_id }}"
