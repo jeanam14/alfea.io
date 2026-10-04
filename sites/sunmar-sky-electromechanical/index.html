@@ -1,395 +1,340 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <!-- ^ Remove this line at close, once the client has paid -->
 <title>Sunmar Sky Electromechanical | Deira's 24-hour, DEWA-approved electrician.</title>
-<meta name="description" content="Sunmar Sky Electromechanical — Deira's 24-hour, DEWA-approved electrician.. Serving Deira &amp; across Dubai. Call 050 583 3451." />
+<meta name="description" content="Sunmar Sky Electromechanical — Deira's 24-hour, DEWA-approved electrician. Serving Deira &amp; across Dubai. Call 050 583 3451." />
 <link rel="icon" href="data:," />
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: { brand: "#1C64D1", brandDark: "#123F86" },
-        fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], body: ['Inter','ui-sans-serif','system-ui'] }
-      }
-    }
-  }
-</script>
-
-<!-- GSAP core + ScrollTrigger only. ScrollSmoother/SplitText are NOT actually
-     bundled in the public npm package's dist/ folder despite being free to
-     use -- that path 404s. Smooth scroll and text-split are hand-rolled
-     below instead of depending on either plugin. -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink: #14181B;
-    --ink-soft: #545B60;
-    --paper: #FAF9F6;
-    --line: rgba(20,24,27,0.08);
+  body { margin: 0; font-family: 'IBM Plex Sans', sans-serif; background: #F1F4F6; color: #141A21; }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; }
+  a, button { color: inherit; }
+  button { font-family: inherit; cursor: pointer; }
+  .glass-nav {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 50;
+    width: min(880px, calc(100% - 40px));
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px 12px 26px; border-radius: 999px;
+    background: rgba(255,255,255,0.55);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.75);
+    box-shadow: 0 1px 1px rgba(255,255,255,0.85) inset, 0 12px 32px -8px rgba(20,32,43,0.16);
   }
-  html{ background:var(--paper); }
-  body{ font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; }
-  h1,h2,h3,.font-display{ font-family:'Sora',sans-serif; }
-  h1,h2{ text-wrap:balance; }
-  ::selection{ background:#1C64D1; color:#fff; }
-
-  #smooth-wrapper{ overflow:hidden; }
-  #smooth-content{ overflow:visible; }
-
-  .word{ display:inline-block; will-change:transform; }
-  .clip-reveal{ clip-path: inset(0 0 100% 0); }
-  .star{ color:#F5A524; letter-spacing:1px; }
-  .tabular{ font-variant-numeric: tabular-nums; }
-
-  /* ---- Premium polish: thin brand-colored scrollbar ---- */
-  html{ scrollbar-color:#1C64D166 var(--paper); scrollbar-width:thin; }
-  ::-webkit-scrollbar{ width:10px; height:10px; }
-  ::-webkit-scrollbar-track{ background:var(--paper); }
-  ::-webkit-scrollbar-thumb{ background:#1C64D166; border-radius:99px; border:2px solid var(--paper); background-clip:padding-box; }
-  ::-webkit-scrollbar-thumb:hover{ background:#1C64D1; background-clip:padding-box; }
-
-  /* ---- Premium polish: subtle grain texture for depth on dark/flat fields ---- */
-  .grain{ position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  /* ---- Premium polish: section headline word-reveal (same language as the hero) ---- */
-  .reveal-heading{ overflow:hidden; }
-
-  #site-nav{ transition: background-color .4s ease, box-shadow .4s ease; }
-  #site-nav.scrolled{ background:rgba(250,249,246,0.85); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
-
-  .magnetic{ display:inline-flex; will-change:transform; }
-
-  /* ---- Bento services grid ---- */
-  .bento{ display:grid; grid-template-columns:1fr; gap:1.1rem; }
-  @media (min-width:1024px){
-    .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; }
-    .bento .t-feature{ grid-column:span 2; grid-row:span 2; }
-    .bento .t-wide{ grid-column:span 4; }
+  .glow-orb {
+    position: absolute; top: -220px; left: 50%; transform: translateX(-50%);
+    width: 1000px; height: 560px; border-radius: 50%;
+    filter: blur(10px); pointer-events: none; z-index: 0;
+    background: radial-gradient(closest-side, #1C64D133, transparent 72%);
   }
-  .tile{ position:relative; overflow:hidden; border-radius:1.1rem; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1); }
-  .tile-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
-  .tile:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -30px rgba(20,24,27,0.35); }
-  .tile:hover .tile-img{ transform:scale(1.06); }
-  .tile-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,24,27,0) 30%, rgba(20,24,27,0.82) 100%); }
-
-  .card-glow{ position:relative; transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease; }
-  .card-glow::before{
-    content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s ease; border-radius:inherit;
-    background: radial-gradient(140px 140px at var(--mx,50%) var(--my,0%), #1C64D133, transparent 70%);
-    pointer-events:none;
+  .badge { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #D7DEE3; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 500; color: #3A4653; background: #FFFFFF; }
+  .wa-bubble {
+    position: fixed; right: 24px; bottom: 24px; z-index: 60; width: 56px; height: 56px; border-radius: 999px;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 26px -6px rgba(37,211,102,0.6);
   }
-  .card-glow:hover::before{ opacity:1; }
-  .card-glow:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -28px rgba(20,24,27,0.3); border-color:#1C64D155; }
-
-  /* ---- Review cards ---- */
-  .review-card{ background:#fff; border:1px solid var(--line); border-radius:1.5rem; padding:1.75rem; display:flex; flex-direction:column; }
-
-  /* ---- Sticky WhatsApp button ---- */
-  .wa-sticky{ position:fixed; right:1.35rem; bottom:1.35rem; z-index:65; width:58px; height:58px; border-radius:9999px; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -8px rgba(37,211,102,.65); }
-  .wa-sticky-ring{ position:absolute; inset:0; border-radius:9999px; background:#25D366; opacity:.55; animation:wa-pulse 2.4s ease-out infinite; z-index:-1; }
-  @keyframes wa-pulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.8); opacity:0; } }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
-  }
+  .footer-link { font-size: 14px; color: #93A1AC; text-decoration: none; }
+  .footer-link:hover { color: #FFFFFF; }
+  .chip-sm { border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600; border: 1px solid #D7DEE3; background: #FFFFFF; color: #2E3844; }
+  .chip-sm.active { background: #1C64D1; color: #FFFFFF; border-color: #1C64D1; }
+  .slider-wrap { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 4/3; max-width: 560px; }
+  .slider-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slider-divider { position: absolute; top: 0; bottom: 0; width: 3px; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(20,32,43,0.2); pointer-events: none; }
+  .slider-input { width: 100%; max-width: 560px; margin-top: 16px; accent-color: #1C64D1; }
 </style>
 </head>
-<body class="bg-[--paper] text-[--ink]">
+<body>
 
-  <header id="site-nav" class="fixed top-0 inset-x-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-display font-extrabold text-lg tracking-tight">Sunmar Sky Electromechanical</span>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[--ink-soft]">
-        <a href="#work" class="hover:text-[--ink] transition-colors">Our Work</a>
-        <a href="#services" class="hover:text-[--ink] transition-colors">Services</a>
-        <a href="#reviews" class="hover:text-[--ink] transition-colors">Reviews</a>
-        <a href="#contact" class="hover:text-[--ink] transition-colors">Contact</a>
-      </nav>
-      <a href="tel:971505833451" class="magnetic items-center gap-2 bg-brand hover:bg-brandDark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
-        050 583 3451
-      </a>
+<div style="position: relative; width: 100%; overflow: hidden;">
+<div class="glow-orb" aria-hidden="true"></div>
+
+<header class="glass-nav">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <div style="width: 34px; height: 34px; border-radius: 10px; background: #1C64D1; display: flex; align-items: center; justify-content: center; flex-shrink: 0;" aria-hidden="true">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
     </div>
-  </header>
+    <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;">Sunmar Sky Electromechanical</div>
+  </div>
+  <nav style="display: flex; align-items: center; gap: 22px;">
+    <a href="#diagnose" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #2E3844;">What's wrong?</a>
+    <a href="#how" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #2E3844;">How it works</a>
+    <a href="#services" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #2E3844;">Services</a>
+    <a href="#reviews" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #2E3844;">Reviews</a>
+    <a href="#contact" style="font-size: 13.5px; font-weight: 500; text-decoration: none; color: #2E3844;">Contact</a>
+    <a href="tel:971505833451" style="background: #1C64D1; color: #FFFFFF; font-size: 13.5px; font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 999px;">050 583 3451</a>
+  </nav>
+</header>
 
-  <a href="tel:971505833451" id="mobile-call-bar" class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-brand text-white text-center py-3 font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)] translate-y-full">
-    Call now — 050 583 3451
-  </a>
+<div style="position: relative; z-index: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 0;">
 
-  <div id="smooth-wrapper">
-  <div id="smooth-content">
-
-  <!-- Hero: full-width headline over an asymmetric layered visual, not a plain two-column split -->
-  <section class="relative pt-32 md:pt-40 pb-10">
-    <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-15%] w-[700px] h-[700px] rounded-full opacity-[0.10] blur-3xl" style="background:#1C64D1"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <div id="hero-badge" class="inline-flex items-center gap-2 bg-white shadow-sm border border-[--line] text-xs font-semibold px-3 py-1.5 rounded-full mb-8 opacity-0">
-        <span class="star">★★★★★</span> 4.7 · 70 Google reviews · Deira
+  <!-- Hero: headline + a real photo -->
+  <section style="display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr); gap: 48px; align-items: center; padding: 136px 0 64px;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <div class="badge"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F5C; display: inline-block;"></span> Open now · <span id="live-clock">--:--:--</span> Dubai time</div>
+        <div class="badge" style="color: #1C64D1;">★★★★★ 5-Star Service</div>
       </div>
-
-      <h1 id="hero-headline" class="text-[12vw] leading-[0.96] md:text-[6vw] md:leading-[0.98] font-display font-extrabold tracking-tight max-w-5xl overflow-hidden">
-        Deira's 24-hour, DEWA-approved electrician.
-      </h1>
-
-      <div class="mt-10 grid md:grid-cols-[1.1fr_1.4fr] gap-10 items-end">
-        <div>
-          <p id="hero-sub" class="text-lg text-[--ink-soft] max-w-sm opacity-0 translate-y-4">Electrical installation, repair, and maintenance for homes and businesses across Dubai — open 24 hours, every day.</p>
-          <div id="hero-ctas" class="mt-7 flex flex-wrap gap-4 opacity-0 translate-y-4">
-            <a href="tel:971505833451" class="magnetic bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors" style="box-shadow: 0 12px 30px -10px #1C64D1aa">
-              Call 050 583 3451
-            </a>
-            <a href="#contact" class="magnetic border border-[--line] hover:border-[--ink]/30 font-semibold px-7 py-3.5 rounded-full transition-colors">
-              Request a quote
-            </a>
-          </div>
-        </div>
-
-        <div class="relative">
-          <div id="hero-image-wrap" class="clip-reveal rounded-[1.75rem] overflow-hidden shadow-2xl">
-            <img src="images/hero.jpg" alt="Sunmar Sky Electromechanical at work" class="w-full aspect-[16/10] object-cover" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services: bento grid, mixed tile sizes, one image-backed feature tile -->
-  <section id="services" class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal-up mb-12 max-w-lg">
-        <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-4">What we do</h2>
-        <p class="text-[--ink-soft] text-lg">From emergency repairs to full installations, here's what we handle most for Dubai homes and businesses.</p>
-      </div>
-
-      <div class="bento">
-        <div class="reveal-card tile t-feature min-h-[280px]">
-          <img src="images/hero.jpg" alt="" class="tile-img" />
-          <div class="tile-overlay"></div>
-          <div class="absolute inset-0 p-7 flex flex-col justify-end text-white">
-            <h3 class="font-display font-bold text-2xl mb-2">24-Hour Emergency Repairs</h3>
-            <p class="text-sm text-white/80 max-w-xs">Round-the-clock response for power outages, faults, and electrical emergencies.</p>
-          </div>
-        </div>
-
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">DEWA-Approved Installations</h3>
-          <p class="text-sm text-[--ink-soft]">Certified wiring and installation work, approved to DEWA standards.</p>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">Panel &amp; Circuit Repair</h3>
-          <p class="text-sm text-[--ink-soft]">Diagnosis and repair of distribution boards, breakers, and circuits.</p>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">Electromechanical Maintenance</h3>
-          <p class="text-sm text-[--ink-soft]">Ongoing maintenance contracts for villas, buildings, and businesses.</p>
-        </div>
-        <div class="reveal-card tile card-glow bg-white border border-[--line] p-6 flex flex-col justify-between min-h-[150px]">
-          <h3 class="font-display font-bold text-base">Water Pump Support</h3>
-          <p class="text-sm text-[--ink-soft]">Electrical and plumbing support for pumps and water systems.</p>
-        </div>
-
-        <div class="reveal-card tile t-wide card-glow p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-white min-h-[130px]" style="background:#1C64D1">
-          <div>
-            <h3 class="font-display font-bold text-xl mb-1">Same-Day Callouts</h3>
-            <p class="text-sm text-white/80 max-w-md">Fast response across Dubai, available 24 hours, every day.</p>
-          </div>
-          <a href="tel:971505833451" class="magnetic shrink-0 bg-white text-brandDark font-semibold px-6 py-3 rounded-full text-sm">Call 050 583 3451</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="py-24">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
-      <div class="clip-reveal rounded-[1.75rem] overflow-hidden order-2 md:order-1">
-        <img src="images/about.jpg" alt="Sunmar Sky Electromechanical team" class="w-full aspect-[4/3] object-cover" />
-      </div>
-      <div class="order-1 md:order-2">
-        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">DEWA-approved, and on call around the clock</h2>
-        <p class="reveal-up text-[--ink-soft] leading-relaxed text-lg">Sunmar Sky Electromechanical has been serving homes and businesses across Dubai with licensed electrical and electromechanical work. Open 24 hours, every day, we show up fast and get it right the first time.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews: plain grid, no aggregate rating repeated here — each card is a real review -->
-  <section id="reviews" class="bg-white border-y border-[--line] py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold mb-12">What our clients say</h2>
-      <div class="grid md:grid-cols-3 gap-7">
-        <div class="reveal-card review-card">
-          <div class="star mb-3">★★★★★</div>
-          <p class="text-sm text-[--ink] flex-1">They have a good Professional team, got 2 projects approved through them, reasonable fees 👍</p>
-          <p class="text-sm font-semibold mt-5">Sushil C</p>
-        </div>
-        <div class="reveal-card review-card">
-          <div class="star mb-3">★★★★★</div>
-          <p class="text-sm text-[--ink] flex-1">They have good service and on time specially Mohammad Yousuf is very accommodating. We're Happy Customer 😊👍</p>
-          <p class="text-sm font-semibold mt-5">Saylors</p>
-        </div>
-        <div class="reveal-card review-card">
-          <div class="star mb-3">★★★★★</div>
-          <p class="text-sm text-[--ink] flex-1">What a great job, very quick, very clean work, good in communications, very professional, very humble. Always available for any kind of queries. They really understand the value of clients.</p>
-          <p class="text-sm font-semibold mt-5">Al Sahraa AJR L.L.C</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Service area / map -->
-  <section id="area" class="py-24">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
-      <div>
-        <h2 class="reveal-heading text-3xl md:text-4xl font-display font-bold mb-5">Proudly serving Deira &amp; across Dubai</h2>
-        <p class="reveal-up text-[--ink-soft] leading-relaxed mb-7 text-lg">118 Al Nakhal Rd, Naif, Deira, Dubai, UAE</p>
-        <a href="tel:971505833451" class="magnetic reveal-up bg-brand hover:bg-brandDark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
-          Call 050 583 3451
+      <h1 style="font-size: 48px; line-height: 1.04; font-weight: 700; letter-spacing: -0.02em; color: #141A21;">Deira's 24-hour, DEWA-approved electrician.</h1>
+      <p style="font-size: 17px; line-height: 1.55; color: #4C5A68; max-width: 420px;">Electrical installation, repair, and maintenance for homes and businesses across Dubai — open 24&nbsp;hours, every day.</p>
+      <div style="display: flex; gap: 14px; padding-top: 8px;">
+        <a href="https://wa.me/971505833451?text=Hello!%20I%27d%20like%20to%20book%20an%20electrical%20job." style="background: #1C64D1; color: #FFFFFF; display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+          WhatsApp us
         </a>
+        <a href="tel:971505833451" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px; border: 1px solid #C3CDD5; color: #141A21;">Call 050 583 3451</a>
       </div>
-      <div class="clip-reveal rounded-[1.75rem] overflow-hidden border border-[--line] aspect-[4/3]">
-        <iframe src="https://www.google.com/maps?q=25.2716117,55.3155377&output=embed" class="w-full h-full" style="border:0" loading="lazy"></iframe>
+    </div>
+    <div style="border-radius: 28px; overflow: hidden; aspect-ratio: 4/3;">
+      <img src="images/hero.jpg" alt="Electrician's multimeter, wire strippers, and hand tools laid out on a workbench" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+  </section>
+
+  <!-- Diagnose: interactive issue picker, its own section below the hero -->
+  <section id="diagnose" style="padding: 56px 0; border-top: 1px solid #DEE5E9;">
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 560px; margin-bottom: 28px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">Not sure what you need?</div>
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.015em; color: #141A21;">Tell us the problem — we'll match the fix</h2>
+    </div>
+    <div id="issue-chips" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;"></div>
+    <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 10px; max-width: 640px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">Matching service</div>
+      <h3 id="issue-service" style="font-size: 20px; font-weight: 600; color: #141A21;"></h3>
+      <p id="issue-desc" style="font-size: 14.5px; line-height: 1.55; color: #4C5A68; margin: 0;"></p>
+      <a id="issue-wa" href="#" style="display: inline-flex; align-self: flex-start; margin-top: 8px; background: #1C64D1; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none; padding: 10px 20px; border-radius: 999px;">WhatsApp about this</a>
+    </div>
+  </section>
+
+  <!-- How it works: process stepper -->
+  <section id="how" style="padding: 56px 0; border-top: 1px solid #DEE5E9;">
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 520px; margin-bottom: 36px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">How it works</div>
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.015em; color: #141A21;">From call to certified fix</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 48px; align-items: center;">
+      <div style="position: relative; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0;">
+        <div aria-hidden="true" style="position: absolute; top: 19px; left: 40px; right: 40px; height: 2px; background: #DEE5E9; z-index: 0;"></div>
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 0 6px;">
+          <div style="width: 40px; height: 40px; border-radius: 999px; background: #1C64D1; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px;">01</div>
+          <h3 style="font-size: 14.5px; font-weight: 600; color: #141A21;">Diagnose</h3>
+          <p style="font-size: 12.5px; line-height: 1.4; color: #4C5A68; margin: 0;">Tell us the issue, we identify the fix.</p>
+        </div>
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 0 6px;">
+          <div style="width: 40px; height: 40px; border-radius: 999px; background: #1C64D1; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px;">02</div>
+          <h3 style="font-size: 14.5px; font-weight: 600; color: #141A21;">Dispatch</h3>
+          <p style="font-size: 12.5px; line-height: 1.4; color: #4C5A68; margin: 0;">A technician is on the way, any hour.</p>
+        </div>
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 0 6px;">
+          <div style="width: 40px; height: 40px; border-radius: 999px; background: #1C64D1; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px;">03</div>
+          <h3 style="font-size: 14.5px; font-weight: 600; color: #141A21;">Fix</h3>
+          <p style="font-size: 12.5px; line-height: 1.4; color: #4C5A68; margin: 0;">The job is done right, tested before we leave.</p>
+        </div>
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 0 6px;">
+          <div style="width: 40px; height: 40px; border-radius: 999px; background: #1C64D1; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px;">04</div>
+          <h3 style="font-size: 14.5px; font-weight: 600; color: #141A21;">Certify</h3>
+          <p style="font-size: 12.5px; line-height: 1.4; color: #4C5A68; margin: 0;">DEWA-standard work, documented and guaranteed.</p>
+        </div>
+      </div>
+      <div style="border-radius: 24px; overflow: hidden; aspect-ratio: 4/3;">
+        <img src="images/panel-after.jpg" alt="Clean, organized electrical panel after a Sunmar Sky service visit" style="width: 100%; height: 100%; object-fit: cover; display: block;">
       </div>
     </div>
   </section>
 
-  <!-- Contact: diagonal top edge instead of a plain rectangle -->
-  <section id="contact" class="relative pt-32 pb-28 overflow-hidden" style="background:#1C64D1; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);">
-    <div class="grain" aria-hidden="true"></div>
-    <div id="contact-orb" aria-hidden="true" class="pointer-events-none absolute -bottom-40 left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-3xl bg-white"></div>
-    <div class="max-w-3xl mx-auto px-6 text-center relative">
-      <h2 class="reveal-heading text-3xl md:text-5xl font-display font-bold text-white mb-5">Ready when you are</h2>
-      <p class="reveal-up text-white/80 mb-10 text-lg">Call now, or leave your number and we'll call you back today.</p>
-      <div class="reveal-up flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:971505833451" class="magnetic bg-white text-brandDark font-semibold px-8 py-4 rounded-full">Call 050 583 3451</a>
-        <a href="https://wa.me/971505833451" target="_blank" rel="noopener" class="magnetic border border-white/40 text-white font-semibold px-8 py-4 rounded-full">WhatsApp us</a>
+  <section id="services" style="padding: 56px 0; border-top: 1px solid #DEE5E9;">
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 520px; margin-bottom: 40px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">What we do</div>
+      <h2 style="font-size: 32px; font-weight: 700; letter-spacing: -0.015em; color: #141A21;">From emergency repairs to full installations</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px;">
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #8599A8;">01</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1C64D1; background: #1C64D11a; border-radius: 999px; padding: 3px 10px;">24/7</div></div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #141A21;">24-Hour Emergency Repairs</h3>
+        <p style="font-size: 14.5px; line-height: 1.5; color: #4C5A68; margin: 0;">Round-the-clock response for power outages, faults, and electrical emergencies.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #8599A8;">02</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1C64D1; background: #1C64D11a; border-radius: 999px; padding: 3px 10px;">DEWA</div></div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #141A21;">DEWA-Approved Installations</h3>
+        <p style="font-size: 14.5px; line-height: 1.5; color: #4C5A68; margin: 0;">Certified wiring and installation work, approved to DEWA standards.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #8599A8;">03</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1C64D1; background: #1C64D11a; border-radius: 999px; padding: 3px 10px;">Repair</div></div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #141A21;">Panel &amp; Circuit Repair</h3>
+        <p style="font-size: 14.5px; line-height: 1.5; color: #4C5A68; margin: 0;">Diagnosis and repair of distribution boards, breakers, and circuits.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #8599A8;">04</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1C64D1; background: #1C64D11a; border-radius: 999px; padding: 3px 10px;">Maintenance</div></div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #141A21;">Electromechanical Maintenance</h3>
+        <p style="font-size: 14.5px; line-height: 1.5; color: #4C5A68; margin: 0;">Ongoing maintenance contracts for villas, buildings, and businesses.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #8599A8;">05</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1C64D1; background: #1C64D11a; border-radius: 999px; padding: 3px 10px;">Support</div></div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #141A21;">Water Pump Support</h3>
+        <p style="font-size: 14.5px; line-height: 1.5; color: #4C5A68; margin: 0;">Electrical and plumbing support for pumps and water systems.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #8599A8;">06</div><div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #1C64D1; background: #1C64D11a; border-radius: 999px; padding: 3px 10px;">Same-Day</div></div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #141A21;">Same-Day Callouts</h3>
+        <p style="font-size: 14.5px; line-height: 1.5; color: #4C5A68; margin: 0;">Fast response across Dubai, available 24 hours, every day.</p>
       </div>
     </div>
   </section>
 
-  <footer class="py-10 text-center text-sm text-[--ink-soft]">
-    © 2026 Sunmar Sky Electromechanical. 118 Al Nakhal Rd, Naif, Deira, Dubai, UAE.
+  <!-- Before/after drag slider -->
+  <section style="padding: 56px 0; border-top: 1px solid #DEE5E9;">
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 560px; margin-bottom: 24px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">See the difference</div>
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.015em; color: #141A21;">A cleaner, safer panel — every visit</h2>
+      <p style="font-size: 15px; line-height: 1.55; color: #4C5A68; margin: 0;">Drag to compare a typical panel before and after a Sunmar Sky service call.</p>
+    </div>
+    <div class="slider-wrap">
+      <img src="images/panel-before.jpg" alt="Cluttered electrical panel before service" />
+      <img id="after-img" src="images/panel-after.jpg" alt="Clean organized electrical panel after service" style="clip-path: inset(0 50% 0 0);" />
+      <div id="slider-divider" class="slider-divider" style="left: 50%;" aria-hidden="true"></div>
+    </div>
+    <label style="display: flex; flex-direction: column; gap: 6px; max-width: 560px; margin-top: 14px;">
+      <span style="font-size: 13px; font-weight: 600; color: #4C5A68;">Drag to compare before / after</span>
+      <input id="slider-input" type="range" min="0" max="100" value="50" class="slider-input" />
+    </label>
+  </section>
+
+  <section style="display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: 56px; align-items: center; padding: 56px 0; border-top: 1px solid #DEE5E9;">
+    <div style="border-radius: 28px; overflow: hidden; aspect-ratio: 4/3;">
+      <img src="images/about.jpg" alt="Electrical wiring terminal blocks close-up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">About</div>
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.015em; color: #141A21;">Trusted across Dubai, one job at a time</h2>
+      <p style="font-size: 16px; line-height: 1.6; color: #4C5A68;">Sunmar Sky Electromechanical has been serving homes and businesses across Dubai with licensed electrical and electromechanical work. Open 24&nbsp;hours, every day, we show up fast and get it right the first time.</p>
+    </div>
+  </section>
+
+  <section id="reviews" style="padding: 56px 0; border-top: 1px solid #DEE5E9;">
+    <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.015em; color: #141A21; margin-bottom: 36px;">What our clients say</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="color: #1C64D1; font-size: 14px; letter-spacing: 1px;">★★★★★</div>
+        <p style="font-size: 14.5px; line-height: 1.55; color: #141A21; margin: 0; flex-grow: 1;">They have a good professional team, got 2 projects approved through them, reasonable fees.</p>
+        <div style="font-size: 13px; font-weight: 600; color: #4C5A68;">Sushil C</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="color: #1C64D1; font-size: 14px; letter-spacing: 1px;">★★★★★</div>
+        <p style="font-size: 14.5px; line-height: 1.55; color: #141A21; margin: 0; flex-grow: 1;">They have good service and on time, especially Mohammad Yousuf is very accommodating. We're a happy customer.</p>
+        <div style="font-size: 13px; font-weight: 600; color: #4C5A68;">Saylors</div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #DEE5E9; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="color: #1C64D1; font-size: 14px; letter-spacing: 1px;">★★★★★</div>
+        <p style="font-size: 14.5px; line-height: 1.55; color: #141A21; margin: 0; flex-grow: 1;">What a great job — very quick, very clean work, good in communications, very professional. They really understand the value of clients.</p>
+        <div style="font-size: 13px; font-weight: 600; color: #4C5A68;">Al Sahraa AJR L.L.C</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding: 56px 0 72px; border-top: 1px solid #DEE5E9; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 56px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.015em; color: #141A21;">Get in touch</h2>
+      <p style="font-size: 16px; line-height: 1.6; color: #4C5A68; max-width: 400px;">118 Al Nakhal Rd, Naif, Deira, Dubai, UAE. Open 24&nbsp;hours, every day.</p>
+      <div style="display: flex; gap: 14px; padding-top: 8px;">
+        <a href="https://wa.me/971505833451?text=Hello!%20I%27d%20like%20to%20book%20an%20electrical%20job." style="background: #1C64D1; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px;">WhatsApp us</a>
+        <a href="tel:971505833451" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 999px; border: 1px solid #C3CDD5; color: #141A21;">Call 050 583 3451</a>
+      </div>
+    </div>
+    <div style="border-radius: 28px; border: 1px solid #DEE5E9; aspect-ratio: 4/3; padding: 36px; display: flex; flex-direction: column; justify-content: center; gap: 16px; background: #FFFFFF;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C64D1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1C64D1;">Find us</div>
+      <div style="font-size: 18px; font-weight: 600; color: #141A21;">Naif, Deira, Dubai</div>
+      <div style="font-size: 14px; color: #4C5A68;">Open 24 hours, every day</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Sunmar%20Sky%20Electromechanical&query_place_id=ChIJuRHPBUtDXz4RcGa6L8zBcnk" target="_blank" rel="noopener" style="display: inline-flex; align-self: flex-start; font-size: 14px; font-weight: 600; color: #FFFFFF; background: #1C64D1; padding: 10px 20px; border-radius: 999px; text-decoration: none; margin-top: 8px;">Open in Google Maps ↗</a>
+    </div>
+  </section>
+
+  <footer style="background: #11161C; margin: 0 -32px; padding: 48px 32px 32px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #1C64D1; display: flex; align-items: center; justify-content: center; flex-shrink: 0;" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #FFFFFF;">Sunmar Sky Electromechanical</div>
+        </div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #AEB9C2; margin: 0; max-width: 280px;">Deira's 24-hour electrical and electromechanical specialists. DEWA-approved, available every day.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6B7A86; margin-bottom: 4px;">Services</div>
+        <a href="#services" class="footer-link">24-Hour Emergency Repairs</a>
+        <a href="#services" class="footer-link">DEWA-Approved Installations</a>
+        <a href="#services" class="footer-link">Panel &amp; Circuit Repair</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6B7A86; margin-bottom: 4px;">Contact</div>
+        <a href="tel:971505833451" class="footer-link">050 583 3451</a>
+        <div style="font-size: 14px; color: #93A1AC;">Naif, Deira, Dubai</div>
+        <div style="font-size: 14px; color: #93A1AC;">Open 24 hours daily</div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #242E36; padding-top: 20px; font-size: 13px; color: #6B7A86;">
+      © 2026 Sunmar Sky Electromechanical. 118 Al Nakhal Rd, Naif, Deira, Dubai, UAE.
+    </div>
   </footer>
 
-  </div>
-  </div>
+</div>
+</div>
 
-  <!-- WhatsApp sticky button -->
-  <a href="https://wa.me/971505833451" target="_blank" rel="noopener" class="wa-sticky" aria-label="Chat on WhatsApp">
-    <span class="wa-sticky-ring" aria-hidden="true"></span>
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
-  </a>
+<a href="https://wa.me/971505833451?text=Hello!%20I%27d%20like%20to%20book%20an%20electrical%20job." target="_blank" rel="noopener" class="wa-bubble" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.65-.17 1.33z"/></svg>
+</a>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener('click', (e) => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-  });
-});
-
-const nav = document.getElementById('site-nav');
-ScrollTrigger.create({ start: 0, end: 99999, onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 40) });
-
-const callBar = document.getElementById('mobile-call-bar');
-ScrollTrigger.create({
-  trigger: '#hero-headline', start: 'bottom top',
-  onEnter: () => gsap.to(callBar, { yPercent: 0, duration: 0.5, ease: 'power3.out' }),
-  onLeaveBack: () => gsap.to(callBar, { yPercent: 100, duration: 0.4, ease: 'power3.in' }),
-});
-
-const heroTl = gsap.timeline({ delay: 0.15 });
-const headline = document.getElementById('hero-headline');
-gsap.set(headline, { opacity: 1 });
-if (!reduceMotion) {
-  const words = headline.textContent.trim().split(/\s+/);
-  headline.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
-  heroTl.from(headline.querySelectorAll('.word'), { yPercent: 130, opacity: 0, duration: 1, stagger: 0.05, ease: 'power4.out' });
+function pad(n) { return String(n).padStart(2, '0'); }
+function tickClock() {
+  var now = new Date();
+  document.getElementById('live-clock').textContent = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
 }
-heroTl
-  .to('#hero-badge', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
-  .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
-  .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.45')
-  .fromTo('#hero-image-wrap', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut' }, '-=0.9');
+tickClock();
+setInterval(tickClock, 1000);
 
-gsap.utils.toArray('.reveal-up').forEach((el) => {
-  gsap.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
-});
-
-gsap.utils.toArray('.reveal-card').forEach((el, i) => {
-  gsap.fromTo(el, { opacity: 0, y: 34, clipPath: 'inset(0 0 100% 0)' }, {
-    opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'expo.out', delay: (i % 4) * 0.07,
-    scrollTrigger: { trigger: el, start: 'top 88%' },
-  });
-});
-
-gsap.utils.toArray('.clip-reveal').forEach((el) => {
-  if (el.id === 'hero-image-wrap') return;
-  gsap.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'expo.inOut', scrollTrigger: { trigger: el, start: 'top 85%' } });
-});
-
-/* Section headline word-reveal — same language as the hero, on scroll */
-gsap.utils.toArray('.reveal-heading').forEach((el) => {
-  if (reduceMotion) { gsap.set(el, { opacity: 1 }); return; }
-  const words = el.textContent.trim().split(/\s+/);
-  el.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(' ');
-  const wordEls = el.querySelectorAll('.word');
-  gsap.set(wordEls, { yPercent: 60, opacity: 0 });
-  gsap.to(wordEls, {
-    yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.03, ease: 'expo.out',
-    scrollTrigger: { trigger: el, start: 'top 88%' },
-  });
-});
-
-/* Parallax depth: hero image drifts slower than scroll, ambient orbs drift slightly */
-if (!reduceMotion) {
-  gsap.to('#hero-image-wrap img', {
-    yPercent: 12, ease: 'none',
-    scrollTrigger: { trigger: '#hero-image-wrap', start: 'top top', end: 'bottom top', scrub: 0.5 },
-  });
-  gsap.utils.toArray('section .blur-3xl').forEach((orb) => {
-    gsap.to(orb, { yPercent: -18, ease: 'none', scrollTrigger: { trigger: orb.parentElement, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+var ISSUES = [
+  { id: 'power', label: 'No power at all', service: '24-Hour Emergency Repairs', desc: "Total power loss usually means a tripped main or a fault on the incoming supply. We're dispatched within the hour, any time of day." },
+  { id: 'trip', label: 'Breaker keeps tripping', service: 'Panel & Circuit Repair', desc: "A breaker that won't stay on is protecting you from a real fault underneath. We trace the cause, fix it, and test before we leave." },
+  { id: 'spark', label: 'Sparking or burning smell', service: '24-Hour Emergency Repairs', desc: 'Sparks or a burning smell are urgent — switch off the circuit at the breaker and call now. We treat this as emergency priority.' },
+  { id: 'install', label: 'New installation needed', service: 'DEWA-Approved Installations', desc: 'New wiring, outlets, or fittings, installed and certified to DEWA standard from the start.' },
+  { id: 'maint', label: 'Routine check-up', service: 'Electromechanical Maintenance', desc: 'A yearly inspection catches small issues before they become emergencies — ask about a maintenance contract.' }
+];
+var currentIssue = 'power';
+var chipsEl = document.getElementById('issue-chips');
+function renderIssues() {
+  chipsEl.innerHTML = '';
+  ISSUES.forEach(function (it) {
+    var btn = document.createElement('button');
+    btn.className = 'chip-sm' + (it.id === currentIssue ? ' active' : '');
+    btn.textContent = it.label;
+    btn.addEventListener('click', function () { currentIssue = it.id; renderIssues(); renderActive(); });
+    chipsEl.appendChild(btn);
   });
 }
+function renderActive() {
+  var active = ISSUES.filter(function (i) { return i.id === currentIssue; })[0] || ISSUES[0];
+  document.getElementById('issue-service').textContent = active.service;
+  document.getElementById('issue-desc').textContent = active.desc;
+  document.getElementById('issue-wa').href = 'https://wa.me/971505833451?text=' + encodeURIComponent('Hello! I need help with: ' + active.label);
+}
+renderIssues();
+renderActive();
 
-document.querySelectorAll('[data-counter]').forEach((el) => {
-  const target = parseFloat(el.dataset.counter);
-  if (!target) return;
-  const obj = { val: 0 };
-  ScrollTrigger.create({
-    trigger: el, start: 'top 90%', once: true,
-    onEnter: () => gsap.to(obj, { val: target, duration: 1.6, ease: 'expo.out', onUpdate: () => { el.textContent = Number.isInteger(target) ? Math.round(obj.val) : obj.val.toFixed(1); } }),
-  });
-});
-
-document.querySelectorAll('.magnetic').forEach((btn) => {
-  btn.addEventListener('mousemove', (e) => {
-    const r = btn.getBoundingClientRect();
-    gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: 'power3.out' });
-  });
-  btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' }));
-});
-
-document.querySelectorAll('.card-glow').forEach((card) => {
-  card.addEventListener('mousemove', (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    card.style.setProperty('--my', `${e.clientY - r.top}px`);
-  });
+var sliderInput = document.getElementById('slider-input');
+var afterImg = document.getElementById('after-img');
+var sliderDivider = document.getElementById('slider-divider');
+sliderInput.addEventListener('input', function () {
+  var pct = Number(sliderInput.value);
+  afterImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+  sliderDivider.style.left = pct + '%';
 });
 </script>
+
 </body>
 </html>
