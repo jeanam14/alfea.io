@@ -1,0 +1,29 @@
+name: Get Instantly campaign
+
+# Read-only lookup of one campaign's full config. Output appears in this
+# job's log (no commit needed).
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      campaign_id:
+        description: 'Instantly campaign id'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  get:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get campaign
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          chmod +x scripts/get-instantly-campaign.sh
+          ./scripts/get-instantly-campaign.sh "${{ github.event.inputs.campaign_id }}"
