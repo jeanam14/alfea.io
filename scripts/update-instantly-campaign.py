@@ -29,6 +29,8 @@ def main():
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "User-Agent": "curl/8.5.0",
+            "Accept": "application/json",
         },
     )
     try:
