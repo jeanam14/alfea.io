@@ -1,0 +1,11 @@
+{
+  "campaign_id": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "info@sunmarsky.com",
+  "first_name": "there",
+  "company_name": "Sunmar Sky Electromechanical",
+  "custom_variables": {
+    "website": "https://alfea-sunmar-sky-electromechanical.pages.dev/",
+    "flaw": "the footer copyright is still frozen at 2019"
+  },
+  "skip_if_in_workspace": true
+}

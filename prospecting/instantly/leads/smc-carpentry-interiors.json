@@ -1,0 +1,11 @@
+{
+  "campaign_id": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "munzeermahammad@gmail.com",
+  "first_name": "Hassan",
+  "company_name": "SMC Carpentry & Interiors",
+  "custom_variables": {
+    "website": "https://alfea-smc-carpentry-interiors.pages.dev/",
+    "flaw": "your homepage FAQ still answers questions about \"custom software development\" and \"cloud solutions\" - looks like leftover content from an IT-company template"
+  },
+  "skip_if_in_workspace": true
+}
