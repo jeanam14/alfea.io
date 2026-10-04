@@ -1,0 +1,25 @@
+name: List Instantly campaigns
+
+# Read-only lookup of campaigns in the connected Instantly account.
+# Output appears in this job's log (no commit needed).
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: List campaigns
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          chmod +x scripts/list-instantly-campaigns.sh
+          ./scripts/list-instantly-campaigns.sh
