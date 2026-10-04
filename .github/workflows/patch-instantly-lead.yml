@@ -1,0 +1,32 @@
+name: Patch Instantly lead
+
+# Partially updates fields on one lead already in Instantly (PATCH
+# /leads/{id}), e.g. fixing a first_name after the fact. Does not touch
+# campaign membership or activation.
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      lead_id:
+        description: 'Instantly lead id (uuid)'
+        required: true
+      patch_path:
+        description: 'Path to the JSON patch body, e.g. prospecting/instantly/leads/<slug>.json'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Patch lead
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          python3 scripts/patch-instantly-lead.py "${{ github.event.inputs.lead_id }}" "${{ github.event.inputs.patch_path }}"
