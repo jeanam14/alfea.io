@@ -1,0 +1,4 @@
+# One line per image: output_path|prompt|image_size
+# Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
+images/coil-before.jpg|close-up product photo of a dirty, dust-caked air conditioner evaporator coil with visible grime and clogged fins, no people in the photo, no hands, realistic documentary photography, even workshop lighting, no text, no logos, no watermark|landscape_4_3
+images/coil-after.jpg|close-up product photo of a clean, bright air conditioner evaporator coil with clear unclogged fins, same angle and framing as a before shot, no people in the photo, no hands, realistic documentary photography, even workshop lighting, no text, no logos, no watermark|landscape_4_3
