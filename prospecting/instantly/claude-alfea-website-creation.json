@@ -19,8 +19,12 @@
           "delay": 0,
           "variants": [
             {
-              "subject": "A faster website for {{companyName}}",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I'm Jean, a local web developer based in Dubai. I came across {{companyName}} and took a look at your current website &mdash; I think it could be doing a lot more for you, so I went ahead and built a new version to show what's possible:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>No obligation at all, I just prefer showing rather than describing. If you like the direction, happy to talk through next steps.</div><div><br /></div><div><br /></div><div>Best,</div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+              "subject": "Quick note about {{companyName}}'s website",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I was looking at {{companyName}}'s website and noticed {{flaw}}. Thought it was worth fixing, so I went ahead and built a new version:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>Have a look when you get a chance &mdash; happy to walk you through it either way.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+            },
+            {
+              "subject": "Built something for {{companyName}}",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I'm building out a portfolio of Dubai business redesigns this month, and {{companyName}} is one of the ones I picked. Here's what I put together:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>No obligation at all &mdash; just wanted to show you directly rather than describe it.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>"
             }
           ],
           "delay_unit": "days",
@@ -32,7 +36,7 @@
           "variants": [
             {
               "subject": "",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Just floating this back up in case it got buried. Here's the new site again:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>I used your actual business details and real reviews &mdash; nothing generic. Let me know if you'd like any changes, or if you'd rather I just leave it as a reference.</div><div><br /></div><div>Jean</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Circling back on this &mdash; {{website}}</div><div><br /></div><div>I personalized it using the information I could find about {{companyName}} &mdash; the structure's fully custom too, so it can be adjusted further however you'd like. If you want to actually launch it, it's 1,900 AED all-in. Happy to answer any questions.</div><div><br /></div><div>Jean</div>"
             }
           ],
           "delay_unit": "days",
@@ -44,7 +48,7 @@
           "variants": [
             {
               "subject": "",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>One thing I'll add &mdash; a faster, mobile-friendly site tends to directly affect how many calls and WhatsApp messages a business like {{companyName}} gets from people finding you on Google or Maps. That's really the only reason I built this for you to look at.</div><div><br /></div><div>If it's useful, let's talk. If not, no hard feelings.</div><div><br /></div><div>Jean</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Most people searching for a business like {{companyName}} on Google decide within seconds &mdash; and a lot of that decision comes down to how the site feels, not just how it looks. A clean, well-designed experience makes a business feel more established and trustworthy before anyone even calls.</div><div><br /></div><div>That's the real reason I put this together &mdash; not just to look modern, but to shift how people perceive {{companyName}} the moment they land on it: {{website}}</div><div><br /></div><div>Jean</div>"
             }
           ],
           "delay_unit": "days",
@@ -56,7 +60,7 @@
           "variants": [
             {
               "subject": "",
-              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I don't want to keep filling your inbox, so I'll leave it here. The link's still live if you want it later:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>All the best to {{companyName}} either way.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Last note from me on this &mdash; if the timing isn't right, no worries at all. The new site is still here whenever you want it:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>Take care,</div><div>Jean</div><div>WhatsApp: +352621990289</div>"
             }
           ],
           "delay_unit": "days",
