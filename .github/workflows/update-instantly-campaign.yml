@@ -1,0 +1,32 @@
+name: Update Instantly campaign
+
+# Patches one campaign's sequences/schedule (only the fields in the given
+# payload file) - leaves sending accounts, daily limit, and status alone.
+# Never activates a campaign; that stays a manual, explicit action.
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      campaign_id:
+        description: 'Instantly campaign id'
+        required: true
+      payload_path:
+        description: 'Path to the JSON payload, e.g. prospecting/instantly/claude-alfea-website-creation.json'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update campaign
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          python3 scripts/update-instantly-campaign.py "${{ github.event.inputs.campaign_id }}" "${{ github.event.inputs.payload_path }}"

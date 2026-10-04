@@ -1,0 +1,68 @@
+{
+  "campaign_schedule": {
+    "schedules": [
+      {
+        "name": "UAE",
+        "timing": { "from": "09:00", "to": "18:00" },
+        "days": { "0": true, "1": true, "2": true, "3": true, "4": true },
+        "timezone": "Asia/Dubai"
+      }
+    ],
+    "start_date": null,
+    "end_date": null
+  },
+  "sequences": [
+    {
+      "steps": [
+        {
+          "type": "email",
+          "delay": 0,
+          "variants": [
+            {
+              "subject": "A faster website for {{companyName}}",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I'm Jean, a local web developer based in Dubai. I came across {{companyName}} and took a look at your current website &mdash; I think it could be doing a lot more for you, so I went ahead and built a new version to show what's possible:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>No obligation at all, I just prefer showing rather than describing. If you like the direction, happy to talk through next steps.</div><div><br /></div><div><br /></div><div>Best,</div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+            }
+          ],
+          "delay_unit": "days",
+          "pre_delay_unit": "days"
+        },
+        {
+          "type": "email",
+          "delay": 3,
+          "variants": [
+            {
+              "subject": "",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>Just floating this back up in case it got buried. Here's the new site again:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>I used your actual business details and real reviews &mdash; nothing generic. Let me know if you'd like any changes, or if you'd rather I just leave it as a reference.</div><div><br /></div><div>Jean</div>"
+            }
+          ],
+          "delay_unit": "days",
+          "pre_delay_unit": "days"
+        },
+        {
+          "type": "email",
+          "delay": 3,
+          "variants": [
+            {
+              "subject": "",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>One thing I'll add &mdash; a faster, mobile-friendly site tends to directly affect how many calls and WhatsApp messages a business like {{companyName}} gets from people finding you on Google or Maps. That's really the only reason I built this for you to look at.</div><div><br /></div><div>If it's useful, let's talk. If not, no hard feelings.</div><div><br /></div><div>Jean</div>"
+            }
+          ],
+          "delay_unit": "days",
+          "pre_delay_unit": "days"
+        },
+        {
+          "type": "email",
+          "delay": 4,
+          "variants": [
+            {
+              "subject": "",
+              "body": "<div>Hi {{firstName}},</div><div><br /></div><div>I don't want to keep filling your inbox, so I'll leave it here. The link's still live if you want it later:</div><div><br /></div><div>{{website}}</div><div><br /></div><div>All the best to {{companyName}} either way.</div><div><br /></div><div>Jean</div><div>WhatsApp: +352621990289</div>"
+            }
+          ],
+          "delay_unit": "days",
+          "pre_delay_unit": "days"
+        }
+      ]
+    }
+  ]
+}
