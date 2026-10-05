@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "bareeqalsahra1@gmail.com",
+  "first_name": "team",
+  "company_name": "Al Bareeq Technical Services",
+  "website": "https://alfea-al-bareeq-technical-services.pages.dev/",
+  "custom_variables": {
+    "flaw": "your website has duplicate navigation menus and a cluttered, generic template layout that makes it hard for customers to find what they need"
+  },
+  "skip_if_in_workspace": true
+}
