@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "info@goldenglobemep.com",
+  "first_name": "team",
+  "company_name": "Golden Globe Electromechanical Works LLc.",
+  "website": "https://alfea-golden-globe-electromechanical.pages.dev/",
+  "custom_variables": {
+    "flaw": "the stat counters on your homepage (\"Completed Project\", \"Active Customer\") are frozen at 0 - the animated counter widget never actually initializes, making a company with 15+ years of experience look like it has never finished a project"
+  },
+  "skip_if_in_workspace": true
+}

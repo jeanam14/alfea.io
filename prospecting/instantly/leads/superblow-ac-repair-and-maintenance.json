@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "admin@superblowacrepairdubai.com",
+  "first_name": "team",
+  "company_name": "SuperBlow AC Repair and Maintenance",
+  "website": "https://alfea-superblow-ac-repair-and-maintenance.pages.dev/",
+  "custom_variables": {
+    "flaw": "a live service page on your site still has unreplaced Lorem Ipsum placeholder text, and your social media links point to the WordPress theme vendor's own demo accounts instead of your real ones"
+  },
+  "skip_if_in_workspace": true
+}

@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "info@qantsme.com",
+  "first_name": "team",
+  "company_name": "QASAR ALNOOR TECHNICAL SERVICES LLC",
+  "website": "https://alfea-qasar-alnoor-technical-services.pages.dev/",
+  "custom_variables": {
+    "flaw": "your site's embedded contact map is a dead placeholder link, and the \"Our Team\" section reuses the exact same stock photo twice for two different staff roles"
+  },
+  "skip_if_in_workspace": true
+}

@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "airchillacandduct@gmail.com",
+  "first_name": "team",
+  "company_name": "AirChill AC Maintenance and Duct Cleaning",
+  "website": "https://alfea-airchill-ac-maintenance-and-duct-cleaning.pages.dev/",
+  "custom_variables": {
+    "flaw": "your own website (airchillac.com) is currently returning a 503 Service Unavailable error, confirmed on two separate checks"
+  },
+  "skip_if_in_workspace": true
+}
