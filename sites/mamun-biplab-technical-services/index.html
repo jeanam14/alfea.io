@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Mamun Biplab Technical Services | Electrical &amp; Appliance Repair Dubai</title>
+<meta name="description" content="Mohammed Mamun Biplab Technical Services - electrical repairs, installations and appliance repair in Naif, Deira, Dubai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#1F4D3D; --pine-dark:#153A2D; --coral:#FF6B4A; --coral-dark:#DB5536; --ink:#20241F; --ink-soft:#5B6359; --line:#DEE3DD; --surface:#FFFFFF; --bg:#F5F8F6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;line-height:1.25;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink);}
+  .logo-mark{width:36px;height:36px;border-radius:50%;background:var(--pine);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;}
+  .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;padding:12px 24px;border-radius:999px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--coral-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--pine);color:var(--pine);}
+
+  .hero{padding:66px 0;background:var(--pine);color:#fff;}
+  .hero-inner{max-width:620px;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#D7E5DD;margin-bottom:18px;}
+  .badge .count{color:var(--coral);font-weight:700;}
+  .hero h1{font-size:2.3rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.02rem;color:#D7E5DD;margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+
+  section{padding:54px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--coral-dark);margin-bottom:10px;}
+  .section-title{font-size:1.8rem;margin-bottom:14px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px 24px;}
+  .service-card h3{font-size:1.1rem;margin-bottom:10px;color:var(--pine);}
+  .service-card p{font-size:0.9rem;color:var(--ink-soft);}
+  .service-card ul{margin-top:12px;padding-left:18px;font-size:0.88rem;color:var(--ink-soft);}
+  .service-card ul li{margin-bottom:4px;}
+
+  .why{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:50px 0;}
+  .why-item h3{font-size:1.05rem;margin-bottom:8px;color:var(--pine);}
+  .why-item p{font-size:0.9rem;color:var(--ink-soft);}
+
+  footer{background:var(--pine-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#9FB0A7;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#9FB0A7;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#D7E5DD;}
+  .footer-bottom{border-top:1px solid #2A4A3C;padding-top:18px;font-size:0.78rem;color:#6E8578;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .footer-top{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:1.9rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="logo-mark">MB</span>Mamun Biplab Technical</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+    </nav>
+    <a class="btn" href="tel:+971551662572">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="badge"><span class="count">Naif, Deira</span><span>Dubai</span></div>
+    <h1>Your local electrical and appliance repair hub.</h1>
+    <p class="lead">Mohammed Mamun Biplab Technical Services handles electrical repairs, installations and appliance fixes for homes and offices in Naif and across Deira.</p>
+    <div class="hero-cta">
+      <a class="btn" href="tel:+971551662572">Call +971 55 166 2572</a>
+      <a class="btn btn-outline" href="https://wa.me/971551662572" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,0.4);">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we handle</div>
+    <h2 class="section-title">Electrical &amp; appliance repair</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Electrical Services</h3>
+        <p>Wiring, fittings and electrical installation work for homes and offices.</p>
+        <ul>
+          <li>Wiring &amp; rewiring</li>
+          <li>Switch &amp; socket repair</li>
+          <li>Lighting installation</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Appliance Repair</h3>
+        <p>Repairs for the everyday appliances your home or office depends on.</p>
+        <ul>
+          <li>AC units</li>
+          <li>Washing machines</li>
+          <li>Refrigerators</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-item"><h3>Local to Naif</h3><p>Based in Naif, Deira — quick to reach for same-area customers.</p></div>
+    <div class="why-item"><h3>One call, both jobs</h3><p>Electrical and appliance issues handled by the same technician.</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--coral);">MB</span>Mamun Biplab Technical</div>
+        <p class="desc">Electrical and appliance repair services in Naif, Deira, Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971551662572">+971 55 166 2572</a></li>
+          <li><a href="https://wa.me/971551662572" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Mohammed Mamun Biplab Technical Services.</span>
+      <span>Naif, Deira, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

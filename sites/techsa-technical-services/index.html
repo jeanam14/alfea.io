@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techsa Technical Services | Glass &amp; Aluminium Fit-Outs Dubai</title>
+<meta name="description" content="Techsa Technical Services LLC - glass partitions, aluminium windows, sliding doors and office fit-outs in Deira, Dubai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --graphite:#2B3038; --graphite-dark:#1C2027; --ice:#4FC3E8; --ice-dark:#2FA3C9; --ink:#20242A; --ink-soft:#5C636C; --line:#DDE1E6; --surface:#FFFFFF; --bg:#F6F8FA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.2;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;text-decoration:none;color:var(--ink);}
+  .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--graphite);color:var(--ice);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
+  .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ice);color:var(--graphite-dark);padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--ice-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--graphite);color:var(--graphite);}
+
+  .hero{padding:70px 0;background:var(--graphite);color:#fff;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(79,195,232,0.18), transparent 70%);}
+  .hero-inner{position:relative;max-width:640px;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#C7D0D8;margin-bottom:18px;}
+  .badge .count{color:var(--ice);font-weight:700;}
+  .hero h1{font-size:2.5rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.05rem;color:#C7D0D8;margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+
+  section{padding:54px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--ice-dark);margin-bottom:10px;}
+  .section-title{font-size:1.9rem;margin-bottom:14px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 22px;}
+  .service-card .num{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ice-dark);font-size:1.3rem;margin-bottom:10px;}
+  .service-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .service-card p{font-size:0.86rem;color:var(--ink-soft);}
+
+  .why{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:50px 0;}
+  .why-item h3{font-size:1.05rem;margin-bottom:8px;color:var(--graphite);}
+  .why-item p{font-size:0.9rem;color:var(--ink-soft);}
+
+  footer{background:var(--graphite-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#9AA4AD;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#9AA4AD;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#D7DCE1;}
+  .footer-bottom{border-top:1px solid #343A42;padding-top:18px;font-size:0.78rem;color:#71787F;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .footer-top{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="logo-mark">TS</span>Techsa Technical</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+    </nav>
+    <a class="btn" href="tel:+97154718 5838">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="badge"><span class="count">19</span><span>Google Reviews</span></div>
+    <h1>Glass, aluminium and fit-outs done to spec.</h1>
+    <p class="lead">Techsa Technical Services builds glass partitions, aluminium windows, sliding doors and full office fit-outs for businesses across Deira and Dubai.</p>
+    <div class="hero-cta">
+      <a class="btn" href="tel:+971547185838">Call +971 54 718 5838</a>
+      <a class="btn btn-outline" href="https://wa.me/971547185838" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,0.4);">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we build</div>
+    <h2 class="section-title">Glass &amp; aluminium fit-out services</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="num">01</div><h3>Glass Partitions</h3><p>Office and interior glass partition walls, fitted to spec.</p></div>
+      <div class="service-card"><div class="num">02</div><h3>Aluminium Windows</h3><p>Supply and installation of aluminium window systems.</p></div>
+      <div class="service-card"><div class="num">03</div><h3>Sliding Doors</h3><p>Sliding door systems for homes, offices and shopfronts.</p></div>
+      <div class="service-card"><div class="num">04</div><h3>Reception &amp; Lobby Fit-Outs</h3><p>Full fit-out work for receptions, lobbies and offices.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-item"><h3>Based in Deira</h3><p>Office 309, Al Murar Building, opposite Hyatt Regency Dubai.</p></div>
+    <div class="why-item"><h3>Built to spec</h3><p>Glass and aluminium work fitted precisely to your space.</p></div>
+    <div class="why-item"><h3>One team, start to finish</h3><p>From partitions to full office fit-outs, handled by the same crew.</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--ice);color:var(--graphite-dark);">TS</span>Techsa Technical</div>
+        <p class="desc">Glass, aluminium and office fit-out specialists in Deira, Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971547185838">+971 54 718 5838</a></li>
+          <li><a href="https://wa.me/971547185838" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:info@techsatechnical.ae">info@techsatechnical.ae</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Techsa Technical Services LLC.</span>
+      <span>Al Murar, Deira, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
