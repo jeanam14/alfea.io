@@ -6,8 +6,8 @@ Requires GOOGLE_SHEETS_CREDENTIALS in the environment (the service account
 JSON key, as stored in the repo secret).
 
 rows.json is a list of objects with these keys (missing keys become blank
-cells): name, niche, phone, rating, reviews_count, verdict, old_website,
-new_site_url, status.
+cells): name, country, niche, phone, email, rating, reviews_count, verdict,
+old_website, new_site_url, status, maps_link, updated_at.
 
 Matches existing rows by `name` (column A) and overwrites them in place;
 names not already present are appended. The sheet's first tab is used,
@@ -18,12 +18,14 @@ import os
 import sys
 
 HEADERS = [
-    "Name", "Niche", "Phone", "Rating", "Reviews", "Verdict",
-    "Old Website", "New Site URL", "Status", "Updated At",
+    "Name", "Country", "Niche", "Phone", "Email", "Rating", "Reviews",
+    "Verdict", "Old Website", "New Site URL", "Status", "Maps Link",
+    "Updated At",
 ]
 FIELD_ORDER = [
-    "name", "niche", "phone", "rating", "reviews_count", "verdict",
-    "old_website", "new_site_url", "status", "updated_at",
+    "name", "country", "niche", "phone", "email", "rating", "reviews_count",
+    "verdict", "old_website", "new_site_url", "status", "maps_link",
+    "updated_at",
 ]
 
 
@@ -53,7 +55,7 @@ def main():
     sheet = meta["sheets"][0]["properties"]["title"]
 
     existing = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheet_id, range=f"'{sheet}'!A1:J1000"
+        spreadsheetId=spreadsheet_id, range=f"'{sheet}'!A1:M1000"
     ).execute().get("values", [])
 
     if not existing:
