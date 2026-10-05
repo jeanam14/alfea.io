@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sage:#7C8B6F; --sage-dark:#5A6650; --cream:#FAF7F0; --gold:#C8A24D; --gold-dark:#A7832F; --ink:#2E2E28; --ink-soft:#6B6B5E; --line:#E3E0D3; --surface:#FFFFFF;
+    --coral:#D9622E; --coral-dark:#B14D22; --cream:#FFFFFF; --teal:#1F6F6B; --teal-dark:#155350; --ink:#2E2E28; --ink-soft:#6B6B5E; --line:#E3E0D3; --surface:#FFFFFF;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Work Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
@@ -18,20 +18,20 @@
   a{color:inherit;}
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
-  header{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;max-width:1148px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 24px -8px rgba(43,27,18,0.14);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;}
-  .logo-mark{width:34px;height:34px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .logo-mark{width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
   .nav-links{display:flex;gap:26px;font-size:0.9rem;font-weight:500;}
   .nav-links a{text-decoration:none;color:var(--ink-soft);}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--sage);color:#fff;padding:12px 24px;border-radius:999px;font-weight:600;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
-  .btn:hover{background:var(--sage-dark);}
-  .btn-outline{background:transparent;border:1.5px solid var(--sage);color:var(--sage-dark);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;padding:12px 24px;border-radius:999px;font-weight:600;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--coral-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--coral);color:var(--coral-dark);}
 
   .hero{padding:60px 0 54px;}
   .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
   .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:18px;}
-  .badge .stars{color:var(--gold-dark);font-weight:700;}
+  .badge .stars{color:var(--teal-dark);font-weight:700;}
   .hero h1{font-size:2.6rem;margin-bottom:16px;}
   .hero p.lead{font-size:1.05rem;color:var(--ink-soft);margin-bottom:28px;max-width:46ch;}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
@@ -39,19 +39,19 @@
   .hero-img img{width:100%;height:100%;object-fit:cover;}
 
   section{padding:54px 0;}
-  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--gold-dark);margin-bottom:10px;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--teal-dark);margin-bottom:10px;}
   .section-title{font-size:1.9rem;margin-bottom:14px;}
 
   .estimator{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;}
   .estimator-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px;}
   .field-label{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:10px;}
   .pill-row{display:flex;gap:10px;flex-wrap:wrap;}
-  .pill{border:2px solid var(--line);border-radius:999px;padding:9px 18px;font-size:0.86rem;font-weight:600;cursor:pointer;background:var(--cream);}
-  .pill.active{border-color:var(--sage);background:#EEF1E9;color:var(--sage-dark);}
-  .estimate-result{margin-top:26px;padding:22px 24px;background:var(--sage);color:#fff;border-radius:12px;display:none;}
+  .pill{border:2px solid var(--line);border-radius:999px;padding:9px 18px;font-size:0.86rem;font-weight:600;cursor:pointer;background:#F7F6F4;}
+  .pill.active{border-color:var(--coral);background:#FBE8DD;color:var(--coral-dark);}
+  .estimate-result{margin-top:26px;padding:22px 24px;background:var(--coral);color:#fff;border-radius:12px;display:none;}
   .estimate-result.show{display:block;}
   .estimate-result .headline{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;margin-bottom:6px;}
-  .estimate-result .sub{font-size:0.88rem;color:#E4E9DC;margin-bottom:16px;}
+  .estimate-result .sub{font-size:0.88rem;color:#F5D9C8;margin-bottom:16px;}
 
   .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px;}
   .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 22px;}
@@ -60,17 +60,17 @@
 
   .about-strip{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:46px 0;text-align:center;}
-  .about-grid .num{font-family:'Fraunces',serif;font-weight:700;font-size:2rem;color:var(--sage-dark);}
+  .about-grid .num{font-family:'Fraunces',serif;font-weight:700;font-size:2rem;color:var(--coral-dark);}
   .about-grid .label{font-size:0.82rem;color:var(--ink-soft);margin-top:4px;}
 
-  footer{background:var(--sage-dark);color:#fff;padding:46px 0 26px;}
+  footer{background:var(--coral-dark);color:#fff;padding:46px 0 26px;}
   .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
   footer .logo{color:#fff;}
-  footer p.desc{color:#D4DAC9;font-size:0.88rem;margin-top:10px;max-width:38ch;}
-  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#D4DAC9;}
+  footer p.desc{color:#E8C9B8;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#E8C9B8;}
   footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
-  footer ul a{text-decoration:none;color:#EAEEE1;}
-  .footer-bottom{border-top:1px solid #6C7A5F;padding-top:18px;font-size:0.78rem;color:#B7C2A6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer ul a{text-decoration:none;color:#F5E4D8;}
+  .footer-bottom{border-top:1px solid #7A3A1C;padding-top:18px;font-size:0.78rem;color:#C9A38C;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr;}
@@ -139,7 +139,7 @@
       <div class="estimate-result" id="estimateResult">
         <div class="headline" id="estimateHeadline"></div>
         <div class="sub" id="estimateSub"></div>
-        <a class="btn" style="background:var(--gold);color:var(--ink);" href="tel:+971567587407">Call for a firm quote</a>
+        <a class="btn" style="background:var(--teal);color:var(--ink);" href="tel:+971567587407">Call for a firm quote</a>
       </div>
     </div>
   </div>
@@ -170,7 +170,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <div class="logo"><span class="logo-mark" style="background:var(--gold);color:var(--ink);">CF</span>CleanFinishers</div>
+        <div class="logo"><span class="logo-mark" style="background:var(--teal);color:var(--ink);">CF</span>CleanFinishers</div>
         <p class="desc">Professional house, villa, office and commercial painting across Dubai.</p>
       </div>
       <div>
