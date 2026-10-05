@@ -1,0 +1,30 @@
+name: Pause Instantly campaign
+
+# Emergency control: pauses a running campaign (POST /campaigns/{id}/pause).
+# Added 2026-10-05 after an audit found the CLAUDE Alfea Website creation
+# campaign in status 1 (Active) despite the standing "never activate, stays
+# draft" instruction - this stops any further sending immediately.
+#
+# Requires the INSTANTLY_API_KEY repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      campaign_id:
+        description: 'Instantly campaign id to pause'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  pause:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pause campaign
+        env:
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          python3 scripts/pause-instantly-campaign.py "${{ github.event.inputs.campaign_id }}"
