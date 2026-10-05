@@ -26,7 +26,11 @@ on:
     branches: [main, claude/agency-website-scale-bat25b]
     paths:
       - 'sites/**'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site slug to redeploy (e.g. sajid-ac-service). Leave empty to redeploy every site under sites/ - slower, only needed after a bulk change.'
+        required: false
 
 jobs:
   deploy:
@@ -40,8 +44,12 @@ jobs:
 
       - name: Detect changed sites
         id: changed
+        env:
+          SITE_INPUT: ${{ github.event.inputs.site }}
         run: |
-          if git rev-parse "${{ github.event.before }}" >/dev/null 2>&1 && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+          if [ -n "$SITE_INPUT" ]; then
+            CHANGED="$SITE_INPUT"
+          elif git rev-parse "${{ github.event.before }}" >/dev/null 2>&1 && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
             CHANGED=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- sites | awk -F/ '{print $2}' | sort -u)
           else
             CHANGED=$(find sites -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
