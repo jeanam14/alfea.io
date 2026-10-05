@@ -12,44 +12,71 @@
     --graphite:#2B3038; --graphite-dark:#1C2027; --ice:#4FC3E8; --ice-dark:#2FA3C9; --ink:#20242A; --ink-soft:#5C636C; --line:#DDE1E6; --surface:#FFFFFF; --bg:#F6F8FA;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:
+    radial-gradient(800px 460px at 92% -5%, rgba(79,195,232,0.12), transparent 60%),
+    radial-gradient(640px 400px at 0% 30%, rgba(43,48,56,0.06), transparent 55%),
+    var(--bg);
+    line-height:1.6;}
   h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.2;}
   a{color:inherit;}
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
-  header{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;text-decoration:none;color:var(--ink);}
-  .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--graphite);color:var(--ice);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(43,48,56,0.6);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.1);border-radius:999px;box-shadow:0 10px 32px -12px rgba(0,0,0,0.5);}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;text-decoration:none;color:#fff;}
+  .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--ice);color:var(--graphite-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
   .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
-  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,0.75);}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--ice);color:var(--graphite-dark);padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
   .btn:hover{background:var(--ice-dark);}
-  .btn-outline{background:transparent;border:1.5px solid var(--graphite);color:var(--graphite);}
+  .btn-outline{background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.4);color:#fff;}
 
-  .hero{padding:70px 0;background:var(--graphite);color:#fff;position:relative;overflow:hidden;}
-  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(79,195,232,0.18), transparent 70%);}
-  .hero-inner{position:relative;max-width:640px;}
-  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#C7D0D8;margin-bottom:18px;}
+  .hero{padding:74px 0 60px;background:var(--graphite);color:#fff;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(79,195,232,0.2), transparent 70%);}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#C7D0D8;margin-bottom:18px;}
   .badge .count{color:var(--ice);font-weight:700;}
   .hero h1{font-size:2.5rem;margin-bottom:16px;}
   .hero p.lead{font-size:1.05rem;color:#C7D0D8;margin-bottom:28px;max-width:46ch;}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 48px -16px rgba(0,0,0,0.5);}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
 
   section{padding:54px 0;}
   .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--ice-dark);margin-bottom:10px;}
   .section-title{font-size:1.9rem;margin-bottom:14px;}
 
   .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px;}
-  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 22px;}
+  .service-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.7);box-shadow:0 14px 32px -20px rgba(32,36,42,0.25);border-radius:14px;padding:26px 22px;cursor:pointer;transition:transform 0.15s ease;}
+  .service-card:hover{transform:translateY(-3px);}
   .service-card .num{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ice-dark);font-size:1.3rem;margin-bottom:10px;}
   .service-card h3{font-size:1.02rem;margin-bottom:8px;}
   .service-card p{font-size:0.86rem;color:var(--ink-soft);}
+  .service-card .more{display:inline-block;margin-top:10px;font-size:0.78rem;font-weight:700;color:var(--ice-dark);}
 
-  .why{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:50px 0;}
-  .why-item h3{font-size:1.05rem;margin-bottom:8px;color:var(--graphite);}
-  .why-item p{font-size:0.9rem;color:var(--ink-soft);}
+  .process{background:rgba(255,255,255,0.45);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  .process-card{background:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.75);border-radius:14px;padding:22px 20px;box-shadow:0 12px 28px -20px rgba(32,36,42,0.25);}
+  .process-card .step{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ice-dark);font-size:0.85rem;margin-bottom:8px;}
+  .process-card h3{font-size:1rem;margin-bottom:6px;}
+  .process-card p{font-size:0.86rem;color:var(--ink-soft);}
+
+  .why{background:var(--graphite);color:#fff;}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .why-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 18px 40px -20px rgba(0,0,0,0.4);}
+  .why-img img{width:100%;height:100%;object-fit:cover;}
+  .why-list{display:flex;flex-direction:column;gap:18px;}
+  .why-item{display:flex;gap:14px;align-items:flex-start;}
+  .why-item .dot{width:8px;height:8px;border-radius:50%;background:var(--ice);margin-top:8px;flex-shrink:0;}
+  .why-item h3{font-size:1.05rem;margin-bottom:4px;color:#fff;}
+  .why-item p{font-size:0.9rem;color:#C7D0D8;}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(28,32,39,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-panel{max-width:440px;width:100%;background:rgba(255,255,255,0.92);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,0.85);border-radius:18px;padding:30px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.4);position:relative;}
+  .modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(32,36,42,0.08);color:var(--ink);font-size:1rem;cursor:pointer;}
+  .modal-panel h3{font-size:1.25rem;margin-bottom:12px;color:var(--graphite);}
+  .modal-panel p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;line-height:1.6;}
 
   footer{background:var(--graphite-dark);color:#fff;padding:46px 0 26px;}
   .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
@@ -62,7 +89,9 @@
 
   @media (max-width:860px){
     .footer-top{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;}
     .services-grid{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
     .nav-links{display:none;}
     .hero h1{font-size:2rem;}
@@ -76,21 +105,25 @@
     <a class="logo" href="#"><span class="logo-mark">TS</span>Techsa Technical</a>
     <nav class="nav-links">
       <a href="#services">Services</a>
+      <a href="#process">Process</a>
       <a href="#why">Why Us</a>
     </nav>
-    <a class="btn" href="tel:+97154718 5838">Call Now</a>
+    <a class="btn" href="tel:+971547185838">Call Now</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="wrap hero-inner">
-    <div class="badge"><span class="count">19</span><span>Google Reviews</span></div>
-    <h1>Glass, aluminium and fit-outs done to spec.</h1>
-    <p class="lead">Techsa Technical Services builds glass partitions, aluminium windows, sliding doors and full office fit-outs for businesses across Deira and Dubai.</p>
-    <div class="hero-cta">
-      <a class="btn" href="tel:+971547185838">Call +971 54 718 5838</a>
-      <a class="btn btn-outline" href="https://wa.me/971547185838" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,0.4);">WhatsApp Us</a>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="count">19</span><span>Google Reviews</span></div>
+      <h1>Glass, aluminium and fit-outs done to spec.</h1>
+      <p class="lead">Techsa Technical Services builds glass partitions, aluminium windows, sliding doors and full office fit-outs for businesses across Deira and Dubai.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971547185838">Call +971 54 718 5838</a>
+        <a class="btn btn-outline" href="https://wa.me/971547185838" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
     </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Architectural spiral staircase with steel and glass framing"></div>
   </div>
 </section>
 
@@ -99,19 +132,59 @@
     <div class="section-label">What we build</div>
     <h2 class="section-title">Glass &amp; aluminium fit-out services</h2>
     <div class="services-grid">
-      <div class="service-card"><div class="num">01</div><h3>Glass Partitions</h3><p>Office and interior glass partition walls, fitted to spec.</p></div>
-      <div class="service-card"><div class="num">02</div><h3>Aluminium Windows</h3><p>Supply and installation of aluminium window systems.</p></div>
-      <div class="service-card"><div class="num">03</div><h3>Sliding Doors</h3><p>Sliding door systems for homes, offices and shopfronts.</p></div>
-      <div class="service-card"><div class="num">04</div><h3>Reception &amp; Lobby Fit-Outs</h3><p>Full fit-out work for receptions, lobbies and offices.</p></div>
+      <div class="service-card" data-title="Glass Partitions" data-detail="Office and interior glass partition walls, fitted to spec — frameless or framed systems to divide space while keeping it bright and open. Measured and installed to fit your exact layout.">
+        <div class="num">01</div><h3>Glass Partitions</h3><p>Office and interior glass partition walls, fitted to spec.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Aluminium Windows" data-detail="Supply and installation of aluminium window systems — sliding, casement and fixed configurations, fitted with proper sealing for weather and noise.">
+        <div class="num">02</div><h3>Aluminium Windows</h3><p>Supply and installation of aluminium window systems.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Sliding Doors" data-detail="Sliding door systems for homes, offices and shopfronts — smooth-running tracks, sized and installed to fit your opening exactly.">
+        <div class="num">03</div><h3>Sliding Doors</h3><p>Sliding door systems for homes, offices and shopfronts.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Reception &amp; Lobby Fit-Outs" data-detail="Full fit-out work for receptions, lobbies and offices — combining glass, aluminium and finishing work into one coordinated project, managed start to finish by the same team.">
+        <div class="num">04</div><h3>Reception &amp; Lobby Fit-Outs</h3><p>Full fit-out work for receptions, lobbies and offices.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="why" id="why">
+<div class="process" id="process">
+  <div class="wrap">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">From measurement to installation</h2>
+    <div class="process-grid">
+      <div class="process-card"><div class="step">Step 1</div><h3>Site visit &amp; measurement</h3><p>We measure your space and confirm exactly what's needed before any quote.</p></div>
+      <div class="process-card"><div class="step">Step 2</div><h3>Quote &amp; material selection</h3><p>A clear quote with your choice of glass, aluminium finish and hardware.</p></div>
+      <div class="process-card"><div class="step">Step 3</div><h3>Fabrication &amp; install</h3><p>Fitted on-site by our own team, finished to spec and cleaned up after.</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="why" id="why">
   <div class="wrap why-grid">
-    <div class="why-item"><h3>Based in Deira</h3><p>Office 309, Al Murar Building, opposite Hyatt Regency Dubai.</p></div>
-    <div class="why-item"><h3>Built to spec</h3><p>Glass and aluminium work fitted precisely to your space.</p></div>
-    <div class="why-item"><h3>One team, start to finish</h3><p>From partitions to full office fit-outs, handled by the same crew.</p></div>
+    <div class="why-img"><img src="images/about.jpg" alt="Close-up of industrial gears and mechanism"></div>
+    <div>
+      <div class="section-label" style="color:var(--ice);">Why Techsa</div>
+      <h2 class="section-title">Built to spec, by one team</h2>
+      <div class="why-list">
+        <div class="why-item"><div class="dot"></div><div><h3>Based in Deira</h3><p>Office 309, Al Murar Building, opposite Hyatt Regency Dubai.</p></div></div>
+        <div class="why-item"><div class="dot"></div><div><h3>Precise fit</h3><p>Every job measured on-site — glass and aluminium work fitted exactly to your space.</p></div></div>
+        <div class="why-item"><div class="dot"></div><div><h3>One team, start to finish</h3><p>From partitions to full office fit-outs, handled by the same crew.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDetail"></p>
+    <a class="btn" href="https://wa.me/971547185838" target="_blank" rel="noopener">Ask about this &rarr;</a>
   </div>
 </div>
 
@@ -137,6 +210,19 @@
     </div>
   </div>
 </footer>
+
+<script>
+  var overlay = document.getElementById('modalOverlay');
+  document.querySelectorAll('.service-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.getElementById('modalTitle').textContent = card.getAttribute('data-title');
+      document.getElementById('modalDetail').textContent = card.getAttribute('data-detail');
+      overlay.classList.add('show');
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click', function(){ overlay.classList.remove('show'); });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('show'); });
+</script>
 
 </body>
 </html>

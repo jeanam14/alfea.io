@@ -17,8 +17,8 @@
   a{color:inherit;}
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
-  header{position:sticky;top:0;z-index:20;background:var(--char);border-bottom:3px solid var(--safety);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1148px;margin:0 auto;background:rgba(35,40,46,0.65);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.1);border-radius:999px;box-shadow:0 10px 32px -12px rgba(0,0,0,0.5);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;color:#fff;text-decoration:none;text-transform:uppercase;}
   .logo-mark{width:36px;height:36px;border-radius:4px;background:var(--safety);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;font-family:'Barlow Condensed',sans-serif;}
   .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
@@ -37,9 +37,18 @@
   .cat-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.76rem;font-weight:700;color:var(--safety-dark);margin:44px 0 16px;font-family:'Inter',sans-serif;}
   .cat-label:first-child{margin-top:0;}
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .svc-card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--safety);padding:22px;}
+  .svc-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border:1px solid rgba(255,255,255,0.7);border-left:4px solid var(--safety);box-shadow:0 14px 32px -22px rgba(32,36,42,0.25);padding:22px;cursor:pointer;transition:transform 0.15s ease;}
+  .svc-card:hover{transform:translateY(-3px);}
   .svc-card h3{font-size:1.05rem;margin-bottom:8px;text-transform:none;}
   .svc-card p{font-family:'Inter',sans-serif;font-size:0.86rem;color:var(--ink-soft);}
+  .svc-card .more{display:inline-block;margin-top:10px;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:700;color:var(--safety-dark);}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(23,26,30,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-panel{max-width:440px;width:100%;background:rgba(255,255,255,0.92);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,0.85);border-radius:18px;padding:30px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.4);position:relative;}
+  .modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(35,40,46,0.08);color:var(--ink);font-size:1rem;cursor:pointer;}
+  .modal-panel h3{font-size:1.25rem;margin-bottom:12px;color:var(--char);text-transform:none;}
+  .modal-panel p{font-family:'Inter',sans-serif;font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;line-height:1.6;}
 
   footer{background:var(--char-dark);color:#fff;padding:46px 0 26px;}
   .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
@@ -84,27 +93,27 @@
 
     <div class="cat-label">Facade &amp; Height Work</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>External Facade Glass Cleaning</h3><p>Professional cleaning for high-rise glass facades, ensuring a polished, hygienic exterior.</p></div>
-      <div class="svc-card"><h3>High Rise Painting</h3><p>Expert painting and protective coatings for tall structures.</p></div>
-      <div class="svc-card"><h3>Glass Cladding &amp; Light Repairs</h3><p>Specialized repair for glass cladding and lighting systems at height.</p></div>
-      <div class="svc-card"><h3>Window Waterproofing &amp; Silicone</h3><p>High-quality waterproofing and sealing to prevent leaks and protect building integrity.</p></div>
+      <div class="svc-card" data-title="External Facade Glass Cleaning" data-detail="Professional cleaning for high-rise glass facades using IRATA rope access — no scaffolding needed, buildings stay operational throughout."><h3>External Facade Glass Cleaning</h3><p>Professional cleaning for high-rise glass facades, ensuring a polished, hygienic exterior.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="High Rise Painting" data-detail="Expert painting and protective coatings applied at height on tall structures using the same safe rope access methods as our cleaning work."><h3>High Rise Painting</h3><p>Expert painting and protective coatings for tall structures.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Glass Cladding &amp; Light Repairs" data-detail="Specialized repair work for glass cladding panels and lighting systems at height, carried out by our certified rope access technicians."><h3>Glass Cladding &amp; Light Repairs</h3><p>Specialized repair for glass cladding and lighting systems at height.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Window Waterproofing &amp; Silicone Application" data-detail="High-quality waterproofing and silicone sealing around windows and joints to prevent leaks and protect building integrity over time."><h3>Window Waterproofing &amp; Silicone</h3><p>High-quality waterproofing and sealing to prevent leaks and protect building integrity.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">Installation &amp; Access</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>Drilling Works</h3><p>Precision drilling for sign boards, bird spikes and other fixed installations.</p></div>
-      <div class="svc-card"><h3>Bird Spikes Supply &amp; Installation</h3><p>Humane bird deterrent solutions, installed safely at height.</p></div>
+      <div class="svc-card" data-title="Drilling Works" data-detail="Precision drilling for sign boards, bird spikes and other fixed installations at height, done safely with rope access equipment."><h3>Drilling Works</h3><p>Precision drilling for sign boards, bird spikes and other fixed installations.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Bird Spikes Supply &amp; Installation" data-detail="Humane bird deterrent solutions, supplied and installed safely at height on ledges, signage and building edges."><h3>Bird Spikes Supply &amp; Installation</h3><p>Humane bird deterrent solutions, installed safely at height.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">Cleaning</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>Ultra High-Pressure Cleaning</h3><p>Deep cleaning for floors, walls and parking structures, restoring surfaces to original condition.</p></div>
+      <div class="svc-card" data-title="Ultra High-Pressure Cleaning" data-detail="Deep cleaning for floors, walls and parking structures using ultra high-pressure equipment, restoring surfaces to their original condition."><h3>Ultra High-Pressure Cleaning</h3><p>Deep cleaning for floors, walls and parking structures, restoring surfaces to original condition.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">General Trades</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>Tile, Interlock &amp; Tabook Works</h3><p>Installation and maintenance of tiles, interlocks and tabook works.</p></div>
-      <div class="svc-card"><h3>Carpenter, Plumber &amp; Electrical Works</h3><p>Reliable carpentry, plumbing and electrical services for residential, commercial and industrial sites.</p></div>
+      <div class="svc-card" data-title="Tile, Interlock &amp; Tabook Works" data-detail="Installation and maintenance of tiles, interlocks and tabook works, for durable and aesthetic outdoor and indoor surfaces."><h3>Tile, Interlock &amp; Tabook Works</h3><p>Installation and maintenance of tiles, interlocks and tabook works.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Carpenter, Plumber &amp; Electrical Works" data-detail="Reliable carpentry, plumbing and electrical services for the same residential, commercial and industrial sites we maintain at height."><h3>Carpenter, Plumber &amp; Electrical Works</h3><p>Reliable carpentry, plumbing and electrical services for residential, commercial and industrial sites.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div style="margin-top:48px;display:flex;gap:14px;flex-wrap:wrap;">
@@ -136,6 +145,28 @@
     </div>
   </div>
 </footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDetail"></p>
+    <a class="btn" href="https://wa.me/971552557484" target="_blank" rel="noopener">Ask about this &rarr;</a>
+  </div>
+</div>
+
+<script>
+  var overlay = document.getElementById('modalOverlay');
+  document.querySelectorAll('.svc-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.getElementById('modalTitle').textContent = card.getAttribute('data-title');
+      document.getElementById('modalDetail').textContent = card.getAttribute('data-detail');
+      overlay.classList.add('show');
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click', function(){ overlay.classList.remove('show'); });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('show'); });
+</script>
 
 </body>
 </html>

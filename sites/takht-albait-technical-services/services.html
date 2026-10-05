@@ -12,34 +12,49 @@
     --mustard:#C98A2B; --mustard-dark:#A06E1F; --ink:#201D1A; --ink-soft:#5F574C; --cream:#F6F1E7; --line:#E3D9C4; --surface:#FFFFFF;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Nunito Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  body{font-family:'Nunito Sans',sans-serif;color:var(--ink);background:
+    radial-gradient(900px 500px at 85% -10%, rgba(201,138,43,0.16), transparent 60%),
+    radial-gradient(700px 420px at -5% 20%, rgba(32,29,26,0.08), transparent 55%),
+    var(--cream);
+    line-height:1.6;}
   h1,h2,h3{font-family:'Zilla Slab',serif;font-weight:700;line-height:1.18;}
   img{max-width:100%;display:block;}
   a{color:inherit;}
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
-  header{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:1px solid #3A352C;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1148px;margin:0 auto;background:rgba(32,29,26,0.6);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid rgba(255,255,255,0.1);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.4);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Zilla Slab',serif;font-weight:700;font-size:1.15rem;color:#fff;text-decoration:none;}
   .logo-mark{width:34px;height:34px;border-radius:6px;background:var(--mustard);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
   .nav-links{display:flex;gap:26px;font-size:0.88rem;font-weight:600;}
   .nav-links a{text-decoration:none;color:#CFC6B5;}
   .nav-links a.active{color:var(--mustard);}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--mustard);color:var(--ink);padding:12px 24px;border-radius:6px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--mustard);color:var(--ink);padding:12px 24px;border-radius:999px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
   .btn:hover{background:var(--mustard-dark);color:#fff;}
 
-  .page-head{padding:54px 0 36px;background:var(--ink);color:#fff;}
-  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.74rem;font-weight:700;color:var(--mustard);margin-bottom:10px;}
-  .page-head h1{font-size:2.2rem;margin-bottom:14px;}
-  .page-head p{color:#CFC6B5;max-width:62ch;font-size:1rem;}
+  .page-head{padding:66px 0 40px;background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+  .page-head::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 300px at 85% 0%, rgba(201,138,43,0.25), transparent 65%);pointer-events:none;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.74rem;font-weight:700;color:var(--mustard);margin-bottom:10px;position:relative;}
+  .page-head h1{font-size:2.2rem;margin-bottom:14px;position:relative;}
+  .page-head p{color:#CFC6B5;max-width:62ch;font-size:1rem;position:relative;}
 
   main{padding:54px 0 70px;}
   .cat-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.74rem;font-weight:700;color:var(--mustard-dark);margin:44px 0 16px;}
   .cat-label:first-child{margin-top:0;}
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .svc-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;}
+  .svc-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border:1px solid rgba(255,255,255,0.65);box-shadow:0 14px 32px -20px rgba(32,29,26,0.3);border-radius:14px;padding:22px;cursor:pointer;transition:transform 0.15s ease, box-shadow 0.15s ease;}
+  .svc-card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -18px rgba(32,29,26,0.35);border-color:var(--mustard);}
   .svc-card h3{font-size:1.02rem;margin-bottom:8px;}
   .svc-card p{font-size:0.88rem;color:var(--ink-soft);}
+  .svc-card .more{display:inline-block;margin-top:10px;font-size:0.78rem;font-weight:700;color:var(--mustard-dark);}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(32,29,26,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-panel{max-width:460px;width:100%;background:rgba(255,255,255,0.85);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,0.8);border-radius:18px;padding:30px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.4);position:relative;}
+  .modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(32,29,26,0.08);color:var(--ink);font-size:1rem;cursor:pointer;}
+  .modal-panel h3{font-size:1.3rem;margin-bottom:12px;color:var(--ink);}
+  .modal-panel p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;line-height:1.6;}
+  .modal-panel .modal-cta{margin-top:16px;}
 
   footer{background:var(--ink);color:#fff;padding:46px 0 26px;}
   .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
@@ -75,7 +90,7 @@
   <div class="wrap">
     <div class="section-label">All services</div>
     <h1>Every trade your home or office needs</h1>
-    <p>TAKHT ALBAIT runs one team across all of these services &mdash; message us with what you need and we'll send the right people.</p>
+    <p>TAKHT ALBAIT runs one team across all of these services &mdash; message us with what you need and we'll send the right people. Tap any service for more detail.</p>
   </div>
 </div>
 
@@ -84,44 +99,53 @@
 
     <div class="cat-label">Carpentry &amp; Interiors</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>Carpenter Services</h3><p>Custom furniture, repairs and woodwork fitted to your space.</p></div>
-      <div class="svc-card"><h3>False Ceiling &amp; Light Partitions</h3><p>Gypsum ceilings and partition walls installed for homes and offices.</p></div>
-      <div class="svc-card"><h3>Flooring</h3><p>Floor installation and repair across tile, wood and vinyl finishes.</p></div>
+      <div class="svc-card" data-title="Carpenter Services" data-detail="Custom furniture, fitted wardrobes, shelving and general woodwork repair — built and fitted on-site to match your space exactly. Covers kitchen cabinetry, doors, and bespoke furniture pieces."><h3>Carpenter Services</h3><p>Custom furniture, repairs and woodwork fitted to your space.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="False Ceiling &amp; Light Partitions" data-detail="Gypsum board false ceilings with integrated lighting layouts, plus light partition walls to divide rooms or offices without full construction. Includes design, framing and finishing."><h3>False Ceiling &amp; Light Partitions</h3><p>Gypsum ceilings and partition walls installed for homes and offices.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Flooring" data-detail="Installation and repair across tile, wood and vinyl flooring. Includes subfloor prep, old floor removal when needed, and a clean finish matched to your space."><h3>Flooring</h3><p>Floor installation and repair across tile, wood and vinyl finishes.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">Painting &amp; Finishing</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>Painting Contracting</h3><p>Interior and exterior painting for homes, apartments and offices.</p></div>
-      <div class="svc-card"><h3>Wallpaper Fixing</h3><p>Supply and fitting of wallpaper for feature walls and full rooms.</p></div>
-      <div class="svc-card"><h3>Thai &amp; Glass Partition Services</h3><p>Glass and Thai-style partitions for offices and room dividers.</p></div>
+      <div class="svc-card" data-title="Painting Contracting" data-detail="Interior and exterior painting for homes, apartments and offices — surface prep, priming, and your choice of finish. Minimal disruption scheduling available for occupied spaces."><h3>Painting Contracting</h3><p>Interior and exterior painting for homes, apartments and offices.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Wallpaper Fixing" data-detail="Supply and fitting of wallpaper for feature walls or full rooms, including surface preparation and clean seam work for a professional finish."><h3>Wallpaper Fixing</h3><p>Supply and fitting of wallpaper for feature walls and full rooms.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Thai &amp; Glass Partition Services" data-detail="Glass and Thai-style partition systems for offices and room dividers — a clean way to split space without losing light. Includes frame fitting and glass installation."><h3>Thai &amp; Glass Partition Services</h3><p>Glass and Thai-style partitions for offices and room dividers.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">AC &amp; Technical</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>AC Repair</h3><p>Air conditioning servicing and repair for split and central units.</p></div>
-      <div class="svc-card"><h3>Electrical Services</h3><p>Wiring, fittings and electrical repairs handled safely and promptly.</p></div>
-      <div class="svc-card"><h3>Welding</h3><p>Metalwork and welding repairs for gates, railings and fixtures.</p></div>
+      <div class="svc-card" data-title="AC Repair" data-detail="Servicing and repair for split and central AC units — diagnosis, gas top-up, filter and coil cleaning, and part replacement when needed."><h3>AC Repair</h3><p>Air conditioning servicing and repair for split and central units.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Electrical Services" data-detail="Wiring, fittings and electrical repairs handled safely — from a single faulty switch to a full room rewire, for homes and offices."><h3>Electrical Services</h3><p>Wiring, fittings and electrical repairs handled safely and promptly.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Welding" data-detail="Metalwork and welding repairs for gates, railings, grilles and other fixtures — on-site repair where possible, workshop fabrication when needed."><h3>Welding</h3><p>Metalwork and welding repairs for gates, railings and fixtures.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">Plumbing &amp; Tiling</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>Sanitary Installation &amp; Pipe Repairing</h3><p>Bathroom fittings, pipe repairs and sanitary installation work.</p></div>
-      <div class="svc-card"><h3>Floor &amp; Wall Tiling</h3><p>Tile installation and repair for bathrooms, kitchens and floors.</p></div>
+      <div class="svc-card" data-title="Sanitary Installation &amp; Pipe Repairing" data-detail="Bathroom fitting installation, pipe repairs and general sanitary work — leak fixes, fixture replacement and new installations."><h3>Sanitary Installation &amp; Pipe Repairing</h3><p>Bathroom fittings, pipe repairs and sanitary installation work.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Floor &amp; Wall Tiling" data-detail="Tile installation and repair for bathrooms, kitchens and floors — including old tile removal, surface leveling and grouting."><h3>Floor &amp; Wall Tiling</h3><p>Tile installation and repair for bathrooms, kitchens and floors.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div class="cat-label">Security &amp; Signage</div>
     <div class="svc-grid">
-      <div class="svc-card"><h3>CCTV</h3><p>Security camera installation and setup for homes and businesses.</p></div>
-      <div class="svc-card"><h3>Signage</h3><p>Shop and office signage design and installation.</p></div>
+      <div class="svc-card" data-title="CCTV" data-detail="Security camera installation and setup for homes and businesses — camera placement, cabling, and connection to your viewing device or app."><h3>CCTV</h3><p>Security camera installation and setup for homes and businesses.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="svc-card" data-title="Signage" data-detail="Shop and office signage design and installation — from simple nameplates to illuminated storefront signs."><h3>Signage</h3><p>Shop and office signage design and installation.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
 
     <div style="margin-top:48px;display:flex;gap:14px;flex-wrap:wrap;">
       <a class="btn" href="https://wa.me/971563274694" target="_blank" rel="noopener">WhatsApp us your request</a>
-      <a class="btn" style="background:transparent;border:1.5px solid var(--mustard);color:var(--mustard-dark);" href="tel:+971563274694">Call +971 56 327 4694</a>
+      <a class="btn" style="background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);border:1.5px solid var(--mustard);color:var(--mustard-dark);" href="tel:+971563274694">Call +971 56 327 4694</a>
     </div>
 
   </div>
 </main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDetail"></p>
+    <a class="btn modal-cta" href="https://wa.me/971563274694" target="_blank" rel="noopener">Ask about this &rarr;</a>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -145,6 +169,19 @@
     </div>
   </div>
 </footer>
+
+<script>
+  var overlay = document.getElementById('modalOverlay');
+  document.querySelectorAll('.svc-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.getElementById('modalTitle').textContent = card.getAttribute('data-title');
+      document.getElementById('modalDetail').textContent = card.getAttribute('data-detail');
+      overlay.classList.add('show');
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click', function(){ overlay.classList.remove('show'); });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('show'); });
+</script>
 
 </body>
 </html>

@@ -19,8 +19,8 @@
   a{color:inherit;}
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
-  header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.6);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.7);border-radius:999px;box-shadow:0 10px 32px -14px rgba(27,75,84,0.3);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;}
   .logo-mark{width:34px;height:34px;border-radius:9px;background:var(--petrol);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;}
   .nav-links{display:flex;gap:28px;font-size:0.92rem;font-weight:600;}
@@ -42,7 +42,7 @@
   .section-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.76rem;font-weight:700;color:var(--petrol);margin-bottom:10px;}
   .section-title{font-size:2rem;margin-bottom:14px;}
 
-  .appliance-picker{background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px;}
+  .appliance-picker{background:rgba(255,255,255,0.6);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,0.7);box-shadow:0 20px 48px -24px rgba(27,75,84,0.3);border-radius:22px;padding:36px;}
   .picker-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0;}
   .picker-item{border:2px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;background:var(--bg);transition:all .15s ease;}
   .picker-item:hover{border-color:var(--petrol);}
@@ -55,17 +55,26 @@
   .picker-result .time{font-size:0.82rem;color:var(--ink-soft);}
 
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
-  .service-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;}
+  .service-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.7);box-shadow:0 16px 36px -22px rgba(27,75,84,0.25);border-radius:16px;padding:26px;cursor:pointer;transition:transform 0.15s ease;}
+  .service-card:hover{transform:translateY(-3px);}
   .service-card .icon{width:42px;height:42px;border-radius:11px;background:var(--copper);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:14px;}
   .service-card h3{font-size:1.1rem;margin-bottom:8px;}
   .service-card p{font-size:0.9rem;color:var(--ink-soft);}
+  .service-card .more{display:inline-block;margin-top:10px;font-size:0.78rem;font-weight:700;color:var(--copper-dark);}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(30,43,46,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-panel{max-width:440px;width:100%;background:rgba(255,255,255,0.92);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,0.85);border-radius:18px;padding:30px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.4);position:relative;}
+  .modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(30,43,46,0.08);color:var(--ink);font-size:1rem;cursor:pointer;}
+  .modal-panel h3{font-size:1.25rem;margin-bottom:12px;color:var(--petrol);}
+  .modal-panel p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;line-height:1.6;}
 
   .brands-strip{background:var(--ink);color:#fff;padding:18px 0;}
   .brands-strip .wrap{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;font-size:0.82rem;font-weight:600;letter-spacing:0.03em;opacity:0.85;}
 
-  .testimonials{background:#fff;}
+  .testimonials{background:linear-gradient(180deg, rgba(184,101,46,0.06), transparent 40%);}
   .t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px;}
-  .t-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--bg);}
+  .t-card{border:1px solid rgba(255,255,255,0.7);border-radius:16px;padding:24px;background:rgba(255,255,255,0.6);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);box-shadow:0 14px 32px -22px rgba(27,75,84,0.25);}
   .t-card .stars{color:#D99A1B;margin-bottom:10px;font-size:0.95rem;}
   .t-card p{font-size:0.93rem;color:var(--ink-soft);margin-bottom:12px;}
   .t-card .who{font-weight:700;font-size:0.88rem;}
@@ -96,7 +105,7 @@
   <div class="wrap nav">
     <div class="logo"><span class="logo-mark">B</span>Buashwan Maintenance</div>
     <nav class="nav-links">
-      <a href="#services">Services</a>
+      <a href="services.html">All Services</a>
       <a href="#picker">What's broken?</a>
       <a href="#reviews">Reviews</a>
     </nav>
@@ -148,13 +157,14 @@
     <div class="section-label">What we fix</div>
     <h2 class="section-title">20+ years repairing every major brand</h2>
     <div class="services-grid">
-      <div class="service-card"><div class="icon">🫧</div><h3>Washing machine repair</h3><p>Drum, motor, drainage and electrical faults diagnosed on the first visit.</p></div>
-      <div class="service-card"><div class="icon">🧊</div><h3>Fridge &amp; freezer repair</h3><p>Cooling loss, compressor issues, leaks &mdash; fixed without replacing the whole unit.</p></div>
-      <div class="service-card"><div class="icon">🔥</div><h3>Oven &amp; cooking range</h3><p>Heating elements, ignition and thermostat repairs for gas and electric ranges.</p></div>
-      <div class="service-card"><div class="icon">🍽️</div><h3>Dishwasher repair</h3><p>Won't drain, won't start, or leaving dishes dirty &mdash; we find the actual cause.</p></div>
-      <div class="service-card"><div class="icon">❄️</div><h3>AC repair</h3><p>Split and central units serviced, regassed and repaired across Dubai.</p></div>
-      <div class="service-card"><div class="icon">⚡</div><h3>Same-day diagnosis</h3><p>Uniformed technicians, transparent pricing, no hidden call-out fees.</p></div>
+      <div class="service-card" data-title="Washing Machine Repair" data-detail="Drum, motor, drainage and electrical faults diagnosed on the first visit, for all major brands including Siemens, Bosch, LG and Samsung."><div class="icon">🫧</div><h3>Washing machine repair</h3><p>Drum, motor, drainage and electrical faults diagnosed on the first visit.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="service-card" data-title="Fridge &amp; Freezer Repair" data-detail="Cooling loss, compressor issues and leaks fixed without replacing the whole unit — covers side-by-side, top-mount and bottom-mount models."><div class="icon">🧊</div><h3>Fridge &amp; freezer repair</h3><p>Cooling loss, compressor issues, leaks &mdash; fixed without replacing the whole unit.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="service-card" data-title="Oven &amp; Cooking Range Repair" data-detail="Heating elements, ignition and thermostat repairs for gas and electric ovens and cooking ranges of all major brands."><div class="icon">🔥</div><h3>Oven &amp; cooking range</h3><p>Heating elements, ignition and thermostat repairs for gas and electric ranges.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="service-card" data-title="Dishwasher Repair" data-detail="Won't drain, won't start, or leaving dishes dirty — we diagnose the actual cause rather than guessing at a fix."><div class="icon">🍽️</div><h3>Dishwasher repair</h3><p>Won't drain, won't start, or leaving dishes dirty &mdash; we find the actual cause.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="service-card" data-title="AC Repair" data-detail="Split and central AC units serviced, regassed and repaired across Dubai — installation, maintenance, emergency callouts and cleaning."><div class="icon">❄️</div><h3>AC repair</h3><p>Split and central units serviced, regassed and repaired across Dubai.</p><span class="more">Tap for details &rarr;</span></div>
+      <div class="service-card" data-title="Same-Day Diagnosis" data-detail="Uniformed technicians arrive with transparent, upfront pricing and no hidden call-out fees — most faults diagnosed and quoted on the first visit."><div class="icon">⚡</div><h3>Same-day diagnosis</h3><p>Uniformed technicians, transparent pricing, no hidden call-out fees.</p><span class="more">Tap for details &rarr;</span></div>
     </div>
+    <p style="margin-top:22px;"><a href="services.html" style="color:var(--copper-dark);font-weight:700;text-decoration:none;">Also need vacuum, ice maker or drain cleaning? See all services →</a></p>
   </div>
 </section>
 
@@ -210,9 +220,9 @@
       <div>
         <h4>Services</h4>
         <ul>
+          <li><a href="services.html">All Services</a></li>
           <li>Washing Machine Repair</li>
           <li>Fridge Repair</li>
-          <li>Oven &amp; Range Repair</li>
           <li>AC Repair</li>
         </ul>
       </div>
@@ -224,7 +234,27 @@
   </div>
 </footer>
 
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDetail"></p>
+    <a class="btn" href="https://wa.me/971554500617" target="_blank" rel="noopener">Ask about this &rarr;</a>
+  </div>
+</div>
+
 <script>
+  var overlay = document.getElementById('modalOverlay');
+  document.querySelectorAll('.service-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.getElementById('modalTitle').textContent = card.getAttribute('data-title');
+      document.getElementById('modalDetail').textContent = card.getAttribute('data-detail');
+      overlay.classList.add('show');
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click', function(){ overlay.classList.remove('show'); });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('show'); });
+
   var selected = null;
   var items = document.querySelectorAll('.picker-item');
   items.forEach(function(item){
