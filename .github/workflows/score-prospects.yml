@@ -66,4 +66,14 @@ jobs:
           # scratch files score-screenshots.sh also drops in this dir.
           git add "$SHOTS_DIR"/*-desktop.jpg 2>/dev/null || true
           git commit -m "Score prospect batch: $(basename "$RESULT_FILE")" || echo "Nothing to commit"
+          # Can be dispatched alongside other commit-and-push workflows -
+          # retry with a rebase instead of failing outright if another run's
+          # commit landed first.
+          for i in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            git pull --rebase origin "${{ github.ref_name }}"
+            sleep $((RANDOM % 5 + 1))
+          done
           git push

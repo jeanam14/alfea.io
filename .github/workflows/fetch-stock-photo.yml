@@ -42,4 +42,14 @@ jobs:
           git config user.email "bot@alfea.io"
           git add "${{ github.event.inputs.out_path }}"
           git diff --cached --quiet && echo "Nothing to commit" || git commit -m "Fetch stock photo: ${{ github.event.inputs.query }}"
+          # Can be dispatched alongside other commit-and-push workflows -
+          # retry with a rebase instead of failing outright if another run's
+          # commit landed first.
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:${{ github.ref_name }}; then
+              exit 0
+            fi
+            git pull --rebase origin "${{ github.ref_name }}"
+            sleep $((RANDOM % 5 + 1))
+          done
           git push origin HEAD:${{ github.ref_name }}
