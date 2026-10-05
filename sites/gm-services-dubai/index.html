@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GM Services | AC, Appliance &amp; Electrical Repair Dubai</title>
+<meta name="description" content="Good Morning Electrical, Sanitary &amp; Air-Conditioning Repairing Installation - fast AC, refrigerator, gas cooker and electrical repairs in Dubai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cobalt:#1E4FA3; --cobalt-dark:#163B7D; --coral:#FF6F59; --coral-dark:#E55A45; --ink:#17233A; --ink-soft:#56657E; --line:#DDE3EE; --surface:#FFFFFF; --bg:#F3F6FB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Work Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
+  h1,h2,h3{font-family:'Sora',sans-serif;font-weight:700;line-height:1.15;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem;color:var(--cobalt);}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;}
+  .nav-links{display:flex;gap:26px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;font-size:0.9rem;text-decoration:none;border:none;cursor:pointer;transition:background .15s;}
+  .btn:hover{background:var(--coral-dark);}
+  .btn-blue{background:var(--cobalt);}
+  .btn-blue:hover{background:var(--cobalt-dark);}
+
+  .hero{padding:60px 0 52px;background:linear-gradient(135deg,var(--cobalt) 0%,#1A3F85 100%);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:999px;font-size:0.8rem;font-weight:600;margin-bottom:18px;}
+  .hero h1{font-size:2.6rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.05rem;color:#CBD9F0;margin-bottom:26px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:52px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.76rem;font-weight:700;color:var(--coral-dark);margin-bottom:10px;}
+  .section-title{font-size:1.9rem;margin-bottom:14px;}
+
+  .urgency-tool{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;}
+  .urgency-slider{width:100%;margin:28px 0 10px;accent-color:var(--coral);height:6px;}
+  .urgency-labels{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ink-soft);font-weight:600;}
+  .urgency-result{margin-top:24px;padding:22px 24px;border-radius:14px;transition:background .2s,color .2s;}
+  .urgency-result .headline{font-weight:700;font-size:1.1rem;margin-bottom:6px;}
+  .urgency-result .sub{font-size:0.88rem;opacity:0.9;margin-bottom:16px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .service-card .icon{width:40px;height:40px;border-radius:10px;background:var(--bg);color:var(--cobalt);display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:14px;}
+  .service-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .service-card p{font-size:0.88rem;color:var(--ink-soft);}
+
+  .rating-strip{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .rating-row{display:flex;align-items:center;gap:14px;padding:22px 0;}
+  .rating-row .num{font-family:'Sora',sans-serif;font-weight:800;font-size:1.4rem;color:var(--cobalt);}
+  .rating-row .label{font-size:0.9rem;color:var(--ink-soft);}
+
+  footer{background:var(--ink);color:#fff;padding:48px 0 28px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#9FABC4;font-size:0.9rem;margin-top:10px;max-width:36ch;}
+  footer h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;color:#9FABC4;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.9rem;}
+  footer ul a{text-decoration:none;color:#D7DEEC;}
+  .footer-bottom{border-top:1px solid #2B3A57;padding-top:20px;font-size:0.8rem;color:#7C8AA8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">GM</span>GM Services</div>
+    <nav class="nav-links">
+      <a href="#urgency">How urgent?</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="tel:+971502451052">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">Al Twar, Dubai &middot; Same-day visits</div>
+      <h1>AC, appliance and electrical repair &mdash; today, not next week.</h1>
+      <p class="lead">GM Services handles AC repair, refrigerator and gas cooker repair, security camera fixing and home WiFi setup across Dubai, with technicians who diagnose the problem correctly the first time.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971502451052">Call +971 50 245 1052</a>
+        <a class="btn btn-blue" href="https://wa.me/971502451052" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Outdoor AC condenser unit"></div>
+  </div>
+</section>
+
+<section id="urgency">
+  <div class="wrap">
+    <div class="section-label">Tell us the urgency</div>
+    <h2 class="section-title">How urgent is your issue?</h2>
+    <div class="urgency-tool">
+      <input type="range" min="1" max="5" value="3" class="urgency-slider" id="urgencySlider">
+      <div class="urgency-labels">
+        <span>Routine checkup</span>
+        <span>Emergency now</span>
+      </div>
+      <div class="urgency-result" id="urgencyResult">
+        <div class="headline" id="urgencyHeadline"></div>
+        <div class="sub" id="urgencySub"></div>
+        <a class="btn" id="urgencyCta" href="tel:+971502451052"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we repair</div>
+    <h2 class="section-title">One call, every home-service fix</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">❄️</div><h3>AC repair &amp; servicing</h3><p>Refrigerant leaks, compressor faults, poor cooling and clogged filters, resolved on-site.</p></div>
+      <div class="service-card"><div class="icon">🧊</div><h3>Refrigerator repair</h3><p>Cooling issues and strange noises fixed quickly, extending your appliance's lifespan.</p></div>
+      <div class="service-card"><div class="icon">🔥</div><h3>Gas cooker repair</h3><p>Burner, gas leak and ignition issues fixed safely and promptly.</p></div>
+      <div class="service-card"><div class="icon">📷</div><h3>Security camera fixing</h3><p>Connectivity and image-quality issues resolved to restore continuous coverage.</p></div>
+      <div class="service-card"><div class="icon">📶</div><h3>Home WiFi networking</h3><p>Fast, reliable coverage set up and troubleshot across your home.</p></div>
+      <div class="service-card"><div class="icon">📡</div><h3>Dish antenna repair</h3><p>Signal and alignment issues fixed for uninterrupted satellite TV.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="rating-strip">
+  <div class="wrap">
+    <div class="rating-row">
+      <div class="num">8</div>
+      <div class="label">Google reviews from customers across Dubai</div>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark">GM</span>GM Services</div>
+        <p class="desc">Good Morning Electrical, Sanitary &amp; Air-Conditioning Repairing Installation. Fast home-service repairs across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971502451052">+971 50 245 1052</a></li>
+          <li><a href="mailto:gmqusais@gmail.com">gmqusais@gmail.com</a></li>
+          <li><a href="https://wa.me/971502451052" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li>AC Repair</li>
+          <li>Refrigerator Repair</li>
+          <li>Gas Cooker Repair</li>
+          <li>Security Camera Fixing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 GM Services (Good Morning Electrical, Sanitary &amp; AC Repairing Installation).</span>
+      <span>Al Twar, Dubai</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var slider = document.getElementById('urgencySlider');
+  var result = document.getElementById('urgencyResult');
+  var headline = document.getElementById('urgencyHeadline');
+  var sub = document.getElementById('urgencySub');
+  var cta = document.getElementById('urgencyCta');
+
+  var levels = {
+    1: { headline: "Routine checkup", sub: "No rush - we'll schedule a visit at a time that suits you.", window: "within 2-3 days", bg: "#F3F6FB", color: "#17233A", ctaBg: "#1E4FA3", ctaText: "Schedule a visit" },
+    2: { headline: "Minor issue", sub: "Something's off but it's not urgent. We'll get to it soon.", window: "within 1-2 days", bg: "#F3F6FB", color: "#17233A", ctaBg: "#1E4FA3", ctaText: "Book a visit" },
+    3: { headline: "Needs attention", sub: "Worth fixing before it gets worse. We'll prioritize you.", window: "same day to next day", bg: "#FFF1EC", color: "#17233A", ctaBg: "#FF6F59", ctaText: "Call now" },
+    4: { headline: "Urgent", sub: "This is affecting your home or business today.", window: "within a few hours", bg: "#FFE4DC", color: "#17233A", ctaBg: "#FF6F59", ctaText: "Call now - priority" },
+    5: { headline: "Emergency", sub: "We treat this as a same-hour priority call.", window: "as soon as possible, today", bg: "#17233A", color: "#fff", ctaBg: "#FF6F59", ctaText: "Call now - emergency" }
+  };
+
+  function render(){
+    var lvl = levels[slider.value];
+    headline.textContent = lvl.headline;
+    sub.textContent = lvl.sub + " Response window: " + lvl.window + ".";
+    result.style.background = lvl.bg;
+    result.style.color = lvl.color;
+    cta.style.background = lvl.ctaBg;
+    cta.textContent = lvl.ctaText;
+  }
+  slider.addEventListener('input', render);
+  render();
+</script>
+
+</body>
+</html>

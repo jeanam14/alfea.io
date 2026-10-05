@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Globe Electromechanical Works | HVAC, MEP &amp; Civil Contractor Dubai</title>
+<meta name="description" content="Golden Globe Electromechanical Works LLC - HVAC, MEP, Facilities Management and Civil contracting across the UAE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --steel:#2E3238; --steel-dark:#1D2024; --gold:#C9A227; --gold-dark:#A8861C; --paper:#F4F3F1; --ink:#1D2024; --ink-soft:#5B6066; --line:#DCDBD8; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.1;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--steel);border-bottom:1px solid #45494F;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:#fff;}
+  .logo-mark{width:34px;height:34px;border-radius:7px;background:var(--gold);color:var(--steel-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;}
+  .nav-links{display:flex;gap:28px;font-size:0.92rem;font-weight:500;}
+  .nav-links a{text-decoration:none;color:#C7CBD0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--steel-dark);padding:12px 22px;border-radius:6px;font-weight:700;font-size:0.9rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--gold-dark);}
+  .btn-outline{background:transparent;border:2px solid var(--gold);color:var(--gold);}
+
+  .hero{padding:64px 0 56px;background:var(--steel);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:5px;font-size:0.8rem;font-weight:600;color:#C7CBD0;margin-bottom:18px;}
+  .hero h1{font-size:2.7rem;margin-bottom:18px;}
+  .hero p.lead{font-size:1.05rem;color:#B7BCC2;margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:10px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.1);}
+  .hero-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.15);}
+
+  section{padding:56px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.76rem;font-weight:700;color:var(--gold-dark);margin-bottom:10px;}
+  .section-title{font-size:2rem;margin-bottom:14px;}
+
+  .scope-tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:36px;}
+  .scope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0;}
+  .scope-item{border:2px solid var(--line);border-radius:10px;padding:20px 14px;text-align:center;cursor:pointer;background:var(--paper);transition:all .15s ease;}
+  .scope-item:hover{border-color:var(--gold);}
+  .scope-item.active{border-color:var(--gold);background:#FBF6E6;}
+  .scope-item .icon{font-size:1.6rem;display:block;margin-bottom:10px;}
+  .scope-item span.label{font-size:0.85rem;font-weight:600;}
+  .scope-result{margin-top:22px;padding:20px 22px;background:var(--steel);color:#fff;border-radius:10px;display:none;}
+  .scope-result.show{display:block;}
+  .scope-result .headline{font-weight:700;margin-bottom:6px;}
+  .scope-result .sub{font-size:0.88rem;color:#B7BCC2;margin-bottom:16px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;}
+  .service-card .icon{width:40px;height:40px;border-radius:7px;background:var(--steel);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:14px;}
+  .service-card h3{font-size:1rem;margin-bottom:8px;}
+  .service-card p{font-size:0.86rem;color:var(--ink-soft);}
+
+  .proof{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .proof-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+  .proof-row .stat{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;color:var(--steel);}
+  .proof-row .stat span{display:block;font-family:'IBM Plex Sans',sans-serif;font-weight:500;font-size:0.8rem;color:var(--ink-soft);margin-top:4px;}
+
+  footer{background:var(--steel-dark);color:#fff;padding:48px 0 28px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#9AA0A6;font-size:0.9rem;margin-top:10px;max-width:36ch;}
+  footer h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;color:#9AA0A6;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.9rem;}
+  footer ul a{text-decoration:none;color:#D4D7DA;}
+  .footer-bottom{border-top:1px solid #3A3E44;padding-top:20px;font-size:0.8rem;color:#787E85;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .scope-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">GG</span>Golden Globe</div>
+    <nav class="nav-links">
+      <a href="#scope">Project Scope</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="tel:+97142693433">Call +971 4 269 3433</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">Dubai-based &middot; HVAC, MEP &amp; Civil contractor</div>
+      <h1>Building services contracting, handled by one team from start to finish.</h1>
+      <p class="lead">Golden Globe ElectroMechanical Works LLC delivers HVAC, MEP, facilities management and civil contracting on buildings across the UAE &mdash; 15+ years of technical experience behind every project.</p>
+      <div class="hero-cta">
+        <a class="btn" href="mailto:info@goldenglobemep.com">Email info@goldenglobemep.com</a>
+        <a class="btn btn-outline" href="#scope">Scope your project</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Industrial ductwork installation"></div>
+  </div>
+</section>
+
+<section id="scope">
+  <div class="wrap">
+    <div class="section-label">Scope it in 10 seconds</div>
+    <h2 class="section-title">What does your project need?</h2>
+    <p style="color:var(--ink-soft);max-width:62ch;">Select everything that applies. Most building projects need more than one of these working together &mdash; that's exactly why we run HVAC, MEP, FMS and Civil under one roof.</p>
+    <div class="scope-tool">
+      <div class="scope-grid" id="scopeGrid">
+        <div class="scope-item" data-name="HVAC"><span class="icon">❄️</span><span class="label">HVAC</span></div>
+        <div class="scope-item" data-name="MEP"><span class="icon">🔧</span><span class="label">MEP</span></div>
+        <div class="scope-item" data-name="Facilities Management"><span class="icon">🏢</span><span class="label">Facilities Management</span></div>
+        <div class="scope-item" data-name="Civil"><span class="icon">🏗️</span><span class="label">Civil Works</span></div>
+      </div>
+      <div class="scope-result" id="scopeResult">
+        <div class="headline" id="scopeHeadline"></div>
+        <div class="sub" id="scopeSub"></div>
+        <a class="btn" id="scopeCta" href="mailto:info@goldenglobemep.com">Request a quote for this scope</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we do</div>
+    <h2 class="section-title">Four disciplines, one point of contact</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">❄️</div><h3>HVAC</h3><p>Air conditioning checkups, maintenance and repair across residential and commercial sites.</p></div>
+      <div class="service-card"><div class="icon">🔧</div><h3>MEP</h3><p>Mechanical, electrical and plumbing works delivered by experienced in-house manpower.</p></div>
+      <div class="service-card"><div class="icon">🏢</div><h3>Facilities Management</h3><p>Building fabric maintenance, energy management, façade cleaning and landscaping.</p></div>
+      <div class="service-card"><div class="icon">🏗️</div><h3>Civil Works</h3><p>Construction and fit-out works following full structural procedure, start to finish.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="wrap" style="padding:28px 32px;">
+    <div class="proof-row">
+      <div class="stat">15+<span>Years technical experience</span></div>
+      <div class="stat">4<span>Disciplines under one contract</span></div>
+      <div class="stat">UAE-wide<span>Project coverage</span></div>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--gold);color:var(--steel-dark);">GG</span>Golden Globe Electromechanical Works LLC</div>
+        <p class="desc">HVAC, MEP, Facilities Management and Civil contracting on buildings across the UAE.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+97142693433">+971 4 269 3433</a></li>
+          <li><a href="mailto:info@goldenglobemep.com">info@goldenglobemep.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Monday &ndash; Saturday: 8:30 &ndash; 18:30</li>
+          <li>Friday: Closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Golden Globe Electromechanical Works LLC.</span>
+      <span>Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var selectedScopes = [];
+  var blurbs = {
+    "HVAC": "air conditioning checkups, maintenance and repair",
+    "MEP": "mechanical, electrical and plumbing works",
+    "Facilities Management": "ongoing building fabric and facilities upkeep",
+    "Civil Works": "construction and civil fit-out works"
+  };
+  var items = document.querySelectorAll('.scope-item');
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      var name = item.getAttribute('data-name');
+      var idx = selectedScopes.indexOf(name);
+      if(idx === -1){ selectedScopes.push(name); item.classList.add('active'); }
+      else { selectedScopes.splice(idx,1); item.classList.remove('active'); }
+
+      var result = document.getElementById('scopeResult');
+      if(selectedScopes.length === 0){ result.classList.remove('show'); return; }
+
+      var parts = selectedScopes.map(function(s){ return blurbs[s]; });
+      document.getElementById('scopeHeadline').textContent = selectedScopes.length > 1
+        ? "This project needs " + selectedScopes.length + " disciplines working together"
+        : "This project needs " + selectedScopes[0];
+      document.getElementById('scopeSub').textContent = "We'll scope: " + parts.join(", ") + " — under one contract, one project manager.";
+      result.classList.add('show');
+    });
+  });
+</script>
+
+</body>
+</html>

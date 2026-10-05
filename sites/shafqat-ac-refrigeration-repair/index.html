@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shafqat AC &amp; Refrigeration Repair Services | Dubai</title>
+<meta name="description" content="Shafqat AC &amp; Refrigeration Repair Services - fast AC and fridge repair across Al Twar, Dubai. Call or WhatsApp for same-day service.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#B8637A; --rose-dark:#954F63; --navy:#1B2A4A; --navy-dark:#121D34; --cream:#F7F1F2; --ink:#1B2A4A; --ink-soft:#5B6580; --line:#E3D9DC; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Karla',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Unbounded',sans-serif;font-weight:700;line-height:1.2;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--navy);border-bottom:1px solid #2A3B5E;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;}
+  .logo-mark{width:34px;height:34px;border-radius:9px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .nav-links{display:flex;gap:24px;font-size:0.88rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:#B9C2D6;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;padding:12px 20px;border-radius:10px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--rose-dark);}
+
+  .hero{padding:58px 0 50px;background:var(--navy);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:999px;font-size:0.78rem;font-weight:600;color:#C7CFE0;margin-bottom:18px;}
+  .hero h1{font-size:2.3rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1rem;color:#AEB9D1;margin-bottom:26px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:50px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.74rem;font-weight:700;color:var(--rose-dark);margin-bottom:10px;}
+  .section-title{font-size:1.75rem;margin-bottom:14px;}
+
+  .symptom-tool{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:34px;}
+  .symptom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0;}
+  .symptom-item{border:2px solid var(--line);border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;background:var(--cream);}
+  .symptom-item:hover{border-color:var(--rose);}
+  .symptom-item.active{border-color:var(--rose);background:#FBEEF1;}
+  .symptom-item .icon{font-size:1.5rem;display:block;margin-bottom:8px;}
+  .symptom-item span.label{font-size:0.8rem;font-weight:600;}
+  .symptom-result{margin-top:20px;padding:18px 20px;background:var(--navy);color:#fff;border-radius:12px;display:none;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .symptom-result.show{display:flex;}
+  .symptom-result .msg{font-weight:600;font-size:0.92rem;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .service-card .icon{width:40px;height:40px;border-radius:10px;background:var(--cream);color:var(--rose);display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:14px;}
+  .service-card h3{font-size:1rem;margin-bottom:8px;}
+  .service-card p{font-size:0.88rem;color:var(--ink-soft);}
+
+  .rating-strip{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .rating-row{display:flex;align-items:center;gap:14px;padding:22px 0;}
+  .rating-row .num{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.3rem;color:var(--rose-dark);}
+  .rating-row .label{font-size:0.88rem;color:var(--ink-soft);}
+
+  footer{background:var(--navy-dark);color:#fff;padding:44px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:28px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#9AA4BC;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;color:#9AA4BC;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#D2D8E8;}
+  .footer-bottom{border-top:1px solid #253552;padding-top:18px;font-size:0.78rem;color:#6E7A96;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .symptom-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:1.85rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">S</span>Shafqat AC &amp; Refrigeration</div>
+    <nav class="nav-links">
+      <a href="#symptoms">What's wrong?</a>
+      <a href="#services">Services</a>
+    </nav>
+    <a class="btn" href="https://wa.me/971506722996" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">Al Twar, Dubai &middot; AC &amp; refrigeration repair</div>
+      <h1>AC not cooling? Fridge acting up? We'll come look today.</h1>
+      <p class="lead">Shafqat AC &amp; Refrigeration Repair Services fixes air conditioning and refrigeration problems across Dubai &mdash; call or message us directly, no booking app needed.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971506722996">Call +971 50 672 2996</a>
+        <a class="btn" style="background:transparent;border:2px solid var(--rose);" href="#symptoms">Describe the problem</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Outdoor AC condenser units"></div>
+  </div>
+</section>
+
+<section id="symptoms">
+  <div class="wrap">
+    <div class="section-label">Quick triage</div>
+    <h2 class="section-title">What's your AC or fridge doing?</h2>
+    <p style="color:var(--ink-soft);max-width:60ch;">Tap the closest match and we'll put together a WhatsApp message for you &mdash; ready to send in one tap.</p>
+    <div class="symptom-tool">
+      <div class="symptom-grid" id="symptomGrid">
+        <div class="symptom-item" data-name="Not cooling"><span class="icon">🌡️</span><span class="label">Not cooling</span></div>
+        <div class="symptom-item" data-name="Leaking water"><span class="icon">💧</span><span class="label">Leaking water</span></div>
+        <div class="symptom-item" data-name="Making noise"><span class="icon">🔊</span><span class="label">Making noise</span></div>
+        <div class="symptom-item" data-name="Won't turn on"><span class="icon">🔌</span><span class="label">Won't turn on</span></div>
+      </div>
+      <div class="symptom-result" id="symptomResult">
+        <div class="msg" id="symptomMsg"></div>
+        <a class="btn" id="symptomSend" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we fix</div>
+    <h2 class="section-title">AC and refrigeration, done right</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">❄️</div><h3>AC repair &amp; servicing</h3><p>Split and central units diagnosed and repaired, regassing included where needed.</p></div>
+      <div class="service-card"><div class="icon">🧊</div><h3>Refrigeration repair</h3><p>Fridges, freezers and commercial cooling units fixed without unnecessary part swaps.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="rating-strip">
+  <div class="wrap">
+    <div class="rating-row">
+      <div class="num">3</div>
+      <div class="label">Google reviews from customers in Dubai</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark">S</span>Shafqat AC &amp; Refrigeration Repair Services</div>
+        <p class="desc">AC and refrigeration repair across Al Twar and the wider Dubai area. Call or WhatsApp for same-day visits.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971506722996">+971 50 672 2996</a></li>
+          <li><a href="https://wa.me/971506722996" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Shafqat AC &amp; Refrigeration Repair Services.</span>
+      <span>Al Twar, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var items = document.querySelectorAll('.symptom-item');
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      items.forEach(function(i){ i.classList.remove('active'); });
+      item.classList.add('active');
+      var name = item.getAttribute('data-name');
+      var msg = "Hi Shafqat, my AC/fridge issue is: " + name.toLowerCase() + ". Can someone come take a look today?";
+      document.getElementById('symptomMsg').textContent = "Ready to send: \"" + msg + "\"";
+      document.getElementById('symptomSend').href = "https://wa.me/971506722996?text=" + encodeURIComponent(msg);
+      document.getElementById('symptomResult').classList.add('show');
+    });
+  });
+</script>
+
+</body>
+</html>

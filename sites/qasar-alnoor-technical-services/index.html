@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qasar Alnoor Technical Services | Building Maintenance Dubai</title>
+<meta name="description" content="Qasar Alnoor Technical Services LLC - electro-mechanical, plumbing, civil and carpentry maintenance for buildings across Dubai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#7A2639; --wine-dark:#5E1C2B; --taupe:#D8C3A5; --cream:#F7F2EA; --ink:#2A1C20; --ink-soft:#6B5A54; --line:#E6DAC9; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Spectral',serif;font-weight:700;line-height:1.15;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Spectral',serif;font-weight:700;font-size:1.2rem;}
+  .logo-mark{width:34px;height:34px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .nav-links{display:flex;gap:26px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--wine);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--wine-dark);}
+  .btn-outline{background:transparent;border:2px solid var(--wine);color:var(--wine);}
+
+  .hero{padding:60px 0 52px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:0.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:18px;}
+  .hero h1{font-size:2.6rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.05rem;color:var(--ink-soft);margin-bottom:26px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:52px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.76rem;font-weight:700;color:var(--wine);margin-bottom:10px;}
+  .section-title{font-size:1.9rem;margin-bottom:14px;}
+
+  .amc-tool{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;}
+  .amc-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:24px 0;}
+  .amc-field label{display:block;font-weight:700;font-size:0.9rem;margin-bottom:10px;}
+  .amc-field input[type=range]{width:100%;accent-color:var(--wine);height:6px;}
+  .amc-field .count{font-family:'Spectral',serif;font-weight:700;color:var(--wine);font-size:1.3rem;margin-top:6px;}
+  .amc-result{margin-top:10px;padding:24px 26px;background:var(--wine);color:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .amc-result .savings{font-family:'Spectral',serif;font-weight:700;font-size:2rem;}
+  .amc-result .savings span{display:block;font-family:'Manrope',sans-serif;font-weight:500;font-size:0.8rem;opacity:0.85;}
+  .amc-note{font-size:0.78rem;color:var(--ink-soft);margin-top:14px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .service-card .icon{width:40px;height:40px;border-radius:10px;background:var(--cream);color:var(--wine);display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:14px;}
+  .service-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .service-card p{font-size:0.88rem;color:var(--ink-soft);}
+
+  .about-strip{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;padding:48px 0;}
+  .about-img{border-radius:14px;overflow:hidden;aspect-ratio:4/3;}
+  .about-img img{width:100%;height:100%;object-fit:cover;}
+
+  footer{background:var(--ink);color:#fff;padding:48px 0 28px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  footer .logo{color:#fff;}
+  footer .logo-mark{background:var(--wine);}
+  footer p.desc{color:#B7A9A3;font-size:0.9rem;margin-top:10px;max-width:36ch;}
+  footer h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;color:#B7A9A3;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.9rem;}
+  footer ul a{text-decoration:none;color:#E3D8D3;}
+  .footer-bottom{border-top:1px solid #4A3A3A;padding-top:20px;font-size:0.8rem;color:#92807A;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid,.about-grid,.amc-row{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">Q</span>Qasar Alnoor</div>
+    <nav class="nav-links">
+      <a href="#amc">AMC Savings</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn" href="tel:+97143439221">Call +971 4 343 9221</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">Al Twar, Dubai &middot; Electro-mechanical &amp; building maintenance</div>
+      <h1>One contract covers AC, electrical, plumbing, civil and carpentry.</h1>
+      <p class="lead">Qasar Alnoor Technical Services LLC handles the full range of building maintenance &mdash; from emergency AC repair to civil and carpentry works &mdash; with one Annual Maintenance Contract team you can call any time.</p>
+      <div class="hero-cta">
+        <a class="btn" href="mailto:info@qantsme.com">Email info@qantsme.com</a>
+        <a class="btn btn-outline" href="#amc">Estimate your AMC savings</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Rooftop duct and exhaust vent"></div>
+  </div>
+</section>
+
+<section id="amc">
+  <div class="wrap">
+    <div class="section-label">Annual maintenance contract</div>
+    <h2 class="section-title">What could a bundled AMC save you?</h2>
+    <p style="color:var(--ink-soft);max-width:62ch;">Ad-hoc repairs add up in call-out fees alone. Move your AC units and plumbing fixtures onto one Annual Maintenance Contract and see the rough yearly difference.</p>
+    <div class="amc-tool">
+      <div class="amc-row">
+        <div class="amc-field">
+          <label for="acUnits">AC units on site</label>
+          <input type="range" min="1" max="20" value="4" id="acUnits">
+          <div class="count" id="acUnitsCount">4 units</div>
+        </div>
+        <div class="amc-field">
+          <label for="plumbingFixtures">Plumbing fixtures on site</label>
+          <input type="range" min="1" max="30" value="6" id="plumbingFixtures">
+          <div class="count" id="plumbingFixturesCount">6 fixtures</div>
+        </div>
+      </div>
+      <div class="amc-result">
+        <div class="savings" id="amcSavings"><span>Estimated yearly savings vs ad-hoc call-outs</span></div>
+        <a class="btn" style="background:#fff;color:var(--wine);" href="mailto:info@qantsme.com">Get an exact AMC quote</a>
+      </div>
+      <p class="amc-note">Rough estimate based on avoided call-out fees and bundled service pricing. Your exact AMC rate depends on a site visit.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we cover</div>
+    <h2 class="section-title">Electro-mechanical and building maintenance</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">❄️</div><h3>Air Conditioning</h3><p>Emergency repairs, installation and preventive maintenance on every brand.</p></div>
+      <div class="service-card"><div class="icon">⚡</div><h3>Electrical Works</h3><p>From socket changes to complete electrical breakdowns, large or small.</p></div>
+      <div class="service-card"><div class="icon">🚰</div><h3>Plumbing Works</h3><p>24-hour emergency plumbing and full bathroom refurbishment.</p></div>
+      <div class="service-card"><div class="icon">🏗️</div><h3>Civil Works</h3><p>Construction and building works following full structural procedure.</p></div>
+      <div class="service-card"><div class="icon">🪚</div><h3>Carpentry Works</h3><p>Interior joinery, roofing carpentry, fit-outs and restoration.</p></div>
+      <div class="service-card"><div class="icon">📋</div><h3>Annual Maintenance Contracts</h3><p>Scheduled preventive visits, free accessory replacement, one dedicated account manager.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="about-strip" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img"><img src="images/about.jpg" alt="Industrial electrical panel maintenance"></div>
+    <div>
+      <div class="section-label">About us</div>
+      <h2 class="section-title">Customer satisfaction, integrity, commitment</h2>
+      <p style="color:var(--ink-soft);">Qasar Alnoor Technical Services LLC is based in Dubai, handling general maintenance, electro-mechanical works and technical contracting on buildings across the UAE &mdash; with specialized manpower and project management available around the clock.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark">Q</span>Qasar Alnoor Technical Services LLC</div>
+        <p class="desc">Electro-mechanical and building maintenance works across Dubai, with Annual Maintenance Contracts available.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+97143439221">+971 4 343 9221</a></li>
+          <li><a href="mailto:info@qantsme.com">info@qantsme.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li>Air Conditioning</li>
+          <li>Electrical &amp; Plumbing</li>
+          <li>Civil &amp; Carpentry</li>
+          <li>Annual Maintenance Contracts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Qasar Alnoor Technical Services LLC.</span>
+      <span>Al Twar, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var ac = document.getElementById('acUnits');
+  var plumb = document.getElementById('plumbingFixtures');
+  var acCount = document.getElementById('acUnitsCount');
+  var plumbCount = document.getElementById('plumbingFixturesCount');
+  var savings = document.getElementById('amcSavings');
+
+  function render(){
+    var acUnits = parseInt(ac.value, 10);
+    var fixtures = parseInt(plumb.value, 10);
+    acCount.textContent = acUnits + (acUnits === 1 ? " unit" : " units");
+    plumbCount.textContent = fixtures + (fixtures === 1 ? " fixture" : " fixtures");
+
+    // Rough estimate: AC call-out ~AED 350 avoided x 2 visits/yr, plumbing call-out ~AED 200 x 1.5 visits/yr,
+    // against an AMC that bundles these into fewer, scheduled visits.
+    var estimate = Math.round((acUnits * 700 + fixtures * 300) * 0.35);
+    savings.innerHTML = "AED " + estimate.toLocaleString() + "<span>Estimated yearly savings vs ad-hoc call-outs</span>";
+  }
+  ac.addEventListener('input', render);
+  plumb.addEventListener('input', render);
+  render();
+</script>
+
+</body>
+</html>
