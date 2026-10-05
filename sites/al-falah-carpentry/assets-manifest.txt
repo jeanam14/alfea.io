@@ -1,4 +1,0 @@
-# One line per image: output_path|prompt|image_size
-# Read by scripts/generate-site-assets.sh, run via .github/workflows/generate-assets.yml
-images/hero.jpg|wide photo of an elegant custom wood-paneled feature wall in a modern Dubai living room, warm wood tones, clean joinery lines, realistic editorial interior photography, no text, no logos, no watermark|landscape_16_9
-images/about.jpg|close-up photo of a carpenter's hands finishing a custom wooden furniture piece with fine detail, realistic editorial photography, no text, no logos, no watermark|landscape_4_3

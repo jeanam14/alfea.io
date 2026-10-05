@@ -1,0 +1,35 @@
+name: Tear down a client site
+
+# Deletes a site's live Cloudflare Pages deployment entirely. Use this only
+# when a prospect has been removed from the pipeline (e.g. didn't meet a
+# sourcing bar) and Jean wants the live preview URL gone, not just unlinked
+# from the artifact. The site's directory under sites/<slug>/ is removed by
+# a separate commit before dispatching this - this workflow only tears down
+# the Cloudflare Pages project itself.
+#
+# Requires the same two secrets as deploy.yml:
+#   CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site slug to tear down (e.g. dibba-manual-carpentry) - deletes the alfea-<slug> Cloudflare Pages project'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  teardown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Cloudflare Pages project
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npm install -g wrangler
+          project="alfea-${{ github.event.inputs.site }}"
+          echo "=== Deleting $project ==="
+          wrangler pages project delete "$project" --yes
