@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "info@acmaintenancedubai.ae",
+  "first_name": "team",
+  "company_name": "Al Naveed AC Repair & Maintenance",
+  "website": "https://alfea-al-naveed-ac-repair-maintenance.pages.dev/",
+  "custom_variables": {
+    "flaw": "the customer reviews on your site use stock headshot photos under names that don't match any real customer, and the FAQ section never actually answers any of the questions it lists"
+  },
+  "skip_if_in_workspace": true
+}

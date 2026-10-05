@@ -1,0 +1,11 @@
+{
+  "campaign": "1ee5daca-007d-4684-8cc2-c86e26942eb1",
+  "email": "info@mhasnainrepair.com",
+  "first_name": "team",
+  "company_name": "Muhammad Hasnain AC Repairing Center",
+  "website": "https://alfea-muhammad-hasnain-ac-repairing-center.pages.dev/",
+  "custom_variables": {
+    "flaw": "your About page is written in electrician language about flickering lights and faulty wiring, even though you repair appliances, and several of your service links send visitors to a completely different company's website"
+  },
+  "skip_if_in_workspace": true
+}
