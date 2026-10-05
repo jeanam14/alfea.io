@@ -8,15 +8,19 @@ Requires GOOGLE_SHEETS_CREDENTIALS in the environment (the service account
 JSON key, as stored in the repo secret).
 
 rows.json shape: {"existing": [...], "no_website": [...]}, each a list of
-objects. Missing keys become blank cells.
+objects. Missing keys become blank cells. "Contact Method" and "On
+Instantly" are computed, not read directly - pass raw `email`, `phone`
+and `instantly_lead_added` (bool) and the script derives both display
+columns, so Jean's team can tell at a glance how to reach each prospect
+and whether it's already in the automated outreach pipeline.
 
-Existing Website columns: name, country, niche, phone, email, rating,
-reviews_count, verdict, old_website, new_site_url, status, maps_link,
-updated_at.
+Existing Website columns: name, country, niche, phone, email,
+instantly_lead_added, rating, reviews_count, verdict, old_website,
+new_site_url, status, maps_link, updated_at.
 
-No Website columns: name, country, niche, phone, email, rating,
-reviews_count, latest_review_at, new_site_url, status, maps_link,
-updated_at.
+No Website columns: name, country, niche, phone, email,
+instantly_lead_added, rating, reviews_count, latest_review_at,
+new_site_url, status, maps_link, updated_at.
 
 Each tab is created if missing. Every run fully replaces that tab's data
 columns (A through its last data column) with what's in rows.json, so the
@@ -32,27 +36,28 @@ TABS = {
     "existing": {
         "title": "Existing Website",
         "headers": [
-            "Name", "Country", "Niche", "Phone", "Email", "Rating",
-            "Reviews", "Verdict", "Old Website", "New Site", "Status",
-            "Maps Link", "Updated At",
+            "Name", "Country", "Niche", "Phone", "Email", "Contact Method",
+            "On Instantly", "Rating", "Reviews", "Verdict", "Old Website",
+            "New Site", "Status", "Maps Link", "Updated At",
         ],
         "fields": [
-            "name", "country", "niche", "phone", "email", "rating",
-            "reviews_count", "verdict", "old_website", "new_site_url",
-            "status", "maps_link", "updated_at",
+            "name", "country", "niche", "phone", "email", "contact_method",
+            "on_instantly", "rating", "reviews_count", "verdict",
+            "old_website", "new_site_url", "status", "maps_link",
+            "updated_at",
         ],
     },
     "no_website": {
         "title": "No Website",
         "headers": [
-            "Name", "Country", "Niche", "Phone", "Email", "Rating",
-            "Reviews", "Latest Review", "New Site", "Status",
-            "Maps Link", "Updated At",
+            "Name", "Country", "Niche", "Phone", "Email", "Contact Method",
+            "On Instantly", "Rating", "Reviews", "Latest Review", "New Site",
+            "Status", "Maps Link", "Updated At",
         ],
         "fields": [
-            "name", "country", "niche", "phone", "email", "rating",
-            "reviews_count", "latest_review_at", "new_site_url", "status",
-            "maps_link", "updated_at",
+            "name", "country", "niche", "phone", "email", "contact_method",
+            "on_instantly", "rating", "reviews_count", "latest_review_at",
+            "new_site_url", "status", "maps_link", "updated_at",
         ],
     },
 }
@@ -121,11 +126,16 @@ def sync_tab(service, spreadsheet_id, title, headers, fields, rows):
     for item in sorted(rows, key=lambda r: r.get("name", "")):
         row = []
         for k in fields:
-            v = item.get(k)
-            if k == "status":
-                v = humanize(STATUS_LABELS, v)
-            elif k == "verdict":
-                v = humanize(VERDICT_LABELS, v)
+            if k == "contact_method":
+                v = "Email" if item.get("email") else ("Phone" if item.get("phone") else "None found")
+            elif k == "on_instantly":
+                v = "Yes" if item.get("instantly_lead_added") else "No"
+            else:
+                v = item.get(k)
+                if k == "status":
+                    v = humanize(STATUS_LABELS, v)
+                elif k == "verdict":
+                    v = humanize(VERDICT_LABELS, v)
             row.append("" if v is None else str(v))
         data_rows.append(row)
 
