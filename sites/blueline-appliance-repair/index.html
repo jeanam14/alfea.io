@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueLine Appliance Repair | Fridge, Washer &amp; Oven Repair Dubai</title>
+<meta name="description" content="BlueLine Appliance Repair - fast, reliable appliance repair in Al Qusais, Dubai. Fridges, washing machines, stoves, ovens and dishwashers, all major brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --prussian:#1B3A5C; --prussian-dark:#122A44; --marigold:#E8A33D; --marigold-dark:#C9872A; --ink:#1C2430; --ink-soft:#5B6472; --line:#DCE2EA; --surface:#FFFFFF; --bg:#F5F7FA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Manrope',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  h1,h2,h3{font-family:'Source Serif 4',serif;font-weight:700;line-height:1.2;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--prussian);border-bottom:1px solid #0E2236;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Source Serif 4',serif;font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none;}
+  .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--marigold);color:var(--prussian-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:#C7D3E0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--marigold);color:var(--prussian-dark);padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--marigold-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--marigold);color:var(--marigold);}
+
+  .hero{padding:58px 0 50px;background:var(--prussian);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#D9E2EC;margin-bottom:18px;}
+  .badge .stars{color:var(--marigold);font-weight:700;}
+  .hero h1{font-size:2.5rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.05rem;color:#C7D3E0;margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:54px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--marigold-dark);margin-bottom:10px;}
+  .section-title{font-size:1.9rem;margin-bottom:14px;}
+
+  .finder{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;}
+  .finder-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .field-label{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:10px;}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .pill{border:2px solid var(--line);border-radius:999px;padding:9px 16px;font-size:0.86rem;font-weight:600;cursor:pointer;background:#F2F4F7;}
+  .pill.active{border-color:var(--prussian);background:#E7ECF2;color:var(--prussian);}
+  .finder-result{margin-top:26px;padding:22px 24px;background:var(--prussian);color:#fff;border-radius:12px;display:none;}
+  .finder-result.show{display:block;}
+  .finder-result .headline{font-family:'Source Serif 4',serif;font-weight:700;font-size:1.2rem;margin-bottom:6px;}
+  .finder-result .sub{font-size:0.88rem;color:#C7D3E0;margin-bottom:16px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 18px;}
+  .service-card h3{font-size:1rem;margin-bottom:8px;}
+  .service-card p{font-size:0.85rem;color:var(--ink-soft);}
+
+  .why{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:50px 0;align-items:center;}
+  .why-list{display:flex;flex-direction:column;gap:18px;}
+  .why-item{display:flex;gap:14px;align-items:flex-start;}
+  .why-item .dot{width:8px;height:8px;border-radius:50%;background:var(--marigold);margin-top:8px;flex-shrink:0;}
+  .why-item h3{font-size:1rem;margin-bottom:4px;}
+  .why-item p{font-size:0.88rem;color:var(--ink-soft);}
+  .why-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;}
+  .why-img img{width:100%;height:100%;object-fit:cover;}
+
+  .about-strip .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:46px 0;text-align:center;}
+  .about-grid .num{font-family:'Source Serif 4',serif;font-weight:700;font-size:2rem;color:var(--prussian);}
+  .about-grid .label{font-size:0.82rem;color:var(--ink-soft);margin-top:4px;}
+
+  footer{background:var(--prussian-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#A9BAC9;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#A9BAC9;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#D9E2EC;}
+  .footer-bottom{border-top:1px solid #203A52;padding-top:18px;font-size:0.78rem;color:#7E93A8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .finder-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="logo-mark">BL</span>BlueLine</a>
+    <nav class="nav-links">
+      <a href="#finder">Find My Repair</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+    </nav>
+    <a class="btn" href="tel:+971567230435">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="stars">★★★★★ 4.7</span><span>54 Google Reviews</span></div>
+      <h1>Appliance broken? We fix it the same day.</h1>
+      <p class="lead">BlueLine Appliance Repair fixes fridges, washing machines, stoves, ovens and dishwashers across Al Qusais and Dubai — all major brands, straightforward pricing.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971567230435">Call +971 56 723 0435</a>
+        <a class="btn btn-outline" href="#finder">What needs fixing?</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Modern kitchen interior with stainless steel fridge"></div>
+  </div>
+</section>
+
+<section id="finder">
+  <div class="wrap">
+    <div class="section-label">Quick request</div>
+    <h2 class="section-title">What needs fixing?</h2>
+    <p style="color:var(--ink-soft);max-width:60ch;">Tell us the appliance and how urgent it is — we'll build a message you can send straight to our team.</p>
+    <div class="finder">
+      <div class="finder-grid">
+        <div>
+          <div class="field-label">Appliance</div>
+          <div class="pill-row" id="applianceRow">
+            <div class="pill" data-item="Refrigerator">Refrigerator</div>
+            <div class="pill" data-item="Washing Machine">Washing Machine</div>
+            <div class="pill" data-item="Stove">Stove</div>
+            <div class="pill" data-item="Oven">Oven</div>
+            <div class="pill" data-item="Dishwasher">Dishwasher</div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">How soon?</div>
+          <div class="pill-row" id="urgencyRow">
+            <div class="pill" data-urgency="Today">Today</div>
+            <div class="pill" data-urgency="This week">This week</div>
+            <div class="pill" data-urgency="Just a quote">Just a quote</div>
+          </div>
+        </div>
+      </div>
+      <div class="finder-result" id="finderResult">
+        <div class="headline" id="finderHeadline"></div>
+        <div class="sub" id="finderSub"></div>
+        <a class="btn" style="background:var(--marigold);color:var(--prussian-dark);" id="finderSend" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we repair</div>
+    <h2 class="section-title">Appliance repair services</h2>
+    <div class="services-grid">
+      <div class="service-card"><h3>Refrigerator Repair</h3><p>Cooling issues, leaks and noise fixed fast.</p></div>
+      <div class="service-card"><h3>Washing Machine Repair</h3><p>Leaks, spin problems and drainage issues.</p></div>
+      <div class="service-card"><h3>Stove Repair</h3><p>Ignition and heating problems, all stove types.</p></div>
+      <div class="service-card"><h3>Oven Repair</h3><p>Heating, broken doors and faulty controls.</p></div>
+      <div class="service-card"><h3>Dishwasher Repair</h3><p>Drainage, leaks and performance issues.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="why" id="why">
+  <div class="wrap why-grid">
+    <div>
+      <div class="section-label">Why BlueLine</div>
+      <h2 class="section-title">Straightforward appliance repair</h2>
+      <div class="why-list">
+        <div class="why-item"><div class="dot"></div><div><h3>Certified technicians</h3><p>Trained to handle all major appliance brands and models.</p></div></div>
+        <div class="why-item"><div class="dot"></div><div><h3>Same-day service</h3><p>Most repairs completed the same day you call.</p></div></div>
+        <div class="why-item"><div class="dot"></div><div><h3>Transparent pricing</h3><p>You know the cost before any work starts.</p></div></div>
+      </div>
+    </div>
+    <div class="why-img"><img src="images/about.jpg" alt="Built-in oven and microwave in a modern kitchen"></div>
+  </div>
+</div>
+
+<div class="about-strip">
+  <div class="wrap about-grid">
+    <div><div class="num">4.7</div><div class="label">Average Rating</div></div>
+    <div><div class="num">54</div><div class="label">Google Reviews</div></div>
+    <div><div class="num">Al Qusais</div><div class="label">& Dubai-wide</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--prussian);color:#fff;">BL</span>BlueLine</div>
+        <p class="desc">Fast, reliable appliance repair in Al Qusais and across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971567230435">+971 56 723 0435</a></li>
+          <li><a href="https://wa.me/971567230435" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:info@bluelineappliancerepair.com">info@bluelineappliancerepair.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BlueLine Appliance Repair.</span>
+      <span>Al Qusais, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var selectedItem = null, selectedUrgency = null;
+  function tryShow(){
+    if(!selectedItem || !selectedUrgency) return;
+    document.getElementById('finderHeadline').textContent = selectedItem + " — " + selectedUrgency;
+    document.getElementById('finderSub').textContent = "We'll send this straight to BlueLine's WhatsApp so they can call you back.";
+    document.getElementById('finderResult').classList.add('show');
+    var msg = encodeURIComponent("Hi BlueLine, my " + selectedItem + " needs repair. Timing: " + selectedUrgency + ".");
+    document.getElementById('finderSend').setAttribute('href', 'https://wa.me/971567230435?text=' + msg);
+  }
+  document.querySelectorAll('#applianceRow .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#applianceRow .pill').forEach(function(i){ i.classList.remove('active'); });
+      p.classList.add('active');
+      selectedItem = p.getAttribute('data-item');
+      tryShow();
+    });
+  });
+  document.querySelectorAll('#urgencyRow .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#urgencyRow .pill').forEach(function(i){ i.classList.remove('active'); });
+      p.classList.add('active');
+      selectedUrgency = p.getAttribute('data-urgency');
+      tryShow();
+    });
+  });
+</script>
+
+</body>
+</html>

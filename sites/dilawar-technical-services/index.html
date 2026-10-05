@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dilawar Technical Services | Rope Access &amp; Facade Cleaning Dubai</title>
+<meta name="description" content="Dilawar Technical Services LLC - IRATA rope access specialists for facade glass cleaning, high-rise painting and height maintenance across Dubai and the UAE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#23282E; --char-dark:#171A1E; --safety:#F2641A; --safety-dark:#CC5313; --ink:#20242A; --ink-soft:#5C636C; --line:#DDE1E6; --surface:#FFFFFF; --bg:#F4F5F7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.01em;line-height:1.15;text-transform:uppercase;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--char);border-bottom:3px solid var(--safety);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;color:#fff;text-decoration:none;text-transform:uppercase;}
+  .logo-mark{width:36px;height:36px;border-radius:4px;background:var(--safety);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;font-family:'Barlow Condensed',sans-serif;}
+  .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:#C7CBD1;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--safety);color:#fff;padding:12px 24px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:0.03em;}
+  .btn:hover{background:var(--safety-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--safety);color:var(--safety);}
+
+  .hero{padding:58px 0 50px;background:var(--char);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#D7D9DC;margin-bottom:18px;font-family:'Inter',sans-serif;text-transform:none;}
+  .badge .stars{color:var(--safety);font-weight:700;}
+  .hero h1{font-size:2.6rem;margin-bottom:16px;}
+  .hero p.lead{font-family:'Inter',sans-serif;font-size:1.05rem;color:#C7CBD1;margin-bottom:28px;max-width:48ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  .clients{background:var(--surface);border-bottom:1px solid var(--line);padding:28px 0;}
+  .clients-label{font-size:0.74rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);margin-bottom:14px;text-align:center;font-family:'Inter',sans-serif;font-weight:600;}
+  .clients-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .client-chip{background:#F0F1F3;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:0.84rem;font-weight:600;color:var(--ink-soft);}
+
+  section{padding:54px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--safety-dark);margin-bottom:10px;font-family:'Inter',sans-serif;}
+  .section-title{font-size:2rem;margin-bottom:14px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--safety);padding:24px 22px;}
+  .service-card h3{font-size:1.1rem;margin-bottom:8px;text-transform:none;}
+  .service-card p{font-family:'Inter',sans-serif;font-size:0.86rem;color:var(--ink-soft);}
+
+  .why{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:50px 0;}
+  .why-item h3{font-size:1.1rem;margin-bottom:8px;text-transform:none;color:var(--safety-dark);}
+  .why-item p{font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--ink-soft);}
+
+  .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+  .t-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;}
+  .t-card .stars{color:var(--safety);font-weight:700;margin-bottom:10px;}
+  .t-card p{font-family:'Inter',sans-serif;font-size:0.88rem;color:var(--ink-soft);margin-bottom:14px;}
+  .t-card .name{font-weight:700;font-size:0.88rem;font-family:'Inter',sans-serif;}
+
+  footer{background:var(--char-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{font-family:'Inter',sans-serif;color:#9FA4AB;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#9FA4AB;font-family:'Inter',sans-serif;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;font-family:'Inter',sans-serif;}
+  footer ul a{text-decoration:none;color:#D7D9DC;}
+  .footer-bottom{border-top:1px solid #2E333A;padding-top:18px;font-size:0.78rem;color:#787E86;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Inter',sans-serif;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .testimonials-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2.1rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="logo-mark">DTS</span>Dilawar Technical</a>
+    <nav class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a class="btn" href="tel:+971552557484">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="stars">★★★★★ 4.9</span><span>48 Google Reviews</span></div>
+      <h1>Rope access specialists for Dubai's tallest buildings</h1>
+      <p class="lead">IRATA-certified technicians delivering facade glass cleaning, high-rise painting and height maintenance safely and efficiently — trusted by major developers and facilities managers across the UAE.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971552557484">Call +971 55 255 7484</a>
+        <a class="btn btn-outline" href="https://wa.me/971552557484" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Technician working at height on building maintenance"></div>
+  </div>
+</section>
+
+<div class="clients">
+  <div class="wrap">
+    <div class="clients-label">Trusted by</div>
+    <div class="clients-row">
+      <div class="client-chip">Emaar</div>
+      <div class="client-chip">Al Habtoor Group</div>
+      <div class="client-chip">Dubai Development</div>
+      <div class="client-chip">Al Wasl Group</div>
+      <div class="client-chip">EMRILL</div>
+      <div class="client-chip">FARNEK</div>
+      <div class="client-chip">PROVIS</div>
+      <div class="client-chip">Eltizam FM</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we do</div>
+    <h2 class="section-title">Height work &amp; facade maintenance</h2>
+    <div class="services-grid">
+      <div class="service-card"><h3>External Facade Glass Cleaning</h3><p>Professional cleaning for high-rise glass facades using rope access.</p></div>
+      <div class="service-card"><h3>High Rise Painting</h3><p>Expert painting and protective coatings for tall structures.</p></div>
+      <div class="service-card"><h3>Window Waterproofing &amp; Silicone</h3><p>Waterproofing and sealing to prevent leaks and protect building integrity.</p></div>
+      <div class="service-card"><h3>Ultra High-Pressure Cleaning</h3><p>Deep cleaning for floors, walls and parking structures.</p></div>
+      <div class="service-card"><h3>Bird Spikes Supply &amp; Installation</h3><p>Humane bird deterrent solutions installed at height.</p></div>
+      <div class="service-card"><h3>Glass Cladding &amp; Light Repairs</h3><p>Specialized repair for cladding and lighting systems at height.</p></div>
+    </div>
+    <p style="margin-top:22px;font-family:'Inter',sans-serif;"><a href="services.html" style="color:var(--safety-dark);font-weight:700;text-decoration:none;">See all 9 services, including general trades →</a></p>
+  </div>
+</section>
+
+<div class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-item"><h3>IRATA Certified</h3><p>Certified rope access technicians with over a decade of experience.</p></div>
+    <div class="why-item"><h3>Safety First</h3><p>Strict safety protocols on every height project, minimizing risk.</p></div>
+    <div class="why-item"><h3>Tailored Solutions</h3><p>Customized, cost-effective solutions for residential, commercial and industrial sites.</p></div>
+  </div>
+</div>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-label">What clients say</div>
+    <h2 class="section-title">Real Google reviews</h2>
+    <div class="testimonials-grid">
+      <div class="t-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Excellent Customer Service, best building cleaning services provider in all over UAE. Major projects in Abu Dhabi, Dubai."</p>
+        <div class="name">Muzamilkhan Khan</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"Excellent rope access services in UAE. Specialist on height works. Excellent customer service."</p>
+        <div class="name">Zubair Khadim</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"We did a wonderful work experience with Dilawar Technical LLC. We appreciate their professional working style."</p>
+        <div class="name">Haal Ahwal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--char);">DTS</span>Dilawar Technical</div>
+        <p class="desc">IRATA-certified rope access and facade maintenance across Dubai and the UAE.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971552557484">+971 55 255 7484</a></li>
+          <li><a href="https://wa.me/971552557484" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Dilawar Technical Services LLC.</span>
+      <span>Al Murar, Deira, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
