@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movers &amp; Packers | CleanFinishers Dubai</title>
+<meta name="description" content="CleanFinishers movers and packers - home moving, office relocation, packing and storage across Dubai and the UAE. Build a moving request in one message.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#D9622E; --coral-dark:#B14D22; --cream:#FFFFFF; --teal:#1F6F6B; --teal-dark:#155350; --ink:#2E2E28; --ink-soft:#6B6B5E; --line:#E3E0D3; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Work Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;line-height:1.18;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;max-width:1148px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 24px -8px rgba(43,27,18,0.14);}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;text-decoration:none;color:var(--ink);}
+  .logo-mark{width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .nav-links{display:flex;gap:26px;font-size:0.9rem;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .nav-links a.active{color:var(--coral-dark);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;padding:12px 24px;border-radius:999px;font-weight:600;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--coral-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--coral);color:var(--coral-dark);}
+
+  .hero{padding:56px 0 20px;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--teal-dark);margin-bottom:10px;}
+  .hero h1{font-size:2.3rem;margin-bottom:14px;max-width:26ch;}
+  .hero p.lead{font-size:1.02rem;color:var(--ink-soft);max-width:58ch;}
+
+  section{padding:40px 0;}
+  .section-title{font-size:1.7rem;margin-bottom:14px;}
+
+  .builder{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;}
+  .builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .field-label{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:10px;}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .pill{border:2px solid var(--line);border-radius:999px;padding:9px 16px;font-size:0.84rem;font-weight:600;cursor:pointer;background:#F7F6F4;}
+  .pill.active{border-color:var(--coral);background:#FBE8DD;color:var(--coral-dark);}
+  select, input[type="date"], textarea{width:100%;border:2px solid var(--line);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:0.92rem;color:var(--ink);background:#F7F6F4;}
+  select:focus, input:focus, textarea:focus{outline:none;border-color:var(--coral);}
+  .route-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;}
+  .route-col{margin-top:26px;}
+  textarea{resize:vertical;min-height:70px;margin-top:0;}
+  .build-result{margin-top:26px;padding:22px 24px;background:var(--coral);color:#fff;border-radius:12px;display:none;}
+  .build-result.show{display:block;}
+  .build-result .headline{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;margin-bottom:10px;}
+  .build-result .sub{font-size:0.86rem;color:#F5D9C8;margin-bottom:16px;white-space:pre-line;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 22px;}
+  .service-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .service-card p{font-size:0.86rem;color:var(--ink-soft);}
+
+  footer{background:var(--coral-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#E8C9B8;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#E8C9B8;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#F5E4D8;}
+  .footer-bottom{border-top:1px solid #7A3A1C;padding-top:18px;font-size:0.78rem;color:#C9A38C;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .footer-top{grid-template-columns:1fr;}
+    .builder-grid{grid-template-columns:1fr;}
+    .route-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:1.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="logo-mark">CF</span>CleanFinishers</a>
+    <nav class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="movers.html" class="active">Movers &amp; Packers</a>
+      <a href="index.html#estimator">Paint Estimator</a>
+    </nav>
+    <a class="btn" href="tel:+971567587407">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="section-label">Movers &amp; Packers</div>
+    <h1>Moving in Dubai or across the UAE? Build your request in one message.</h1>
+    <p class="lead">Home moving, office relocation, packing, furniture dismantling and storage — pick your move details below and send it straight to our team on WhatsApp.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="builder">
+      <div class="builder-grid">
+        <div>
+          <div class="field-label">Moving size</div>
+          <div class="pill-row" id="sizeRow">
+            <div class="pill" data-size="Studio">Studio</div>
+            <div class="pill" data-size="Office">Office</div>
+            <div class="pill" data-size="1BR House">1BR House</div>
+            <div class="pill" data-size="2BR House">2BR House</div>
+            <div class="pill" data-size="3BR House">3BR House</div>
+            <div class="pill" data-size="2BR Villa">2BR Villa</div>
+            <div class="pill" data-size="3BR Villa">3BR Villa</div>
+            <div class="pill" data-size="4BR Villa">4BR Villa</div>
+            <div class="pill" data-size="5BR Villa">5BR Villa</div>
+            <div class="pill" data-size="Other">Other</div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">When do you need to move?</div>
+          <input type="date" id="moveDate">
+        </div>
+      </div>
+
+      <div class="route-grid route-col">
+        <div>
+          <div class="field-label">Moving from</div>
+          <select id="fromCity" style="margin-bottom:10px;">
+            <option value="">Select city</option>
+            <option>Abu Dhabi</option>
+            <option>Ajman</option>
+            <option>Al Ain</option>
+            <option>Dubai</option>
+            <option>Fujairah</option>
+            <option>Ras Al Khaimah</option>
+            <option>Sharjah</option>
+            <option>Umm Al Quwain</option>
+          </select>
+          <input type="text" id="fromAddress" placeholder="Address / area">
+        </div>
+        <div>
+          <div class="field-label">Moving to</div>
+          <select id="toCity" style="margin-bottom:10px;">
+            <option value="">Select city</option>
+            <option>Abu Dhabi</option>
+            <option>Ajman</option>
+            <option>Al Ain</option>
+            <option>Dubai</option>
+            <option>Fujairah</option>
+            <option>Ras Al Khaimah</option>
+            <option>Sharjah</option>
+            <option>Umm Al Quwain</option>
+          </select>
+          <input type="text" id="toAddress" placeholder="Address / area">
+        </div>
+      </div>
+
+      <div class="route-col">
+        <div class="field-label">Anything else? (optional)</div>
+        <textarea id="notes" placeholder="e.g. need packing boxes, have a piano, 2nd floor no elevator..."></textarea>
+      </div>
+
+      <div style="margin-top:24px;">
+        <a class="btn" id="buildBtn" href="#">Build my WhatsApp request</a>
+      </div>
+
+      <div class="build-result" id="buildResult">
+        <div class="headline">Your request is ready</div>
+        <div class="sub" id="buildSummary"></div>
+        <a class="btn" style="background:var(--teal);" id="sendBtn" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">What's included</div>
+    <h2 class="section-title">Moving &amp; packing services</h2>
+    <div class="services-grid">
+      <div class="service-card"><h3>Home Moving Services</h3><p>Full household moves, loaded and unloaded by trained movers.</p></div>
+      <div class="service-card"><h3>Office Relocation</h3><p>Office moves planned to minimize downtime for your business.</p></div>
+      <div class="service-card"><h3>Local &amp; Inter-Emirate Moves</h3><p>Moves within Dubai or between any of the seven emirates.</p></div>
+      <div class="service-card"><h3>Professional Packing Services</h3><p>Careful packing with proper materials for fragile and bulky items.</p></div>
+      <div class="service-card"><h3>Furniture Dismantling &amp; Assembly</h3><p>Dismantling, transport and reassembly handled by the same team.</p></div>
+      <div class="service-card"><h3>Storage Solutions</h3><p>Short or long-term storage if your move needs a gap in between.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--teal);color:var(--ink);">CF</span>CleanFinishers</div>
+        <p class="desc">Painting, moving, cleaning and home services across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971567587407">+971 56 758 7407</a></li>
+          <li><a href="https://wa.me/971567587407" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:info@cleanfinishers.com">info@cleanfinishers.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CleanFinishers.</span>
+      <span>Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var selectedSize = null;
+  document.querySelectorAll('#sizeRow .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#sizeRow .pill').forEach(function(i){ i.classList.remove('active'); });
+      p.classList.add('active');
+      selectedSize = p.getAttribute('data-size');
+    });
+  });
+
+  document.getElementById('buildBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    var date = document.getElementById('moveDate').value;
+    var fromCity = document.getElementById('fromCity').value;
+    var fromAddress = document.getElementById('fromAddress').value;
+    var toCity = document.getElementById('toCity').value;
+    var toAddress = document.getElementById('toAddress').value;
+    var notes = document.getElementById('notes').value;
+
+    var lines = [];
+    lines.push("Hi CleanFinishers, I'd like a moving quote:");
+    lines.push("Size: " + (selectedSize || "Not specified"));
+    lines.push("From: " + (fromAddress ? fromAddress + ", " : "") + (fromCity || "Not specified"));
+    lines.push("To: " + (toAddress ? toAddress + ", " : "") + (toCity || "Not specified"));
+    lines.push("Move date: " + (date || "Not specified"));
+    if(notes){ lines.push("Notes: " + notes); }
+
+    var summary = "Size: " + (selectedSize || "—") + "\nFrom: " + (fromAddress ? fromAddress + ", " : "") + (fromCity || "—") + "\nTo: " + (toAddress ? toAddress + ", " : "") + (toCity || "—") + "\nDate: " + (date || "—");
+    document.getElementById('buildSummary').textContent = summary;
+
+    var message = encodeURIComponent(lines.join("\n"));
+    document.getElementById('sendBtn').setAttribute('href', 'https://wa.me/971567587407?text=' + message);
+    document.getElementById('buildResult').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
