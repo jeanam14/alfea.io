@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAKHT ALBAIT Technical Services | Carpentry &amp; Home Maintenance Dubai</title>
+<meta name="description" content="TAKHT ALBAIT Technical Services - carpentry, painting, AC repair, tiling and general home maintenance across Dubai. Call or WhatsApp for a quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mustard:#C98A2B; --mustard-dark:#A06E1F; --ink:#201D1A; --ink-soft:#5F574C; --cream:#F6F1E7; --line:#E3D9C4; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Nunito Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Zilla Slab',serif;font-weight:700;line-height:1.18;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:1px solid #3A352C;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Zilla Slab',serif;font-weight:700;font-size:1.15rem;color:#fff;}
+  .logo-mark{width:34px;height:34px;border-radius:6px;background:var(--mustard);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
+  .nav-links{display:flex;gap:26px;font-size:0.88rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:#CFC6B5;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--mustard);color:var(--ink);padding:12px 24px;border-radius:6px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--mustard-dark);color:#fff;}
+  .btn-outline{background:transparent;border:1.5px solid var(--mustard);color:var(--mustard);}
+
+  .hero{padding:60px 0 54px;background:var(--ink);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.78rem;font-weight:600;color:#D9D0BE;margin-bottom:18px;}
+  .badge .stars{color:var(--mustard);font-weight:700;}
+  .hero h1{font-size:2.5rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.02rem;color:#CFC6B5;margin-bottom:28px;max-width:48ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:14px;overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:54px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.74rem;font-weight:700;color:var(--mustard-dark);margin-bottom:10px;}
+  .section-title{font-size:1.85rem;margin-bottom:14px;}
+
+  .checklist-tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:34px;}
+  .check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0;}
+  .check-item{border:2px solid var(--line);border-radius:10px;padding:16px 12px;text-align:center;cursor:pointer;background:var(--cream);font-size:0.85rem;font-weight:600;}
+  .check-item:hover{border-color:var(--mustard);}
+  .check-item.active{border-color:var(--mustard);background:#FBF0DC;color:var(--mustard-dark);}
+  .checklist-result{margin-top:22px;padding:20px 22px;background:var(--ink);color:#fff;border-radius:10px;display:none;}
+  .checklist-result.show{display:block;}
+  .checklist-result .msg{font-weight:600;font-size:0.9rem;margin-bottom:14px;line-height:1.5;}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .about-img{border-radius:14px;overflow:hidden;aspect-ratio:4/3;}
+  .about-img img{width:100%;height:100%;object-fit:cover;}
+  .about-text p{color:var(--ink-soft);font-size:0.96rem;margin-bottom:14px;}
+
+  .testimonials{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+  .testi-card{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .testi-card p.quote{font-size:0.9rem;color:var(--ink-soft);margin-bottom:14px;}
+  .testi-card .who{font-weight:700;font-size:0.88rem;}
+  .testi-card .role{font-size:0.78rem;color:var(--ink-soft);}
+
+  footer{background:var(--ink);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#B6AD9B;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#B6AD9B;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#E5DDC9;}
+  .footer-bottom{border-top:1px solid #3A352C;padding-top:18px;font-size:0.78rem;color:#8B8270;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .check-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">TA</span>TAKHT ALBAIT</div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a class="btn" href="https://wa.me/971563274694" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="stars">★★★★★ 4.9</span><span>35 Google Reviews</span></div>
+      <h1>Carpentry and home maintenance, one call away.</h1>
+      <p class="lead">TAKHT ALBAIT Technical Services handles carpentry, painting, AC repair, tiling and general maintenance for homes across Dubai. Tell us what you need and we'll send the right team.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971563274694">Call +971 56 327 4694</a>
+        <a class="btn btn-outline" href="#services">What do you need?</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Carpenter's hands joining two pieces of timber"></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">Quick start</div>
+    <h2 class="section-title">What do you need done?</h2>
+    <p style="color:var(--ink-soft);max-width:62ch;">Select everything that applies and we'll put together a WhatsApp message for your request.</p>
+    <div class="checklist-tool">
+      <div class="check-grid" id="checkGrid">
+        <div class="check-item" data-name="Carpentry">Carpentry</div>
+        <div class="check-item" data-name="Painting">Painting</div>
+        <div class="check-item" data-name="AC Repair">AC Repair</div>
+        <div class="check-item" data-name="Tiling">Floor &amp; Wall Tiling</div>
+        <div class="check-item" data-name="Wallpaper">Wallpaper Fixing</div>
+        <div class="check-item" data-name="False Ceiling">False Ceiling</div>
+        <div class="check-item" data-name="Sanitary &amp; Plumbing">Sanitary &amp; Plumbing</div>
+        <div class="check-item" data-name="Electrical">Electrical</div>
+      </div>
+      <div class="checklist-result" id="checkResult">
+        <div class="msg" id="checkMsg"></div>
+        <a class="btn" id="checkSend" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about-grid">
+    <div class="about-img"><img src="images/about.jpg" alt="Folding wood ruler and measurement notes on a workbench"></div>
+    <div class="about-text">
+      <div class="section-label">About us</div>
+      <h2 class="section-title">One team, every trade your home needs</h2>
+      <p>TAKHT ALBAIT Technical Services covers carpentry, painting, AC repair, tiling, wallpaper, false ceilings, sanitary and electrical work — one call instead of chasing different specialists for each job.</p>
+      <p>Based in Al Souq Al Kabeer, serving homes and offices across Dubai.</p>
+    </div>
+  </div>
+</section>
+
+<div class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="section-label">What clients say</div>
+    <h2 class="section-title">Real feedback from our customers</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">"Excellent carpentry service! Skilled craftsmanship, quick response, and custom furniture that fits perfectly. Highly recommend their reliable and professional work!"</p>
+        <div class="who">Ahmad</div>
+        <div class="role">Carpentry Services</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"The painting team transformed our home beautifully. Clean work, great attention to detail, and completed on time. Very happy with the results!"</p>
+        <div class="who">Aqsa</div>
+        <div class="role">Painting Services</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Top-notch sanitary installation and repair. Quick, efficient, and affordable. The team fixed our plumbing issues perfectly. Great customer service!"</p>
+        <div class="who">Ghulab</div>
+        <div class="role">Sanitary &amp; Plumbing</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark">TA</span>TAKHT ALBAIT</div>
+        <p class="desc">Carpentry, painting, AC repair, tiling and general home maintenance across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971563274694">+971 56 327 4694</a></li>
+          <li><a href="https://wa.me/971563274694" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:info@takhtalbait.com">info@takhtalbait.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 TAKHT ALBAIT Technical Services.</span>
+      <span>Al Souq Al Kabeer, Dubai, UAE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var selected = [];
+  document.querySelectorAll('.check-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var name = item.getAttribute('data-name');
+      if(item.classList.contains('active')){
+        item.classList.remove('active');
+        selected = selected.filter(function(n){ return n !== name; });
+      } else {
+        item.classList.add('active');
+        selected.push(name);
+      }
+      var resultEl = document.getElementById('checkResult');
+      if(selected.length === 0){
+        resultEl.classList.remove('show');
+        return;
+      }
+      var msg = "Hi TAKHT ALBAIT, I need: " + selected.join(', ') + ". Can you give me a quote?";
+      document.getElementById('checkMsg').textContent = "Ready to send: \"" + msg + "\"";
+      document.getElementById('checkSend').href = "https://wa.me/971563274694?text=" + encodeURIComponent(msg);
+      resultEl.classList.add('show');
+    });
+  });
+</script>
+
+</body>
+</html>

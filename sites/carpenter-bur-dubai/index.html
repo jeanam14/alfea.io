@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carpenter Bur Dubai | Bespoke Cabinetry &amp; Joinery</title>
+<meta name="description" content="Carpenter Bur Dubai - bespoke cabinetry, interior fit-outs and custom woodwork for villas, offices and retail spaces across Dubai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brown:#4A2E1F; --brown-dark:#341F15; --amber:#C9922F; --amber-dark:#A87821; --cream:#F7F2EA; --ink:#2A1E16; --ink-soft:#6B5D50; --line:#E5D9C8; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700;line-height:1.15;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;}
+  .logo-mark{width:34px;height:34px;border-radius:4px;background:var(--brown);color:var(--amber);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .nav-links{display:flex;gap:26px;font-size:0.9rem;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:#fff;padding:12px 24px;border-radius:2px;font-weight:600;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;letter-spacing:0.02em;}
+  .btn:hover{background:var(--brown-dark);}
+  .btn-outline{background:transparent;border:1px solid var(--brown);color:var(--brown);}
+
+  .hero{padding:64px 0 56px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:6px 14px;border-radius:2px;font-size:0.78rem;font-weight:600;color:var(--ink-soft);margin-bottom:18px;letter-spacing:0.03em;text-transform:uppercase;}
+  .hero h1{font-size:3rem;margin-bottom:18px;}
+  .hero p.lead{font-size:1.08rem;color:var(--ink-soft);margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:56px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.1em;font-size:0.74rem;font-weight:600;color:var(--amber-dark);margin-bottom:10px;}
+  .section-title{font-size:2.1rem;margin-bottom:14px;}
+
+  .project-tool{background:var(--surface);border:1px solid var(--line);padding:40px;}
+  .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0;}
+  .project-item{border:1px solid var(--line);padding:26px 18px;text-align:center;cursor:pointer;background:var(--cream);transition:all .15s ease;}
+  .project-item:hover{border-color:var(--amber);}
+  .project-item.active{border-color:var(--brown);background:#FBF4E6;}
+  .project-item .label{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.15rem;}
+  .project-result{margin-top:22px;padding:24px 26px;background:var(--brown);color:#fff;display:none;}
+  .project-result.show{display:block;}
+  .project-result .headline{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;margin-bottom:8px;}
+  .project-result .sub{font-size:0.9rem;color:#E5D4BC;margin-bottom:18px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);padding:28px;}
+  .service-card h3{font-size:1.25rem;margin-bottom:10px;}
+  .service-card p{font-size:0.9rem;color:var(--ink-soft);}
+
+  .stats-strip{background:var(--brown);color:#fff;}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:40px 0;text-align:center;}
+  .stats-row .num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2.4rem;color:var(--amber);}
+  .stats-row .label{font-size:0.8rem;color:#D8C4A3;margin-top:4px;}
+
+  footer{background:var(--brown-dark);color:#fff;padding:48px 0 28px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:32px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#C4B29A;font-size:0.9rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;color:#C4B29A;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.9rem;}
+  footer ul a{text-decoration:none;color:#E8DCC8;}
+  .footer-bottom{border-top:1px solid #553620;padding-top:20px;font-size:0.8rem;color:#9C8468;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .project-grid,.services-grid{grid-template-columns:1fr;}
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+    .nav-links{display:none;}
+    .hero h1{font-size:2.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">CB</span>Carpenter Bur Dubai</div>
+    <nav class="nav-links">
+      <a href="#project">Your Project</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="https://wa.me/971569055044" target="_blank" rel="noopener">WhatsApp Us</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">12 Google Reviews &middot; Bur Dubai</div>
+      <h1>Precision joinery for Dubai's finest spaces.</h1>
+      <p class="lead">Bespoke cabinetry, interior fit-outs and custom woodwork, built from detailed CAD shop drawings and finished with millimeter precision for villas, offices and retail venues.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971569055044">Call +971 56 905 5044</a>
+        <a class="btn btn-outline" href="#project">Scope your project</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Spiral wood and steel staircase"></div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="section-label">Start here</div>
+    <h2 class="section-title">What are you building?</h2>
+    <p style="color:var(--ink-soft);max-width:62ch;">Every project starts with a shop drawing. Tell us the type and we'll give you a realistic timeline before you even call.</p>
+    <div class="project-tool">
+      <div class="project-grid" id="projectGrid">
+        <div class="project-item" data-name="Bespoke Cabinetry" data-time="2-4 weeks from approved drawings"><span class="label">Bespoke Cabinetry</span></div>
+        <div class="project-item" data-name="Interior Fit-Out" data-time="4-8 weeks depending on scope"><span class="label">Interior Fit-Out</span></div>
+        <div class="project-item" data-name="Custom Woodwork" data-time="1-3 weeks for most pieces"><span class="label">Custom Woodwork</span></div>
+      </div>
+      <div class="project-result" id="projectResult">
+        <div class="headline" id="projectHeadline"></div>
+        <div class="sub" id="projectSub"></div>
+        <a class="btn" style="background:var(--amber);color:var(--brown-dark);" id="projectCta" href="https://wa.me/971569055044" target="_blank" rel="noopener">Discuss this on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we build</div>
+    <h2 class="section-title">Architectural joinery solutions</h2>
+    <div class="services-grid">
+      <div class="service-card"><h3>Bespoke Cabinetry</h3><p>Custom-designed, grain-matched cabinets for kitchens, living spaces and luxury storage.</p></div>
+      <div class="service-card"><h3>Interior Fit-Outs</h3><p>Turnkey solutions for retail, office and hospitality spaces, mall-compliant and on schedule.</p></div>
+      <div class="service-card"><h3>Custom Woodwork</h3><p>Wooden flooring, wall paneling and pergolas, crafted for enduring quality.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="wrap stats-row">
+    <div><div class="num">15+</div><div class="label">Years Experience</div></div>
+    <div><div class="num">500+</div><div class="label">Projects Completed</div></div>
+    <div><div class="num">100+</div><div class="label">Happy Clients</div></div>
+    <div><div class="num">30+</div><div class="label">Specialized Services</div></div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--amber);color:var(--brown-dark);">CB</span>Carpenter Bur Dubai</div>
+        <p class="desc">Bespoke cabinetry, interior fit-outs and custom architectural woodwork across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971569055044">+971 56 905 5044</a></li>
+          <li><a href="https://wa.me/971569055044" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Carpenter Bur Dubai.</span>
+      <span>Bur Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var items = document.querySelectorAll('.project-item');
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      items.forEach(function(i){ i.classList.remove('active'); });
+      item.classList.add('active');
+      var name = item.getAttribute('data-name');
+      var time = item.getAttribute('data-time');
+      document.getElementById('projectHeadline').textContent = name;
+      document.getElementById('projectSub').textContent = "Typical timeline: " + time + ". Send us your floor plan and we'll confirm.";
+      document.getElementById('projectResult').classList.add('show');
+    });
+  });
+</script>
+
+</body>
+</html>

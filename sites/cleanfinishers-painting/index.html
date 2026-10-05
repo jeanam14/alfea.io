@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CleanFinishers | Professional Painting Services Dubai</title>
+<meta name="description" content="CleanFinishers - professional house, villa, office and commercial painting services across Dubai. Call or WhatsApp for a free estimate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#7C8B6F; --sage-dark:#5A6650; --cream:#FAF7F0; --gold:#C8A24D; --gold-dark:#A7832F; --ink:#2E2E28; --ink-soft:#6B6B5E; --line:#E3E0D3; --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Work Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;line-height:1.18;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;}
+  .logo-mark{width:34px;height:34px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;}
+  .nav-links{display:flex;gap:26px;font-size:0.9rem;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--sage);color:#fff;padding:12px 24px;border-radius:999px;font-weight:600;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--sage-dark);}
+  .btn-outline{background:transparent;border:1.5px solid var(--sage);color:var(--sage-dark);}
+
+  .hero{padding:60px 0 54px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:18px;}
+  .badge .stars{color:var(--gold-dark);font-weight:700;}
+  .hero h1{font-size:2.6rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.05rem;color:var(--ink-soft);margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:54px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--gold-dark);margin-bottom:10px;}
+  .section-title{font-size:1.9rem;margin-bottom:14px;}
+
+  .estimator{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;}
+  .estimator-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px;}
+  .field-label{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:10px;}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .pill{border:2px solid var(--line);border-radius:999px;padding:9px 18px;font-size:0.86rem;font-weight:600;cursor:pointer;background:var(--cream);}
+  .pill.active{border-color:var(--sage);background:#EEF1E9;color:var(--sage-dark);}
+  .estimate-result{margin-top:26px;padding:22px 24px;background:var(--sage);color:#fff;border-radius:12px;display:none;}
+  .estimate-result.show{display:block;}
+  .estimate-result .headline{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;margin-bottom:6px;}
+  .estimate-result .sub{font-size:0.88rem;color:#E4E9DC;margin-bottom:16px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px;}
+  .service-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 22px;}
+  .service-card h3{font-size:1.05rem;margin-bottom:8px;}
+  .service-card p{font-size:0.86rem;color:var(--ink-soft);}
+
+  .about-strip{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:46px 0;text-align:center;}
+  .about-grid .num{font-family:'Fraunces',serif;font-weight:700;font-size:2rem;color:var(--sage-dark);}
+  .about-grid .label{font-size:0.82rem;color:var(--ink-soft);margin-top:4px;}
+
+  footer{background:var(--sage-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#D4DAC9;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#D4DAC9;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#EAEEE1;}
+  .footer-bottom{border-top:1px solid #6C7A5F;padding-top:18px;font-size:0.78rem;color:#B7C2A6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .estimator-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">CF</span>CleanFinishers</div>
+    <nav class="nav-links">
+      <a href="#estimator">Paint Estimator</a>
+      <a href="#services">Services</a>
+    </nav>
+    <a class="btn" href="tel:+971567587407">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="stars">★★★★★ 4.7</span><span>212 Google Reviews</span></div>
+      <h1>Professional painting, done clean and finished right.</h1>
+      <p class="lead">CleanFinishers paints homes, villas, apartments, offices and commercial properties across Dubai — interior, exterior, surface prep and custom finishes.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971567587407">Call +971 56 758 7407</a>
+        <a class="btn btn-outline" href="#estimator">Estimate my paint job</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Painter rolling grey paint onto an interior wall"></div>
+  </div>
+</section>
+
+<section id="estimator">
+  <div class="wrap">
+    <div class="section-label">Quick estimate</div>
+    <h2 class="section-title">How much paint do you need?</h2>
+    <p style="color:var(--ink-soft);max-width:60ch;">Pick a space and a size to get a rough paint quantity and timeline — then call for a firm, free quote.</p>
+    <div class="estimator">
+      <div class="estimator-grid">
+        <div>
+          <div class="field-label">Space</div>
+          <div class="pill-row" id="spaceRow">
+            <div class="pill" data-space="Bedroom">Bedroom</div>
+            <div class="pill" data-space="Living Room">Living Room</div>
+            <div class="pill" data-space="Full Villa">Full Villa</div>
+            <div class="pill" data-space="Office">Office</div>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Size</div>
+          <div class="pill-row" id="sizeRow">
+            <div class="pill" data-size="Small" data-liters="4" data-days="1">Small</div>
+            <div class="pill" data-size="Medium" data-liters="9" data-days="2">Medium</div>
+            <div class="pill" data-size="Large" data-liters="16" data-days="3">Large</div>
+          </div>
+        </div>
+      </div>
+      <div class="estimate-result" id="estimateResult">
+        <div class="headline" id="estimateHeadline"></div>
+        <div class="sub" id="estimateSub"></div>
+        <a class="btn" style="background:var(--gold);color:var(--ink);" href="tel:+971567587407">Call for a firm quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we do</div>
+    <h2 class="section-title">Painting services across Dubai</h2>
+    <div class="services-grid">
+      <div class="service-card"><h3>House Painting</h3><p>Interior and exterior painting for homes and apartments.</p></div>
+      <div class="service-card"><h3>Villa Painting</h3><p>Full villa interior and exterior repainting projects.</p></div>
+      <div class="service-card"><h3>Office &amp; Commercial</h3><p>Office and commercial property painting with minimal downtime.</p></div>
+      <div class="service-card"><h3>Surface Prep &amp; Finishes</h3><p>Surface preparation and custom finish options for every wall.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="about-strip">
+  <div class="wrap about-grid">
+    <div><div class="num">212</div><div class="label">Google Reviews</div></div>
+    <div><div class="num">4.7</div><div class="label">Average Rating</div></div>
+    <div><div class="num">Dubai-wide</div><div class="label">Areas Covered</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--gold);color:var(--ink);">CF</span>CleanFinishers</div>
+        <p class="desc">Professional house, villa, office and commercial painting across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971567587407">+971 56 758 7407</a></li>
+          <li><a href="https://wa.me/971567587407" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:info@cleanfinishers.com">info@cleanfinishers.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CleanFinishers.</span>
+      <span>Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var selectedSpace = null, selectedSize = null, selectedLiters = null, selectedDays = null;
+  function tryShowResult(){
+    if(!selectedSpace || !selectedSize) return;
+    document.getElementById('estimateHeadline').textContent = selectedSpace + " — " + selectedSize;
+    document.getElementById('estimateSub').textContent = "Roughly " + selectedLiters + " liters of paint and about " + selectedDays + " working day(s), depending on condition and finish.";
+    document.getElementById('estimateResult').classList.add('show');
+  }
+  document.querySelectorAll('#spaceRow .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#spaceRow .pill').forEach(function(i){ i.classList.remove('active'); });
+      p.classList.add('active');
+      selectedSpace = p.getAttribute('data-space');
+      tryShowResult();
+    });
+  });
+  document.querySelectorAll('#sizeRow .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#sizeRow .pill').forEach(function(i){ i.classList.remove('active'); });
+      p.classList.add('active');
+      selectedSize = p.getAttribute('data-size');
+      selectedLiters = p.getAttribute('data-liters');
+      selectedDays = p.getAttribute('data-days');
+      tryShowResult();
+    });
+  });
+</script>
+
+</body>
+</html>
