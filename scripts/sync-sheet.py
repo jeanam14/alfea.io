@@ -20,8 +20,12 @@ push script (scripts/prospecting/push_instantly_leads.py) skips any row
 flagged this way, so it never auto-pushes a mismatched email.
 
 Existing Website columns: name, country, niche, phone, email,
-email_flagged, instantly_lead_added, rating, reviews_count, verdict,
-old_website, new_site_url, status, maps_link, updated_at.
+email_flagged, instantly_lead_added, rating, reviews_count, verdict, flaw,
+old_website, new_site_url, status, maps_link, updated_at. `flaw` is the
+specific, second-person-voice problem found on the prospect's old site
+(set on the artifact doc's `flaw` field when the site is built/approved)
+- the standalone push script passes it through to Instantly as
+custom_variables.flaw for {{flaw}} email personalization.
 
 No Website columns: name, country, niche, phone, email,
 instantly_lead_added, rating, reviews_count, latest_review_at,
@@ -43,13 +47,13 @@ TABS = {
         "headers": [
             "Name", "Country", "Niche", "Phone", "Email", "Contact Method",
             "Email Flagged", "On Instantly", "Rating", "Reviews", "Verdict",
-            "Old Website", "New Site", "Status", "Maps Link", "Updated At",
+            "Flaw", "Old Website", "New Site", "Status", "Maps Link", "Updated At",
         ],
         "fields": [
             "name", "country", "niche", "phone", "email", "contact_method",
             "email_flagged", "on_instantly", "rating", "reviews_count",
-            "verdict", "old_website", "new_site_url", "status", "maps_link",
-            "updated_at",
+            "verdict", "flaw", "old_website", "new_site_url", "status",
+            "maps_link", "updated_at",
         ],
     },
     "no_website": {

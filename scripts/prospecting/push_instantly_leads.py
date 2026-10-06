@@ -106,17 +106,20 @@ def main():
         print("No new approved+emailed prospects to push.")
         return
 
-    leads = [
-        {
+    leads = []
+    for row in candidates:
+        lead = {
             "email": row["Email"].strip(),
             "first_name": "team",
             "company_name": row.get("Name", "").strip(),
             "phone": row.get("Phone", "").strip() or None,
             "website": row.get("New Site", "").strip() or None,
         }
-        for row in candidates
-    ]
-    leads = [{k: v for k, v in lead.items() if v} for lead in leads]
+        lead = {k: v for k, v in lead.items() if v}
+        flaw = (row.get("Flaw") or "").strip()
+        if flaw:
+            lead["custom_variables"] = {"flaw": flaw}
+        leads.append(lead)
 
     resp = requests.post(
         INSTANTLY_API_URL,
