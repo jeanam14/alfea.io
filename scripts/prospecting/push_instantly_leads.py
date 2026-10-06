@@ -109,6 +109,7 @@ def main():
     leads = [
         {
             "email": row["Email"].strip(),
+            "first_name": "team",
             "company_name": row.get("Name", "").strip(),
             "phone": row.get("Phone", "").strip() or None,
             "website": row.get("New Site", "").strip() or None,
