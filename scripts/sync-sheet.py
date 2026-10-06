@@ -8,15 +8,20 @@ Requires GOOGLE_SHEETS_CREDENTIALS in the environment (the service account
 JSON key, as stored in the repo secret).
 
 rows.json shape: {"existing": [...], "no_website": [...]}, each a list of
-objects. Missing keys become blank cells. "Contact Method" and "On
-Instantly" are computed, not read directly - pass raw `email`, `phone`
-and `instantly_lead_added` (bool) and the script derives both display
-columns, so Jean's team can tell at a glance how to reach each prospect
-and whether it's already in the automated outreach pipeline.
+objects. Missing keys become blank cells. "Contact Method", "Email
+Flagged" and "On Instantly" are computed, not read directly - pass raw
+`email`, `phone`, `email_flagged` (bool) and `instantly_lead_added`
+(bool) and the script derives the display columns, so Jean's team can
+tell at a glance how to reach each prospect and whether it's already in
+the automated outreach pipeline. `email_flagged` marks a contactEmail
+that's recorded but known to belong to a different business (see the
+caution-on-found-emails rule in CLAUDE.md) - the standalone Instantly
+push script (scripts/prospecting/push_instantly_leads.py) skips any row
+flagged this way, so it never auto-pushes a mismatched email.
 
 Existing Website columns: name, country, niche, phone, email,
-instantly_lead_added, rating, reviews_count, verdict, old_website,
-new_site_url, status, maps_link, updated_at.
+email_flagged, instantly_lead_added, rating, reviews_count, verdict,
+old_website, new_site_url, status, maps_link, updated_at.
 
 No Website columns: name, country, niche, phone, email,
 instantly_lead_added, rating, reviews_count, latest_review_at,
@@ -37,13 +42,13 @@ TABS = {
         "title": "Existing Website",
         "headers": [
             "Name", "Country", "Niche", "Phone", "Email", "Contact Method",
-            "On Instantly", "Rating", "Reviews", "Verdict", "Old Website",
-            "New Site", "Status", "Maps Link", "Updated At",
+            "Email Flagged", "On Instantly", "Rating", "Reviews", "Verdict",
+            "Old Website", "New Site", "Status", "Maps Link", "Updated At",
         ],
         "fields": [
             "name", "country", "niche", "phone", "email", "contact_method",
-            "on_instantly", "rating", "reviews_count", "verdict",
-            "old_website", "new_site_url", "status", "maps_link",
+            "email_flagged", "on_instantly", "rating", "reviews_count",
+            "verdict", "old_website", "new_site_url", "status", "maps_link",
             "updated_at",
         ],
     },
@@ -130,6 +135,8 @@ def sync_tab(service, spreadsheet_id, title, headers, fields, rows):
                 v = "Email" if item.get("email") else ("Phone" if item.get("phone") else "None found")
             elif k == "on_instantly":
                 v = "Yes" if item.get("instantly_lead_added") else "No"
+            elif k == "email_flagged":
+                v = "Yes" if item.get("email_flagged") else "No"
             else:
                 v = item.get(k)
                 if k == "status":

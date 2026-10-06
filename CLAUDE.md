@@ -8,10 +8,11 @@ Read this file instead of re-stating these rules in the hourly trigger prompt. T
 - Working branch: `claude/agency-website-scale-bat25b`
 - Tracker Sheet: spreadsheet_id `1KInZLwAqjM_TlJMtCAcgRYJ5Ma3aUIDCu3TIQPWg2F4`
 
-## Every firing (Steps A + B)
+## Every firing (Step A + Instantly reconciliation)
 - **Step A**: build sites for `jeanReview` outdated/mid prospects with no `siteStatus` yet. Cap 5 per firing — if more candidates exist, do up to 5 well and leave the rest for next firing.
-- **Step B**: add `siteStatus=="approved"` prospects to Instantly as leads (see Downstream-by-contact-method below).
+- **Instantly push is no longer Claude's job.** `scripts/prospecting/push_instantly_leads.py`, run on its own GitHub Actions schedule (`push-instantly-leads.yml`, every 15 min), reads the Tracker Sheet directly and pushes approved+emailed prospects to Instantly via its API — no LLM involved. Claude's only remaining role: read `prospecting/instantly-pushed.json` (the ledger that script commits) and set `instantlyLeadAdded: true` on any artifact doc whose email appears there and isn't already marked. Do this reconciliation once per firing, cheaply (it's a plain read + a couple of targeted writes, not a bulk/batch write).
 - Re-check `changes-requested` prospects: if a fix has already been pushed since last review, clear `siteComment` and update `siteStatus`/`siteScreenshotUrl` in the same turn as the fix — never leave Jean looking at a stale complaint.
+- **Email mismatch guard**: when recording a `contactEmail` that's known to belong to a different business than the one being built for (see caution-on-found-emails below), also set `emailMismatchFlag: true` on the doc. The Tracker Sheet sync passes this through as `email_flagged`, and the standalone push script skips any row flagged this way — it never auto-pushes a mismatched email. Flag it to Jean in the same turn instead.
 
 ## Visual/content standing bar (all apply to every new build and every touch of an existing site)
 - **Glass effects**: frosted/translucent panels, backdrop-blur, layered depth — nav as a floating frosted panel (`rgba(...)` + `backdrop-filter: blur(...)` + subtle border), hero with gradient/glow depth, service cards translucent not flat. Per-business palette stays distinct; glass is a texture layered on top of it, not a replacement.
@@ -38,9 +39,10 @@ Read this file instead of re-stating these rules in the hourly trigger prompt. T
 Any firing that changes a prospect doc (sourcing, review, build, status change) must also sync the Sheet: write a fresh rows JSON under `prospecting/sheet-sync/`, commit, then dispatch `sync-sheet.yml` with that `rows_file`. Build rows from **all** current prospect docs, not just this firing's changes — the sync script replaces each tab's data wholesale, so a partial set deletes everything else.
 
 Shape: `{"existing": [...], "no_website": [...]}`, split by `modelVerdict == "no-website"` vs not.
-- Existing-website rows: `name, country, niche, phone, email, instantly_lead_added, rating, reviews_count, verdict (jeanReview || modelVerdict), old_website, new_site_url, status, maps_link, updated_at`.
-- No-website rows: same but `latest_review_at` instead of `verdict`/`old_website`.
-- Pass raw `email`/`phone`/`instantly_lead_added` — the script derives "Contact Method" and "On Instantly" display columns itself.
+- Existing-website rows: `name, country, niche, phone, email, email_flagged, instantly_lead_added, rating, reviews_count, verdict (jeanReview || modelVerdict), old_website, new_site_url, status, maps_link, updated_at`.
+- No-website rows: same but `latest_review_at` instead of `verdict`/`old_website` (no `email_flagged`/`instantly_lead_added` — Track 2 is never auto-pushed, see below).
+- Pass raw `email`/`phone`/`email_flagged`/`instantly_lead_added` — the script derives "Contact Method", "Email Flagged" and "On Instantly" display columns itself.
+- This sync must run (and land in the Sheet) before relying on a given prospect's email for the standalone Instantly push — that script reads the Sheet, not the artifact directly.
 
 ## Once per day only (Step C — first firing after 07:00 Europe/Paris)
 Artifact is 3 levels deep: country tabs → Existing Website / No Website split → niche chips (ac-repair, plumbing, carpenter, electrician, car-repair), plus a cross-country "Sites to Review" status view. Every prospect doc needs a `country` field or it won't show under any tab. Existing-website bucket = `modelVerdict != "no-website"`; no-website bucket = `modelVerdict == "no-website"`. Badges only render when the unreviewed count is > 0 — never reintroduce a badge that can show "0".
@@ -58,6 +60,6 @@ Advance `pipeline_state/cursor` once both tracks hit target. Every pushed doc ne
 **Step D** (summary email, every firing): send via `send-notification.yml` only when Step A, B, or C actually did something. Stay silent on a quiet firing. On a Step C firing, break the two tracks out separately.
 
 ## Downstream by contact method
-Track 1 prospects with a `contactEmail` get pushed to Instantly in Step B once their site is approved. Track 2 prospects, and any Track 1 prospect with no usable email, are never auto-pushed — they live in the tracker Sheet for Jean's team to dispatch manually. Never invent an email or workaround contact method. A Track 2 prospect WITH a found email still isn't auto-pushed — flag it to Jean as an easy-sell candidate instead.
+Track 1 prospects with a `contactEmail` get pushed to Instantly automatically (by `push-instantly-leads.yml`, outside Claude Code) once their site is approved and synced to the Sheet. Track 2 prospects, and any Track 1 prospect with no usable email, are never auto-pushed — they live in the tracker Sheet for Jean's team to dispatch manually. Never invent an email or workaround contact method. A Track 2 prospect WITH a found email still isn't auto-pushed — flag it to Jean as an easy-sell candidate instead.
 
 **Caution on found emails**: if a prospect's own contact page lists an email that clearly belongs to a different business (domain/name mismatch), still record it as `contactEmail` (it's the one they publish) but flag the mismatch clearly before it reaches Step B/Instantly — don't auto-push a mismatched email.

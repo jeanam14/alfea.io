@@ -1,0 +1,55 @@
+name: Push approved leads to Instantly
+
+# Runs entirely outside Claude Code: reads the tracker Sheet for approved,
+# emailed, not-yet-pushed prospects and pushes them to Instantly directly
+# via its API. No LLM involved, so this never touches Claude Code's
+# permission system. See scripts/prospecting/push_instantly_leads.py.
+#
+# Requires GOOGLE_SHEETS_CREDENTIALS (already used by sync-sheet.yml) and
+# INSTANTLY_API_KEY (Instantly dashboard -> Settings -> Integrations -> API)
+# as repository secrets.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      spreadsheet_id:
+        description: 'Tracker Sheet ID (defaults to the Alfea tracker)'
+        required: false
+        default: '1KInZLwAqjM_TlJMtCAcgRYJ5Ma3aUIDCu3TIQPWg2F4'
+      campaign_id:
+        description: 'Instantly campaign ID (defaults to the Alfea campaign)'
+        required: false
+        default: '1ee5daca-007d-4684-8cc2-c86e26942eb1'
+
+permissions:
+  contents: write
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Push approved leads to Instantly
+        env:
+          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+          INSTANTLY_API_KEY: ${{ secrets.INSTANTLY_API_KEY }}
+        run: |
+          pip install --quiet google-auth google-api-python-client requests
+          python3 scripts/prospecting/push_instantly_leads.py \
+            "${{ github.event.inputs.spreadsheet_id || '1KInZLwAqjM_TlJMtCAcgRYJ5Ma3aUIDCu3TIQPWg2F4' }}" \
+            "${{ github.event.inputs.campaign_id || '1ee5daca-007d-4684-8cc2-c86e26942eb1' }}"
+
+      - name: Commit ledger if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prospecting/instantly-pushed.json
+          git diff --staged --quiet || git commit -m "Update Instantly push ledger"
+          git push
