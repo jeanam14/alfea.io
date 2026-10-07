@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Apify__call-actor"
+      "mcp__Apify__call-actor",
+      "mcp__Firecrawl__firecrawl_search",
+      "mcp__Firecrawl__firecrawl_scrape"
     ]
   }
 }
