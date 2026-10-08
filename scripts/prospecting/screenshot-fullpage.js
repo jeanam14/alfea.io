@@ -20,7 +20,25 @@ async function main() {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   console.log(`Screenshotting ${url} (full page)`);
   await page.goto(url, { waitUntil: "load", timeout: 20000 });
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(1500);
+  // Scroll through the whole page first so any scroll-triggered reveal
+  // animations (IntersectionObserver fade-ins, sticky-nav class toggles)
+  // have actually fired before the full-page capture - otherwise sections
+  // that never entered the viewport during a plain goto+screenshot stay
+  // at their initial (often invisible) state and the screenshot shows
+  // blank gaps that don't reflect what a real visitor sees.
+  await page.evaluate(async () => {
+    const step = Math.max(200, Math.floor(window.innerHeight * 0.8));
+    const scrollHeight = document.documentElement.scrollHeight;
+    for (let y = 0; y < scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 120));
+    }
+    window.scrollTo(0, document.documentElement.scrollHeight);
+    await new Promise((r) => setTimeout(r, 300));
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(500);
   await page.screenshot({ path: outPath, fullPage: true, type: "jpeg", quality: 82 });
   console.log(`Saved ${outPath}`);
   await browser.close();
