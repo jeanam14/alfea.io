@@ -22,7 +22,7 @@
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
   header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(43,48,56,0.6);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.1);border-radius:999px;box-shadow:0 10px 32px -12px rgba(0,0,0,0.5);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.28);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;text-decoration:none;color:#fff;}
   .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--ice);color:var(--graphite-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
   .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
@@ -42,11 +42,11 @@
   .hero-img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 48px -16px rgba(0,0,0,0.5);}
   .hero-img img{width:100%;height:100%;object-fit:cover;}
 
-  section{padding:54px 0;}
-  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--ice-dark);margin-bottom:10px;}
-  .section-title{font-size:1.9rem;margin-bottom:14px;}
+  section{padding:84px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--ice-dark);margin-bottom:12px;}
+  .section-title{font-size:1.9rem;margin-bottom:20px;}
 
-  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px;}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px;}
   .service-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.7);box-shadow:0 14px 32px -20px rgba(32,36,42,0.25);border-radius:14px;padding:26px 22px;cursor:pointer;transition:transform 0.15s ease;}
   .service-card:hover{transform:translateY(-3px);}
   .service-card .num{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ice-dark);font-size:1.3rem;margin-bottom:10px;}
@@ -55,7 +55,7 @@
   .service-card .more{display:inline-block;margin-top:10px;font-size:0.78rem;font-weight:700;color:var(--ice-dark);}
 
   .process{background:rgba(255,255,255,0.45);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px;}
   .process-card{background:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.75);border-radius:14px;padding:22px 20px;box-shadow:0 12px 28px -20px rgba(32,36,42,0.25);}
   .process-card .step{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ice-dark);font-size:0.85rem;margin-bottom:8px;}
   .process-card h3{font-size:1rem;margin-bottom:6px;}
@@ -70,6 +70,18 @@
   .why-item .dot{width:8px;height:8px;border-radius:50%;background:var(--ice);margin-top:8px;flex-shrink:0;}
   .why-item h3{font-size:1.05rem;margin-bottom:4px;color:#fff;}
   .why-item p{font-size:0.9rem;color:#C7D0D8;}
+
+  .area{background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .area-card{background:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.75);border-radius:16px;padding:28px 30px;box-shadow:0 14px 32px -22px rgba(32,36,42,0.25);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:34px;}
+  .area-card p{color:var(--ink-soft);font-size:0.94rem;max-width:56ch;}
+  .area-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .area-tags span{background:rgba(79,195,232,0.12);color:var(--ice-dark);border:1px solid rgba(79,195,232,0.35);padding:5px 13px;border-radius:999px;font-size:0.78rem;font-weight:700;}
+
+  .faq{background:var(--graphite);color:#fff;}
+  .faq-list{margin-top:34px;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:22px 24px;}
+  .faq-item h3{font-size:1rem;margin-bottom:8px;color:#fff;}
+  .faq-item p{font-size:0.9rem;color:#C7D0D8;}
 
   .modal-overlay{position:fixed;inset:0;background:rgba(28,32,39,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
   .modal-overlay.show{display:flex;}
@@ -93,6 +105,7 @@
     .services-grid{grid-template-columns:repeat(2,1fr);}
     .process-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
+    .area-card{grid-template-columns:1fr;}
     .nav-links{display:none;}
     .hero h1{font-size:2rem;}
   }
@@ -107,6 +120,7 @@
       <a href="#services">Services</a>
       <a href="#process">Process</a>
       <a href="#why">Why Us</a>
+      <a href="#area">Area</a>
     </nav>
     <a class="btn" href="tel:+971547185838">Call Now</a>
   </div>
@@ -175,6 +189,35 @@
         <div class="why-item"><div class="dot"></div><div><h3>Precise fit</h3><p>Every job measured on-site — glass and aluminium work fitted exactly to your space.</p></div></div>
         <div class="why-item"><div class="dot"></div><div><h3>One team, start to finish</h3><p>From partitions to full office fit-outs, handled by the same crew.</p></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="wrap">
+    <div class="section-label">Service area</div>
+    <h2 class="section-title">Working across Deira and Dubai</h2>
+    <div class="area-card">
+      <div>
+        <p>Based at Office 309, Al Murar Building, opposite Hyatt Regency Dubai — we take glass, aluminium and fit-out jobs across Deira and the wider Dubai area.</p>
+        <div class="area-tags">
+          <span>Deira</span><span>Al Murar</span><span>Naif</span><span>Dubai &mdash; wider area on request</span>
+        </div>
+      </div>
+      <a class="btn" href="tel:+971547185838">Call +971 54 718 5838</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-label" style="color:var(--ice);">FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3>Do you supply the glass and aluminium, or just install?</h3><p>Both — we supply, fabricate and install, so there's one point of contact for the whole job.</p></div>
+      <div class="faq-item"><h3>Can you match an existing partition or window system?</h3><p>Yes, we measure and match frame profile and glass type to what's already on site wherever possible.</p></div>
+      <div class="faq-item"><h3>How long does a typical office fit-out take?</h3><p>Depends on scope — a single partition can be a day or two, a full reception fit-out is discussed and scheduled after the site visit.</p></div>
+      <div class="faq-item"><h3>Do you work outside Deira?</h3><p>Yes, we cover the wider Dubai area — call ahead to confirm for your location.</p></div>
     </div>
   </div>
 </section>

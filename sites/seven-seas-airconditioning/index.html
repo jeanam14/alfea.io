@@ -23,7 +23,7 @@
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
   header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(30,40,56,0.62);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.1);border-radius:999px;box-shadow:0 10px 32px -12px rgba(0,0,0,0.5);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.28);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:#fff;}
   .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--mint);color:var(--navy-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;}
   .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
@@ -43,11 +43,11 @@
   .hero-img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 48px -16px rgba(0,0,0,0.5);}
   .hero-img img{width:100%;height:100%;object-fit:cover;}
 
-  section{padding:54px 0;}
-  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--mint-dark);margin-bottom:10px;}
-  .section-title{font-size:1.85rem;margin-bottom:14px;}
+  section{padding:84px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--mint-dark);margin-bottom:12px;}
+  .section-title{font-size:1.85rem;margin-bottom:20px;}
 
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;}
   .service-card{background:rgba(255,255,255,0.62);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.7);box-shadow:0 14px 32px -20px rgba(28,34,44,0.25);border-radius:14px;padding:26px 22px;cursor:pointer;transition:transform 0.15s ease;}
   .service-card:hover{transform:translateY(-3px);}
   .service-card .num{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--mint-dark);font-size:1.3rem;margin-bottom:10px;}
@@ -77,6 +77,12 @@
   .area-card p{color:var(--ink-soft);font-size:0.94rem;max-width:56ch;}
   .area-tags{display:flex;gap:8px;flex-wrap:wrap;}
   .area-tags span{background:rgba(52,211,153,0.14);color:var(--mint-dark);border:1px solid rgba(52,211,153,0.35);padding:5px 13px;border-radius:999px;font-size:0.78rem;font-weight:700;}
+
+  .faq{background:var(--navy);color:#fff;}
+  .faq-list{margin-top:34px;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:22px 24px;}
+  .faq-item h3{font-size:1rem;margin-bottom:8px;color:#fff;}
+  .faq-item p{font-size:0.9rem;color:#C7D4D0;}
 
   .modal-overlay{position:fixed;inset:0;background:rgba(20,27,38,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
   .modal-overlay.show{display:flex;}
@@ -208,6 +214,19 @@
         </div>
       </div>
       <a class="btn" style="background:var(--navy);color:#fff;" href="tel:+97142676712">Call +971 4 267 6712</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-label" style="color:var(--mint);">FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3>Do you work on all AC brands?</h3><p>Yes — split, window, central and ducted systems across the common brands installed in Dubai homes and offices.</p></div>
+      <div class="faq-item"><h3>How fast can someone come out for a breakdown?</h3><p>We take urgent call-outs and get a technician moving as soon as we can, especially for a system that's stopped cooling entirely.</p></div>
+      <div class="faq-item"><h3>Do you offer a maintenance contract, not just one-off repairs?</h3><p>Yes, our AMC plans cover scheduled servicing, filter and coil cleaning and gas checks to catch problems before they become breakdowns.</p></div>
+      <div class="faq-item"><h3>Is the quote given before or after the work starts?</h3><p>Before — our technician diagnoses the issue on site and explains the cost first, no surprise charges after the fact.</p></div>
     </div>
   </div>
 </section>
