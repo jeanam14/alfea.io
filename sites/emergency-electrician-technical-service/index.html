@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Electrician Technical Service | Al Sufouh, Dubai</title>
+<meta name="description" content="Emergency Electrician Technical Service - fast, reliable emergency electrical repairs in Al Sufouh and across Dubai.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F2430; --navy-dark:#15181F; --signal:#F4C430; --signal-dark:#D6A91B; --ink:#1C212A; --ink-soft:#5B6270; --line:#E1E3E8; --surface:#FFFFFF; --bg:#F5F6F9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:
+    radial-gradient(800px 460px at 92% -5%, rgba(244,196,48,0.14), transparent 60%),
+    radial-gradient(640px 400px at 0% 30%, rgba(31,36,48,0.07), transparent 55%),
+    var(--bg);
+    line-height:1.6;}
+  h1,h2,h3{font-family:'Sora',sans-serif;font-weight:700;line-height:1.2;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
+
+  header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.28);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;color:#fff;}
+  .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--signal);color:var(--navy-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;flex-shrink:0;}
+  .nav-links{display:flex;gap:26px;font-size:0.88rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,0.78);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--signal);color:var(--navy-dark);padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn:hover{background:var(--signal-dark);}
+  .btn-outline{background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.4);color:#fff;}
+
+  .hero{padding:74px 0 60px;background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(244,196,48,0.2), transparent 70%);}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#C9CBD4;margin-bottom:18px;}
+  .badge .stars{color:var(--signal);font-weight:700;}
+  .hero h1{font-size:2.3rem;margin-bottom:16px;}
+  .hero p.lead{font-size:1.02rem;color:#C9CBD4;margin-bottom:28px;max-width:46ch;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 48px -16px rgba(0,0,0,0.5);}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  section{padding:84px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--signal-dark);margin-bottom:12px;}
+  .section-title{font-size:1.85rem;margin-bottom:20px;}
+
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;}
+  .service-card{background:rgba(255,255,255,0.62);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.7);box-shadow:0 14px 32px -20px rgba(28,33,42,0.25);border-radius:14px;padding:26px 22px;cursor:pointer;transition:transform 0.15s ease;}
+  .service-card:hover{transform:translateY(-3px);}
+  .service-card .num{font-family:'Sora',sans-serif;font-weight:700;color:var(--navy);font-size:1.3rem;margin-bottom:10px;}
+  .service-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .service-card p{font-size:0.86rem;color:var(--ink-soft);}
+  .service-card .more{display:inline-block;margin-top:10px;font-size:0.78rem;font-weight:700;color:var(--navy);}
+
+  .process{background:rgba(255,255,255,0.45);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px;}
+  .process-card{background:rgba(255,255,255,0.72);border:1px solid rgba(255,255,255,0.75);border-radius:14px;padding:22px 20px;box-shadow:0 12px 28px -20px rgba(28,33,42,0.25);}
+  .process-card .step{font-family:'Sora',sans-serif;font-weight:700;color:var(--navy);font-size:0.85rem;margin-bottom:8px;}
+  .process-card h3{font-size:1rem;margin-bottom:6px;}
+  .process-card p{font-size:0.86rem;color:var(--ink-soft);}
+
+  .why{background:var(--navy);color:#fff;}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .why-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 18px 40px -20px rgba(0,0,0,0.4);}
+  .why-img img{width:100%;height:100%;object-fit:cover;}
+  .why-list{display:flex;flex-direction:column;gap:18px;}
+  .why-item{display:flex;gap:14px;align-items:flex-start;}
+  .why-item .dot{width:8px;height:8px;border-radius:50%;background:var(--signal);margin-top:8px;flex-shrink:0;}
+  .why-item h3{font-size:1.05rem;margin-bottom:4px;color:#fff;}
+  .why-item p{font-size:0.9rem;color:#C9CBD4;}
+
+  .area{background:var(--bg);}
+  .area-card{background:rgba(255,255,255,0.65);backdrop-filter:blur(14px) saturate(150%);border:1px solid rgba(255,255,255,0.75);border-radius:16px;padding:30px 32px;box-shadow:0 14px 32px -20px rgba(28,33,42,0.2);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+  .area-card p{color:var(--ink-soft);font-size:0.94rem;max-width:56ch;}
+  .area-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .area-tags span{background:rgba(244,196,48,0.14);color:var(--signal-dark);border:1px solid rgba(244,196,48,0.4);padding:5px 13px;border-radius:999px;font-size:0.78rem;font-weight:700;}
+
+  .faq{background:#fff;border-top:1px solid var(--line);}
+  .faq-list{margin-top:34px;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px 24px;}
+  .faq-item h3{font-size:1rem;margin-bottom:8px;color:var(--navy);}
+  .faq-item p{font-size:0.9rem;color:var(--ink-soft);}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(21,24,31,0.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-panel{max-width:440px;width:100%;background:rgba(255,255,255,0.93);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,0.85);border-radius:18px;padding:30px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.4);position:relative;}
+  .modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(28,33,42,0.08);color:var(--ink);font-size:1rem;cursor:pointer;}
+  .modal-panel h3{font-size:1.25rem;margin-bottom:12px;color:var(--navy);}
+  .modal-panel p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:10px;line-height:1.6;}
+
+  footer{background:var(--navy-dark);color:#fff;padding:46px 0 26px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
+  footer .logo{color:#fff;}
+  footer p.desc{color:#9499A6;font-size:0.88rem;margin-top:10px;max-width:38ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;color:#9499A6;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.88rem;}
+  footer ul a{text-decoration:none;color:#D6D8E0;}
+  .footer-bottom{border-top:1px solid #2A2F3A;padding-top:18px;font-size:0.78rem;color:#6B7180;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .footer-top{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .area-card{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero h1{font-size:1.9rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="logo-mark">EE</span>Emergency Electrician</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#why">Why Us</a>
+      <a href="#area">Area</a>
+    </nav>
+    <a class="btn" href="tel:+971527344362">Call Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="stars">★ 5.0</span><span>9 Google Reviews</span></div>
+      <h1>Electrical emergencies fixed fast, day or night.</h1>
+      <p class="lead">Emergency Electrician Technical Service handles urgent electrical repairs, installations and fault-finding for homes and businesses in Al Sufouh and across Dubai.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971527344362">Call +971 52 734 4362</a>
+        <a class="btn btn-outline" href="https://wa.me/971527344362" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Electrician installing a wall socket"></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we handle</div>
+    <h2 class="section-title">Emergency &amp; general electrical work</h2>
+    <div class="services-grid">
+      <div class="service-card" data-title="Emergency Call-Outs" data-detail="No power, sparking outlets, tripped breakers that won't reset — we take urgent electrical call-outs across Al Sufouh and Dubai, any time.">
+        <div class="num">01</div><h3>Emergency Call-Outs</h3><p>Urgent response for faults that can't wait.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Fault Finding &amp; Repair" data-detail="Flickering lights, dead sockets, breakers that keep tripping — properly diagnosed and fixed, not just patched over.">
+        <div class="num">02</div><h3>Fault Finding &amp; Repair</h3><p>Proper diagnosis before anything is fixed.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Wiring &amp; Rewiring" data-detail="New wiring runs or a full rewire for older circuits, done to a safe, current standard.">
+        <div class="num">03</div><h3>Wiring &amp; Rewiring</h3><p>New wiring or rewiring work, done safely.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Socket &amp; Switch Installation" data-detail="New sockets, switches and lighting points installed and connected properly, for homes and offices.">
+        <div class="num">04</div><h3>Socket &amp; Switch Installation</h3><p>New sockets and switches, fitted and connected.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Lighting Installation" data-detail="Indoor and outdoor lighting installed and wired correctly, from single fixtures to full rooms.">
+        <div class="num">05</div><h3>Lighting Installation</h3><p>Indoor and outdoor lighting, installed properly.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+      <div class="service-card" data-title="Panel &amp; Breaker Checks" data-detail="Distribution board and breaker inspection to catch overloaded or faulty circuits before they become a real hazard.">
+        <div class="num">06</div><h3>Panel &amp; Breaker Checks</h3><p>Distribution board inspection and repair.</p>
+        <span class="more">Tap for details &rarr;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="process" id="process">
+  <div class="wrap">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">From call to fixed</h2>
+    <div class="process-grid">
+      <div class="process-card"><div class="step">Step 1</div><h3>Call, any time</h3><p>Describe the problem — we take emergency call-outs around the clock.</p></div>
+      <div class="process-card"><div class="step">Step 2</div><h3>Diagnosis &amp; clear quote</h3><p>The fault is checked on site and explained before any repair work starts.</p></div>
+      <div class="process-card"><div class="step">Step 3</div><h3>Repair &amp; safety check</h3><p>Fixed, tested and checked safe before we leave.</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-img"><img src="images/about.jpg" alt="Close-up of electrical component soldering on a circuit board"></div>
+    <div>
+      <div class="section-label" style="color:var(--signal);">Why Emergency Electrician</div>
+      <h2 class="section-title">Fast response when it actually matters</h2>
+      <div class="why-list">
+        <div class="why-item"><div class="dot"></div><div><h3>Available around the clock</h3><p>Electrical faults don't keep business hours — neither do we for genuine emergencies.</p></div></div>
+        <div class="why-item"><div class="dot"></div><div><h3>Straight diagnosis</h3><p>You're told what's actually wrong and what it costs before any work starts.</p></div></div>
+        <div class="why-item"><div class="dot"></div><div><h3>Safety checked, every job</h3><p>Work is tested and checked safe before we consider the job done.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="wrap">
+    <div class="section-label">Service area</div>
+    <h2 class="section-title">Working across Al Sufouh and Dubai</h2>
+    <div class="area-card">
+      <div>
+        <p>Based near Al Sufouh, we take emergency and general electrical call-outs across Al Sufouh, Dubai Media City and the wider Dubai area.</p>
+        <div class="area-tags">
+          <span>Al Sufouh</span><span>Dubai Media City</span><span>Jumeirah</span><span>Dubai &mdash; wider area on request</span>
+        </div>
+      </div>
+      <a class="btn" style="background:var(--navy);color:#fff;" href="tel:+971527344362">Call +971 52 734 4362</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3>Do you really take call-outs at night?</h3><p>Yes — for genuine electrical emergencies like sparking outlets or total power loss, we're available around the clock.</p></div>
+      <div class="faq-item"><h3>Is the quote given before or after the work starts?</h3><p>Before — the fault is diagnosed on site and the cost explained first.</p></div>
+      <div class="faq-item"><h3>Do you handle non-urgent electrical work too?</h3><p>Yes, from new sockets and lighting to full rewiring, not just emergencies.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDetail"></p>
+    <a class="btn" href="tel:+971527344362">Call about this &rarr;</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo"><span class="logo-mark" style="background:var(--signal);color:var(--navy-dark);">EE</span>Emergency Electrician</div>
+        <p class="desc">Emergency and general electrical services in Al Sufouh and across Dubai.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971527344362">+971 52 734 4362</a></li>
+          <li><a href="https://wa.me/971527344362" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Emergency Electrician Technical Service.</span>
+      <span>Al Sufouh, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var overlay = document.getElementById('modalOverlay');
+  document.querySelectorAll('.service-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.getElementById('modalTitle').textContent = card.getAttribute('data-title');
+      document.getElementById('modalDetail').textContent = card.getAttribute('data-detail');
+      overlay.classList.add('show');
+    });
+  });
+  document.getElementById('modalClose').addEventListener('click', function(){ overlay.classList.remove('show'); });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('show'); });
+</script>
+
+</body>
+</html>
