@@ -23,7 +23,7 @@
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
   header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1148px;margin:0 auto;background:rgba(32,29,26,0.6);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid rgba(255,255,255,0.1);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.4);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);border:1px solid rgba(255,255,255,0.26);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.16);}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Zilla Slab',serif;font-weight:700;font-size:1.15rem;color:#fff;}
   .logo-mark{width:34px;height:34px;border-radius:6px;background:var(--mustard);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
   .nav-links{display:flex;gap:26px;font-size:0.88rem;font-weight:600;}
@@ -46,9 +46,9 @@
   .hero-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 48px -16px rgba(0,0,0,0.5);}
   .hero-img img{width:100%;height:100%;object-fit:cover;}
 
-  section{padding:54px 0;}
-  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.74rem;font-weight:700;color:var(--mustard-dark);margin-bottom:10px;}
-  .section-title{font-size:1.85rem;margin-bottom:14px;}
+  section{padding:84px 0;}
+  .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.74rem;font-weight:700;color:var(--mustard-dark);margin-bottom:12px;}
+  .section-title{font-size:1.85rem;margin-bottom:20px;}
 
   .checklist-tool{background:rgba(255,255,255,0.55);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,0.6);box-shadow:0 20px 48px -24px rgba(32,29,26,0.3);border-radius:18px;padding:34px;}
   .check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0;}
@@ -71,6 +71,19 @@
   .testi-card .who{font-weight:700;font-size:0.88rem;}
   .testi-card .role{font-size:0.78rem;color:var(--ink-soft);}
 
+  .process{background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;}
+  .process-card{background:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.75);border-radius:14px;padding:24px 22px;box-shadow:0 14px 32px -22px rgba(32,29,26,0.25);}
+  .process-card .step{font-family:'Zilla Slab',serif;font-weight:700;color:var(--mustard-dark);font-size:0.85rem;margin-bottom:8px;}
+  .process-card h3{font-size:1.02rem;margin-bottom:6px;}
+  .process-card p{font-size:0.88rem;color:var(--ink-soft);}
+
+  .area{background:var(--ink);color:#fff;}
+  .area-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:30px 32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:34px;}
+  .area-card p{color:#CFC6B5;font-size:0.94rem;max-width:56ch;}
+  .area-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .area-tags span{background:rgba(201,138,43,0.14);color:var(--mustard);border:1px solid rgba(201,138,43,0.35);padding:5px 13px;border-radius:999px;font-size:0.78rem;font-weight:700;}
+
   footer{background:var(--ink);color:#fff;padding:46px 0 26px;}
   .footer-top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-bottom:30px;}
   footer .logo{color:#fff;}
@@ -86,6 +99,8 @@
     .check-grid{grid-template-columns:repeat(2,1fr);}
     .about-grid{grid-template-columns:1fr;}
     .testi-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:1fr;}
+    .area-card{grid-template-columns:1fr;}
     .nav-links{display:none;}
     .hero h1{font-size:2rem;}
   }
@@ -152,6 +167,34 @@
       <h2 class="section-title">One team, every trade your home needs</h2>
       <p>TAKHT ALBAIT Technical Services covers carpentry, painting, AC repair, tiling, wallpaper, false ceilings, sanitary and electrical work — one call instead of chasing different specialists for each job.</p>
       <p>Based in Al Souq Al Kabeer, serving homes and offices across Dubai.</p>
+    </div>
+  </div>
+</section>
+
+<div class="process" id="process">
+  <div class="wrap">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">From request to finished job</h2>
+    <div class="process-grid">
+      <div class="process-card"><div class="step">Step 1</div><h3>Tell us what you need</h3><p>Use the quick-start list above or call directly — one or several trades at once, it's still one team.</p></div>
+      <div class="process-card"><div class="step">Step 2</div><h3>Quote &amp; scheduling</h3><p>A clear quote and a visit time that works around your home or office.</p></div>
+      <div class="process-card"><div class="step">Step 3</div><h3>Work done, site cleaned up</h3><p>Job completed to spec, with the work area left clean when the team leaves.</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="area" id="area">
+  <div class="wrap">
+    <div class="section-label" style="color:var(--mustard);">Service area</div>
+    <h2 class="section-title">Based in Al Souq Al Kabeer, serving all of Dubai</h2>
+    <div class="area-card">
+      <div>
+        <p>Carpentry, painting, AC repair, tiling and general maintenance for homes and offices across Dubai — not just our home neighborhood.</p>
+        <div class="area-tags">
+          <span>Al Souq Al Kabeer</span><span>Bur Dubai</span><span>Deira</span><span>Dubai &mdash; wider area on request</span>
+        </div>
+      </div>
+      <a class="btn" href="tel:+971563274694">Call +971 56 327 4694</a>
     </div>
   </div>
 </section>
