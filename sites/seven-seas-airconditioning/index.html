@@ -23,11 +23,14 @@
   .wrap{max-width:1180px;margin:0 auto;padding-inline:32px;}
 
   header{position:sticky;top:12px;z-index:20;padding-inline:16px;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.28);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:#fff;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1148px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.28);border-radius:999px;box-shadow:0 10px 32px -10px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease;}
+  .nav.scrolled{background:rgba(255,255,255,0.86);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-color:rgba(28,34,44,0.08);box-shadow:0 10px 28px -14px rgba(28,34,44,0.22),inset 0 1px 0 rgba(255,255,255,0.6);}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:#fff;transition:color .3s ease;}
+  .nav.scrolled .logo{color:var(--ink);}
   .logo-mark{width:36px;height:36px;border-radius:8px;background:var(--mint);color:var(--navy-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;}
   .nav-links{display:flex;gap:28px;font-size:0.9rem;font-weight:600;}
-  .nav-links a{text-decoration:none;color:rgba(255,255,255,0.75);}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,0.75);transition:color .3s ease;}
+  .nav.scrolled .nav-links a{color:var(--ink-soft);}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--navy-dark);padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;}
   .btn:hover{background:var(--mint-dark);}
   .btn-outline{background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.4);color:#fff;}
@@ -44,6 +47,10 @@
   .hero-img img{width:100%;height:100%;object-fit:cover;}
 
   section{padding:84px 0;}
+  #services{background:var(--surface);border-top:1px solid var(--line);}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none;} }
   .section-label{text-transform:uppercase;letter-spacing:0.09em;font-size:0.75rem;font-weight:700;color:var(--mint-dark);margin-bottom:12px;}
   .section-title{font-size:1.85rem;margin-bottom:20px;}
 
@@ -143,7 +150,7 @@
 </section>
 
 <section id="services">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="section-label">What we do</div>
     <h2 class="section-title">AC repair, installation &amp; maintenance</h2>
     <div class="services-grid">
@@ -176,7 +183,7 @@
 </section>
 
 <div class="process" id="process">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="section-label">How it works</div>
     <h2 class="section-title">From call to cooling</h2>
     <div class="process-grid">
@@ -188,7 +195,7 @@
 </div>
 
 <section class="why" id="why">
-  <div class="wrap why-grid">
+  <div class="wrap reveal why-grid">
     <div class="why-img"><img src="images/about.jpg" alt="Wide shot of industrial ductwork from below"></div>
     <div>
       <div class="section-label" style="color:var(--mint);">Why Seven Seas</div>
@@ -203,7 +210,7 @@
 </section>
 
 <section class="area" id="area">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="section-label">Service area</div>
     <h2 class="section-title">Working across Al Qusais and Dubai</h2>
     <div class="area-card">
@@ -219,7 +226,7 @@
 </section>
 
 <section class="faq">
-  <div class="wrap">
+  <div class="wrap reveal">
     <div class="section-label" style="color:var(--mint);">FAQ</div>
     <h2 class="section-title">Common questions</h2>
     <div class="faq-list">
@@ -263,6 +270,27 @@
 </footer>
 
 <script>
+  var navEl = document.querySelector('.nav');
+  var heroEl = document.querySelector('.hero');
+  function updateNav(){
+    if (!navEl) return;
+    var threshold = heroEl ? heroEl.offsetHeight - 90 : 140;
+    navEl.classList.toggle('scrolled', window.scrollY > threshold);
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
   var overlay = document.getElementById('modalOverlay');
   document.querySelectorAll('.service-card').forEach(function(card){
     card.addEventListener('click', function(){
