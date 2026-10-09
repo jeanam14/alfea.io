@@ -28,6 +28,10 @@ async function main() {
   // at their initial (often invisible) state and the screenshot shows
   // blank gaps that don't reflect what a real visitor sees.
   await page.evaluate(async () => {
+    // Sites set `scroll-behavior: smooth`; force instant jumps so the final
+    // scroll back to the top has finished before capture (otherwise a sticky
+    // nav gets captured mid-page, overlapping the hero).
+    document.documentElement.style.scrollBehavior = "auto";
     const step = Math.max(200, Math.floor(window.innerHeight * 0.8));
     const scrollHeight = document.documentElement.scrollHeight;
     for (let y = 0; y < scrollHeight; y += step) {
