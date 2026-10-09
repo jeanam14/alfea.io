@@ -79,7 +79,8 @@
       "niche": "appliance-repair",
       "description": "Flatlay of hand tools (hammer, pliers, screwdrivers, drill bit) on a wood table",
       "usedBy": [
-        "muhammad-hasnain-ac-repairing-center"
+        "muhammad-hasnain-ac-repairing-center",
+        "fix-dubai-home-maintenance"
       ]
     },
     {
@@ -201,7 +202,8 @@
       "description": "Pipe wrenches and plumbing tools laid out on a workbench",
       "usedBy": [
         "al-bareeq-technical-services",
-        "bab-al-maghara-electrical-sanitary"
+        "bab-al-maghara-electrical-sanitary",
+        "abbas-hussain-technical-services"
       ]
     },
     {
@@ -209,7 +211,8 @@
       "niche": "plumbing",
       "description": "Construction worker installing a ceiling frame (real person, not AI-generated)",
       "usedBy": [
-        "alsibah-technical"
+        "alsibah-technical",
+        "fixitxpress"
       ]
     },
     {
@@ -242,32 +245,45 @@
       "niche": "painting",
       "description": "Painter in high-vis shirt rolling grey paint onto an interior wall/archway, roller tray and supplies visible",
       "usedBy": [
-        "cleanfinishers-painting"
+        "cleanfinishers-painting",
+        "abbas-hussain-technical-services"
       ]
     },
     {
       "path": "plumbing/plumber-fixing-sink.jpg",
       "niche": "plumbing",
       "description": "Man in striped shirt fixing a kitchen sink tap, real person, warm home kitchen",
-      "usedBy": []
+      "usedBy": [
+        "truefixuae"
+      ]
     },
     {
       "path": "plumbing/copper-pipes.jpg",
       "niche": "plumbing",
       "description": "Hand holding brass tap/valve fittings (1/2 inch bib tap), green blurred background",
-      "usedBy": []
+      "usedBy": [
+        "truefixuae",
+        "fixitxpress",
+        "fix-uae"
+      ]
     },
     {
       "path": "plumbing/kitchen-sink-tap.jpg",
       "niche": "plumbing",
       "description": "Moody dark kitchen counter with stainless double sink, chrome gooseneck tap, potted plants",
-      "usedBy": []
+      "usedBy": [
+        "fix-dubai-home-maintenance"
+      ]
     },
     {
       "path": "plumbing/modern-bathroom-interior.jpg",
       "niche": "plumbing",
       "description": "Close-up of a modern chrome basin mixer tap on a white sink, grey tiled wall",
-      "usedBy": []
+      "usedBy": [
+        "truefixuae",
+        "fix-dubai-home-maintenance",
+        "fix-uae"
+      ]
     }
   ]
 }
