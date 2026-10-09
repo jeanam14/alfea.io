@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abbas Hussain Technical Services LLC | Plumbing, AC &amp; Home Maintenance in Dubai</title>
+<meta name="description" content="Abbas Hussain Technical Services LLC (Home Fixit UAE) - plumbing, AC repair, water pumps, water heaters and complete home maintenance for villas, apartments and commercial spaces across Dubai.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#1C1040; --royal:#2B1A5E; --amethyst:#4A2F9A; --amethyst-soft:#7C66C9;
+    --saffron:#F5B915; --saffron-dark:#D99E00;
+    --ink:#1D1830; --ink-soft:#5B5670; --line:#E1DDEE; --surface:#FFFFFF; --bg:#F4F2FA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Figtree',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.15;letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  header{position:sticky;top:12px;z-index:30;padding:0 16px;height:0;}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1148px;margin:0 auto;padding:12px 14px 12px 20px;background:rgba(28,16,64,0.38);backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);border:1px solid rgba(255,255,255,0.18);border-radius:20px;box-shadow:0 14px 36px -14px rgba(10,4,30,0.6),inset 0 1px 0 rgba(255,255,255,0.12);transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease;}
+  .nav.scrolled{background:rgba(255,255,255,0.9);border-color:rgba(43,26,94,0.1);box-shadow:0 12px 30px -16px rgba(43,26,94,0.3),inset 0 1px 0 rgba(255,255,255,0.7);}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;transition:color .3s ease;}
+  .logo-mark{width:40px;height:40px;flex-shrink:0;}
+  .logo-text{display:flex;flex-direction:column;line-height:1.1;}
+  .logo-text strong{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.02rem;}
+  .logo-text small{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;opacity:0.72;}
+  .nav.scrolled .logo{color:var(--royal);}
+  .nav-links{display:flex;gap:24px;font-size:0.9rem;font-weight:600;}
+  .nav-links a{text-decoration:none;color:rgba(255,255,255,0.82);transition:color .2s ease;}
+  .nav-links a:hover{color:var(--saffron);}
+  .nav.scrolled .nav-links a{color:var(--ink-soft);}
+  .nav.scrolled .nav-links a:hover{color:var(--amethyst);}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .menu-btn{display:none;width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;font-size:1.2rem;cursor:pointer;}
+  .nav.scrolled .menu-btn{color:var(--royal);border-color:var(--line);background:#fff;}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--saffron);color:var(--deep);padding:12px 22px;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;border:none;cursor:pointer;transition:background .2s ease,transform .15s ease;}
+  .btn:hover{background:var(--saffron-dark);transform:translateY(-1px);}
+  .btn-ghost{background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.18);}
+  .btn-purple{background:var(--amethyst);color:#fff;}
+  .btn-purple:hover{background:var(--royal);}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;color:#fff;padding:150px 0 96px;background:
+    radial-gradient(700px 420px at 85% 10%, rgba(124,102,201,0.55), transparent 65%),
+    radial-gradient(520px 360px at 8% 95%, rgba(245,185,21,0.22), transparent 60%),
+    linear-gradient(160deg, var(--deep) 0%, var(--royal) 55%, #3A2380 100%);}
+  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 70% 30%, #000 20%, transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%, #000 20%, transparent 75%);}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr 0.9fr;gap:52px;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:7px 15px;border-radius:999px;font-size:0.8rem;font-weight:600;color:#E3DCF7;margin-bottom:22px;}
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 4px rgba(245,185,21,0.25);}
+  .hero h1{font-size:3.1rem;font-weight:800;margin-bottom:20px;}
+  .hero h1 em{font-style:normal;color:var(--saffron);}
+  .hero .lead{font-size:1.08rem;color:#D5CDEE;max-width:50ch;margin-bottom:30px;}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;}
+  .hero-facts{display:flex;gap:10px;flex-wrap:wrap;}
+  .hero-facts span{font-size:0.8rem;font-weight:600;color:#E3DCF7;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);padding:6px 12px;border-radius:8px;}
+  .hero-visual{position:relative;}
+  .hero-photo{border-radius:24px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(255,255,255,0.18);box-shadow:0 30px 60px -20px rgba(5,2,20,0.7);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .hero-card{position:absolute;left:-34px;bottom:34px;max-width:250px;background:rgba(28,16,64,0.58);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,0.28);border-radius:18px;padding:18px 20px;box-shadow:0 20px 40px -18px rgba(0,0,0,0.5);}
+  .hero-card .k{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.5rem;color:var(--saffron);}
+  .hero-card p{font-size:0.86rem;color:#EEE9FB;}
+
+  /* SECTIONS */
+  section{padding:92px 0;position:relative;}
+  .label{display:inline-block;text-transform:uppercase;letter-spacing:0.12em;font-size:0.74rem;font-weight:700;color:var(--amethyst);margin-bottom:12px;}
+  .title{font-size:2.2rem;font-weight:800;color:var(--royal);margin-bottom:14px;}
+  .intro{color:var(--ink-soft);max-width:62ch;font-size:1.02rem;}
+
+  #services{background:linear-gradient(180deg,#FFFFFF 0%, var(--bg) 100%);border-top:1px solid var(--line);}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+  .service-card{position:relative;background:rgba(255,255,255,0.7);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.9);box-shadow:0 18px 38px -24px rgba(43,26,94,0.4),inset 0 1px 0 #fff;border-radius:18px;padding:26px 24px 22px;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;text-align:left;font:inherit;color:inherit;}
+  .service-card:hover,.service-card:focus-visible{transform:translateY(-4px);box-shadow:0 24px 44px -24px rgba(43,26,94,0.55);outline:none;}
+  .icon{width:46px;height:46px;border-radius:13px;background:linear-gradient(140deg,var(--amethyst),var(--royal));display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:0 8px 18px -8px rgba(74,47,154,0.7);}
+  .icon svg{width:24px;height:24px;stroke:var(--saffron);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .service-card h3{font-size:1.15rem;color:var(--royal);margin-bottom:8px;}
+  .service-card p{font-size:0.9rem;color:var(--ink-soft);}
+  .service-card .more{display:inline-block;margin-top:14px;font-size:0.8rem;font-weight:700;color:var(--amethyst);}
+  .services-foot{margin-top:34px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:rgba(74,47,154,0.06);border:1px solid rgba(74,47,154,0.15);border-radius:16px;padding:20px 24px;}
+  .services-foot p{color:var(--ink-soft);font-size:0.95rem;}
+
+  .process{background:var(--surface);border-top:1px solid var(--line);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;counter-reset:s;}
+  .step{border-radius:18px;padding:24px 22px;background:var(--bg);border:1px solid var(--line);}
+  .step .n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2rem;color:var(--amethyst-soft);line-height:1;margin-bottom:12px;}
+  .step h3{font-size:1.05rem;color:var(--royal);margin-bottom:6px;}
+  .step p{font-size:0.88rem;color:var(--ink-soft);}
+
+  .why{background:linear-gradient(165deg,var(--deep),var(--royal));color:#fff;border-top:1px solid rgba(255,255,255,0.08);overflow:hidden;}
+  .why::after{content:"";position:absolute;right:-120px;top:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle, rgba(245,185,21,0.18), transparent 70%);}
+  .why-grid{position:relative;display:grid;grid-template-columns:0.9fr 1.1fr;gap:52px;align-items:center;}
+  .why-photo{border-radius:22px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,0.16);box-shadow:0 26px 50px -24px rgba(0,0,0,0.6);}
+  .why-photo img{width:100%;height:100%;object-fit:cover;}
+  .why .label{color:var(--saffron);}
+  .why .title{color:#fff;}
+  .why-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px;}
+  .why-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:16px;padding:18px 18px;}
+  .why-item h3{font-size:1rem;margin-bottom:6px;color:#fff;}
+  .why-item p{font-size:0.86rem;color:#D5CDEE;}
+
+  .area{background:var(--bg);border-top:1px solid var(--line);}
+  .area-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;margin-top:36px;align-items:stretch;}
+  .glass{background:rgba(255,255,255,0.72);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.9);border-radius:20px;padding:30px;box-shadow:0 18px 38px -26px rgba(43,26,94,0.4);}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;}
+  .chips span{background:rgba(74,47,154,0.08);color:var(--amethyst);border:1px solid rgba(74,47,154,0.22);padding:6px 14px;border-radius:999px;font-size:0.82rem;font-weight:700;}
+  .chips span.base{background:var(--saffron);color:var(--deep);border-color:var(--saffron);}
+  .area p{color:var(--ink-soft);font-size:0.96rem;}
+  .base-card h3{font-size:1.2rem;color:var(--royal);margin-bottom:10px;}
+  .base-card .addr{font-weight:600;color:var(--ink);margin-bottom:16px;}
+  .base-card .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+
+  .faq{background:var(--surface);border-top:1px solid var(--line);}
+  .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px;}
+  .faq-item{border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:var(--bg);}
+  .faq-item h3{font-size:1rem;color:var(--royal);margin-bottom:6px;}
+  .faq-item p{font-size:0.9rem;color:var(--ink-soft);}
+
+  .cta{background:radial-gradient(600px 300px at 20% 0%, rgba(124,102,201,0.45), transparent 70%), linear-gradient(135deg,var(--amethyst),var(--royal));color:#fff;border-top:1px solid rgba(255,255,255,0.08);}
+  .cta-inner{display:grid;grid-template-columns:1.3fr auto;gap:30px;align-items:center;}
+  .cta h2{font-size:2.1rem;font-weight:800;margin-bottom:10px;}
+  .cta p{color:#E3DCF7;max-width:54ch;}
+  .cta-btns{display:flex;gap:12px;flex-wrap:wrap;}
+
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;z-index:60;background:rgba(18,10,40,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-panel{position:relative;max-width:480px;width:100%;background:rgba(255,255,255,0.92);backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);border:1px solid rgba(255,255,255,0.95);border-radius:22px;padding:32px 30px 28px;box-shadow:0 40px 80px -24px rgba(10,4,30,0.55);}
+  .modal-panel::before{content:"";position:absolute;left:30px;right:30px;top:0;height:4px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,var(--amethyst),var(--saffron));}
+  .modal-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:none;background:rgba(43,26,94,0.08);color:var(--royal);font-size:1.2rem;cursor:pointer;}
+  .modal-panel h3{font-size:1.4rem;color:var(--royal);margin-bottom:12px;padding-right:30px;}
+  .modal-panel p{font-size:0.94rem;color:var(--ink-soft);margin-bottom:12px;}
+  .modal-panel ul{margin:0 0 18px 18px;color:var(--ink-soft);font-size:0.9rem;}
+  .modal-panel li{margin-bottom:4px;}
+
+  /* FOOTER */
+  footer{background:var(--deep);color:#fff;padding:60px 0 28px;border-top:3px solid var(--saffron);}
+  .footer-inner{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;margin-bottom:36px;}
+  footer .logo{color:#fff;}
+  footer .desc{color:#A79FC4;font-size:0.9rem;margin-top:14px;max-width:34ch;}
+  footer h4{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--saffron);margin-bottom:14px;font-family:'Figtree',sans-serif;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.9rem;}
+  footer ul a{text-decoration:none;color:#DCD6F0;}
+  footer ul a:hover{color:var(--saffron);}
+  footer ul li{color:#DCD6F0;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.8rem;color:#857DA6;}
+
+  .float-wa{position:fixed;right:18px;bottom:18px;z-index:25;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px -8px rgba(0,0,0,0.4);}
+  .float-wa svg{width:28px;height:28px;fill:#fff;}
+
+  @media (max-width:960px){
+    .hero-grid,.why-grid,.area-grid,.cta-inner{grid-template-columns:1fr;}
+    .hero-card{left:16px;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .hero-photo{aspect-ratio:16/11;}
+  }
+  @media (max-width:760px){
+    .wrap,.footer-inner{padding:0 20px;}
+    header{padding:0 10px;}
+    .nav-links{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;gap:4px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:0 20px 40px -20px rgba(28,16,64,0.45);}
+    .nav-links.open{display:flex;}
+    .nav-links a,.nav.scrolled .nav-links a{color:var(--royal);padding:10px 12px;border-radius:10px;}
+    .nav{position:relative;}
+    .menu-btn{display:inline-flex;align-items:center;justify-content:center;}
+    .nav-call{display:none;}
+    .hero{padding:126px 0 72px;}
+    .hero h1{font-size:2.25rem;}
+    .title{font-size:1.75rem;}
+    .services-grid,.steps,.why-list,.faq-list{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    section{padding:70px 0;}
+    .logo-text small{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav" id="nav">
+    <a class="logo" href="index.html" aria-label="Abbas Hussain Technical Services home">
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#4A2F9A"/><path d="M8 21 L20 10 L32 21" fill="none" stroke="#F5B915" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="20" y="32" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="12" fill="#fff">AH</text></svg>
+      <span class="logo-text"><strong>Abbas Hussain</strong><small>Technical Services</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="services.html">All Services</a>
+      <a href="#process">How We Work</a>
+      <a href="#area">Areas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn nav-call" href="tel:+971557072146">Call Now</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>Calls answered 24/7 &middot; Al Satwa, Dubai</div>
+      <h1>Plumbing, AC and home repairs, <em>fixed in one call.</em></h1>
+      <p class="lead">Abbas Hussain Technical Services LLC &mdash; known online as Home Fixit UAE &mdash; repairs and maintains homes, villas and commercial spaces across Dubai: plumbing, drains, water pumps, water heaters, AC, door locks, waterproofing and painting.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+971557072146">Call +971 55 707 2146</a>
+        <a class="btn btn-ghost" href="https://wa.me/971557072146?text=Hi%2C%20I%27d%20like%20to%20book%20a%20repair." target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+      <div class="hero-facts">
+        <span>Same-day service</span><span>Emergency repairs</span><span>Homes &amp; commercial</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo"><img src="images/plumbing-tools-wrenches.jpg" alt="Pipe wrenches and plumbing tools laid out on a workbench"></div>
+      <div class="hero-card"><div class="k">10 services</div><p>From a dripping tap to villa waterproofing &mdash; one team, one number.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <span class="label">What we fix</span>
+    <h2 class="title">Repair &amp; maintenance services</h2>
+    <p class="intro">Plumbing is at the core of what we do, alongside the other jobs Dubai homes need most. Tap any card for the details.</p>
+    <div class="services-grid">
+      <div class="service-card" data-modal="plumbing" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 4v6a4 4 0 0 0 4 4h8"/><path d="M16 10v8"/><path d="M12 18h8"/><path d="M18 22v-4"/></svg></div>
+        <h3>Plumbing</h3>
+        <p>Leaking pipes, dripping taps, running toilets and kitchen or bathroom plumbing faults for homes and commercial premises. Our plumbers trace the cause and fix it with care, not just patch the symptom.</p>
+        <span class="more">More details &rarr;</span>
+      </div>
+      <div class="service-card" data-modal="drain" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>Drain Cleaning</h3>
+        <p>Slow sinks, blocked floor drains and backed-up showers cleared properly. We find what is causing the blockage so the drain keeps flowing after we leave.</p>
+        <span class="more">More details &rarr;</span>
+      </div>
+      <div class="service-card" data-modal="pump" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="13" r="5"/><path d="M14 13h6M17 10v6M9 8V3"/></svg></div>
+        <h3>Water Pump Repair</h3>
+        <p>Low pressure or a pump that has stopped altogether. We diagnose and repair water pumps so water flows smoothly through your home or commercial space again.</p>
+        <span class="more">More details &rarr;</span>
+      </div>
+      <div class="service-card" data-modal="heater" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M12 8c-1.5 2-1.5 3.5 0 5 1.5-1.5 1.5-3 0-5z"/></svg></div>
+        <h3>Water Heater Repair</h3>
+        <p>No hot water, lukewarm water or a tripping heater. Fast repairs, new installations, wiring fixes and full servicing for all major water heater brands sold in the UAE.</p>
+        <span class="more">More details &rarr;</span>
+      </div>
+      <div class="service-card" data-modal="ac" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M4.9 6l14.2 12M19.1 6 4.9 18"/></svg></div>
+        <h3>AC Repair &amp; Maintenance</h3>
+        <p>Repairs, coil cleaning, gas refilling, AC installation and annual maintenance contracts. Keep cooling reliable through the Dubai summer instead of waiting for a breakdown.</p>
+        <span class="more">More details &rarr;</span>
+      </div>
+      <div class="service-card" data-modal="maintenance" role="button" tabindex="0">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Home Maintenance</h3>
+        <p>A one-stop team for the repair list that keeps growing. Residential and commercial spaces, jobs of any size, booked with a single call.</p>
+        <span class="more">More details &rarr;</span>
+      </div>
+    </div>
+    <div class="services-foot">
+      <p>Also: bathtub repair, door lock repair, villa waterproofing and painting work.</p>
+      <a class="btn btn-purple" href="services.html">See all 10 services &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="label">How we work</span>
+    <h2 class="title">Effective and efficient, start to finish</h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Connect with us</h3><p>Call or WhatsApp and tell us what needs fixing. Calls are answered 24/7.</p></div>
+      <div class="step"><div class="n">02</div><h3>On-site assessment</h3><p>A technician visits your home or commercial space and assesses the problem first-hand.</p></div>
+      <div class="step"><div class="n">03</div><h3>Expert repair</h3><p>After the assessment, the repair or maintenance is carried out and the smaller issues are fixed too.</p></div>
+      <div class="step"><div class="n">04</div><h3>Post-maintenance advice</h3><p>We explain how to avoid the same fault again, so you are not facing high maintenance costs later.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-photo"><img src="images/painter-wall-roller.jpg" alt="Painter rolling grey paint onto an interior wall"></div>
+    <div>
+      <span class="label">Why choose us</span>
+      <h2 class="title">One call, one team, work that is guaranteed</h2>
+      <div class="why-list">
+        <div class="why-item"><h3>Transparent pricing</h3><p>Affordable maintenance charges with no hidden costs on the final bill.</p></div>
+        <div class="why-item"><h3>Workmanship guaranteed</h3><p>We stand behind every repair and finish it to a high standard.</p></div>
+        <div class="why-item"><h3>One-call solution</h3><p>Plumbing, AC, locks, painting &mdash; book everything through one number.</p></div>
+        <div class="why-item"><h3>Same-day &amp; emergency</h3><p>Same-day visits and emergency call-outs when something cannot wait.</p></div>
+        <div class="why-item"><h3>Safe, clean work</h3><p>Technicians follow strict safety practices and leave the space tidy.</p></div>
+        <div class="why-item"><h3>Homes and businesses</h3><p>Apartments, villas and commercial premises across Dubai.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="wrap">
+    <span class="label">Where we work</span>
+    <h2 class="title">Based in Al Satwa, working across Dubai</h2>
+    <div class="area-grid">
+      <div class="glass">
+        <p>Our base is on 19th Street in Al Satwa, central to most of the city. We regularly look after villas and apartments in these communities, and take jobs in other parts of Dubai &mdash; just call to confirm your area.</p>
+        <div class="chips">
+          <span class="base">Al Satwa</span><span>Palm Jumeirah</span><span>Dubai Hills Estate</span><span>Arabian Ranches</span><span>Mudon</span><span>Damac Hills 1</span><span>Dubai Villanova</span><span>Other Dubai areas on request</span>
+        </div>
+      </div>
+      <div class="glass base-card">
+        <h3>Abbas Hussain Technical Services LLC</h3>
+        <p class="addr">19th St, Al Satwa, Dubai, United Arab Emirates</p>
+        <p>Phone: <a href="tel:+971557072146">+971 55 707 2146</a><br>Email: <a href="mailto:ahts2016@gmail.com">ahts2016@gmail.com</a></p>
+        <div class="row">
+          <a class="btn btn-purple" href="https://www.google.com/maps/search/?api=1&amp;query=Abbas%20Hussain%20Technical%20Services%20LLC&amp;query_place_id=ChIJb883D2VDXz4R0fTT4q1lGvc" target="_blank" rel="noopener">Get directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <span class="label">Questions</span>
+    <h2 class="title">Frequently asked</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3>Do you provide same-day service?</h3><p>Yes. Call or WhatsApp early in the day and we will arrange a same-day visit wherever possible.</p></div>
+      <div class="faq-item"><h3>Do you offer emergency repairs?</h3><p>Yes &mdash; burst pipes, no water, a failed water heater or an AC breakdown. Calls are answered 24/7.</p></div>
+      <div class="faq-item"><h3>Do you work on commercial properties?</h3><p>Yes, we repair and maintain both residential and commercial spaces across Dubai.</p></div>
+      <div class="faq-item"><h3>Do you repair all types of AC units?</h3><p>Yes, our technicians are trained and experienced across all common AC unit types.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Have a problem at home? We can fix it.</h2>
+      <p>Tell us what is wrong and we will arrange a visit. Calls answered 24/7 &mdash; WhatsApp works too.</p>
+    </div>
+    <div class="cta-btns">
+      <a class="btn" href="tel:+971557072146">Call +971 55 707 2146</a>
+      <a class="btn btn-ghost" href="https://wa.me/971557072146?text=Hi%2C%20I%27d%20like%20to%20book%20a%20repair." target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <div id="modalBody"></div>
+    <a class="btn btn-purple" href="tel:+971557072146">Call about this &rarr;</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a class="logo" href="index.html">
+          <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#4A2F9A"/><path d="M8 21 L20 10 L32 21" fill="none" stroke="#F5B915" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="20" y="32" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="12" fill="#fff">AH</text></svg>
+          <span class="logo-text"><strong>Abbas Hussain</strong><small>Technical Services</small></span>
+        </a>
+        <p class="desc">Plumbing, AC and complete home maintenance for homes, villas and commercial spaces in Dubai. Also known online as Home Fixit UAE.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#plumbing">Plumbing</a></li>
+          <li><a href="services.html#drain">Drain Cleaning</a></li>
+          <li><a href="services.html#heater">Water Heater Repair</a></li>
+          <li><a href="services.html#ac">AC Repair</a></li>
+          <li><a href="services.html">All services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#process">How we work</a></li>
+          <li><a href="#why">Why choose us</a></li>
+          <li><a href="#area">Areas we serve</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+971557072146">+971 55 707 2146</a></li>
+          <li><a href="mailto:ahts2016@gmail.com">ahts2016@gmail.com</a></li>
+          <li>19th St, Al Satwa, Dubai</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Abbas%20Hussain%20Technical%20Services%20LLC&amp;query_place_id=ChIJb883D2VDXz4R0fTT4q1lGvc" target="_blank" rel="noopener">Get directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Abbas Hussain Technical Services LLC. All rights reserved.</span>
+      <span>Al Satwa, Dubai, United Arab Emirates</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/971557072146" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+
+<script>
+  var nav = document.getElementById('nav');
+  var hero = document.querySelector('.hero');
+  function updateNav(){
+    var threshold = hero ? hero.offsetHeight - 90 : 140;
+    nav.classList.toggle('scrolled', window.scrollY > threshold);
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  window.addEventListener('resize', updateNav);
+  updateNav();
+
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+
+  var details = {
+    plumbing: {t:'Plumbing', p:'Our plumbing professionals handle all kinds of residential and commercial plumbing issues with precision and care.', l:['Leaking pipes and joints','Dripping or broken taps and mixers','Toilet, cistern and flush repairs','Kitchen and bathroom plumbing faults','Emergency call-outs for burst pipes']},
+    drain: {t:'Drain Cleaning', p:'Blocked and slow drains cleared in kitchens, bathrooms and floor drains, with the cause found so the problem does not return next week.', l:['Kitchen sink blockages','Shower and floor drain clearing','Slow basins and bathtubs','Advice to prevent repeat blockages']},
+    pump: {t:'Water Pump Repair', p:'We diagnose and repair water pumps to restore smooth water flow throughout your home or commercial space.', l:['Pumps that will not start','Low or fluctuating water pressure','Noisy or overheating pumps','Diagnosis before any repair']},
+    heater: {t:'Water Heater Repair', p:'Fast repairs, installation, wiring fixes and full servicing for all major water heater brands in the UAE.', l:['No hot water or lukewarm water','Heaters tripping the power','New water heater installation','Routine servicing']},
+    ac: {t:'AC Repair & Maintenance', p:'Stay comfortable year-round with AC repair and maintenance, coil cleaning, gas refilling, AC installation and annual maintenance contracts.', l:['AC not cooling','Coil and unit cleaning','Gas refilling','New AC installation','Annual maintenance contracts']},
+    maintenance: {t:'Home Maintenance', p:'A one-stop solution for repair needs in your home or commercial space &ndash; jobs of any size, with no hassle.', l:['Villa and apartment upkeep','Commercial premises maintenance','Several small jobs in one visit','Post-maintenance advice']}
+  };
+  var modal = document.getElementById('modal');
+  function openModal(key){
+    var d = details[key]; if(!d) return;
+    document.getElementById('modalTitle').textContent = d.t;
+    var body = '<p>' + d.p + '</p><ul>' + d.l.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
+    document.getElementById('modalBody').innerHTML = body;
+    modal.classList.add('show'); modal.setAttribute('aria-hidden','false');
+  }
+  function closeModal(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }
+  document.querySelectorAll('.service-card').forEach(function(c){ c.addEventListener('click', function(){ openModal(c.getAttribute('data-modal')); }); c.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(c.getAttribute('data-modal')); } }); });
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
