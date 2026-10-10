@@ -14,7 +14,8 @@
       "niche": "ac-repair",
       "description": "Two outdoor AC condenser units side by side against a building wall, KeepRite brand visible",
       "usedBy": [
-        "airchill-ac-maintenance-and-duct-cleaning"
+        "airchill-ac-maintenance-and-duct-cleaning",
+        "prism-fix-technical-services"
       ]
     },
     {
@@ -80,7 +81,8 @@
       "description": "Flatlay of hand tools (hammer, pliers, screwdrivers, drill bit) on a wood table",
       "usedBy": [
         "muhammad-hasnain-ac-repairing-center",
-        "fix-dubai-home-maintenance"
+        "fix-dubai-home-maintenance",
+        "csd-carpentry-services-dubai"
       ]
     },
     {
@@ -89,7 +91,9 @@
       "description": "Carpenter's hands using a hand plane/spokeshave on wood, shavings visible, workshop background",
       "usedBy": [
         "al-falah-carpentry",
-        "carpenter-bur-dubai"
+        "carpenter-bur-dubai",
+        "prism-fix-technical-services",
+        "haneef-carpentry"
       ]
     },
     {
@@ -98,7 +102,8 @@
       "description": "Architectural shot looking up a spiral staircase, warm wood treads and steel framing",
       "usedBy": [
         "al-falah-carpentry",
-        "carpenter-bur-dubai"
+        "carpenter-bur-dubai",
+        "haneef-carpentry"
       ]
     },
     {
@@ -106,7 +111,9 @@
       "niche": "carpenter",
       "description": "Ornately carved traditional wood doorway with gilded detail",
       "usedBy": [
-        "al-falah-carpentry"
+        "al-falah-carpentry",
+        "haneef-carpentry",
+        "qasim-carpentry-services"
       ]
     },
     {
@@ -115,7 +122,9 @@
       "description": "Clean, light-wood living room with built-in shelving and cabinetry",
       "usedBy": [
         "al-falah-carpentry",
-        "cleanfinishers-painting"
+        "cleanfinishers-painting",
+        "sharif-carpentry-decor",
+        "qasim-carpentry-services"
       ]
     },
     {
@@ -124,7 +133,9 @@
       "description": "Wood-paneled feature wall with floating cabinetry, sofa in foreground",
       "usedBy": [
         "al-falah-carpentry",
-        "dibba-manual-carpentry"
+        "dibba-manual-carpentry",
+        "prism-fix-technical-services",
+        "qasim-carpentry-services"
       ]
     },
     {
@@ -133,7 +144,9 @@
       "description": "Close-up of a carpenter's hands joining two pieces of timber",
       "usedBy": [
         "al-falah-carpentry",
-        "takht-albait-technical-services"
+        "takht-albait-technical-services",
+        "sharif-carpentry-decor",
+        "csd-carpentry-services-dubai"
       ]
     },
     {
@@ -142,7 +155,9 @@
       "description": "Folding wood ruler, pen, and a handwritten measurement note on a wood table",
       "usedBy": [
         "duba-anand-carpenter",
-        "takht-albait-technical-services"
+        "takht-albait-technical-services",
+        "haneef-carpentry",
+        "csd-carpentry-services-dubai"
       ]
     },
     {
@@ -150,7 +165,8 @@
       "niche": "carpenter",
       "description": "Worn, chipped white-painted cabinet door before refinishing (before/after pair)",
       "usedBy": [
-        "duba-anand-carpenter"
+        "duba-anand-carpenter",
+        "csd-carpentry-services-dubai"
       ]
     },
     {
@@ -159,7 +175,9 @@
       "description": "Smooth, even wood-grain cabinet door after refinishing (before/after pair)",
       "usedBy": [
         "duba-anand-carpenter",
-        "dibba-manual-carpentry"
+        "dibba-manual-carpentry",
+        "qasim-carpentry-services",
+        "csd-carpentry-services-dubai"
       ]
     },
     {
@@ -168,7 +186,8 @@
       "description": "Electrician checking a circuit breaker panel",
       "usedBy": [
         "ramz-al-wafa",
-        "bab-al-maghara-electrical-sanitary"
+        "bab-al-maghara-electrical-sanitary",
+        "prism-fix-technical-services"
       ]
     },
     {
@@ -185,7 +204,8 @@
       "niche": "electrician",
       "description": "Close-up of an electrician in hard hat wiring a wall socket",
       "usedBy": [
-        "emergency-electrician-technical-service"
+        "emergency-electrician-technical-service",
+        "prism-fix-technical-services"
       ]
     },
     {
@@ -246,7 +266,8 @@
       "description": "Painter in high-vis shirt rolling grey paint onto an interior wall/archway, roller tray and supplies visible",
       "usedBy": [
         "cleanfinishers-painting",
-        "abbas-hussain-technical-services"
+        "abbas-hussain-technical-services",
+        "qasim-carpentry-services"
       ]
     },
     {
@@ -254,7 +275,8 @@
       "niche": "plumbing",
       "description": "Man in striped shirt fixing a kitchen sink tap, real person, warm home kitchen",
       "usedBy": [
-        "truefixuae"
+        "truefixuae",
+        "prism-fix-technical-services"
       ]
     },
     {
