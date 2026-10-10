@@ -71,3 +71,6 @@ Advance `pipeline_state/cursor` once both tracks hit target. Every pushed doc ne
 Track 1 prospects with a `contactEmail` get pushed to Instantly automatically (by `push-instantly-leads.yml`, outside Claude Code) once their site is approved and synced to the Sheet. Track 2 prospects, and any Track 1 prospect with no usable email, are never auto-pushed — they live in the tracker Sheet for Jean's team to dispatch manually. Never invent an email or workaround contact method. A Track 2 prospect WITH a found email still isn't auto-pushed — flag it to Jean as an easy-sell candidate instead.
 
 **Caution on found emails**: if a prospect's own contact page lists an email that clearly belongs to a different business (domain/name mismatch), still record it as `contactEmail` (it's the one they publish) but flag the mismatch clearly before it reaches Step B/Instantly — don't auto-push a mismatched email.
+
+## Kai reactivation + Booking system prospecting (separate from the website pipeline)
+Read `prospecting/KAI-BOOKING.md` before any Kai/Booking work — it holds the Google Sheet IDs, Instantly campaign IDs, upload rules, tool order and findings. Prospect data lives in the two Google Sheets, never in git.
