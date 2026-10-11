@@ -1,6 +1,6 @@
 # Kai reactivation + Booking system — prospecting handbook
 
-Everything a new session needs to pick this work back up. No prospect names, emails or phones live in git — they live in the two Google Sheets below (source of truth). Last updated 2026-10-10.
+Everything a new session needs to pick this work back up. No prospect names, emails or phones live in git — they live in the two Google Sheets below (source of truth). Last updated 2026-10-11.
 
 ## The two offers
 - **Kai (lead reactivation)** — AI agent that re-contacts old/cold leads on WhatsApp/email/SMS/web chat and hands back the interested ones. Market: UAE. Sold to (1) agencies, for their own pipeline AND as something they offer their clients (not just a resell deal), and (2) direct niches sitting on paid-for, unclosed leads.
@@ -20,9 +20,9 @@ Every prospect tab ends with `status, last_contact, notes, on_instantly`. `statu
 | Campaign | ID | State |
 |---|---|---|
 | JEAN Reactivation (sales agency) UAE | `f2afc8ed-c6dc-46f5-97df-db06456a1d89` | **live** — agencies go here |
-| JEAN Kai Reactivation (business setup) UAE | `28e6f9e4-5f0d-4b16-9844-85583b6f394b` | draft (Jean reviews + launches) |
-| JEAN Kai Reactivation (mortgage brokers) UAE | `0a4a0031-82d6-468f-abbe-616a73b079d2` | draft |
-| JEAN Kai Reactivation (training) UAE | `75266a1a-a340-40a1-9822-ce217948fe03` | draft |
+| JEAN Kai Reactivation (business setup) UAE | `28e6f9e4-5f0d-4b16-9844-85583b6f394b` | live (launched by Jean 2026-10-11) |
+| JEAN Kai Reactivation (mortgage brokers) UAE | `0a4a0031-82d6-468f-abbe-616a73b079d2` | live |
+| JEAN Kai Reactivation (training) UAE | `75266a1a-a340-40a1-9822-ce217948fe03` | live |
 
 Rules:
 - **A niche that already has a campaign → add new prospects straight into it** (live or draft). Live = Jean approved it; leads go out per its settings. Never create a "v2" of an existing niche.
@@ -56,7 +56,7 @@ Instantly campaigns "JEAN Reactivation (sales agency) UAE" (23 original + 9 adde
 Agencies: best fit = real-estate lead-gen/performance agencies (WGG, Kratos, Southmedia), then outsourced-sales shops using WhatsApp/CRM, then CRM partners. Competitors already selling AI reactivation: Leads Dubai, AirZep.
 
 ## Open items
-- Jean to launch the 3 draft campaigns after review.
+- All 4 Kai campaigns are live (2026-10-11): refills go straight into them.
 - 3 of the original 26 contacted agencies not found in Instantly.
 - Real estate (1 new email: Espace) and Clinics (0) not enough for a campaign yet.
 - Booking: Instagram check for rows beyond the top 120; ~35 sites unverifiable; 20 qualifiers without phone.
