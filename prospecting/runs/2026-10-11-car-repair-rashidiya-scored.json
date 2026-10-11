@@ -1,0 +1,405 @@
+[
+  {
+    "name": "Radiant Car Workshop",
+    "website": "https://www.radiantcar.com/",
+    "phone": "+971 54 700 3744",
+    "rating": 4.4,
+    "reviewsCount": 303,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radiant%20Car%20Workshop&query_place_id=ChIJMyTTF3hdXz4RHY_8ZsIf5Lg",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a coherent dark luxury aesthetic with professional typography, clear navigation, and a polished hero section featuring a high-end vehicle – while the design is somewhat conservative, it is intentionally cohesive and appropriate for a premium automotive service brand."
+    },
+    "screenshotFile": "site-1-desktop.jpg"
+  },
+  {
+    "name": "Auto Car Maintenance",
+    "website": "http://drmechanic.net/",
+    "phone": "+971 50 420 4266",
+    "rating": 4.5,
+    "reviewsCount": 226,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auto%20Car%20Maintenance&query_place_id=ChIJmbW4hXddXz4RofmOLDSQDXk",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a 'SITE DELETED' message with no actual content to evaluate; the missing viewport meta tag is a technical issue but cannot be meaningfully judged without seeing the live site's actual design."
+    },
+    "screenshotFile": "site-2-desktop.jpg"
+  },
+  {
+    "name": "AL HAJI AUTO REPAIRING CENTRE",
+    "website": "https://hajiautocare.com/",
+    "phone": "+971 4 286 2834",
+    "rating": 4.2,
+    "reviewsCount": 182,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AL%20HAJI%20AUTO%20REPAIRING%20CENTRE&query_place_id=ChIJI9FnSYRdXz4RLU0kWM4IaPw",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern layout with a coherent visual identity, professional typography hierarchy, strategic use of red branding, and contemporary hero design with clear value proposition messaging."
+    },
+    "screenshotFile": "site-3-desktop.jpg"
+  },
+  {
+    "name": "King Drive Auto Repair Workshop LLC",
+    "website": "http://www.kingdrive.ae/",
+    "phone": "+971 4 276 7070",
+    "rating": 4.7,
+    "reviewsCount": 120,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=King%20Drive%20Auto%20Repair%20Workshop%20LLC&query_place_id=ChIJg04R9BddXz4RfOu1HiMf2Mo",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only an error message and no actual website content, making it impossible to assess the site's design quality or technical state."
+    },
+    "screenshotFile": "site-4-desktop.jpg"
+  },
+  {
+    "name": "Al Marwa Auto Repairing Garage LLC",
+    "website": "http://www.almarwaauto.com/",
+    "phone": "+971 56 197 1466",
+    "rating": 4.9,
+    "reviewsCount": 58,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Marwa%20Auto%20Repairing%20Garage%20LLC&query_place_id=ChIJYePaQNJdXz4Rx4VC-92MSMc",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a 404 error page with no actual website content to evaluate."
+    },
+    "screenshotFile": "site-5-desktop.jpg"
+  },
+  {
+    "name": "Golden Workshop Car Repairing",
+    "website": "http://www.goldenworkshop.ae/",
+    "phone": "+971 4 285 8346",
+    "rating": 4.3,
+    "reviewsCount": 723,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Workshop%20Car%20Repairing&query_place_id=ChIJI-dqTI9dXz4RfIhoZ-eDF3M",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a blank or nearly blank page with no visible content to assess design coherence or structure; technical staleness (2017 copyright) cannot be the sole factor without seeing actual site design."
+    },
+    "screenshotFile": "site-6-desktop.jpg"
+  },
+  {
+    "name": "QuCars - Boby Auto Garage",
+    "website": "https://www.bobygarage.com/",
+    "phone": "+971 52 206 9431",
+    "rating": 4.5,
+    "reviewsCount": 598,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=QuCars%20-%20Boby%20Auto%20Garage&query_place_id=ChIJ31Ak8oZdXz4R9tdPw_squdk",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "The site combines a stale 2018 copyright year with dated visual styling (flat geometric header design, early-2010s color scheme) and lacks modern refinement in typography and layout coherence typical of current web standards."
+    },
+    "screenshotFile": "site-7-desktop.jpg"
+  },
+  {
+    "name": "al kaser garage",
+    "website": "http://www.alkasergarage.com/",
+    "phone": "+971 56 312 6029",
+    "rating": 4.4,
+    "reviewsCount": 188,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=al%20kaser%20garage&query_place_id=ChIJgbvUw4ldXz4RklIN0ClqeUs",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "Clean, professional layout with coherent visual identity, modern typography, clear hierarchy, and functional CTA buttons—no structural clutter, keyword-stuffing, or design system breakdown evident."
+    },
+    "screenshotFile": "site-8-desktop.jpg"
+  },
+  {
+    "name": "Reyadah Auto Repair",
+    "website": "https://www.alreyadagarage.com/",
+    "phone": null,
+    "rating": 4.8,
+    "reviewsCount": 425,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Reyadah%20Auto%20Repair&query_place_id=ChIJteSu7YNdXz4RF7iEoUBVZzI",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern layout with coherent branding, professional typography, a clear value proposition, and a strong visual hierarchy anchored by a well-composed product image and call-to-action button."
+    },
+    "screenshotFile": "site-9-desktop.jpg"
+  },
+  {
+    "name": "KM Garage Rashidiya",
+    "website": "http://www.kmgarage.com/",
+    "phone": "+971 4 285 5099",
+    "rating": 4.1,
+    "reviewsCount": 2361,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=KM%20Garage%20Rashidiya&query_place_id=ChIJfUVC3JFdXz4R0OY1W1Q5-Ss",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "Stale 2019 copyright footer combined with dated red-box overlay design pattern and lack of modern visual hierarchy indicate a site that has not been meaningfully updated in years."
+    },
+    "screenshotFile": "site-10-desktop.jpg"
+  },
+  {
+    "name": "Bin Faris Auto Services",
+    "website": "http://www.binfarisauto.com/",
+    "phone": "+971 4 239 3653",
+    "rating": 4.2,
+    "reviewsCount": 106,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bin%20Faris%20Auto%20Services&query_place_id=ChIJJ0jxHI5dXz4RkD_fcPH20-Q",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a Cloudflare security verification page with no actual website content visible, making it impossible to assess the site's design quality or technical stack."
+    },
+    "screenshotFile": "site-11-desktop.jpg"
+  },
+  {
+    "name": "Super Car Auto Accessories LLC | Auto Garage - Al Rashidiya",
+    "website": "https://www.supercargarageuae.com/",
+    "phone": "+971 50 600 4293",
+    "rating": 4.4,
+    "reviewsCount": 7,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Super%20Car%20Auto%20Accessories%20LLC%20%7C%20Auto%20Garage%20-%20Al%20Rashidiya&query_place_id=ChIJyZbn999nXz4RKwZhpb5fvvg",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent visual identity, professional typography, clear hierarchy, and a contemporary orange/dark color scheme with no structural clutter or dated elements."
+    },
+    "screenshotFile": "site-12-desktop.jpg"
+  },
+  {
+    "name": "Yalla Fix Auto Repair",
+    "website": "https://yallafixauto.com/",
+    "phone": "+971 58 519 3991",
+    "rating": 4.8,
+    "reviewsCount": 150,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Yalla%20Fix%20Auto%20Repair&query_place_id=ChIJW8SHEoldXz4RNzp-7YjlwgQ",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with coherent visual identity, professional typography, clear call-to-action hierarchy, and contemporary styling without structural clutter or spam-like content."
+    },
+    "screenshotFile": "site-13-desktop.jpg"
+  },
+  {
+    "name": "Al Suwaidi Auto Repair Garage",
+    "website": "https://alsuwaidiautorepair.com/",
+    "phone": "+971 55 496 9599",
+    "rating": 5,
+    "reviewsCount": 55,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Suwaidi%20Auto%20Repair%20Garage&query_place_id=ChIJ7WxV0LhdXz4RMwQpddBPo9A",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with a coherent visual identity, professional typography, clear hierarchy, and a functional layout typical of contemporary service-business websites."
+    },
+    "screenshotFile": "site-14-desktop.jpg"
+  },
+  {
+    "name": "AUTOSHINKA SERVICE - UMM RAMOOL",
+    "website": "https://autoshinkagarage.ae/",
+    "phone": "+971 4 235 5167",
+    "rating": 4.6,
+    "reviewsCount": 20,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AUTOSHINKA%20SERVICE%20-%20UMM%20RAMOOL&query_place_id=ChIJI7rZWgBdXz4RO6O4AGX9BCE",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with a coherent visual identity, professional layout, clear hierarchy, and contemporary styling despite some elements that could be refreshed."
+    },
+    "screenshotFile": "site-15-desktop.jpg"
+  },
+  {
+    "name": "Noor Al Madeena Garage (NM Garage)",
+    "website": "http://www.nmgarages.com/",
+    "phone": "+971 54 996 6086",
+    "rating": 4.6,
+    "reviewsCount": 160,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Noor%20Al%20Madeena%20Garage%20%28NM%20Garage%29&query_place_id=ChIJ-9O_JpFdXz4RSiLRzyseqZI",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent visual identity, professional layout, clear typography hierarchy, and contemporary dark theme with orange accents—no structural clutter, spam content, or technical legacy signals detected."
+    },
+    "screenshotFile": "site-16-desktop.jpg"
+  },
+  {
+    "name": "Dubai online auto garage",
+    "website": "https://dubaionlineautogarage.com/",
+    "phone": "+971 56 303 8635",
+    "rating": 4.2,
+    "reviewsCount": 62,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dubai%20online%20auto%20garage&query_place_id=ChIJ5YHoJ5JdXz4R0VcuT0UZNwU",
+    "visionScore": {
+      "verdict": "no-website",
+      "reason": "Website domain does not resolve or refuses connections - likely expired or taken offline."
+    },
+    "screenshotFile": null
+  },
+  {
+    "name": "Al Qusais Garage",
+    "website": "https://www.alqusaisgarage.ae/",
+    "phone": "+971 55 494 4480",
+    "rating": 3.6,
+    "reviewsCount": 236,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Qusais%20Garage&query_place_id=ChIJMw8RaXRdXz4RwDQRMzvh0wk",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "Footer copyright frozen at 2018 combined with generic template styling, flat design patterns, and no coherent visual identity signal an unmaintained site built on legacy tooling."
+    },
+    "screenshotFile": "site-18-desktop.jpg"
+  },
+  {
+    "name": "Sunshine Auto Repair Workshop Dubai",
+    "website": "https://www.sunshineauto.ae/",
+    "phone": "+971 55 168 1948",
+    "rating": 4.2,
+    "reviewsCount": 481,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunshine%20Auto%20Repair%20Workshop%20Dubai&query_place_id=ChIJF-FBXBZcXz4RItDFnYq-hgU",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent branding (yellow/black color scheme), professional layout, clear hierarchy, and contemporary UI elements—the homepage demonstrates a solid visual identity and professional structure typical of well-executed service business sites."
+    },
+    "screenshotFile": "site-19-desktop.jpg"
+  },
+  {
+    "name": "AUTO NEEDS GARAGE",
+    "website": "https://autoneedsuae.com/",
+    "phone": "+971 58 897 1001",
+    "rating": 4.7,
+    "reviewsCount": 189,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AUTO%20NEEDS%20GARAGE&query_place_id=ChIJ_Z4OsFFdXz4R1PYw5eHmaXI",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with coherent visual identity, professional hero section with clear messaging, functional navigation, and no visible template artifacts or structural clutter."
+    },
+    "screenshotFile": "site-20-desktop.jpg"
+  },
+  {
+    "name": "Benchmark Auto Care LLC",
+    "website": "https://www.benchmarkautocares.com/",
+    "phone": "+971 4 220 0100",
+    "rating": 4.6,
+    "reviewsCount": 129,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Benchmark%20Auto%20Care%20LLC&query_place_id=ChIJjcCWrp9dXz4Rs_yJnrNgdN4",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "A 2015 copyright footer combined with a generic hero-slider layout and commodity brand-logo grid signals a static template site that has not been maintained or updated in nearly a decade."
+    },
+    "screenshotFile": "site-21-desktop.jpg"
+  },
+  {
+    "name": "GiCar Auto Repair",
+    "website": "https://www.gcarsolutions.com/",
+    "phone": "+971 50 336 0966",
+    "rating": 4.9,
+    "reviewsCount": 332,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=GiCar%20Auto%20Repair&query_place_id=ChIJd1RyGvhdXz4R98eTTGJQXLs",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent visual identity, professional typography, a clear CTA, and contemporary layout—no structural clutter, template artifacts, or dated elements that would warrant a redesign pitch."
+    },
+    "screenshotFile": "site-22-desktop.jpg"
+  },
+  {
+    "name": "AME Auto Repairing Garage",
+    "website": "http://www.ameauto.ae/",
+    "phone": "+971 54 775 5331",
+    "rating": 4.3,
+    "reviewsCount": 283,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AME%20Auto%20Repairing%20Garage&query_place_id=ChIJzz_wTrpdXz4Rj5qE3AEwzKU",
+    "visionScore": {
+      "verdict": "no-website",
+      "reason": "Website domain does not resolve or refuses connections - likely expired or taken offline."
+    },
+    "screenshotFile": null
+  },
+  {
+    "name": "Al Ramlah Garage LLC",
+    "website": "http://www.alramlahgarage.com/",
+    "phone": "+971 4 284 6661",
+    "rating": 4.8,
+    "reviewsCount": 432,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Ramlah%20Garage%20LLC&query_place_id=ChIJ2SI8tY5dXz4Rfqb_u4iUq2w",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent visual hierarchy, professional photography, clear typography, and a focused value proposition; while the color palette and button styles could be considered slightly conservative, the overall execution is professional and functional with no structural clutter or outdated technical markers."
+    },
+    "screenshotFile": "site-24-desktop.jpg"
+  },
+  {
+    "name": "Seven Bridges Auto Repairing Garage LLC",
+    "website": "https://www.sevenbridgesuae.com/",
+    "phone": "+971 54 299 5663",
+    "rating": 4.9,
+    "reviewsCount": 214,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Seven%20Bridges%20Auto%20Repairing%20Garage%20LLC&query_place_id=ChIJzR96PmZnXz4RGqzDbrMiJko",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a clean, modern design with coherent visual identity, professional imagery, clear typography hierarchy, and a functional layout—no genuine structural or technical problems visible."
+    },
+    "screenshotFile": "site-25-desktop.jpg"
+  },
+  {
+    "name": "Blue Coastal Auto Workshop",
+    "website": "https://bluecoastalauto.com/",
+    "phone": "+971 4 282 4338",
+    "rating": 5,
+    "reviewsCount": 82,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Blue%20Coastal%20Auto%20Workshop&query_place_id=ChIJKXlvOupdXz4RjFOD4Ms9WpY",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "Footer copyright year of 2010 combined with generic hero layout and lack of modern design sophistication signals a site that has not been meaningfully updated in over a decade."
+    },
+    "screenshotFile": "site-26-desktop.jpg"
+  },
+  {
+    "name": "AKM GARAGE (AL KOBARA AL MUMAYZ)",
+    "website": "https://akmautorepair.com/",
+    "phone": null,
+    "rating": 4.7,
+    "reviewsCount": 217,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=AKM%20GARAGE%20%28AL%20KOBARA%20AL%20MUMAYZ%29&query_place_id=ChIJyU468xZcXz4RqC0JJxJ641A",
+    "visionScore": {
+      "verdict": "no-website",
+      "reason": "Website domain does not resolve or refuses connections - likely expired or taken offline."
+    },
+    "screenshotFile": null
+  },
+  {
+    "name": "King Road Autos Repairing LLC",
+    "website": "https://kingroadautosrepairing.com/",
+    "phone": "+971 55 104 5392",
+    "rating": 4.2,
+    "reviewsCount": 428,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=King%20Road%20Autos%20Repairing%20LLC&query_place_id=ChIJUxeKjRZcXz4Rs9QSbCzcsPU",
+    "visionScore": {
+      "verdict": "borderline",
+      "reason": "The site has a clean, coherent design with modern layout and professional branding, but the 2020 copyright footer is a stale technical signal that suggests backend neglect despite the current homepage looking serviceable."
+    },
+    "screenshotFile": "site-28-desktop.jpg"
+  },
+  {
+    "name": "Pro Mechanic Auto Service Center",
+    "website": "http://www.promechanic.ae/",
+    "phone": "+971 55 588 6099",
+    "rating": 4.5,
+    "reviewsCount": 78,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pro%20Mechanic%20Auto%20Service%20Center&query_place_id=ChIJgwY9IkpdXz4RP5zFxRBN0Ms",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site has a coherent visual identity with professional layout, clean typography, and organized content hierarchy; the dark theme with gold accents and car imagery is dated in style but not structurally cluttered or template-artifact ridden."
+    },
+    "screenshotFile": "site-29-desktop.jpg"
+  },
+  {
+    "name": "Golden Motor Auto Services Centre",
+    "website": "http://goldenmotoruae.com/",
+    "phone": "+971 50 310 2484",
+    "rating": 4.7,
+    "reviewsCount": 360,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Motor%20Auto%20Services%20Centre&query_place_id=ChIJvVmgPD5cXz4RJ8MmXdVtGpE",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with coherent visual hierarchy, professional typography, clear CTAs, and a contemporary color scheme—no structural clutter, technical debt signals, or multiple dated elements that would warrant redesign outreach."
+    },
+    "screenshotFile": "site-30-desktop.jpg"
+  },
+  {
+    "name": "Tamilnadu Auto Repairs and workshop",
+    "website": "https://tamilnaduautogarage.com/",
+    "phone": "+971 55 439 9824",
+    "rating": 4.7,
+    "reviewsCount": 13,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tamilnadu%20Auto%20Repairs%20and%20workshop&query_place_id=ChIJ3_1NSpldXz4REvz5gRNI-fY",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "Built with base44, an AI coding tool - its output is current-generation design by construction, not a redesign prospect regardless of any single stylistic impression."
+    },
+    "screenshotFile": null
+  }
+]
