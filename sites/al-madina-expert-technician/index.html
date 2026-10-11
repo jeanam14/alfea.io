@@ -117,6 +117,14 @@
     .nav-links{display:none;}
     .hero h1{font-size:1.9rem;}
   }
+/* layout-fix-2026-10-11 */
+header{height:0;}
+.hero{padding-top:156px;}
+.page-head{padding-top:140px;}
+:where(section:not(.hero)){background:#fff;border-top:1px solid rgba(100,110,120,.18);}
+section:not(.hero){padding-top:84px;padding-bottom:84px;}
+@media(max-width:600px){.hero{padding-top:128px;}.page-head{padding-top:120px;}section:not(.hero){padding-top:60px;padding-bottom:60px;}}
+div.process,div.faq,div.industries,div.about,div.area,div.why,div.reviews{padding-top:84px;padding-bottom:84px;}@media(max-width:600px){div.process,div.faq,div.industries,div.about,div.area,div.why,div.reviews{padding-top:60px;padding-bottom:60px;}}
 </style>
 </head>
 <body>
