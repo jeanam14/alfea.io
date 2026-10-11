@@ -82,7 +82,10 @@
       "usedBy": [
         "muhammad-hasnain-ac-repairing-center",
         "fix-dubai-home-maintenance",
-        "csd-carpentry-services-dubai"
+        "csd-carpentry-services-dubai",
+        "waqas-carpenter",
+        "al-faseeh-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -93,7 +96,11 @@
         "al-falah-carpentry",
         "carpenter-bur-dubai",
         "prism-fix-technical-services",
-        "haneef-carpentry"
+        "haneef-carpentry",
+        "waqas-carpenter",
+        "al-masood-carpentry-workshop",
+        "al-faseeh-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -103,7 +110,9 @@
       "usedBy": [
         "al-falah-carpentry",
         "carpenter-bur-dubai",
-        "haneef-carpentry"
+        "haneef-carpentry",
+        "bait-alnoor-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -113,7 +122,10 @@
       "usedBy": [
         "al-falah-carpentry",
         "haneef-carpentry",
-        "qasim-carpentry-services"
+        "qasim-carpentry-services",
+        "bait-alnoor-carpentry",
+        "al-faseeh-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -124,7 +136,10 @@
         "al-falah-carpentry",
         "cleanfinishers-painting",
         "sharif-carpentry-decor",
-        "qasim-carpentry-services"
+        "qasim-carpentry-services",
+        "bait-alnoor-carpentry",
+        "al-faseeh-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -135,7 +150,11 @@
         "al-falah-carpentry",
         "dibba-manual-carpentry",
         "prism-fix-technical-services",
-        "qasim-carpentry-services"
+        "qasim-carpentry-services",
+        "waqas-carpenter",
+        "al-masood-carpentry-workshop",
+        "al-faseeh-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -146,7 +165,10 @@
         "al-falah-carpentry",
         "takht-albait-technical-services",
         "sharif-carpentry-decor",
-        "csd-carpentry-services-dubai"
+        "csd-carpentry-services-dubai",
+        "bait-alnoor-carpentry",
+        "al-faseeh-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -157,7 +179,9 @@
         "duba-anand-carpenter",
         "takht-albait-technical-services",
         "haneef-carpentry",
-        "csd-carpentry-services-dubai"
+        "csd-carpentry-services-dubai",
+        "bait-alnoor-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -166,7 +190,11 @@
       "description": "Worn, chipped white-painted cabinet door before refinishing (before/after pair)",
       "usedBy": [
         "duba-anand-carpenter",
-        "csd-carpentry-services-dubai"
+        "csd-carpentry-services-dubai",
+        "waqas-carpenter",
+        "al-masood-carpentry-workshop",
+        "bait-alnoor-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
@@ -177,7 +205,11 @@
         "duba-anand-carpenter",
         "dibba-manual-carpentry",
         "qasim-carpentry-services",
-        "csd-carpentry-services-dubai"
+        "csd-carpentry-services-dubai",
+        "waqas-carpenter",
+        "al-masood-carpentry-workshop",
+        "bait-alnoor-carpentry",
+        "ah-carpentry-dubai"
       ]
     },
     {
