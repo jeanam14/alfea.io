@@ -41,7 +41,7 @@ Instantly campaigns "JEAN Reactivation (sales agency) UAE" (23 original + 9 adde
 - **Instagram:** HasData Google SERP light `site:instagram.com "<name>" <city>` (gl=sn/ci, hl=fr) to find the handle, then HasData Instagram profile for bio/link/followers. The free web search barely finds handles.
 - **Emails (rotate):** Hunter email-finder first (55% hit on UAE SMBs; key injected by proxy, `curl https://api.hunter.io/v2/...`) → Lusha email reveal (good when it has one; never reveal phones = 5 credits) → Prospeo (0/9 on UAE SMBs, keep for larger firms). Verify with Hunter verifier before upload.
 - **Not usable:** Apify (plan blocks public Actors), Outscraper (Jean: poor quality), Serper/Scrape.do (keys not reaching the proxy yet), Bright Data (no zone set up).
-- Credits at 2026-10-10: Hunter ~21.5/50 (renews 11-09), Lusha 34/40, Prospeo 112, Firecrawl ~0.
+- Credits at 2026-10-11 (after refill #1): Hunter 4.5/50 (renews 11-09), Lusha 4/40, Prospeo ~81 (free tier: 50 calls/day; re-enriching the same person is free). Lusha gave the best UAE SMB yield (~24 emails for 30 credits); Prospeo ~10%.
 - List building runs in **Sonnet subagents**; strategy/decisions stay in the main session.
 
 ## Booking — criteria and findings
@@ -61,3 +61,7 @@ Agencies: best fit = real-estate lead-gen/performance agencies (WGG, Kratos, Sou
 - Real estate (1 new email: Espace) and Clinics (0) not enough for a campaign yet.
 - Booking: Instagram check for rows beyond the top 120; ~35 sites unverifiable; 20 qualifiers without phone.
 - Rotate the service-account key (it was pasted in chat once) — env var must hold the current key.
+
+## Log
+- 2026-10-10: 33 leads uploaded (9 agencies into the live sales agency campaign, 11 business setup, 9 mortgage, 4 training).
+- 2026-10-11 refill #1: +43 leads (agencies 6, business setup 18, mortgage 10, training 9) + ~31 names-only rows in the sheet waiting for an email. A Prospeo workbench run timed out but still spent credits: re-run Prospeo enrichment (free on repeat) for the Agencies names-only rows to recover ~8 emails.
