@@ -1,4 +1,20 @@
 {
+  "ahts2016@gmail.com": {
+    "name": "Abbas Hussain Technical Services LLC",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "company@sharifcarpentry.com": {
+    "name": "Sharif Carpentry & Decor",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "contact@truefixuae.ae": {
+    "name": "TrueFixUAE",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "fixdubai.tech1@gmail.com": {
+    "name": "Fix Dubai Home Maintenance",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
   "gmqusais@gmail.com": {
     "name": "Good Morning Electrical Sanitary & Air-Conditioning Repairing Installation (GM Services)",
     "pushed_at": "2026-10-06T08:50:00+00:00"
@@ -7,8 +23,32 @@
     "name": "BlueLine Appliance Repair",
     "pushed_at": "2026-10-06T08:50:00+00:00"
   },
+  "info@carpentry-services-dubai.com": {
+    "name": "CSD Carpentry Services Dubai",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "info@cleanfinishers.com": {
+    "name": "CleanFinishers",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "info@fixitxpress.com": {
+    "name": "Fixitxpress Plumbing & Handyman Services",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "info@fixuae.com": {
+    "name": "Fix UAE",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
+  "info@prismfixdubai.com": {
+    "name": "Prism Fix Technical Services LLC",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
+  },
   "info@quicklaneuae.com": {
     "name": "Quick Lane Service",
     "pushed_at": "2026-10-06T08:50:00+00:00"
+  },
+  "info@ramzalwafa.com": {
+    "name": "RAMZ AL WAFA TECHNICAL SERVICES",
+    "pushed_at": "2026-10-11T09:17:35.920451+00:00"
   }
 }
