@@ -238,5 +238,13 @@
   "rating": 4.7,
   "reviewsCount": 370,
   "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gladys%20Beauty%20Saloon%20-%20Marina&query_place_id=ChIJcS_nu1drXz4ROXTa4g-n_JE"
+ },
+ {
+  "name": "Vesna beauty lounge",
+  "website": "https://vesnabeauty.ae/",
+  "phone": "055 341 1859",
+  "rating": 4.6,
+  "reviewsCount": 228,
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vesna%20beauty%20lounge&query_place_id=ChIJvesna"
  }
 ]
