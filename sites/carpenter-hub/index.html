@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carpenter Hub | Carpentry &amp; joinery, Dubai</title>
+<meta name="description" content="Custom furniture, kitchens, wardrobes, doors and repairs from Carpenter Hub, serving all of Dubai.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@600;700&family=Figtree:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0F0D;--bg2:#111714;--light:#F6F7F3;--light2:#ECEEEA;--tl:#ECEFE9;--tlm:#9AA59E;--td:#0B0F0D;--tdm:#4F5953;--acc:#E6C63C;--acc-ink:#0B0F0D;--acc2:#F4E27A;--hf:'Familjen Grotesk',sans-serif;--bf:'Figtree',sans-serif;--mono:'Martian Mono',monospace;--line-d:rgba(230,198,60,.18);--line-l:rgba(11,15,13,.1);--gd:rgba(22,30,26,.55);--gl:rgba(255,255,255,.65);--r:10px;--eb:#8A7210;--ebd:#E6C63C;--tile:#0B0F0D;--tile-ink:#E6C63C;--navbg:rgba(11,15,13,.55);--navbd:rgba(230,198,60,.18);--foot:#050706;--mbg:rgba(17,23,20,.9);--hw:700;--hl:-.02em;--tkt:#0b0f0d;}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--bf);color:var(--td);background:var(--light);line-height:1.65;font-size:16.5px;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--hf);line-height:1.12;letter-spacing:var(--hl,-.015em);font-weight:var(--hw,700)}
+a{color:inherit}img{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:32px}
+.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.ic{flex-shrink:0}
+/* nav */
+header{position:fixed;top:14px;left:0;right:0;z-index:50;padding-inline:16px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px;margin:0 auto;padding:10px 14px 10px 18px;border-radius:18px;background:var(--navbg);border:1px solid var(--navbd);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);color:var(--tl);transition:background .3s,color .3s,box-shadow .3s,border-color .3s}
+.nav.scrolled{background:rgba(255,255,255,.9);border-color:rgba(10,15,25,.1);color:#10131a;box-shadow:0 10px 30px -12px rgba(10,15,25,.28)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-t{display:flex;flex-direction:column;line-height:1.05}
+.logo-t b{font-family:var(--hf);font-weight:800;font-size:1.05rem;letter-spacing:.01em}
+.logo-t small{font-family:var(--mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.links{display:flex;align-items:center;gap:22px;font-size:.88rem;font-weight:600}
+.links a{text-decoration:none;opacity:.82;transition:opacity .2s}.links a:hover,.links a.on{opacity:1}
+.callbtn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:var(--acc-ink);font-weight:700;font-size:.86rem;padding:9px 16px;border-radius:12px;text-decoration:none;white-space:nowrap}
+.burger{display:none;background:none;border:0;width:40px;height:40px;color:inherit}
+.burger span{display:block;width:22px;height:2px;background:currentColor;margin:5px auto;border-radius:2px}
+.mnav{display:none;max-width:1180px;margin:8px auto 0;border-radius:16px;background:var(--navbg);border:1px solid var(--navbd);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:8px 18px;color:var(--tl)}
+.mnav.open{display:block}.mnav a{display:block;padding:13px 0;text-decoration:none;font-weight:600;border-bottom:1px solid var(--line-d)}.mnav a:last-child{border:0}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--acc);color:var(--acc-ink);padding:14px 26px;border-radius:var(--r);font-weight:700;font-size:.95rem;text-decoration:none;border:0;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn.glass{background:rgba(255,255,255,.08);color:var(--tl);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn.glass.dk{color:var(--td);border-color:rgba(10,15,25,.2);background:rgba(255,255,255,.5)}
+/* sections */
+section{padding:92px 0;border-top:1px solid var(--line-l);position:relative;overflow-x:clip}
+.sec-d{background:var(--bg);color:var(--tl);border-top-color:var(--line-d)}
+.sec-d2{background:var(--bg2);color:var(--tl);border-top-color:var(--line-d)}
+.sec-l{background:var(--light);color:var(--td)}
+.sec-l2{background:var(--light2);color:var(--td)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--eb);margin-bottom:12px;font-weight:500}
+.sec-d .eyebrow,.sec-d2 .eyebrow{color:var(--ebd,var(--acc))}
+h2.t{font-size:clamp(1.8rem,3.4vw,2.7rem);margin-bottom:14px;max-width:20ch}
+.lead{max-width:60ch;color:var(--tdm)}.sec-d .lead,.sec-d2 .lead{color:var(--tlm)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+.head a.more{font-weight:700;text-decoration:none;color:var(--eb)}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--bg);color:var(--tl);min-height:92vh;display:flex;align-items:center;padding:150px 0 90px;isolation:isolate}
+.hero.mini{min-height:0;padding:150px 0 70px}
+.hero .bgimg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.hero .shade{position:absolute;inset:0;z-index:-1}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);margin:14px 0 18px;max-width:15ch}
+.hero p.sub{font-size:1.1rem;color:var(--tlm);max-width:52ch;margin-bottom:28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border-radius:999px;background:var(--gd);border:1px solid var(--line-d);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:.82rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 var(--acc);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.glassd{background:var(--gd);border:1px solid var(--line-d);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-radius:22px}
+/* cards */
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{position:relative;text-align:left;width:100%;background:var(--gl);border:1px solid var(--line-l);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border-radius:20px;padding:28px;color:var(--td);transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -24px rgba(10,15,25,.45);border-color:var(--acc)}
+.card::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--acc);transition:width .35s}
+.card:hover::before{width:100%}
+.card .tile{width:50px;height:50px;border-radius:14px;background:var(--tile);color:var(--tile-ink);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:transform .3s}
+.card:hover .tile{transform:rotate(-8deg)}
+.card h3{font-size:1.22rem;margin-bottom:8px}.card p{font-size:.94rem;color:var(--tdm)}
+.card .num{position:absolute;right:20px;top:18px;font-family:var(--mono);font-size:.74rem;color:var(--tdm)}
+.card .det{display:block;margin-top:14px;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--eb);font-weight:600}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
+.sec-l .wrap,.sec-l2 .wrap,.sec-d .wrap,.sec-d2 .wrap{position:relative;z-index:1}
+/* split */
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.pic{border-radius:24px;overflow:hidden;aspect-ratio:4/4.4;box-shadow:0 28px 60px -26px rgba(0,0,0,.55)}
+.pic img{width:100%;height:100%;object-fit:cover}
+.list{list-style:none}.list li{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line-l)}
+.sec-d .list li,.sec-d2 .list li{border-top-color:var(--line-d)}
+.list .n{font-family:var(--mono);color:var(--eb);font-size:.8rem;padding-top:4px;min-width:26px}
+.list b{display:block;font-family:var(--hf);font-size:1.08rem;margin-bottom:3px}.list span{color:var(--tdm);font-size:.94rem}
+.sec-d .list span,.sec-d2 .list span{color:var(--tlm)}
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:46px;padding-top:34px}
+.tl .track{position:absolute;left:0;right:0;top:11px;height:3px;background:var(--line-d);border-radius:3px}
+.sec-l .tl .track,.sec-l2 .tl .track{background:rgba(10,15,25,.12)}
+.tl .fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.tl .st{position:relative;opacity:.4;transition:opacity .5s}
+.tl .st.on{opacity:1}
+.tl .st i{position:absolute;top:-33px;left:0;width:22px;height:22px;border-radius:50%;background:var(--bg);border:2px solid var(--acc);transition:background .3s}
+.sec-l .tl .st i,.sec-l2 .tl .st i{background:var(--light)}
+.tl .st.on i{background:var(--acc)}
+.tl .box{background:var(--gl);border:1px solid var(--line-l);border-radius:16px;padding:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sec-d .tl .box,.sec-d2 .tl .box{background:var(--gd);border-color:var(--line-d)}
+.tl h3{font-size:1.05rem;margin-bottom:6px}.tl p{font-size:.9rem;color:var(--tdm)}.sec-d .tl p,.sec-d2 .tl p{color:var(--tlm)}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.chip{border:1px solid var(--line-l);background:var(--gl);padding:8px 16px;border-radius:999px;font-size:.86rem;font-weight:600;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all .2s}
+.sec-d .chip,.sec-d2 .chip{border-color:var(--line-d);background:var(--gd);color:var(--tl)}
+.chip:hover,.chip.on,.chip[aria-pressed=true]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+/* faq */
+details{background:var(--gl);border:1px solid var(--line-l);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+details summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+details summary::after{content:"+";font-size:1.3rem;transition:transform .2s}details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:var(--tdm);font-size:.95rem}
+/* blocks */
+.blk{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.blk.flip .vis{order:2}
+.vis{border-radius:24px;overflow:hidden;aspect-ratio:4/3;position:relative;display:flex;align-items:center;justify-content:center;background:var(--gd);border:1px solid var(--line-d)}
+.vis img{width:100%;height:100%;object-fit:cover}
+.vis .bigic{color:var(--acc)}
+.blk h2{font-size:clamp(1.6rem,2.8vw,2.3rem);margin:6px 0 12px}
+.blk ul.inc{list-style:none;margin:16px 0}.blk ul.inc li{display:flex;gap:10px;padding:5px 0;font-size:.95rem}.blk ul.inc li svg{color:var(--eb);margin-top:3px}
+.sec-d .blk ul.inc li svg,.sec-d2 .blk ul.inc li svg{color:var(--acc)}
+/* cta */
+.ctaband{text-align:center;background:var(--bg);color:var(--tl);overflow:hidden}
+.ctaband .panel{max-width:860px;margin:0 auto;padding:54px 36px}
+.ctaband h2{font-size:clamp(1.8rem,3.4vw,2.7rem);margin-bottom:10px}
+.ctaband p{color:var(--tlm);margin-bottom:26px}.ctaband .cta-row{justify-content:center}
+/* footer */
+footer{background:var(--foot);color:var(--tlm);border-top:2px solid var(--acc)}
+footer .in{max-width:1180px;margin:0 auto;padding:60px 32px 26px}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:36px}
+footer h4{color:var(--tl);font-family:var(--mono);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none}footer li{margin-bottom:8px;font-size:.92rem}footer a{text-decoration:none}footer a:hover{color:var(--tl)}
+footer .blurb{margin-top:14px;font-size:.92rem;max-width:34ch}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid var(--line-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 12px;border-radius:999px;border:1px solid var(--line-d);color:var(--tl);font-size:.8rem}
+.badge svg{color:var(--acc)}
+/* modal */
+.ov{position:fixed;inset:0;z-index:90;background:rgba(5,8,12,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.ov.show{display:flex}
+.mp{position:relative;max-width:580px;width:100%;max-height:88vh;overflow:auto;background:var(--mbg);color:var(--tl);border:1px solid var(--line-d);border-top:4px solid var(--acc);border-radius:22px;padding:32px;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.mp .x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.12);font-size:1.1rem}
+.mp h3{font-size:1.45rem;margin:8px 0 10px}.mp p{color:var(--tlm);margin-bottom:12px;font-size:.96rem}
+.mp ul{list-style:none;margin:8px 0 14px}.mp li{display:flex;gap:10px;padding:4px 0;font-size:.93rem}.mp li svg{color:var(--acc);margin-top:3px}
+.mp h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:14px 0 4px}
+.mp .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+/* reveal */
+.rv{opacity:.35;transform:translateY(16px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+.static .rv{opacity:1;transform:none}
+.sec-d .card,.sec-d2 .card{background:var(--gd);color:var(--tl);border-color:var(--line-d)}.sec-d .card p,.sec-d2 .card p,.sec-d .card .num,.sec-d2 .card .num{color:var(--tlm)}.sec-d .card .det,.sec-d2 .card .det{color:var(--acc)}
+.sec-d .btn.glass.dk,.sec-d2 .btn.glass.dk{color:var(--tl);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)}
+.sec-d .blk .lead,.sec-d2 .blk .lead{color:var(--tlm)}
+@media(max-width:900px){.split,.blk{grid-template-columns:1fr}.blk.flip .vis{order:0}.g3,.g4{grid-template-columns:1fr 1fr}.fg{grid-template-columns:1fr 1fr}.links{display:none}.burger{display:block}.tl{grid-template-columns:1fr;padding-left:34px;padding-top:0}.tl .track{left:10px;right:auto;top:0;bottom:0;width:3px;height:auto}.tl .fill{width:100%;height:0}.tl .st i{left:-33px;top:6px}}
+@media(max-width:600px){.wrap{padding-inline:18px}.g3,.g2,.g4,.fg{grid-template-columns:1fr}section{padding:62px 0}.hero{padding:120px 0 60px}.callbtn span{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+
+/* slider */
+.ba{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;border:1px solid var(--line-d);user-select:none;touch-action:pan-y;box-shadow:0 26px 60px -28px rgba(0,0,0,.6)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .aft{clip-path:inset(0 0 0 50%)}
+.ba .hd{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.ba .hd b{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px;border-radius:50%;background:rgba(255,255,255,.25);border:1.5px solid #fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem}
+.ba .lb{position:absolute;top:14px;padding:5px 11px;border-radius:999px;background:rgba(10,12,16,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:focus-within{outline:2px solid var(--acc);outline-offset:3px}
+.cap{font-size:.8rem;opacity:.7;margin-top:10px}
+/* builder */
+.bld{display:grid;grid-template-columns:1.25fr .75fr;gap:26px;align-items:start}
+.bpanel{background:var(--gd);border:1px solid var(--line-d);border-radius:22px;padding:28px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.bpanel .grp{margin-bottom:22px}.bpanel .gl{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.bpanel input[type=text],.bpanel select{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line-d);background:rgba(255,255,255,.06);color:var(--tl);font:inherit}
+.bpanel select option{color:#111}
+.ticket{position:sticky;top:96px;background:var(--tkt,#10131a);border:1px solid var(--line-d);border-top:2px dashed var(--acc);border-radius:16px;padding:22px;color:var(--tl)}
+.ticket h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+.ticket .tr{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line-d);font-size:.92rem}
+.ticket .tr b{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;min-width:74px;opacity:.7;padding-top:3px;font-weight:500}
+.ticket .tr span{flex:1;animation:fi .3s}.ticket .tr span.e{opacity:.35}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}}
+.ticket .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.ticket .btn[disabled]{opacity:.4;pointer-events:none}
+@media(max-width:900px){.bld{grid-template-columns:1fr}.ticket{position:static}}
+/* symptom + decoder */
+.res{margin-top:20px;padding:24px;border-radius:18px;background:var(--gd);border:1px solid var(--line-d);min-height:150px;transition:opacity .25s}
+.res h3{font-size:1.4rem;color:var(--acc);margin:6px 0 8px}.res p{color:var(--tlm);margin-bottom:12px}
+.hint{opacity:.6;display:flex;align-items:center;gap:8px}
+.lights{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.lt{aspect-ratio:1;border-radius:16px;background:#0d0f13;border:1px solid var(--line-d);color:#5b6270;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;transition:all .25s;text-align:center;padding:4px}
+.lt.on{color:var(--lc);border-color:var(--lc);box-shadow:0 0 22px -4px var(--lc),inset 0 0 18px -8px var(--lc);animation:fl .3s}
+@keyframes fl{25%{opacity:.4}50%{opacity:1}75%{opacity:.6}}
+.sev{display:inline-block;padding:4px 12px;border-radius:999px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#10131a}
+.gauge{display:flex;align-items:center;gap:20px;padding:18px 22px;border-radius:18px;margin-top:30px;max-width:460px}
+
+.hero{background:radial-gradient(60% 50% at 75% 30%,rgba(230,198,60,.22),transparent 70%),repeating-linear-gradient(0deg,rgba(230,198,60,.04) 0 1px,transparent 1px 64px),repeating-linear-gradient(90deg,rgba(230,198,60,.04) 0 1px,transparent 1px 64px),linear-gradient(160deg,#0B0F0D,#0F1A15 55%,#0B0F0D)}.hero h1 u{text-decoration:none;background:linear-gradient(#E6C63C,#E6C63C) 0 100%/0 4px no-repeat;padding-bottom:3px;animation:uln .9s .3s forwards}@keyframes uln{to{background-size:100% 4px}}.hgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.stack{position:relative}.stack .big{aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid var(--line-d)}.stack .big img{width:100%;height:100%;object-fit:cover}.stack .sm{position:absolute;left:-34px;bottom:30px;width:150px;aspect-ratio:1;border-radius:16px;overflow:hidden;border:2px solid var(--line-d);box-shadow:0 18px 40px -16px #000}.stack .sm img{width:100%;height:100%;object-fit:cover}.trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}.logo-t b span{color:#E6C63C}.nav.scrolled .logo-t b span{color:#B8961A}.nav.scrolled svg [stroke="#E6C63C"]{stroke:#B8961A}.callbtn{color:#0B0F0D}@media(max-width:900px){.hgrid{grid-template-columns:1fr}.stack .sm{left:10px}}
+
+</style>
+</head>
+<body>
+<header><div class="nav" id="nav">
+<a class="logo" href="index.html" aria-label="Carpenter Hub"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#E6C63C" stroke-width="2"><path d="M4 4h22l6 6v22H4z"/><path d="M12 11v14M24 11v14M12 18h12"/></svg><span class="logo-t"><b>Carpenter<span>HUB</span></b><small>Carpentry & joinery</small></span></a>
+<nav class="links"><a href="index.html" class=on>Home</a><a href="services.html">Services</a><a href="index.html#plan">Plan</a><a href="index.html#process">Process</a><a href="index.html#area">Area</a></nav>
+<a class="callbtn" href="tel:+971569348006"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Call 056 934 8006</span></a>
+<button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div><nav class="mnav" id="mnav"><a href="index.html">Home</a><a href="services.html">Services</a><a href="index.html#plan">Plan</a><a href="index.html#process">Process</a><a href="index.html#area">Area</a></nav></header>
+<section class="hero"><div class="wrap"><div class="hgrid"><div><div class="pill mono"><span class="dot"></span>Carpentry &amp; joinery · Serving Dubai</div><h1>Built to <u>measure</u>. Finished to last.</h1><p class="sub">Custom furniture, fitted kitchens and wardrobes, doors, partitions and expert repairs, made and installed across Dubai by a carpentry team that measures twice and cuts once.</p><div class="cta-row"><a class="btn" href="tel:+971569348006"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> Call +971 56 934 8006</a><a class="btn glass" href="#plan">Plan your job</a></div><div class="trust"><span class="pill"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg> <b>4.8</b> · 32 Google reviews</span><span class="pill">Free site measurement</span><span class="pill">Clean installation</span><span class="pill">Serving all Dubai</span></div></div>
+<div class="stack"><div class="big"><img src="images/spiral-staircase-wood-steel.jpg" alt="Wood and steel spiral staircase"></div><div class="sm"><img src="images/carpenter-hands-joining-timber.jpg" alt="Hands joining timber"></div></div></div></div></section><section class="sec-d2"><div class="wrap"><div class="head"><div><div class="eyebrow">01 — Services</div><h2 class="t">What we build and fix</h2></div><a class="more" href="services.html" style="color:var(--acc)">All services &rarr;</a></div><div class="grid g3"><button class="card rv svc" style="background:var(--gd);color:var(--tl);border-color:var(--line-d)" data-svc="furniture" id="card-furniture"><span class="num">01</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 4h10v8H7zM5 12h14M7 12v8M17 12v8M9 16h6"/></svg></span><h3>Custom Furniture</h3><p>Tables, TV units, shelving and beds designed around your space and made to your exact dimensions.</p><span class="det">Details +</span></button><button class="card rv svc" style="background:var(--gd);color:var(--tl);border-color:var(--line-d)" data-svc="cabinetry" id="card-cabinetry"><span class="num">02</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M9 11v2M15 11v2"/></svg></span><h3>Kitchen &amp; Wardrobe Cabinetry</h3><p>Fitted kitchens, wardrobes and storage walls planned to use every centimetre.</p><span class="det">Details +</span></button><button class="card rv svc" style="background:var(--gd);color:var(--tl);border-color:var(--line-d)" data-svc="doors" id="card-doors"><span class="num">03</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="15" cy="12" r=".8"/><path d="M9 7h6M9 17h6"/></svg></span><h3>Doors, Windows &amp; Partitions</h3><p>Supply, fitting and adjustment of interior doors, wooden frames and room partitions.</p><span class="det">Details +</span></button><button class="card rv svc" style="background:var(--gd);color:var(--tl);border-color:var(--line-d)" data-svc="repairs" id="card-repairs"><span class="num">04</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 20c3 0 5-1 5-4l-2-2c-3 0-3 3-3 6zM9 14l9-9 2 2-9 9z"/></svg></span><h3>Repairs &amp; Refinishing</h3><p>Sticking doors, loose hinges, worn finishes: we repair what can be saved.</p><span class="det">Details +</span></button><button class="card rv svc" style="background:var(--gd);color:var(--tl);border-color:var(--line-d)" data-svc="assembly" id="card-assembly"><span class="num">05</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M7 8v4M11 8v3M15 8v4M19 8v3"/></svg></span><h3>Assembly &amp; Installation</h3><p>Professional assembly and secure installation of flat-pack furniture, wall units and shelves.</p><span class="det">Details +</span></button></div></div></section><section class="sec-d"><div class="wrap"><div class="split" style="grid-template-columns:.8fr 1.2fr"><div class="rv"><div class="eyebrow">02 — Refinishing</div><h2 class="t">Don&rsquo;t replace it. Restore it.</h2><p class="lead">Sanding, filling, re-staining and lacquering bring worn doors and cabinets back to a clean, even finish &mdash; often the quickest upgrade for a Dubai home.</p><p style="margin:16px 0 22px" class="lead">Drag the slider to compare.</p><a class="btn" href="tel:+971569348006">Ask about a repair</a></div><div class="rv"><div><div class="ba" id="ba"><img src="images/cabinet-door-before-worn.jpg" alt="Worn cabinet door before refinishing" loading="lazy"><img class="aft" src="images/cabinet-door-after-refinished.jpg" alt="Cabinet door after refinishing" loading="lazy"><span class="lb" style="left:14px">BEFORE</span><span class="lb" style="right:14px">AFTER</span><div class="hd"><b>&#9664;&#9654;</b></div><input type="range" min="0" max="100" value="50" aria-label="Before and after slider"></div><p class="cap">Illustrative example of a refinishing job.</p></div></div></div></div></section><section class="sec-d2"><div class="wrap"><div class="split" style="grid-template-columns:.8fr 1.2fr"><div class="pic rv" style="aspect-ratio:4/5"><img src="images/carpenter-hands-shaving-wood.jpg" alt="Hands shaving timber with a hand plane" loading="lazy"></div><div class="rv"><div class="eyebrow">03 — Why Carpenter Hub</div><h2 class="t">The difference is in the details</h2><ul class="list"><li><span class="n">01</span><div><b>Measured on site</b><span>We come to you, take exact measurements and talk through what you need before anything is cut.</span></div></li><li><span class="n">02</span><div><b>Made for your space</b><span>Everything is built to your dimensions and finish, so it fits the room and the way you use it.</span></div></li><li><span class="n">03</span><div><b>Tidy, careful installation</b><span>We protect floors and furniture, clean up after ourselves and leave the job finished.</span></div></li><li><span class="n">04</span><div><b>Clear communication</b><span>You get a clear scope and quote before work starts, and quick replies by phone while it is underway.</span></div></li></ul><p class="mono" style="margin-top:14px;color:var(--acc)">Rated 4.8 by 32 customers on Google</p></div></div></div></section><section class="sec-d" id="plan"><div class="wrap"><div class="eyebrow">04 — Plan your job</div><h2 class="t">Build your cut list in 30 seconds</h2><p class="lead" style="margin-bottom:30px">Pick what you need and we&rsquo;ll turn it into a job slip you can read out when you call. No prices &mdash; just a clear brief.</p><div class="bld"><div class="bpanel rv"><div class="grp"><div class="gl">JOB</div><div class="chips" style="margin:0"><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Custom furniture</button><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Kitchen cabinets</button><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Wardrobe</button><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Doors</button><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Partition</button><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Repair or refinish</button><button type="button" class="chip" data-k="job" data-m="1" aria-pressed="false">Assembly</button></div></div><div class="grp"><div class="gl">PROPERTY</div><div class="chips" style="margin:0"><button type="button" class="chip" data-k="prop" data-m="0" aria-pressed="false">Apartment</button><button type="button" class="chip" data-k="prop" data-m="0" aria-pressed="false">Villa</button><button type="button" class="chip" data-k="prop" data-m="0" aria-pressed="false">Office</button><button type="button" class="chip" data-k="prop" data-m="0" aria-pressed="false">Shop or restaurant</button></div></div><div class="grp"><div class="gl">SCOPE</div><div class="chips" style="margin:0"><button type="button" class="chip" data-k="scope" data-m="0" aria-pressed="false">Single item</button><button type="button" class="chip" data-k="scope" data-m="0" aria-pressed="false">One room</button><button type="button" class="chip" data-k="scope" data-m="0" aria-pressed="false">Several rooms</button><button type="button" class="chip" data-k="scope" data-m="0" aria-pressed="false">Full fit-out</button></div></div><div class="grp"><div class="gl">TIMING</div><div class="chips" style="margin:0"><button type="button" class="chip" data-k="when" data-m="0" aria-pressed="false">As soon as possible</button><button type="button" class="chip" data-k="when" data-m="0" aria-pressed="false">Within a month</button><button type="button" class="chip" data-k="when" data-m="0" aria-pressed="false">Just planning</button></div></div><div class="grp"><div class="gl">Area in Dubai (optional)</div><select id="barea"><option value="">Select area</option><option>Dubai Marina</option><option>JLT</option><option>JBR</option><option>Palm Jumeirah</option><option>Downtown</option><option>Business Bay</option><option>Al Barsha</option><option>Jumeirah</option><option>Al Quoz</option><option>Arabian Ranches</option><option>Mirdif</option><option>Deira</option><option>Bur Dubai</option><option>Dubai Hills</option><option>JVC</option><option>Silicon Oasis</option></select></div><div class="grp"><div class="gl">Approx. size (optional)</div><input type="text" id="bsize" placeholder="e.g. 2.4 m wide x 2.6 m high wall"></div></div><div class="ticket rv" id="tk"><h4>CUT LIST · CARPENTER HUB</h4><div class="tr"><b>JOB</b><span class="e" id="t_job">&mdash;</span></div><div class="tr"><b>PROPERTY</b><span class="e" id="t_prop">&mdash;</span></div><div class="tr"><b>SCOPE</b><span class="e" id="t_scope">&mdash;</span></div><div class="tr"><b>TIMING</b><span class="e" id="t_when">&mdash;</span></div><div class="tr"><b>AREA</b><span class="e" id="t_area">&mdash;</span></div><div class="tr"><b>SIZE</b><span class="e" id="t_size">&mdash;</span></div><div class="row"><button class="btn" id="bcopy" disabled>Copy job slip</button><a class="btn glass" href="tel:+971569348006">Call 056 934 8006</a></div><p style="font-size:.78rem;opacity:.65;margin-top:12px">Read this slip out when you call &mdash; it covers what we&rsquo;ll ask first.</p></div></div></div></section><section class="sec-d2" id="process"><div class="wrap"><div class="eyebrow">05 — How it works</div><h2 class="t">From first call to finished job</h2>
+<div class="tl" id="tl"><div class="track"><div class="fill" id="tfill"></div></div><div class="st"><i></i><div class="box"><h3>Call us</h3><p>Tell us what the job is and where in Dubai.</p></div></div><div class="st"><i></i><div class="box"><h3>Site visit &amp; measurement</h3><p>We measure the space and talk through materials and finish.</p></div></div><div class="st"><i></i><div class="box"><h3>Quote &amp; materials agreed</h3><p>You get the scope and quote before work starts.</p></div></div><div class="st"><i></i><div class="box"><h3>Build, install, clean up</h3><p>Made, fitted and left tidy.</p></div></div></div></div></section>
+<section class="sec-d" id="area"><div class="wrap"><div class="split" style="grid-template-columns:1.1fr .9fr"><div class="rv"><div class="eyebrow">06 — Service area</div><h2 class="t">Serving homes and businesses across Dubai</h2><p class="lead">We come to you for measurements, installation and repairs. Tap an area to add it to your job slip.</p><div class="chips"><button class="chip" onclick="pickArea('Dubai Marina');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Dubai Marina</button><button class="chip" onclick="pickArea('JLT');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">JLT</button><button class="chip" onclick="pickArea('JBR');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">JBR</button><button class="chip" onclick="pickArea('Palm Jumeirah');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Palm Jumeirah</button><button class="chip" onclick="pickArea('Downtown');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Downtown</button><button class="chip" onclick="pickArea('Business Bay');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Business Bay</button><button class="chip" onclick="pickArea('Al Barsha');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Al Barsha</button><button class="chip" onclick="pickArea('Jumeirah');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Jumeirah</button><button class="chip" onclick="pickArea('Al Quoz');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Al Quoz</button><button class="chip" onclick="pickArea('Arabian Ranches');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Arabian Ranches</button><button class="chip" onclick="pickArea('Mirdif');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Mirdif</button><button class="chip" onclick="pickArea('Deira');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Deira</button><button class="chip" onclick="pickArea('Bur Dubai');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Bur Dubai</button><button class="chip" onclick="pickArea('Dubai Hills');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Dubai Hills</button><button class="chip" onclick="pickArea('JVC');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">JVC</button><button class="chip" onclick="pickArea('Silicon Oasis');document.getElementById('plan').scrollIntoView({behavior:'smooth'})">Silicon Oasis</button></div><p class="mono" style="opacity:.7">Don&rsquo;t see your area? Ask us &mdash; we cover all of Dubai.</p></div><div class="pic rv" style="aspect-ratio:4/5"><img src="images/ornate-carved-door.jpg" alt="Carved wooden doorway" loading="lazy"></div></div></div></section><section class="ctaband" style="background:linear-gradient(120deg,#E6C63C,#F4E27A);color:#0B0F0D"><div class="wrap"><div class="panel rv" style="color:#0B0F0D"><h2>Have a space that needs a carpenter?</h2><p style="color:#2a3128">Call us with a rough size and what you need, and we will reply with next steps.</p><div class="cta-row"><a class="btn" style="background:#0B0F0D;color:#E6C63C" href="tel:+971569348006"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> Call 056 934 8006</a></div></div></div></section>
+<footer><div class="in"><div class="fg">
+<div><a class="logo" href="index.html" style="color:var(--tl)"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#E6C63C" stroke-width="2"><path d="M4 4h22l6 6v22H4z"/><path d="M12 11v14M24 11v14M12 18h12"/></svg><span class="logo-t"><b>Carpenter<span>HUB</span></b><small>Carpentry & joinery</small></span></a><p class="blurb">Carpentry &amp; joinery, made to measure. Serving Dubai.</p><span class="badge"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg> 4.8 · 32 Google reviews</span></div>
+<div><h4>Services</h4><ul><li><a href="services.html#furniture">Custom Furniture</a></li><li><a href="services.html#cabinetry">Kitchen &amp; Wardrobe Cabinetry</a></li><li><a href="services.html#doors">Doors, Windows &amp; Partitions</a></li><li><a href="services.html#repairs">Repairs &amp; Refinishing</a></li><li><a href="services.html#assembly">Assembly &amp; Installation</a></li></ul></div>
+<div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="index.html#plan">Plan</a></li><li><a href="index.html#process">Process</a></li><li><a href="index.html#area">Area</a></li></ul></div>
+<div><h4>Contact</h4><ul><li><a href="tel:+971569348006">+971 56 934 8006</a></li><li>Serving Dubai, UAE</li><li><a href="https://www.google.com/maps/search/?api=1&query=Carpenter+Hub+Dubai" target="_blank" rel="noopener">Open in Google Maps</a></li></ul></div>
+</div><div class="fb"><span>&copy; <span id="yr">2026</span> Carpenter Hub. All rights reserved.</span><span class="mono">Measure twice · cut once</span></div></div></footer>
+<div class="ov" id="ov" aria-hidden="true"><div class="mp" role="dialog" aria-modal="true" aria-labelledby="mt"><button class="x" id="mx" aria-label="Close">&times;</button><div id="mb"></div></div></div>
+<script>
+var SVC={"furniture": {"title": "Custom Furniture", "desc": "Tables, TV units, shelving, beds and built-ins designed around your space and made to your exact dimensions. We help you choose timber, veneer and finish so each piece suits the room it lives in. You get furniture that fits properly instead of something off the shelf that almost fits.", "included": ["Dining and coffee tables", "TV and media units", "Floating shelves", "Beds and headboards", "Study desks"], "signs": ["Off-the-shelf pieces never fit", "You need furniture to match a room", "You want a built-in look"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M7 4h10v8H7zM5 12h14M7 12v8M17 12v8M9 16h6\"/></svg>"}, "cabinetry": {"title": "Kitchen & Wardrobe Cabinetry", "desc": "Fitted kitchens, wardrobes and storage walls planned to make the most of every centimetre. We handle carcasses, doors, hinges, soft-close hardware and internal fittings as one job. The result is clean lines, smooth-running doors and storage that works for how you actually live.", "included": ["Full kitchen cabinets", "Built-in wardrobes", "Walk-in closet fit-outs", "Vanity units", "Under-stair storage"], "signs": ["Storage is cramped or dated", "Doors sag or no longer close", "You are renovating a kitchen"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"1\"/><path d=\"M12 3v18M9 11v2M15 11v2\"/></svg>"}, "doors": {"title": "Doors, Windows & Partitions", "desc": "Supply, fitting and adjustment of interior doors, wooden window frames and room partitions. We hang doors that close properly, replace frames and build partitions that divide a space without making it feel closed in. Ideal for villas, apartments and offices being reconfigured.", "included": ["Interior door hanging", "Door frame replacement", "Sliding and pocket doors", "Wooden partitions", "Window frame repair"], "signs": ["A door sticks or will not latch", "Frames are swollen or damaged", "You want to split an open space"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"3\" width=\"12\" height=\"18\" rx=\"1\"/><circle cx=\"15\" cy=\"12\" r=\".8\"/><path d=\"M9 7h6M9 17h6\"/></svg>"}, "repairs": {"title": "Repairs & Refinishing", "desc": "Sticking doors, loose hinges, damaged cabinet fronts, worn or sun-faded wood: we repair what can be saved instead of replacing it. Sanding, filling, re-staining and lacquering bring tired woodwork back to a clean, even finish. It is often the quickest and most cost-effective upgrade for a home.", "included": ["Hinge and handle replacement", "Door planing and re-hanging", "Cabinet front repair", "Sanding and re-lacquering", "Sun and water damage touch-up"], "signs": ["Finish is faded or scratched", "Hardware is loose or broken", "You want a refresh without replacing"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M4 20c3 0 5-1 5-4l-2-2c-3 0-3 3-3 6zM9 14l9-9 2 2-9 9z\"/></svg>"}, "assembly": {"title": "Assembly & Installation", "desc": "Professional assembly and secure installation of flat-pack furniture, wall units, shelves and fixtures. We level, anchor and align everything properly, including wall-mounting on concrete and block walls. You avoid wobbly units, missing parts and damaged walls.", "included": ["Flat-pack furniture", "Wall-mounted units", "Shelves and brackets", "Curtain boxes and pelmets", "Office furniture"], "signs": ["Furniture arrived flat-packed", "Units need securing to the wall", "You want it level and aligned first time"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"8\" width=\"18\" height=\"9\" rx=\"2\"/><path d=\"M7 8v4M11 8v3M15 8v4M19 8v3\"/></svg>"}};var TEL="+971569348006",PH="056 934 8006",CHK='<svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12l5 5L20 7"/></svg>';
+(function(){
+var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
+var nav=document.getElementById('nav'),hero=document.querySelector('.hero');
+function un(){var th=hero?hero.offsetHeight-90:120;nav.classList.toggle('scrolled',window.scrollY>th)}
+window.addEventListener('scroll',un,{passive:true});un();
+var b=document.getElementById('burger'),m=document.getElementById('mnav');
+b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+if(/static=1/.test(location.search))document.documentElement.classList.add('static');
+var rv=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});rv.forEach(function(e){io.observe(e)})}else rv.forEach(function(e){e.classList.add('in')});
+/* modal */
+var ov=document.getElementById('ov'),mb=document.getElementById('mb'),last=null;
+window.openSvc=function(slug,trg){var s=SVC[slug];if(!s)return;last=trg||null;
+mb.innerHTML=s.icon+'<h3 id="mt">'+s.title+'</h3><p>'+s.desc+'</p><h4>Included</h4><ul>'+s.included.map(function(i){return'<li>'+CHK+i+'</li>'}).join('')+'</ul><h4>Signs you may need this</h4><ul>'+s.signs.map(function(i){return'<li>'+CHK+i+'</li>'}).join('')+'</ul><div class="row"><a class="btn" href="tel:'+TEL+'">Call '+PH+'</a><a class="btn glass" href="services.html#'+slug+'">Full details</a></div>';
+ov.classList.add('show');document.body.style.overflow='hidden';document.getElementById('mx').focus()};
+function close(){ov.classList.remove('show');document.body.style.overflow='';if(last)last.focus()}
+document.getElementById('mx').addEventListener('click',close);
+ov.addEventListener('click',function(e){if(e.target===ov)close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+document.querySelectorAll('[data-svc]').forEach(function(c){c.addEventListener('click',function(){openSvc(c.getAttribute('data-svc'),c)})});
+/* timeline fill */
+var tl=document.getElementById('tl'),tf=document.getElementById('tfill');
+if(tl&&tf){var sts=tl.querySelectorAll('.st'),tk=false;
+function tick(){tk=false;var r=tl.getBoundingClientRect(),vh=window.innerHeight;var p=Math.max(0,Math.min(1,(vh*.8-r.top)/(r.height+vh*.1)));
+var vert=getComputedStyle(tl).gridTemplateColumns.split(' ').length===1;
+if(vert){tf.style.height=(p*100)+'%';tf.style.width='100%'}else{tf.style.width=(p*100)+'%';tf.style.height='100%'}
+sts.forEach(function(s,i){s.classList.toggle('on',p>=(i+.4)/sts.length)})}
+window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(tick)}},{passive:true});window.addEventListener('resize',tick);tick()}
+})();
+
+(function(){var K=[["job", "JOB"], ["prop", "PROPERTY"], ["scope", "SCOPE"], ["when", "TIMING"]],brand="CARPENTER HUB",S={};
+function render(){var any=false;K.forEach(function(p){var el=document.getElementById('t_'+p[0]);var v=S[p[0]]||[];el.textContent=v.length?v.join(', '):'\u2014';el.className=v.length?'':'e';if(v.length)any=true});
+var a=document.getElementById('barea').value,z=document.getElementById('bsize').value.trim();
+var ea=document.getElementById('t_area');ea.textContent=a||'\u2014';ea.className=a?'':'e';var ez=document.getElementById('t_size');ez.textContent=z||'\u2014';ez.className=z?'':'e';
+document.getElementById('bcopy').disabled=!(S[K[0][0]]&&S[K[0][0]].length)}
+function txt(){var L=['JOB SLIP - '+brand];K.forEach(function(p){var v=S[p[0]]||[];L.push(p[1]+': '+(v.length?v.join(', '):'-'))});
+L.push('AREA: '+(document.getElementById('barea').value||'-'));L.push('SIZE: '+(document.getElementById('bsize').value||'-'));return L.join('\n')}
+document.querySelectorAll('.chip[data-k]').forEach(function(c){c.addEventListener('click',function(){var k=c.dataset.k,m=c.dataset.m==='1',o=c.textContent;S[k]=S[k]||[];
+if(m){var i=S[k].indexOf(o);if(i>-1){S[k].splice(i,1);c.setAttribute('aria-pressed','false')}else{S[k].push(o);c.setAttribute('aria-pressed','true')}}
+else{document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.setAttribute('aria-pressed','false')});S[k]=[o];c.setAttribute('aria-pressed','true')}render()})});
+document.getElementById('barea').addEventListener('change',render);document.getElementById('bsize').addEventListener('input',render);
+document.getElementById('bcopy').addEventListener('click',function(){var b=this,t=txt();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){}).then(function(){b.textContent='Copied \u2713';setTimeout(function(){b.textContent='Copy job slip'},2000)})});
+window.pickArea=function(a){var s=document.getElementById('barea');s.value=a;render()};render()})();
+
+(function(){var b=document.getElementById('ba');if(!b)return;var r=b.querySelector('input'),a=b.querySelector('.aft'),h=b.querySelector('.hd');
+function set(v){a.style.clipPath='inset(0 0 0 '+v+'%)';h.style.left=v+'%';r.value=v}
+r.addEventListener('input',function(){set(r.value)});
+var d=false;function mv(e){var q=b.getBoundingClientRect();set(Math.max(0,Math.min(100,(e.clientX-q.left)/q.width*100)))}
+b.addEventListener('pointerdown',function(e){d=true;mv(e)});window.addEventListener('pointermove',function(e){if(d)mv(e)});window.addEventListener('pointerup',function(){d=false});
+if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion:reduce)').matches){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){o.disconnect();var t0=null,k=[50,78,32,50];(function s(t){if(!t0)t0=t;var p=(t-t0)/1600;if(p>=1){set(50);return}var i=Math.floor(p*3),f=p*3-i;set(k[i]+(k[i+1]-k[i])*f);requestAnimationFrame(s)})(performance.now())}},{threshold:.5});o.observe(b)}})();
+
+</script>
+</body>
+</html>

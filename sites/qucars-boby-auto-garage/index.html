@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuCars - Boby Auto Garage | Car repair, Rashidiya, Dubai</title>
+<meta name="description" content="Mechanical repair, diagnostics, AC, brakes and servicing for every make at QuCars - Boby Auto Garage, Rashidiya, Dubai.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0B0D;--bg2:#121418;--light:#ECEFF3;--light2:#DDE2E8;--tl:#F3F5F7;--tlm:#8A919C;--td:#0D0F12;--tdm:#545B66;--acc:#FFD400;--acc-ink:#0D0F12;--acc2:#FFF06A;--hf:'Archivo',sans-serif;--bf:'Manrope',sans-serif;--mono:'JetBrains Mono',monospace;--line-d:rgba(255,255,255,.1);--line-l:#DDE2E8;--gd:rgba(18,20,24,.55);--gl:rgba(255,255,255,.62);--r:12px;--eb:#8a6f00;--ebd:#FFD400;--tile:#FFD400;--tile-ink:#0D0F12;--navbg:rgba(10,11,13,.55);--navbd:rgba(255,255,255,.1);--foot:#070809;--mbg:rgba(18,20,24,.88);--hw:800;--hl:-.01em;--tkt:#0A0B0D;}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--bf);color:var(--td);background:var(--light);line-height:1.65;font-size:16.5px;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--hf);line-height:1.12;letter-spacing:var(--hl,-.015em);font-weight:var(--hw,700)}
+a{color:inherit}img{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:32px}
+.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.ic{flex-shrink:0}
+/* nav */
+header{position:fixed;top:14px;left:0;right:0;z-index:50;padding-inline:16px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px;margin:0 auto;padding:10px 14px 10px 18px;border-radius:18px;background:var(--navbg);border:1px solid var(--navbd);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);color:var(--tl);transition:background .3s,color .3s,box-shadow .3s,border-color .3s}
+.nav.scrolled{background:rgba(255,255,255,.9);border-color:rgba(10,15,25,.1);color:#10131a;box-shadow:0 10px 30px -12px rgba(10,15,25,.28)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-t{display:flex;flex-direction:column;line-height:1.05}
+.logo-t b{font-family:var(--hf);font-weight:800;font-size:1.05rem;letter-spacing:.01em}
+.logo-t small{font-family:var(--mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.links{display:flex;align-items:center;gap:22px;font-size:.88rem;font-weight:600}
+.links a{text-decoration:none;opacity:.82;transition:opacity .2s}.links a:hover,.links a.on{opacity:1}
+.callbtn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:var(--acc-ink);font-weight:700;font-size:.86rem;padding:9px 16px;border-radius:12px;text-decoration:none;white-space:nowrap}
+.burger{display:none;background:none;border:0;width:40px;height:40px;color:inherit}
+.burger span{display:block;width:22px;height:2px;background:currentColor;margin:5px auto;border-radius:2px}
+.mnav{display:none;max-width:1180px;margin:8px auto 0;border-radius:16px;background:var(--navbg);border:1px solid var(--navbd);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:8px 18px;color:var(--tl)}
+.mnav.open{display:block}.mnav a{display:block;padding:13px 0;text-decoration:none;font-weight:600;border-bottom:1px solid var(--line-d)}.mnav a:last-child{border:0}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--acc);color:var(--acc-ink);padding:14px 26px;border-radius:var(--r);font-weight:700;font-size:.95rem;text-decoration:none;border:0;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn.glass{background:rgba(255,255,255,.08);color:var(--tl);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn.glass.dk{color:var(--td);border-color:rgba(10,15,25,.2);background:rgba(255,255,255,.5)}
+/* sections */
+section{padding:92px 0;border-top:1px solid var(--line-l);position:relative;overflow-x:clip}
+.sec-d{background:var(--bg);color:var(--tl);border-top-color:var(--line-d)}
+.sec-d2{background:var(--bg2);color:var(--tl);border-top-color:var(--line-d)}
+.sec-l{background:var(--light);color:var(--td)}
+.sec-l2{background:var(--light2);color:var(--td)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--eb);margin-bottom:12px;font-weight:500}
+.sec-d .eyebrow,.sec-d2 .eyebrow{color:var(--ebd,var(--acc))}
+h2.t{font-size:clamp(1.8rem,3.4vw,2.7rem);margin-bottom:14px;max-width:20ch}
+.lead{max-width:60ch;color:var(--tdm)}.sec-d .lead,.sec-d2 .lead{color:var(--tlm)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+.head a.more{font-weight:700;text-decoration:none;color:var(--eb)}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--bg);color:var(--tl);min-height:92vh;display:flex;align-items:center;padding:150px 0 90px;isolation:isolate}
+.hero.mini{min-height:0;padding:150px 0 70px}
+.hero .bgimg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.hero .shade{position:absolute;inset:0;z-index:-1}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);margin:14px 0 18px;max-width:15ch}
+.hero p.sub{font-size:1.1rem;color:var(--tlm);max-width:52ch;margin-bottom:28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border-radius:999px;background:var(--gd);border:1px solid var(--line-d);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:.82rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 var(--acc);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.glassd{background:var(--gd);border:1px solid var(--line-d);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-radius:22px}
+/* cards */
+.grid{display:grid;gap:22px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{position:relative;text-align:left;width:100%;background:var(--gl);border:1px solid var(--line-l);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border-radius:20px;padding:28px;color:var(--td);transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -24px rgba(10,15,25,.45);border-color:var(--acc)}
+.card::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--acc);transition:width .35s}
+.card:hover::before{width:100%}
+.card .tile{width:50px;height:50px;border-radius:14px;background:var(--tile);color:var(--tile-ink);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:transform .3s}
+.card:hover .tile{transform:rotate(-8deg)}
+.card h3{font-size:1.22rem;margin-bottom:8px}.card p{font-size:.94rem;color:var(--tdm)}
+.card .num{position:absolute;right:20px;top:18px;font-family:var(--mono);font-size:.74rem;color:var(--tdm)}
+.card .det{display:block;margin-top:14px;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--eb);font-weight:600}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
+.sec-l .wrap,.sec-l2 .wrap,.sec-d .wrap,.sec-d2 .wrap{position:relative;z-index:1}
+/* split */
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.pic{border-radius:24px;overflow:hidden;aspect-ratio:4/4.4;box-shadow:0 28px 60px -26px rgba(0,0,0,.55)}
+.pic img{width:100%;height:100%;object-fit:cover}
+.list{list-style:none}.list li{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line-l)}
+.sec-d .list li,.sec-d2 .list li{border-top-color:var(--line-d)}
+.list .n{font-family:var(--mono);color:var(--eb);font-size:.8rem;padding-top:4px;min-width:26px}
+.list b{display:block;font-family:var(--hf);font-size:1.08rem;margin-bottom:3px}.list span{color:var(--tdm);font-size:.94rem}
+.sec-d .list span,.sec-d2 .list span{color:var(--tlm)}
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:46px;padding-top:34px}
+.tl .track{position:absolute;left:0;right:0;top:11px;height:3px;background:var(--line-d);border-radius:3px}
+.sec-l .tl .track,.sec-l2 .tl .track{background:rgba(10,15,25,.12)}
+.tl .fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.tl .st{position:relative;opacity:.4;transition:opacity .5s}
+.tl .st.on{opacity:1}
+.tl .st i{position:absolute;top:-33px;left:0;width:22px;height:22px;border-radius:50%;background:var(--bg);border:2px solid var(--acc);transition:background .3s}
+.sec-l .tl .st i,.sec-l2 .tl .st i{background:var(--light)}
+.tl .st.on i{background:var(--acc)}
+.tl .box{background:var(--gl);border:1px solid var(--line-l);border-radius:16px;padding:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sec-d .tl .box,.sec-d2 .tl .box{background:var(--gd);border-color:var(--line-d)}
+.tl h3{font-size:1.05rem;margin-bottom:6px}.tl p{font-size:.9rem;color:var(--tdm)}.sec-d .tl p,.sec-d2 .tl p{color:var(--tlm)}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.chip{border:1px solid var(--line-l);background:var(--gl);padding:8px 16px;border-radius:999px;font-size:.86rem;font-weight:600;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all .2s}
+.sec-d .chip,.sec-d2 .chip{border-color:var(--line-d);background:var(--gd);color:var(--tl)}
+.chip:hover,.chip.on,.chip[aria-pressed=true]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+/* faq */
+details{background:var(--gl);border:1px solid var(--line-l);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+details summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+details summary::after{content:"+";font-size:1.3rem;transition:transform .2s}details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:var(--tdm);font-size:.95rem}
+/* blocks */
+.blk{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.blk.flip .vis{order:2}
+.vis{border-radius:24px;overflow:hidden;aspect-ratio:4/3;position:relative;display:flex;align-items:center;justify-content:center;background:var(--gd);border:1px solid var(--line-d)}
+.vis img{width:100%;height:100%;object-fit:cover}
+.vis .bigic{color:var(--acc)}
+.blk h2{font-size:clamp(1.6rem,2.8vw,2.3rem);margin:6px 0 12px}
+.blk ul.inc{list-style:none;margin:16px 0}.blk ul.inc li{display:flex;gap:10px;padding:5px 0;font-size:.95rem}.blk ul.inc li svg{color:var(--eb);margin-top:3px}
+.sec-d .blk ul.inc li svg,.sec-d2 .blk ul.inc li svg{color:var(--acc)}
+/* cta */
+.ctaband{text-align:center;background:var(--bg);color:var(--tl);overflow:hidden}
+.ctaband .panel{max-width:860px;margin:0 auto;padding:54px 36px}
+.ctaband h2{font-size:clamp(1.8rem,3.4vw,2.7rem);margin-bottom:10px}
+.ctaband p{color:var(--tlm);margin-bottom:26px}.ctaband .cta-row{justify-content:center}
+/* footer */
+footer{background:var(--foot);color:var(--tlm);border-top:2px solid var(--acc)}
+footer .in{max-width:1180px;margin:0 auto;padding:60px 32px 26px}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:36px}
+footer h4{color:var(--tl);font-family:var(--mono);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none}footer li{margin-bottom:8px;font-size:.92rem}footer a{text-decoration:none}footer a:hover{color:var(--tl)}
+footer .blurb{margin-top:14px;font-size:.92rem;max-width:34ch}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid var(--line-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 12px;border-radius:999px;border:1px solid var(--line-d);color:var(--tl);font-size:.8rem}
+.badge svg{color:var(--acc)}
+/* modal */
+.ov{position:fixed;inset:0;z-index:90;background:rgba(5,8,12,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.ov.show{display:flex}
+.mp{position:relative;max-width:580px;width:100%;max-height:88vh;overflow:auto;background:var(--mbg);color:var(--tl);border:1px solid var(--line-d);border-top:4px solid var(--acc);border-radius:22px;padding:32px;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.mp .x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.12);font-size:1.1rem}
+.mp h3{font-size:1.45rem;margin:8px 0 10px}.mp p{color:var(--tlm);margin-bottom:12px;font-size:.96rem}
+.mp ul{list-style:none;margin:8px 0 14px}.mp li{display:flex;gap:10px;padding:4px 0;font-size:.93rem}.mp li svg{color:var(--acc);margin-top:3px}
+.mp h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:14px 0 4px}
+.mp .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+/* reveal */
+.rv{opacity:.35;transform:translateY(16px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+.static .rv{opacity:1;transform:none}
+.sec-d .card,.sec-d2 .card{background:var(--gd);color:var(--tl);border-color:var(--line-d)}.sec-d .card p,.sec-d2 .card p,.sec-d .card .num,.sec-d2 .card .num{color:var(--tlm)}.sec-d .card .det,.sec-d2 .card .det{color:var(--acc)}
+.sec-d .btn.glass.dk,.sec-d2 .btn.glass.dk{color:var(--tl);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)}
+.sec-d .blk .lead,.sec-d2 .blk .lead{color:var(--tlm)}
+@media(max-width:900px){.split,.blk{grid-template-columns:1fr}.blk.flip .vis{order:0}.g3,.g4{grid-template-columns:1fr 1fr}.fg{grid-template-columns:1fr 1fr}.links{display:none}.burger{display:block}.tl{grid-template-columns:1fr;padding-left:34px;padding-top:0}.tl .track{left:10px;right:auto;top:0;bottom:0;width:3px;height:auto}.tl .fill{width:100%;height:0}.tl .st i{left:-33px;top:6px}}
+@media(max-width:600px){.wrap{padding-inline:18px}.g3,.g2,.g4,.fg{grid-template-columns:1fr}section{padding:62px 0}.hero{padding:120px 0 60px}.callbtn span{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+
+/* slider */
+.ba{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;border:1px solid var(--line-d);user-select:none;touch-action:pan-y;box-shadow:0 26px 60px -28px rgba(0,0,0,.6)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .aft{clip-path:inset(0 0 0 50%)}
+.ba .hd{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.ba .hd b{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px;border-radius:50%;background:rgba(255,255,255,.25);border:1.5px solid #fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem}
+.ba .lb{position:absolute;top:14px;padding:5px 11px;border-radius:999px;background:rgba(10,12,16,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:focus-within{outline:2px solid var(--acc);outline-offset:3px}
+.cap{font-size:.8rem;opacity:.7;margin-top:10px}
+/* builder */
+.bld{display:grid;grid-template-columns:1.25fr .75fr;gap:26px;align-items:start}
+.bpanel{background:var(--gd);border:1px solid var(--line-d);border-radius:22px;padding:28px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.bpanel .grp{margin-bottom:22px}.bpanel .gl{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.bpanel input[type=text],.bpanel select{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line-d);background:rgba(255,255,255,.06);color:var(--tl);font:inherit}
+.bpanel select option{color:#111}
+.ticket{position:sticky;top:96px;background:var(--tkt,#10131a);border:1px solid var(--line-d);border-top:2px dashed var(--acc);border-radius:16px;padding:22px;color:var(--tl)}
+.ticket h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+.ticket .tr{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line-d);font-size:.92rem}
+.ticket .tr b{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;min-width:74px;opacity:.7;padding-top:3px;font-weight:500}
+.ticket .tr span{flex:1;animation:fi .3s}.ticket .tr span.e{opacity:.35}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}}
+.ticket .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.ticket .btn[disabled]{opacity:.4;pointer-events:none}
+@media(max-width:900px){.bld{grid-template-columns:1fr}.ticket{position:static}}
+/* symptom + decoder */
+.res{margin-top:20px;padding:24px;border-radius:18px;background:var(--gd);border:1px solid var(--line-d);min-height:150px;transition:opacity .25s}
+.res h3{font-size:1.4rem;color:var(--acc);margin:6px 0 8px}.res p{color:var(--tlm);margin-bottom:12px}
+.hint{opacity:.6;display:flex;align-items:center;gap:8px}
+.lights{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.lt{aspect-ratio:1;border-radius:16px;background:#0d0f13;border:1px solid var(--line-d);color:#5b6270;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;transition:all .25s;text-align:center;padding:4px}
+.lt.on{color:var(--lc);border-color:var(--lc);box-shadow:0 0 22px -4px var(--lc),inset 0 0 18px -8px var(--lc);animation:fl .3s}
+@keyframes fl{25%{opacity:.4}50%{opacity:1}75%{opacity:.6}}
+.sev{display:inline-block;padding:4px 12px;border-radius:999px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#10131a}
+.gauge{display:flex;align-items:center;gap:20px;padding:18px 22px;border-radius:18px;margin-top:30px;max-width:460px}
+
+h1,h2,h3{font-stretch:125%}.hero{background:#0A0B0D}.hero .bgimg{background-image:url(images/wheel-rim-bw-closeup.jpg);left:40%;filter:grayscale(1)}.hero .shade{background:linear-gradient(90deg,#0A0B0D 0,#0A0B0D 38%,rgba(10,11,13,.5) 62%,rgba(10,11,13,.1)),radial-gradient(600px 600px at 72% 45%,rgba(255,212,0,.25),transparent 62%),repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 48px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 48px)}.hero h1{font-size:clamp(2.4rem,6vw,5rem);max-width:12ch}.hero h1 mark{background:linear-gradient(transparent 58%,rgba(255,212,0,.9) 58%);color:inherit;padding:0 4px}.strip{display:grid;grid-template-columns:repeat(4,1fr)}.strip div{padding:6px 24px;border-left:1px solid var(--line-d)}.strip div:first-child{border:0;padding-left:0}.strip b{display:block;font-family:var(--hf);font-size:1.7rem;font-stretch:125%;font-weight:800;margin-top:4px}.gauge svg{display:block}.gnum{font-family:var(--hf);font-size:3rem;font-weight:800;font-stretch:125%;line-height:1}.dec{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:start;margin-top:30px}.panel2{background:#121418;border-radius:28px;padding:26px;border:1px solid var(--line-d);box-shadow:inset 0 0 60px rgba(255,212,0,.05)}.callbtn{color:#0D0F12}.nav.scrolled .logo{color:#10131a}@media(max-width:900px){.strip{grid-template-columns:1fr 1fr;row-gap:18px}.strip div:nth-child(3){border-left:0;padding-left:0}.dec{grid-template-columns:1fr}.hero .bgimg{left:0;opacity:.5}}
+
+</style>
+</head>
+<body>
+<header><div class="nav" id="nav">
+<a class="logo" href="index.html" aria-label="QuCars - Boby Auto Garage"><svg width="34" height="34" viewBox="0 0 34 34"><rect width="34" height="34" rx="9" fill="#FFD400"/><path d="M17 8a9 9 0 1 0 6.4 2.6" fill="none" stroke="#0D0F12" stroke-width="3" stroke-linecap="round"/><path d="M17 17l8 8" stroke="#0D0F12" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-t"><b>QuCars</b><small>Boby Auto Garage</small></span></a>
+<nav class="links"><a href="index.html" class=on>Home</a><a href="services.html">Services</a><a href="index.html#decoder">Decoder</a><a href="index.html#area">Location</a></nav>
+<a class="callbtn" href="tel:+971522069431"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Call 052 206 9431</span></a>
+<button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div><nav class="mnav" id="mnav"><a href="index.html">Home</a><a href="services.html">Services</a><a href="index.html#decoder">Decoder</a><a href="index.html#area">Location</a></nav></header>
+<section class="hero"><div class="bgimg"></div><div class="shade"></div><div class="wrap"><div class="pill mono"><span class="dot"></span>Rashidiya · Dubai</div><h1>Your car, <mark>properly</mark> diagnosed.</h1><p class="sub">Mechanical repair, diagnostics, AC, brakes and servicing for every make, from a Rashidiya garage that Dubai drivers have rated 4.5 stars across 598 Google reviews.</p><div class="cta-row"><a class="btn" href="tel:+971522069431"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> Call the workshop</a><a class="btn glass" href="services.html">See services &rarr;</a></div>
+<div class="gauge glassd"><svg width="190" height="110" viewBox="0 0 190 110"><path d="M15 100A80 80 0 0 1 175 100" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="10" stroke-linecap="round"/><path id="garc" d="M15 100A80 80 0 0 1 175 100" fill="none" stroke="#FFD400" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" style="transition:stroke-dashoffset 1.4s cubic-bezier(.34,1.56,.64,1) .4s"/><g id="gneedle" style="transform-origin:95px 100px;transform:rotate(-90deg);transition:transform 1.4s cubic-bezier(.34,1.56,.64,1) .4s"><line x1="95" y1="100" x2="95" y2="36" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g><circle cx="95" cy="100" r="7" fill="#FFD400"/></svg><div><div class="gnum"><span data-count="4.5" data-dec="1">4.5</span></div><div style="color:#FFD400;margin:4px 0">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="mono" style="opacity:.7"><span data-count="598">598</span> Google reviews</div></div></div></div></section><section class="sec-d2" style="padding:34px 0"><div class="wrap"><div class="strip mono"><div>Rating<b>4.5&#9733;</b></div><div>Reviews<b><span data-count="598">598</span></b></div><div>Makes<b>All brands</b></div><div>Area<b>Rashidiya</b></div></div></div></section><section class="sec-l"><div class="blob" style="width:420px;height:420px;background:rgba(255,212,0,.2);right:-100px;top:60px"></div><div class="wrap"><div class="head"><div><div class="eyebrow">// 01 — What we fix</div><h2 class="t">Everything under the bonnet, under one roof.</h2></div><a class="more" href="services.html">All services &rarr;</a></div><div class="grid g3"><button class="card rv svc" data-svc="mechanical" id="card-mechanical"><span class="num">01</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.3-.6-.6-2.3z"/></svg></span><h3>General Mechanical Repair</h3><p>Engine mounts, belts, hoses, cooling and steering repairs for all makes.</p><span class="det">Details +</span></button><button class="card rv svc" data-svc="diagnostics" id="card-diagnostics"><span class="num">02</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1"/></svg></span><h3>Engine Diagnostics</h3><p>Computer diagnostics to pinpoint why a warning light is on.</p><span class="det">Details +</span></button><button class="card rv svc" data-svc="brakes" id="card-brakes"><span class="num">03</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg></span><h3>Brakes &amp; Suspension</h3><p>Pads, discs, fluid, shocks and bushes inspected and replaced.</p><span class="det">Details +</span></button><button class="card rv svc" data-svc="ac" id="card-ac"><span class="num">04</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9 4l3 2 3-2M9 20l3-2 3 2"/></svg></span><h3>Car AC Service</h3><p>Leak checks, recharge and compressor repair for cold air all summer.</p><span class="det">Details +</span></button><button class="card rv svc" data-svc="service" id="card-service"><span class="num">05</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span><h3>Oil &amp; Periodic Service</h3><p>Oil, filters, fluids and a multi-point check at the right intervals.</p><span class="det">Details +</span></button><button class="card rv svc" data-svc="tyres" id="card-tyres"><span class="num">06</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg></span><h3>Tyres &amp; Alignment</h3><p>Tyre fitting, balancing and alignment to stop uneven wear.</p><span class="det">Details +</span></button><button class="card rv svc" data-svc="electrical" id="card-electrical"><span class="num">07</span><span class="tile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span><h3>Car Electrical</h3><p>Batteries, alternators, starters, wiring and lighting faults traced properly.</p><span class="det">Details +</span></button></div></div></section><section class="sec-d" id="decoder"><div class="wrap"><div class="eyebrow">// 02 — What is your car telling you?</div><h2 class="t">Warning light on? Tap it.</h2><div class="dec"><div class="panel2 rv"><div class="lights"><button type="button" class="lt" data-dl="0" style="--lc:#FFB000" aria-label="Check Engine"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1"/></svg><span>Engine</span></button><button type="button" class="lt" data-dl="1" style="--lc:#FF3B30" aria-label="Oil Pressure"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg><span>Oil</span></button><button type="button" class="lt" data-dl="2" style="--lc:#FF3B30" aria-label="Battery / Charging"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg><span>Battery</span></button><button type="button" class="lt" data-dl="3" style="--lc:#FF3B30" aria-label="Brake System"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg><span>Brakes</span></button><button type="button" class="lt" data-dl="4" style="--lc:#FF3B30" aria-label="Coolant Temperature"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0z"/><path d="M12 9v7"/></svg><span>Coolant</span></button><button type="button" class="lt" data-dl="5" style="--lc:#FFB000" aria-label="Tyre Pressure (TPMS)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v6M12 16v.5"/></svg><span>TPMS</span></button><button type="button" class="lt" data-dl="6" style="--lc:#FFB000" aria-label="ABS"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M8 14l2-5 2 5M14 9h2.5"/></svg><span>ABS</span></button><button type="button" class="lt" data-dl="7" style="--lc:#FFD400" aria-label="AC blowing warm (symptom)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9 4l3 2 3-2M9 20l3-2 3 2"/></svg><span>AC</span></button></div></div><div class="res" id="dres"><p class="hint">Tap a warning light to see what it usually means and how urgent it is.</p></div></div></div></section><section class="sec-l2"><div class="wrap"><div class="split" style="grid-template-columns:.8fr 1.2fr"><div class="rv" style="position:relative"><div class="pic" style="aspect-ratio:4/4.6"><img src="images/mechanic-hands-brake-disc.jpg" alt="Mechanic servicing a brake disc" loading="lazy"></div><span class="pill mono" style="position:absolute;left:14px;bottom:14px;color:#fff">Hands-on · No guesswork</span></div><div class="rv"><div class="eyebrow">// 03 — Why QuCars</div><h2 class="t">A neighbourhood garage with a city-wide reputation.</h2><ul class="list"><li><span class="n">01</span><div><b>Diagnose before we quote.</b><span>We find the actual cause before anything is replaced, so you only pay for the repair your car needs.</span></div></li><li><span class="n">02</span><div><b>Straight talk, clear pricing.</b><span>You will know what is wrong, what it costs and what can wait, before the work starts.</span></div></li><li><span class="n">03</span><div><b>598 reviews and counting.</b><span>Drivers across Dubai keep rating us 4.5 stars on Google.</span></div></li><li><span class="n">04</span><div><b>Every make, every system.</b><span>From routine oil changes to electrical faults, one workshop handles the whole car.</span></div></li></ul></div></div></div></section><section class="sec-d2" id="process"><div class="wrap"><div class="eyebrow">// 04 — How a visit works</div><h2 class="t">From phone call to keys back.</h2>
+<div class="tl" id="tl"><div class="track"><div class="fill" id="tfill"></div></div><div class="st"><i></i><div class="box"><h3>Call us</h3><p>Tell us the symptoms and your car model.</p></div></div><div class="st"><i></i><div class="box"><h3>Bring it to Rashidiya</h3><p>We inspect and run diagnostics.</p></div></div><div class="st"><i></i><div class="box"><h3>Approve the quote</h3><p>Nothing is done without your OK.</p></div></div><div class="st"><i></i><div class="box"><h3>Drive away</h3><p>The repair is checked and we walk you through what was done.</p></div></div></div></div></section>
+<section class="sec-l" id="area"><div class="wrap"><div class="split" style="grid-template-columns:1fr 1fr"><div class="rv"><div class="eyebrow">// 05 — Find us</div><h2 class="t">Based in Rashidiya. Easy to reach from across Dubai.</h2><p class="lead">The garage sits in Rashidiya, close to Mirdif, Al Warqa&rsquo;a, Nad Al Hamar, Al Twar and the airport side of Deira.</p><div class="chips"><span class="chip on">Rashidiya</span><span class="chip">Mirdif</span><span class="chip">Al Warqa'a</span><span class="chip">Nad Al Hamar</span><span class="chip">Al Twar</span><span class="chip">Deira</span><span class="chip">Festival City</span></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=QuCars+Boby+Auto+Garage+Rashidiya+Dubai" target="_blank" rel="noopener">Open in Google Maps</a></div><div class="panel2 rv"><svg viewBox="0 0 400 260" width="100%" role="img" aria-label="Stylised map of Rashidiya"><path d="M0 200 Q120 140 220 150 T400 90M60 0 Q120 120 140 260M260 0 Q250 110 330 260" fill="none" stroke="#2A2E35" stroke-width="10" stroke-linecap="round"/><circle cx="200" cy="140" r="18" fill="none" stroke="#FFD400" stroke-width="2" opacity=".5"><animate attributeName="r" values="10;28" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2s" repeatCount="indefinite"/></circle><circle cx="200" cy="140" r="8" fill="#FFD400"/><g fill="#5b6270"><circle cx="300" cy="190" r="5"/><circle cx="110" cy="70" r="5"/><circle cx="320" cy="60" r="5"/><circle cx="90" cy="190" r="5"/></g><text x="214" y="136" fill="#F3F5F7" font-family="JetBrains Mono" font-size="11">RASHIDIYA</text></svg></div></div></div></section><section class="ctaband" style="background:radial-gradient(500px 300px at 50% 0%,rgba(255,212,0,.18),transparent 70%),#0A0B0D"><div class="wrap"><div class="panel glassd rv"><h2>Warning light, strange noise, or just due a service?</h2><p>Call the workshop and talk to a mechanic.</p><div class="cta-row"><a class="btn" href="tel:+971522069431"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> Call 052 206 9431</a></div></div></div></section>
+<footer><div class="in"><div class="fg">
+<div><a class="logo" href="index.html" style="color:var(--tl)"><svg width="34" height="34" viewBox="0 0 34 34"><rect width="34" height="34" rx="9" fill="#FFD400"/><path d="M17 8a9 9 0 1 0 6.4 2.6" fill="none" stroke="#0D0F12" stroke-width="3" stroke-linecap="round"/><path d="M17 17l8 8" stroke="#0D0F12" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-t"><b>QuCars</b><small>Boby Auto Garage</small></span></a><p class="blurb">Car repair, diagnostics and servicing in Rashidiya, Dubai.</p><span class="badge"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg> 4.5 · 598 Google reviews</span></div>
+<div><h4>Services</h4><ul><li><a href="services.html#mechanical">General Mechanical Repair</a></li><li><a href="services.html#diagnostics">Engine Diagnostics</a></li><li><a href="services.html#brakes">Brakes &amp; Suspension</a></li><li><a href="services.html#ac">Car AC Service</a></li><li><a href="services.html#service">Oil &amp; Periodic Service</a></li><li><a href="services.html#tyres">Tyres &amp; Alignment</a></li><li><a href="services.html#electrical">Car Electrical</a></li></ul></div>
+<div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="index.html#decoder">Decoder</a></li><li><a href="index.html#area">Location</a></li></ul></div>
+<div><h4>Contact</h4><ul><li><a href="tel:+971522069431">+971 52 206 9431</a></li><li>Rashidiya, Dubai, UAE</li><li><a href="https://www.google.com/maps/search/?api=1&query=QuCars+Boby+Auto+Garage+Rashidiya+Dubai" target="_blank" rel="noopener">Open in Google Maps</a></li></ul></div>
+</div><div class="fb"><span>&copy; <span id="yr">2026</span> QuCars - Boby Auto Garage. All rights reserved.</span><span class="mono">Rashidiya · Dubai · UAE</span></div></div></footer>
+<div class="ov" id="ov" aria-hidden="true"><div class="mp" role="dialog" aria-modal="true" aria-labelledby="mt"><button class="x" id="mx" aria-label="Close">&times;</button><div id="mb"></div></div></div>
+<script>
+var SVC={"mechanical": {"title": "General Mechanical Repair", "desc": "Engine mounts, belts, hoses, cooling systems, steering components and all the wear-and-tear repairs that keep a car reliable. We work on all makes, and we explain every repair before we start.", "included": ["Inspection", "Parts sourcing", "Repair", "Road test"], "signs": ["Unusual noises or vibration", "Overheating or leaks", "Heavy or loose steering"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.3-.6-.6-2.3z\"/></svg>"}, "diagnostics": {"title": "Engine Diagnostics", "desc": "Computer diagnostics read fault codes, live sensor data and system behaviour to pinpoint why a warning light is on or why the engine feels rough. We confirm the cause first, so you are not paying to replace parts by guesswork.", "included": ["OBD scan", "Live data review", "Fault explanation", "Repair quote"], "signs": ["Check-engine light is on", "Rough idle or hesitation", "Poor fuel economy"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M4 17a8 8 0 1 1 16 0\"/><path d=\"M12 17l4-6\"/><circle cx=\"12\" cy=\"17\" r=\"1\"/></svg>"}, "brakes": {"title": "Brakes & Suspension", "desc": "Pads, discs, calipers, brake fluid, shocks, struts, bushes and links, all inspected and replaced to restore safe stopping and a stable ride. Dubai heat and stop-start traffic wear brakes fast, so regular checks matter.", "included": ["Brake inspection", "Pad and disc replacement", "Fluid flush", "Suspension check"], "signs": ["Squealing or grinding when braking", "Soft or long brake pedal", "Bumpy or unstable ride"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 4v2M12 18v2M4 12h2M18 12h2\"/></svg>"}, "ac": {"title": "Car AC Service", "desc": "In a Dubai summer, a weak AC is more than an inconvenience. We check for leaks, recharge refrigerant, and repair compressors, condensers and blower faults to get cold air flowing again.", "included": ["Performance test", "Leak check", "Gas recharge", "Component repair"], "signs": ["AC blowing warm air", "Weak airflow", "Strange smells from vents"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9 4l3 2 3-2M9 20l3-2 3 2\"/></svg>"}, "service": {"title": "Oil & Periodic Service", "desc": "Oil and filter changes, fluid top-ups and multi-point checks at the intervals your car's manufacturer recommends. Routine servicing catches small issues before they become expensive repairs.", "included": ["Engine oil", "Oil, air and cabin filters", "Fluid levels", "Multi-point inspection"], "signs": ["Service interval is due", "Oil level or colour looks wrong", "You just bought a used car"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z\"/></svg>"}, "tyres": {"title": "Tyres & Alignment", "desc": "Tyre replacement, puncture repair, wheel balancing and alignment to stop uneven wear and pulling to one side. Correct alignment also improves fuel economy and handling at highway speeds.", "included": ["Tyre fitting", "Balancing", "Alignment", "Pressure and tread check"], "signs": ["Car pulls to one side", "Steering wheel vibrates", "Uneven tyre wear"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v5M12 16v5M3 12h5M16 12h5\"/></svg>"}, "electrical": {"title": "Car Electrical", "desc": "Batteries, alternators, starters, wiring, lights and electronic modules, traced and repaired properly instead of patched. Electrical faults can be intermittent, so we test the circuits until the cause is found.", "included": ["Battery test", "Charging system check", "Wiring diagnosis", "Lighting repair"], "signs": ["Slow starts or dead battery", "Flickering lights", "Intermittent electrical faults"], "icon": "<svg class=\"ic\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M13 3L5 14h6l-1 7 8-11h-6z\"/></svg>"}};var TEL="+971522069431",PH="052 206 9431",CHK='<svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12l5 5L20 7"/></svg>';
+(function(){
+var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
+var nav=document.getElementById('nav'),hero=document.querySelector('.hero');
+function un(){var th=hero?hero.offsetHeight-90:120;nav.classList.toggle('scrolled',window.scrollY>th)}
+window.addEventListener('scroll',un,{passive:true});un();
+var b=document.getElementById('burger'),m=document.getElementById('mnav');
+b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+if(/static=1/.test(location.search))document.documentElement.classList.add('static');
+var rv=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});rv.forEach(function(e){io.observe(e)})}else rv.forEach(function(e){e.classList.add('in')});
+/* modal */
+var ov=document.getElementById('ov'),mb=document.getElementById('mb'),last=null;
+window.openSvc=function(slug,trg){var s=SVC[slug];if(!s)return;last=trg||null;
+mb.innerHTML=s.icon+'<h3 id="mt">'+s.title+'</h3><p>'+s.desc+'</p><h4>Included</h4><ul>'+s.included.map(function(i){return'<li>'+CHK+i+'</li>'}).join('')+'</ul><h4>Signs you may need this</h4><ul>'+s.signs.map(function(i){return'<li>'+CHK+i+'</li>'}).join('')+'</ul><div class="row"><a class="btn" href="tel:'+TEL+'">Call '+PH+'</a><a class="btn glass" href="services.html#'+slug+'">Full details</a></div>';
+ov.classList.add('show');document.body.style.overflow='hidden';document.getElementById('mx').focus()};
+function close(){ov.classList.remove('show');document.body.style.overflow='';if(last)last.focus()}
+document.getElementById('mx').addEventListener('click',close);
+ov.addEventListener('click',function(e){if(e.target===ov)close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+document.querySelectorAll('[data-svc]').forEach(function(c){c.addEventListener('click',function(){openSvc(c.getAttribute('data-svc'),c)})});
+/* timeline fill */
+var tl=document.getElementById('tl'),tf=document.getElementById('tfill');
+if(tl&&tf){var sts=tl.querySelectorAll('.st'),tk=false;
+function tick(){tk=false;var r=tl.getBoundingClientRect(),vh=window.innerHeight;var p=Math.max(0,Math.min(1,(vh*.8-r.top)/(r.height+vh*.1)));
+var vert=getComputedStyle(tl).gridTemplateColumns.split(' ').length===1;
+if(vert){tf.style.height=(p*100)+'%';tf.style.width='100%'}else{tf.style.width=(p*100)+'%';tf.style.height='100%'}
+sts.forEach(function(s,i){s.classList.toggle('on',p>=(i+.4)/sts.length)})}
+window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(tick)}},{passive:true});window.addEventListener('resize',tick);tick()}
+})();
+
+(function(){var D=[{"name": "Check Engine", "short": "Engine", "color": "#FFB000", "sev": "Get it checked this week", "svc": "Engine Diagnostics", "text": "Commonly means the engine computer has logged a fault, from a loose sensor to a misfire. It is not a diagnosis; a scan reads the code and confirms the cause."}, {"name": "Oil Pressure", "short": "Oil", "color": "#FF3B30", "sev": "Stop driving soon", "svc": "Oil & Periodic Service", "text": "Commonly means low oil level or low oil pressure. Driving on it can damage the engine, so stop safely and have it checked as soon as possible."}, {"name": "Battery / Charging", "short": "Battery", "color": "#FF3B30", "sev": "Stop driving soon", "svc": "Car Electrical", "text": "Commonly means the charging system is not keeping the battery topped up, such as a worn alternator or belt. The car may stall when the battery runs down."}, {"name": "Brake System", "short": "Brakes", "color": "#FF3B30", "sev": "Stop driving soon", "svc": "Brakes & Suspension", "text": "Commonly means low brake fluid, worn pads or the handbrake still engaged. Do not ignore a brake warning; have the system inspected promptly."}, {"name": "Coolant Temperature", "short": "Coolant", "color": "#FF3B30", "sev": "Stop driving soon", "svc": "General Mechanical Repair", "text": "Commonly means the engine is running hot, from low coolant, a leak or a failing fan or thermostat. Stop safely and let it cool before checking anything."}, {"name": "Tyre Pressure (TPMS)", "short": "TPMS", "color": "#FFB000", "sev": "Get it checked this week", "svc": "Tyres & Alignment", "text": "Commonly means one or more tyres are below the recommended pressure, which can be a slow puncture. Check pressures soon, especially in summer heat."}, {"name": "ABS", "short": "ABS", "color": "#FFB000", "sev": "Get it checked this week", "svc": "Brakes & Suspension", "text": "Commonly means the anti-lock braking system has a fault, often a wheel-speed sensor. Normal braking usually still works but without ABS assistance."}, {"name": "AC blowing warm (symptom)", "short": "AC", "color": "#FFD400", "sev": "Book when convenient", "svc": "Car AC Service", "text": "This is a symptom rather than a dashboard light. Commonly means low refrigerant from a small leak, or a tired compressor or blocked condenser."}];var r=document.getElementById('dres');
+document.querySelectorAll('[data-dl]').forEach(function(c){c.addEventListener('click',function(){document.querySelectorAll('[data-dl]').forEach(function(x){x.classList.remove('on')});c.classList.add('on');var d=D[c.dataset.dl];
+r.style.opacity=0;setTimeout(function(){r.innerHTML='<span class="sev" style="background:'+d.color+'">'+d.sev+'</span><h3>'+d.name+'</h3><p>'+d.text+'</p><p class="mono" style="opacity:.7">Related service: '+d.svc+'</p><div class="cta-row"><a class="btn" href="tel:+971522069431">Call about this</a></div>';r.style.opacity=1;if(innerWidth<900)r.scrollIntoView({behavior:'smooth',block:'nearest'})},150)})})})();
+
+(function(){var els=document.querySelectorAll('[data-count]');
+function run(el){var t=parseFloat(el.dataset.count),dec=(el.dataset.dec|0),t0=null;if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=t.toFixed(dec);return}
+(function s(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1300),e=1-Math.pow(1-p,3);el.textContent=(t*e).toFixed(dec);if(p<1)requestAnimationFrame(s)})(performance.now())}
+if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);o.unobserve(e.target)}})},{threshold:.4});els.forEach(function(e){o.observe(e)})}else els.forEach(function(e){e.textContent=e.dataset.count})})();
+
+(function(){var a=document.getElementById('garc'),n=document.getElementById('gneedle');if(!a)return;setTimeout(function(){a.style.strokeDashoffset=10;n.style.transform='rotate(72deg)'},60)})();
+
+</script>
+</body>
+</html>
