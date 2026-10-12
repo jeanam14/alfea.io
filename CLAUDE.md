@@ -2,6 +2,8 @@
 
 Read this file instead of re-stating these rules in the hourly trigger prompt. The trigger prompt only carries what changes run to run (which steps, any one-off notes); everything durable lives here.
 
+**Every firing is unattended — never pause mid-run to ask Jean "go ahead?"** Nobody is watching the trigger fire; a question left hanging just means the firing silently does nothing until someone happens to notice and manually unblock it (confirmed 2026-10-12: a firing did a leftover redeploy fix, then stopped and asked for confirmation before Step A/Step C — both got skipped for hours with no one aware). If a step in this file says to run it, run it in the same turn, every firing, no confirmation needed. The only things worth surfacing to Jean are Step D's own summary (after the work is done) or a genuine blocker you cannot route around (e.g. a credential that's actually missing, not just "should I proceed").
+
 ## References
 - Prospect Triage artifact: https://claude.ai/artifact/1g9H5nGJ8SGNpgxaNBf9jc
 - Instantly campaign id: `1ee5daca-007d-4684-8cc2-c86e26942eb1` (stays draft, never activate)
