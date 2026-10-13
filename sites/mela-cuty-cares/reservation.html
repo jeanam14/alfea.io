@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réservation — Mela &amp; Cuty Cares</title>
+<meta name="description" content="Réservez votre soin chez Mela &amp; Cuty Cares, centre capillaire à Abidjan. Choisissez votre soin, votre jour et votre heure.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav__logo"><span class="nav__mark">M&amp;C</span> Mela &amp; Cuty Cares</a>
+  <ul class="nav__links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="notre-histoire.html">Notre histoire</a></li>
+    <li><a href="soins.html">Soins</a></li>
+    <li><a href="produits.html">Produits</a></li>
+    <li><a href="reservation.html">Réservation</a></li>
+  </ul>
+  <a href="reservation.html" class="nav__cta">Réserver</a>
+  <button class="nav__burger" aria-label="Menu"><span></span></button>
+</nav>
+<div class="mobile-sheet">
+  <button class="mobile-sheet__close" aria-label="Fermer">&times;</button>
+  <a href="index.html">Accueil</a>
+  <a href="notre-histoire.html">Notre histoire</a>
+  <a href="soins.html">Soins</a>
+  <a href="produits.html">Produits</a>
+  <a href="reservation.html">Réservation</a>
+</div>
+
+<section class="hero bg-cacao-900 grain" style="min-height:40vh;padding-top:150px;padding-bottom:40px;">
+  <div class="oil-glow"></div>
+  <div class="container" style="position:relative;z-index:2;max-width:680px;">
+    <span class="eyebrow eyebrow--dark">RÉSERVATION</span>
+    <h1 style="font-size:clamp(30px,4.6vw,48px);margin:16px 0 12px;color:var(--text-on-dark-strong);">Réserver votre <em class="brand">soin.</em></h1>
+    <p style="font-size:15px;opacity:.85;">Choisissez votre soin, votre jour, votre heure.</p>
+  </div>
+</section>
+
+<section class="section bg-kaolin-50" style="padding-bottom:140px;">
+  <div class="container">
+    <div class="booking-layout">
+      <div class="glass-light booking-panel reveal">
+        <div class="strip-weave booking-panel__corner"></div>
+        <div class="booking-panel__inner">
+          <div class="preview-pill" style="background:rgba(156,74,50,.08);border:1px solid rgba(156,74,50,.18);">
+            <span class="preview-dot"></span>
+            <span>Nouveau · La réservation en ligne arrive très bientôt. En attendant, votre demande nous parvient directement sur WhatsApp.</span>
+          </div>
+          <!-- Le véritable embed Setmore viendra ici, à l'intérieur de #booking-widget, en un seul bloc à remplacer. -->
+          <div id="booking-widget"></div>
+        </div>
+      </div>
+
+      <aside class="glass-dark summary-card reveal">
+        <h4>Votre rendez-vous</h4>
+        <div class="summary-row"><span>Soin</span><span id="sum-service" class="placeholder">—</span></div>
+        <div class="summary-row"><span>Date</span><span id="sum-date" class="placeholder">—</span></div>
+        <div class="summary-row"><span>Heure</span><span id="sum-time" class="placeholder">—</span></div>
+        <div class="find-us">
+          <h4>Nous trouver</h4>
+          <p>Abidjan, Côte d'Ivoire <!-- TODO Jean : adresse précise + lien Maps à confirmer --></p>
+          <p>Horaires : <!-- TODO : horaires + jour de fermeture à confirmer --> sur demande</p>
+          <a href="tel:+2250504242727">+225 05 04 24 27 27</a>
+          <a href="https://wa.me/2250504242727" target="_blank" rel="noopener">WhatsApp — +225 05 04 24 27 27</a>
+          <a href="tel:+2250757108189">+225 07 57 10 81 89</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="booking-sticky-bar show" id="sticky-bar">
+  <div class="booking-sticky-bar__info" id="sticky-info">Choisissez votre soin</div>
+</div>
+
+<footer class="bg-cacao-900">
+  <div class="strip-weave"></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><span class="nav__mark">M&amp;C</span> Mela &amp; Cuty Cares</div>
+        <p class="footer-tagline">Centre capillaire · Abidjan<br>Le cuir chevelu d'abord, les longueurs ensuite.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <a href="soins.html">Soins</a>
+        <a href="produits.html">Produits</a>
+        <a href="reservation.html">Réservation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Nous contacter</h4>
+        <a href="tel:+2250504242727">+225 05 04 24 27 27</a>
+        <a href="https://wa.me/2250504242727" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+2250757108189">+225 07 57 10 81 89</a>
+        <p>Abidjan, Côte d'Ivoire</p>
+      </div>
+      <div class="footer-col">
+        <h4>Suivez-nous</h4>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3V3Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Mela &amp; Cuty Cares</span></div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" tabindex="-1"><div class="modal-panel" tabindex="-1"></div></div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="app.js"></script>
+</body>
+</html>

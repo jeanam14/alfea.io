@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soins &amp; rituels — Mela &amp; Cuty Cares</title>
+<meta name="description" content="Découvrez nos soins pour cheveux afros : cuir chevelu, longueurs, micro-boucles et gros grains. Le cuir chevelu d'abord, les longueurs ensuite.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav__logo"><span class="nav__mark">M&amp;C</span> Mela &amp; Cuty Cares</a>
+  <ul class="nav__links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="notre-histoire.html">Notre histoire</a></li>
+    <li><a href="soins.html">Soins</a></li>
+    <li><a href="produits.html">Produits</a></li>
+    <li><a href="reservation.html">Réservation</a></li>
+  </ul>
+  <a href="reservation.html" class="nav__cta">Réserver</a>
+  <button class="nav__burger" aria-label="Menu"><span></span></button>
+</nav>
+<div class="mobile-sheet">
+  <button class="mobile-sheet__close" aria-label="Fermer">&times;</button>
+  <a href="index.html">Accueil</a>
+  <a href="notre-histoire.html">Notre histoire</a>
+  <a href="soins.html">Soins</a>
+  <a href="produits.html">Produits</a>
+  <a href="reservation.html">Réservation</a>
+</div>
+
+<section class="hero bg-cacao-900 grain" style="min-height:48vh;padding-top:150px;padding-bottom:40px;">
+  <div class="oil-glow"></div>
+  <div class="container" style="position:relative;z-index:2;max-width:680px;">
+    <span class="eyebrow eyebrow--dark">NOS SOINS</span>
+    <h1 style="font-size:clamp(32px,5vw,54px);margin:16px 0 14px;color:var(--text-on-dark-strong);">Soins &amp; <em class="brand">rituels.</em></h1>
+    <p style="font-size:15.5px;opacity:.85;">Le cuir chevelu d'abord. Les longueurs ensuite.</p>
+  </div>
+</section>
+
+<div class="bg-kaolin-50" style="position:sticky;top:0;z-index:50;">
+  <div class="container">
+    <div class="filters">
+      <button class="filter-chip active" data-filter="tous">Tous</button>
+      <button class="filter-chip" data-filter="cuir-chevelu">Cuir chevelu</button>
+      <button class="filter-chip" data-filter="longueurs">Longueurs</button>
+      <button class="filter-chip" data-filter="micro-boucles">Micro-boucles</button>
+      <button class="filter-chip" data-filter="gros-grains">Gros grains</button>
+    </div>
+  </div>
+</div>
+
+<section class="section bg-kaolin-100" style="padding-top:40px;">
+  <div class="container">
+    <div class="card-grid card-grid--4 reveal-group">
+
+      <div class="card glass-light reveal" data-tags="cuir-chevelu" data-modal='{"eyebrow":"CUIR CHEVELU","title":"Diagnostic du cuir chevelu","desc":"Un temps dédié pour observer votre cuir chevelu et vos boucles, et construire la routine qui vous convient.","steps":["Observation du cuir chevelu et de la texture","Échange sur vos habitudes actuelles","Recommandation de soins et de routine maison"],"tags":["Cuir chevelu"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=diagnostic","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="9" r="6"/><path d="M8 20c0-3 2-5 4-5s4 2 4 5"/></svg>
+        <h3>Diagnostic du cuir chevelu</h3><p>La première étape : on observe, on écoute, on recommande.</p>
+        <div class="card__tags"><span class="tag">Cuir chevelu</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="card glass-light reveal" data-tags="cuir-chevelu" data-modal='{"eyebrow":"CUIR CHEVELU","title":"Soin profond du cuir chevelu","desc":"Gommage et massage pour assainir le cuir chevelu en profondeur.","steps":["Gommage doux du cuir chevelu","Massage prolongé","Application d'un soin ciblé"],"tags":["Cuir chevelu"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=soin-profond","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3c-4 3-7 6-7 10a7 7 0 0 0 14 0c0-4-3-7-7-10Z"/></svg>
+        <h3>Soin profond du cuir chevelu</h3><p>Gommage et massage pour un cuir chevelu assaini.</p>
+        <div class="card__tags"><span class="tag">Cuir chevelu</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="card glass-light reveal" data-tags="longueurs" data-modal='{"eyebrow":"LONGUEURS","title":"Shampooing soin","desc":"Un shampooing pensé comme un soin à part entière, respectueux du cuir chevelu et de la fibre.","steps":["Démêlage préalable","Shampooing en douceur","Rinçage soigné"],"tags":["Longueurs"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=shampooing-soin","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4l16 16M4 20L20 4"/><circle cx="12" cy="12" r="9"/></svg>
+        <h3>Shampooing soin</h3><p>Un shampooing qui prend soin, pas seulement qui nettoie.</p>
+        <div class="card__tags"><span class="tag">Longueurs</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="card glass-light reveal" data-tags="longueurs" data-modal='{"eyebrow":"LONGUEURS","title":"Soin hydratant des longueurs","desc":"Hydratation profonde pour des boucles souples et nourries, une fois le cuir chevelu traité.","steps":["Démêlage soigné","Masque hydratant","Scellage de l'hydratation"],"tags":["Longueurs"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=hydratation","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 3c2 6-2 8 0 14M12 3c2 6-2 8 0 14M17 3c2 6-2 8 0 14"/></svg>
+        <h3>Soin hydratant des longueurs</h3><p>Pour des boucles souples, nourries en profondeur.</p>
+        <div class="card__tags"><span class="tag">Longueurs</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="card glass-light reveal" data-tags="micro-boucles" data-modal='{"eyebrow":"RITUEL","title":"Rituel micro-boucles","desc":"Un rituel pensé spécifiquement pour les micro-boucles, dans notre vocabulaire.","steps":["Diagnostic texture","Soin ciblé micro-boucles","Conseils de routine maison"],"tags":["Micro-boucles"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=micro-boucles","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2c3 3 1 5 3 7s5-1 5 3-3 2-5 4 1 5-3 5-3-3-5-4-5 1-5-3 3-2 5-4-1-5 3-7Z"/></svg>
+        <h3>Rituel micro-boucles</h3><p>Un soin pensé pour les micro-boucles, dans nos mots.</p>
+        <div class="card__tags"><span class="tag">Micro-boucles</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="card glass-light reveal" data-tags="gros-grains" data-modal='{"eyebrow":"RITUEL","title":"Rituel gros grains","desc":"Un rituel nourrissant pensé pour les gros grains, qui gagnent en éclat avec des soins riches.","steps":["Diagnostic texture","Soin ciblé gros grains","Conseils de routine maison"],"tags":["Gros grains"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=gros-grains","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 6c3 0 5 2 5 5s-2 5-5 5M18 6c-3 0-5 2-5 5s2 5 5 5"/></svg>
+        <h3>Rituel gros grains</h3><p>Un soin riche pensé pour les gros grains, dans nos mots.</p>
+        <div class="card__tags"><span class="tag">Gros grains</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="card glass-light reveal" data-tags="cuir-chevelu" data-modal='{"eyebrow":"CUIR CHEVELU","title":"Soin réparateur / fortifiant","desc":"Un soin ciblé pour renforcer un cuir chevelu et des longueurs fragilisés.","steps":["Diagnostic ciblé","Application du soin fortifiant","Conseils de routine maison"],"tags":["Cuir chevelu"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"reservation.html?soin=reparateur","ctaLabel":"Réserver ce soin"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+        <h3>Soin réparateur / fortifiant</h3><p>Pour renforcer un cuir chevelu ou des longueurs fragilisés.</p>
+        <div class="card__tags"><span class="tag">Cuir chevelu</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cacao-800 grain">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px;">
+      <span class="eyebrow eyebrow--dark">PREMIÈRE VISITE</span>
+      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;">Comment se passe votre <em class="brand">première visite.</em></h2>
+    </div>
+    <div class="pillars reveal-group">
+      <div class="pillar glass-dark reveal"><div class="timeline__num" style="font-size:28px;">1</div><h3>Diagnostic</h3><p>On observe votre cuir chevelu et votre texture.</p></div>
+      <div class="pillar glass-dark reveal"><div class="timeline__num" style="font-size:28px;">2</div><h3>Soin</h3><p>Le rituel adapté, du cuir chevelu aux longueurs.</p></div>
+      <div class="pillar glass-dark reveal"><div class="timeline__num" style="font-size:28px;">3</div><h3>Conseils &amp; routine maison</h3><p>De quoi prolonger le soin chez vous.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-kaolin-50 section--tight">
+  <div class="container cta-band reveal">
+    <h2 style="color:var(--text-on-light);font-style:italic;">Prêt·e pour votre premier rendez-vous ?</h2>
+    <div class="cta-band__actions">
+      <a href="reservation.html" class="btn btn-primary">Réserver un soin</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-cacao-900">
+  <div class="strip-weave"></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><span class="nav__mark">M&amp;C</span> Mela &amp; Cuty Cares</div>
+        <p class="footer-tagline">Centre capillaire · Abidjan<br>Le cuir chevelu d'abord, les longueurs ensuite.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <a href="soins.html">Soins</a>
+        <a href="produits.html">Produits</a>
+        <a href="reservation.html">Réservation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Nous contacter</h4>
+        <a href="tel:+2250504242727">+225 05 04 24 27 27</a>
+        <a href="https://wa.me/2250504242727" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+2250757108189">+225 07 57 10 81 89</a>
+        <p>Abidjan, Côte d'Ivoire</p>
+      </div>
+      <div class="footer-col">
+        <h4>Suivez-nous</h4>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3V3Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Mela &amp; Cuty Cares</span></div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" tabindex="-1"><div class="modal-panel" tabindex="-1"></div></div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="app.js"></script>
+</body>
+</html>
