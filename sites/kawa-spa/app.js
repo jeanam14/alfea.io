@@ -106,7 +106,7 @@
       return '<div class="booking-time" data-time="' + t + '">' + t + '</div>';
     }).join('') + '</div></div>';
     html += '<div class="booking-summary" id="bk-summary">Choisissez une heure pour continuer.</div>';
-    html += '<a class="btn btn-primary" style="width:100%;" id="bk-confirm" target="_blank" rel="noopener">Réserver sur WhatsApp</a>';
+    html += '<a class="btn btn-primary" style="width:100%;" id="bk-confirm" target="_blank" rel="noopener">Réserver</a>';
 
     panel.innerHTML = html;
     overlay.classList.add('open');
