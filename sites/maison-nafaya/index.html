@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison Nafaya — Barbershop, Riviera Abidjan</title>
-<meta name="description" content="Maison Nafaya, barbershop à Riviera Bonoumin, Abidjan. Coupes, dégradés, taille de barbe, rasage traditionnel et soins du visage. Note 5.0/5.">
+<title>Maison Nafaya — La beauté au masculin, Riviera Abidjan</title>
+<meta name="description" content="Maison Nafaya, maison de coiffure et de soins pour homme à Riviera Bonoumin, Abidjan. Coupes, dégradés, tresses, taille de barbe, rasage traditionnel et soins du visage. Note 5.0/5.">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="nav">
-  <a href="#accueil" class="nav__logo"><span class="nav__mark">MN</span> Maison Nafaya</a>
+  <a href="#accueil" class="nav__logo"><span class="nav__mark">M</span> Maison Nafaya</a>
   <ul class="nav__links" style="list-style:none;">
+    <li><a href="#maison">La Maison</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#avis">Avis</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -22,25 +23,18 @@
 </nav>
 <div class="mobile-sheet">
   <button class="mobile-sheet__close" aria-label="Fermer">&times;</button>
+  <a href="#maison">La Maison</a>
   <a href="#services">Services</a>
   <a href="#avis">Avis</a>
   <a href="#contact">Contact</a>
 </div>
 
-<!-- HERO (photo-free: no photos supplied) -->
-<section class="hero bg-noir-950 grain" id="accueil">
-  <div class="glow"></div>
+<!-- HERO (real photo: hexagonal LED ceiling, interior) -->
+<section class="hero grain" id="accueil">
   <div class="container hero__inner">
-    <div class="hero__motif" aria-hidden="true">
-      <svg viewBox="0 0 120 120">
-        <circle cx="60" cy="60" r="58"/>
-        <path d="M30 55c8-18 18-27 30-27s22 9 30 27M30 55c0 14 14 32 30 32s30-18 30-32"/>
-        <path d="M44 58h32M50 70h20"/>
-      </svg>
-    </div>
-    <span class="eyebrow eyebrow--dark">BARBERSHOP · RIVIERA, ABIDJAN</span>
-    <h1>La coupe, <em class="brand">sans compromis.</em></h1>
-    <p class="hero__sub">Coupes, dégradés, taille de barbe et rasage traditionnel — un barbershop pensé pour le détail, dans un cadre soigné.</p>
+    <span class="eyebrow eyebrow--dark">MAISON NAFAYA · LA BEAUTÉ AU MASCULIN</span>
+    <h1>Une maison. <span class="brand">Pas un salon.</span></h1>
+    <p class="hero__sub">Coupes, dégradés, tresses, taille de barbe, rasage traditionnel et soins du visage — dans un cadre pensé comme une adresse, à Riviera Bonoumin.</p>
     <div class="hero__ctas">
       <button class="btn btn-primary" data-booking>Réserver</button>
       <a href="https://wa.me/2250759449298?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20Maison%20Nafaya" target="_blank" rel="noopener" class="btn btn-ghost-dark">WhatsApp</a>
@@ -52,15 +46,64 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section bg-noir-950 grain" id="services">
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>MAISON NAFAYA</span>
+    <span class="marquee__item"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>LA BEAUTÉ AU MASCULIN</span>
+    <span class="marquee__item"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>RIVIERA BONOUMIN</span>
+    <span class="marquee__item"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>MAISON NAFAYA</span>
+    <span class="marquee__item"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>LA BEAUTÉ AU MASCULIN</span>
+    <span class="marquee__item"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>RIVIERA BONOUMIN</span>
+  </div>
+</div>
+
+<!-- LA MAISON (real photo: branded cape detail) -->
+<section class="section bg-noir-900 grain" id="maison">
   <div class="container">
-    <div class="text-center reveal" style="max-width:600px;margin:0 auto 44px;">
-      <span class="eyebrow eyebrow--dark">NOS PRESTATIONS</span>
-      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;color:var(--text-on-dark-strong);">Le détail, <em class="brand">à chaque geste.</em></h2>
+    <div class="marque-grid">
+      <div class="marque-copy reveal">
+        <span class="eyebrow eyebrow--dark">LA MAISON</span>
+        <h2>Une adresse, <span class="brand">pas un salon de quartier.</span></h2>
+        <p>Plafond hexagonal en LED, sol marbré, chaises alignées comme dans une vraie maison de beauté — Maison Nafaya a été pensée pour que chaque client s'y sente attendu, pas juste reçu.</p>
+        <p>Toutes les textures, tous les styles : fades nets, afros sculptés, tresses et locks entretenues avec autant de soin qu'une coupe classique.</p>
+        <div class="marque-list">
+          <div class="marque-list__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4l16 16M4 20L20 4"/><circle cx="12" cy="12" r="9"/></svg>
+            <div><h4>Savoir-faire</h4><p>Des gestes précis, pensés pour durer au-delà du jour de la coupe.</p></div>
+          </div>
+          <div class="marque-list__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17 20h-10a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h2l2 3h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+            <div><h4>Cadre soigné</h4><p>Un espace pensé pour prendre son temps, pas juste passer entre deux chaises.</p></div>
+          </div>
+          <div class="marque-list__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+            <div><h4>Sur rendez-vous</h4><p>Jeudi, vendredi et samedi — un créneau pensé juste pour vous.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="marque-photo reveal">
+        <div class="marque-photo__frame">
+          <img src="images/cape-detail.jpg" alt="Client Maison Nafaya, cape siglée du logo de la maison" loading="lazy">
+        </div>
+        <div class="marque-photo__badge">
+          <strong>★ 5.0</strong>
+          <span>Note Google</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section bg-stone-50" id="services">
+  <div class="container">
+    <div class="text-center reveal" style="max-width:620px;margin:0 auto 44px;">
+      <span class="eyebrow eyebrow--light">NOS PRESTATIONS</span>
+      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;text-transform:uppercase;">Le détail, <span class="brand">à chaque geste.</span></h2>
     </div>
     <div class="card-grid reveal-group">
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COUPE","title":"Coupe &amp; dégradé","desc":"Des coupes classiques et des dégradés nets, ajustés à votre visage et à votre style.","steps":["Échange sur la coupe souhaitée","Coupe et dégradé","Finitions soignées"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Coupe & dégradé"}'>
+      <div class="card glass-light reveal" data-modal='{"eyebrow":"COUPE","title":"Coupe &amp; dégradé","desc":"Des coupes classiques et des dégradés nets, ajustés à votre visage et à votre style.","steps":["Échange sur la coupe souhaitée","Coupe et dégradé","Finitions soignées"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Coupe & dégradé"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 6l12 12M18 6 6 18"/><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/></svg>
         <h3>Coupe &amp; dégradé</h3>
@@ -68,7 +111,15 @@
         <div class="card__tags"><span class="tag">Coupe</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"BARBE","title":"Taille de barbe","desc":"Une barbe dessinée avec précision, pour une ligne nette et un style affirmé.","steps":["Diagnostic de la pilosité","Taille et dessin des contours","Soin hydratant"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Taille de barbe"}'>
+      <div class="card glass-light reveal" data-modal='{"eyebrow":"TEXTURES","title":"Tresses &amp; locks","desc":"Un entretien précis pour toutes les textures — tresses nettes et locks sculptées, sans compromis sur la finition.","steps":["Diagnostic de la texture","Tressage ou entretien des locks","Finitions et produits adaptés"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Tresses & locks"}'>
+        <div class="card__sheen"></div>
+        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 3c0 5-3 6-3 11a4 4 0 0 0 8 0M16 3c0 5 3 6 3 11a4 4 0 0 1-8 0"/></svg>
+        <h3>Tresses &amp; locks</h3>
+        <p>Un entretien précis, pour toutes les textures.</p>
+        <div class="card__tags"><span class="tag">Textures</span></div>
+        <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="card glass-light reveal" data-modal='{"eyebrow":"BARBE","title":"Taille de barbe","desc":"Une barbe dessinée avec précision, pour une ligne nette et un style affirmé.","steps":["Diagnostic de la pilosité","Taille et dessin des contours","Soin hydratant"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Taille de barbe"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2c4 3 6 7 6 11a6 6 0 0 1-12 0c0-4 2-8 6-11Z"/></svg>
         <h3>Taille de barbe</h3>
@@ -76,7 +127,7 @@
         <div class="card__tags"><span class="tag">Barbe</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"RASAGE","title":"Rasage traditionnel","desc":"Un rasage au coupe-chou, à l'ancienne, pour une peau nette et un vrai moment de détente.","steps":["Préparation de la peau","Rasage au coupe-chou","Soin apaisant post-rasage"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Rasage traditionnel"}'>
+      <div class="card glass-light reveal" data-modal='{"eyebrow":"RASAGE","title":"Rasage traditionnel","desc":"Un rasage au coupe-chou, à l\u0027ancienne, pour une peau nette et un vrai moment de détente.","steps":["Préparation de la peau","Rasage au coupe-chou","Soin apaisant post-rasage"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Rasage traditionnel"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6Z"/><circle cx="12" cy="12" r="2"/></svg>
         <h3>Rasage traditionnel</h3>
@@ -84,11 +135,10 @@
         <div class="card__tags"><span class="tag">Rasage</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"VISAGE","title":"Soin du visage","desc":"Un soin ciblé pour un teint frais et une peau nette, en complément de la coupe.","steps":["Nettoyage de la peau","Soin ciblé","Finition apaisante"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Soin du visage"}'>
+      <div class="card card--photo reveal" data-modal='{"eyebrow":"VISAGE","title":"Soin du visage","desc":"Un soin ciblé à la serviette chaude, pour un teint frais et une peau nette, en complément de la coupe.","steps":["Nettoyage de la peau","Serviette chaude &amp; soin ciblé","Finition apaisante"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Soin du visage"}'>
         <div class="card__sheen"></div>
-        <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
         <h3>Soin du visage</h3>
-        <p>Pour un teint frais, une peau nette.</p>
+        <p>Serviette chaude, pour un teint frais.</p>
         <div class="card__tags"><span class="tag">Visage</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
@@ -97,24 +147,24 @@
 </section>
 
 <!-- WHY -->
-<section class="section bg-mist-50">
+<section class="section bg-noir-950 grain">
   <div class="container">
     <div class="text-center reveal" style="max-width:600px;margin:0 auto 44px;">
-      <span class="eyebrow eyebrow--light">POURQUOI NAFAYA</span>
-      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;">Un barbershop <em class="brand">exigeant.</em></h2>
+      <span class="eyebrow eyebrow--dark">POURQUOI NAFAYA</span>
+      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;color:var(--text-on-dark-strong);text-transform:uppercase;">Une maison <span class="brand">exigeante.</span></h2>
     </div>
     <div class="pillars reveal-group">
-      <div class="pillar glass-light reveal">
+      <div class="pillar glass-dark reveal">
         <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 4l16 16M4 20L20 4"/><circle cx="12" cy="12" r="9"/></svg>
         <h3>Savoir-faire</h3>
         <p>Des gestes précis, pensés pour durer au-delà du jour de la coupe.</p>
       </div>
-      <div class="pillar glass-light reveal">
+      <div class="pillar glass-dark reveal">
         <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M17 20h-10a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h2l2 3h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
         <h3>Cadre soigné</h3>
         <p>Un espace pensé pour prendre son temps, pas juste passer entre deux chaises.</p>
       </div>
-      <div class="pillar glass-light reveal">
+      <div class="pillar glass-dark reveal">
         <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
         <h3>Sur rendez-vous</h3>
         <p>Jeudi, vendredi et samedi — un créneau pensé juste pour vous.</p>
@@ -124,23 +174,23 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section bg-noir-950 grain" id="avis">
+<section class="section bg-stone-50" id="avis">
   <div class="container">
     <div class="text-center reveal" style="max-width:600px;margin:0 auto 44px;">
-      <span class="eyebrow eyebrow--dark">AVIS CLIENTS</span>
-      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;color:var(--text-on-dark-strong);">Ce qu'ils en <em class="brand">pensent.</em></h2>
+      <span class="eyebrow eyebrow--light">AVIS CLIENTS</span>
+      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;text-transform:uppercase;">Ce qu'ils en <span class="brand">pensent.</span></h2>
     </div>
     <div class="card-grid reveal-group" style="grid-template-columns:1fr;max-width:640px;margin:0 auto;">
-      <div class="testimonial glass-dark reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="testimonial glass-light reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
         <div>
           <div class="testimonial__stars">★★★★★</div>
-          <p style="color:var(--text-on-dark);">« Professional and talented. »</p>
-          <div class="testimonial__name" style="color:var(--amber-300);">Yamb L.</div>
+          <p>« Professional and talented. »</p>
+          <div class="testimonial__name">Yamb L.</div>
         </div>
         <div>
           <div class="testimonial__stars">★★★★★</div>
-          <p style="color:var(--text-on-dark);">« Excellent. »</p>
-          <div class="testimonial__name" style="color:var(--amber-300);">Paul H.</div>
+          <p>« Excellent. »</p>
+          <div class="testimonial__name">Paul H.</div>
         </div>
       </div>
     </div>
@@ -159,15 +209,15 @@
 </section>
 
 <!-- CONTACT -->
-<section class="section bg-mist-50" id="contact">
+<section class="section bg-stone-50" id="contact">
   <div class="container">
     <div class="text-center reveal" style="max-width:600px;margin:0 auto 40px;">
       <span class="eyebrow eyebrow--light">NOUS TROUVER</span>
-      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;">Venez nous <em class="brand">rencontrer.</em></h2>
+      <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;text-transform:uppercase;">Venez nous <span class="brand">rencontrer.</span></h2>
     </div>
     <div class="contact-grid">
       <div class="glass-light reveal" style="padding:32px 28px;">
-        <h3 style="font-size:18px;margin-bottom:16px;">Horaires</h3>
+        <h3 style="font-size:17px;margin-bottom:16px;text-transform:uppercase;">Horaires</h3>
         <table class="hours-table">
           <tr class="closed"><td>Lundi</td><td>Fermé</td></tr>
           <tr class="closed"><td>Mardi</td><td>Fermé</td></tr>
@@ -179,7 +229,7 @@
         </table>
       </div>
       <div class="glass-light reveal contact-list" style="padding:32px 28px;">
-        <h3 style="font-size:18px;margin-bottom:6px;">Coordonnées</h3>
+        <h3 style="font-size:17px;margin-bottom:6px;text-transform:uppercase;">Coordonnées</h3>
         <a href="tel:+2250759449298">+225 07 59 44 92 98</a>
         <a href="https://wa.me/2250759449298" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://www.instagram.com/maison.nafaya" target="_blank" rel="noopener">Instagram @maison.nafaya</a>
@@ -192,8 +242,8 @@
 <footer class="bg-noir-950">
   <div class="container footer-grid">
     <div>
-      <div class="footer-logo"><span class="nav__mark">MN</span> Maison Nafaya</div>
-      <p class="footer-tagline">Barbershop · Riviera, Abidjan<br>Jeudi, vendredi, samedi — 9h30 à 18h.</p>
+      <div class="footer-logo"><span class="nav__mark">M</span> Maison Nafaya</div>
+      <p class="footer-tagline">La beauté au masculin<br>Riviera, Abidjan · Jeudi, vendredi, samedi — 9h30 à 18h.</p>
     </div>
     <div class="footer-socials">
       <a href="https://wa.me/2250759449298" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Z"/><path d="M8.5 8.5c0 4 3 7 7 7l1.5-2-3-1.5-1 1a6 6 0 0 1-4-4l1-1-1.5-3-2 1.5Z"/></svg></a>

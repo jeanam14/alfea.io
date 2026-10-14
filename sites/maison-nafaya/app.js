@@ -74,7 +74,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
   /* ---------- Booking modal (Setmore-style preview) ---------- */
-  var SERVICES = ['Coupe & dégradé', 'Taille de barbe', 'Rasage traditionnel', 'Soin du visage'];
+  var SERVICES = ['Coupe & dégradé', 'Tresses & locks', 'Taille de barbe', 'Rasage traditionnel', 'Soin du visage'];
   var DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
   var OPEN_DAYS = [4, 5, 6]; // Thu, Fri, Sat only
   var TIME_SLOTS = ['9h30', '11h00', '12h30', '14h30', '16h00', '17h00'];
