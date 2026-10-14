@@ -194,6 +194,7 @@ em.brand { font-style: italic; color: var(--bronze-500); }
 .hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 140px 0 80px; overflow: hidden; }
 .hero__grid { position: relative; z-index: 2; display: grid; gap: 48px; align-items: center; }
 @media (min-width: 900px) { .hero__grid { grid-template-columns: 1.15fr 1fr; gap: 60px; } }
+.hero__content { min-width: 0; }
 .hero__eyebrow { margin-bottom: 20px; }
 .hero h1 { font-size: clamp(38px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.01em; color: var(--text-on-dark-strong); margin-bottom: 22px; }
 .hero__sub { font-size: 17px; line-height: 1.65; color: var(--text-on-dark); max-width: 46ch; margin-bottom: 34px; }
