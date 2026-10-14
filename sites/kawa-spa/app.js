@@ -42,6 +42,7 @@
   var panel = overlay ? overlay.querySelector('.modal-panel') : null;
   function openModal(data) {
     if (!panel) return;
+    panel.classList.remove('modal-panel--booking');
     var html = '<button class="modal-panel__close" aria-label="Fermer">&times;</button>';
     if (data.eyebrow) html += '<span class="modal-panel__eyebrow">' + data.eyebrow + '</span>';
     html += '<h3>' + data.title + '</h3>';
@@ -52,13 +53,13 @@
     if (data.metaLeft || data.metaRight) {
       html += '<div class="modal-panel__meta"><span>' + (data.metaLeft || '') + '</span><span>' + (data.metaRight || '') + '</span></div>';
     }
-    if (data.ctaHref) {
-      html += '<a href="' + data.ctaHref + '" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;">' + (data.ctaLabel || 'En savoir plus') + '</a>';
-    }
+    html += '<button class="btn btn-primary" style="width:100%;" data-open-booking="' + (data.bookingService || '') + '">Réserver ce soin</button>';
     panel.innerHTML = html;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     panel.querySelector('.modal-panel__close').addEventListener('click', closeModal);
+    var bookBtn = panel.querySelector('[data-open-booking]');
+    bookBtn && bookBtn.addEventListener('click', function () { openBooking(bookBtn.getAttribute('data-open-booking')); });
   }
   function closeModal() {
     overlay.classList.remove('open');
@@ -71,6 +72,92 @@
   });
   overlay && overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+  /* ---------- Booking modal (Setmore-style preview) ---------- */
+  var SERVICES = ['Bilan silhouette', 'Drainage lymphatique', 'Remodelage corporel', 'Massages bien-être', 'Épilation', 'Soins du visage'];
+  var DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+  var TIME_SLOTS = ['9h00', '10h30', '12h00', '14h00', '15h30', '17h00'];
+
+  function buildDates() {
+    var out = [];
+    var today = new Date();
+    for (var i = 0; i < 6; i++) {
+      var d = new Date(today);
+      d.setDate(today.getDate() + i);
+      out.push(d);
+    }
+    return out;
+  }
+
+  function openBooking(presetService) {
+    if (!panel) return;
+    panel.classList.add('modal-panel--booking');
+    var dates = buildDates();
+    var state = { service: presetService || SERVICES[0], dateIdx: 0, time: null };
+
+    var html = '<button class="modal-panel__close" aria-label="Fermer">&times;</button>';
+    html += '<span class="modal-panel__eyebrow">RÉSERVATION</span><h3>Choisir un créneau</h3>';
+    html += '<div class="booking-preview-pill"><span class="booking-preview-pill__dot"></span>Réservation en ligne bientôt disponible — votre demande part directement sur WhatsApp</div>';
+    html += '<div class="booking-field"><label>Soin</label><select class="booking-select" id="bk-service">' + SERVICES.map(function (s) { return '<option' + (s === state.service ? ' selected' : '') + '>' + s + '</option>'; }).join('') + '</select></div>';
+    html += '<div class="booking-field"><label>Date</label><div class="booking-dates" id="bk-dates">' + dates.map(function (d, i) {
+      return '<div class="booking-date' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '"><div class="booking-date__day">' + DAY_NAMES[d.getDay()] + '</div><div class="booking-date__num">' + d.getDate() + '</div></div>';
+    }).join('') + '</div></div>';
+    html += '<div class="booking-field"><label>Heure</label><div class="booking-times" id="bk-times">' + TIME_SLOTS.map(function (t) {
+      return '<div class="booking-time" data-time="' + t + '">' + t + '</div>';
+    }).join('') + '</div></div>';
+    html += '<div class="booking-summary" id="bk-summary">Choisissez une heure pour continuer.</div>';
+    html += '<a class="btn btn-primary" style="width:100%;" id="bk-confirm" target="_blank" rel="noopener">Réserver sur WhatsApp</a>';
+
+    panel.innerHTML = html;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    panel.querySelector('.modal-panel__close').addEventListener('click', closeModal);
+
+    var serviceSel = panel.querySelector('#bk-service');
+    var datesEl = panel.querySelector('#bk-dates');
+    var timesEl = panel.querySelector('#bk-times');
+    var summaryEl = panel.querySelector('#bk-summary');
+    var confirmEl = panel.querySelector('#bk-confirm');
+
+    function render() {
+      var d = dates[state.dateIdx];
+      var dateLabel = DAY_NAMES[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1);
+      if (state.time) {
+        summaryEl.innerHTML = '<strong>' + state.service + '</strong> — ' + dateLabel + ' à <strong>' + state.time + '</strong>';
+        var msg = 'Bonjour, je souhaite réserver : ' + state.service + ', le ' + dateLabel + ' à ' + state.time;
+        confirmEl.href = 'https://wa.me/2250788166792?text=' + encodeURIComponent(msg);
+      } else {
+        summaryEl.textContent = 'Choisissez une heure pour continuer.';
+        confirmEl.href = 'https://wa.me/2250788166792?text=' + encodeURIComponent('Bonjour, je souhaite prendre rendez-vous chez Kawa Spa pour : ' + state.service);
+      }
+    }
+
+    serviceSel.addEventListener('change', function () { state.service = serviceSel.value; render(); });
+    datesEl.addEventListener('click', function (e) {
+      var el = e.target.closest('.booking-date');
+      if (!el) return;
+      datesEl.querySelectorAll('.booking-date').forEach(function (d) { d.classList.remove('active'); });
+      el.classList.add('active');
+      state.dateIdx = parseInt(el.getAttribute('data-idx'), 10);
+      render();
+    });
+    timesEl.addEventListener('click', function (e) {
+      var el = e.target.closest('.booking-time');
+      if (!el) return;
+      timesEl.querySelectorAll('.booking-time').forEach(function (t) { t.classList.remove('active'); });
+      el.classList.add('active');
+      state.time = el.getAttribute('data-time');
+      render();
+    });
+    render();
+  }
+
+  document.querySelectorAll('[data-booking]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      openBooking();
+    });
+  });
 
   var counters = document.querySelectorAll('.stat__num[data-count]');
   if (counters.length && 'IntersectionObserver' in window) {
