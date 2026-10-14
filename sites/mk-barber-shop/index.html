@@ -17,7 +17,7 @@
     <li><a href="#pourquoi">Le salon</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20MK%20Barber%20Shop" target="_blank" rel="noopener" class="nav__cta">WhatsApp</a>
+  <button class="nav__cta" data-booking>Réserver</button>
   <button class="nav__burger" aria-label="Menu"><span></span></button>
 </nav>
 <div class="mobile-sheet">
@@ -42,8 +42,8 @@
     <h1>L'élégance, <em class="brand">pour toute la famille.</em></h1>
     <p class="hero__sub">Coiffure hommes, enfants et dames, pédicure, manicure, maquillage et pose de perruques — un salon pensé pour prendre soin de vous, du premier au dernier geste.</p>
     <div class="hero__ctas">
-      <a href="https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20MK%20Barber%20Shop" target="_blank" rel="noopener" class="btn btn-primary">Écrire sur WhatsApp</a>
-      <a href="https://www.tiktok.com/@mk.perruque7" target="_blank" rel="noopener" class="btn btn-ghost-dark">Voir sur TikTok</a>
+      <button class="btn btn-primary" data-booking>Réserver</button>
+      <a href="https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20MK%20Barber%20Shop" target="_blank" rel="noopener" class="btn btn-ghost-dark">WhatsApp</a>
     </div>
     <div class="hero__chips">
       <span class="hero__chip glass-dark">Hommes · Enfants · Dames</span>
@@ -60,7 +60,7 @@
       <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:14px;color:var(--text-on-dark-strong);">Un salon complet, <em class="brand">pour chacun.</em></h2>
     </div>
     <div class="card-grid reveal-group">
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COIFFURE","title":"Coiffure hommes","desc":"Coupes classiques et modernes, dégradés et finitions soignées, pour un look net à chaque visite.","steps":["Échange sur la coupe souhaitée","Coupe et dégradé","Finitions au rasoir"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20coupe%20homme","ctaLabel":"Réserver sur WhatsApp"}'>
+      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COIFFURE","title":"Coiffure hommes","desc":"Coupes classiques et modernes, dégradés et finitions soignées, pour un look net à chaque visite.","steps":["Échange sur la coupe souhaitée","Coupe et dégradé","Finitions au rasoir"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Coiffure hommes"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 6l12 12M18 6 6 18"/><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/></svg>
         <h3>Coiffure hommes</h3>
@@ -68,7 +68,7 @@
         <div class="card__tags"><span class="tag">Hommes</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COIFFURE","title":"Coiffure enfants","desc":"Un moment en douceur pour les petits, dans un cadre patient et rassurant.","steps":["Installation confortable pour l'enfant","Coupe douce et adaptée à l'âge","Petite touche de finition"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20coupe%20enfant","ctaLabel":"Réserver sur WhatsApp"}'>
+      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COIFFURE","title":"Coiffure enfants","desc":"Un moment en douceur pour les petits, dans un cadre patient et rassurant.","steps":["Installation confortable pour l'enfant","Coupe douce et adaptée à l'âge","Petite touche de finition"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Coiffure enfants"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></svg>
         <h3>Coiffure enfants</h3>
@@ -76,7 +76,7 @@
         <div class="card__tags"><span class="tag">Enfants</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COIFFURE","title":"Coiffure dames","desc":"Coupes, brushing et coiffures travaillées, pensées pour sublimer chaque style de cheveux.","steps":["Diagnostic de la coiffure souhaitée","Coupe, soin ou coiffage","Finitions et conseils d'entretien"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20coiffure%20dame","ctaLabel":"Réserver sur WhatsApp"}'>
+      <div class="card glass-dark reveal" data-modal='{"eyebrow":"COIFFURE","title":"Coiffure dames","desc":"Coupes, brushing et coiffures travaillées, pensées pour sublimer chaque style de cheveux.","steps":["Diagnostic de la coiffure souhaitée","Coupe, soin ou coiffage","Finitions et conseils d'entretien"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Coiffure dames"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2c4 3 6 7 6 11a6 6 0 0 1-12 0c0-4 2-8 6-11Z"/></svg>
         <h3>Coiffure dames</h3>
@@ -84,7 +84,7 @@
         <div class="card__tags"><span class="tag">Dames</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"MAINS & PIEDS","title":"Pédicure &amp; manicure","desc":"Des soins complets pour des mains et des pieds impeccables, dans un moment de détente.","steps":["Préparation et soin des ongles","Gommage et hydratation","Pose vernis ou finition au choix"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20p%C3%A9dicure%20manicure","ctaLabel":"Réserver sur WhatsApp"}'>
+      <div class="card glass-dark reveal" data-modal='{"eyebrow":"MAINS & PIEDS","title":"Pédicure &amp; manicure","desc":"Des soins complets pour des mains et des pieds impeccables, dans un moment de détente.","steps":["Préparation et soin des ongles","Gommage et hydratation","Pose vernis ou finition au choix"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Pédicure & manicure"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3c0 3-4 5-4 9a4 4 0 0 0 8 0c0-4-4-6-4-9Z"/></svg>
         <h3>Pédicure &amp; manicure</h3>
@@ -92,7 +92,7 @@
         <div class="card__tags"><span class="tag">Soins</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"BEAUTÉ","title":"Maquillage","desc":"Un maquillage sur-mesure pour vos événements, du naturel au plus travaillé.","steps":["Échange sur l'occasion et le style souhaité","Préparation de la peau","Application et finitions"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20maquillage","ctaLabel":"Réserver sur WhatsApp"}'>
+      <div class="card glass-dark reveal" data-modal='{"eyebrow":"BEAUTÉ","title":"Maquillage","desc":"Un maquillage sur-mesure pour vos événements, du naturel au plus travaillé.","steps":["Échange sur l'occasion et le style souhaité","Préparation de la peau","Application et finitions"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Maquillage"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
         <h3>Maquillage</h3>
@@ -100,7 +100,7 @@
         <div class="card__tags"><span class="tag">Beauté</span></div>
         <span class="card__link">Découvrir <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </div>
-      <div class="card glass-dark reveal" data-modal='{"eyebrow":"PERRUQUES","title":"Vente &amp; pose de perruques","desc":"Une sélection de perruques et une pose soignée, ajustée à la forme de votre visage.","steps":["Conseil et choix du modèle","Ajustement et préparation","Pose et finitions"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","ctaHref":"https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20perruques","ctaLabel":"Écrire sur WhatsApp"}'>
+      <div class="card glass-dark reveal" data-modal='{"eyebrow":"PERRUQUES","title":"Vente &amp; pose de perruques","desc":"Une sélection de perruques et une pose soignée, ajustée à la forme de votre visage.","steps":["Conseil et choix du modèle","Ajustement et préparation","Pose et finitions"],"metaLeft":"Durée : à confirmer","metaRight":"Tarif : sur demande","bookingService":"Vente & pose de perruques"}'>
         <div class="card__sheen"></div>
         <svg class="card__img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6Z"/><circle cx="12" cy="12" r="2"/></svg>
         <h3>Vente &amp; pose de perruques</h3>
@@ -144,8 +144,8 @@
   <div class="cta-band container reveal">
     <h2 style="color:var(--text-on-dark-strong);">Envie d'un nouveau look ?</h2>
     <div class="cta-band__actions">
-      <a href="https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20MK%20Barber%20Shop" target="_blank" rel="noopener" class="btn btn-primary">Écrire sur WhatsApp</a>
-      <a href="tel:+2250749963647" class="btn btn-ghost-dark">+225 07 49 96 36 47</a>
+      <button class="btn btn-primary" data-booking>Réserver</button>
+      <a href="https://wa.me/2250749963647?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20chez%20MK%20Barber%20Shop" target="_blank" rel="noopener" class="btn btn-ghost-dark">WhatsApp</a>
     </div>
   </div>
 </section>
