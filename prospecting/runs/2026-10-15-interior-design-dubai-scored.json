@@ -1,0 +1,362 @@
+[
+  {
+    "name": "Muse Interior Design",
+    "website": "https://musedesign.ae/",
+    "rating": 4.9,
+    "reviewsCount": 105,
+    "mapsUrl": "https://www.google.com/maps?cid=2927739797801691822",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a cohesive, modern design system with professional typography, consistent branding, high-quality interior photography, and a clear visual hierarchy—no structural clutter, template artifacts, or spam-like content evident."
+    },
+    "screenshotFile": "site-1-desktop.jpg"
+  },
+  {
+    "name": "Interior Design Company in Dubai",
+    "website": "https://antonovich-design.ae/",
+    "rating": 4.4,
+    "reviewsCount": 154,
+    "mapsUrl": "https://www.google.com/maps?cid=16505010918579659590",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "Footer copyright year is 24 years stale (2002), indicating the site has not been maintained or updated despite otherwise polished visuals, suggesting underlying technical and content decay."
+    },
+    "screenshotFile": "site-2-desktop.jpg"
+  },
+  {
+    "name": "LCD Interior LLC",
+    "website": "https://luxurycreativedesign.com/",
+    "rating": 5,
+    "reviewsCount": 284,
+    "mapsUrl": "https://www.google.com/maps?cid=2292398901729648305",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with coherent visual identity, professional photography, elegant typography, and a well-organized navigation—no structural clutter, template artifacts, or dated elements that would indicate poor prospects for a redesign pitch."
+    },
+    "screenshotFile": "site-3-desktop.jpg"
+  },
+  {
+    "name": "Euphoria Interiors",
+    "website": "https://www.euphoriainteriors.com/",
+    "rating": 5,
+    "reviewsCount": 93,
+    "mapsUrl": "https://www.google.com/maps?cid=7735907816471162880",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern visual identity with coherent typography, professional imagery, a well-organized layout, and a clear design system—no clutter, no template artifacts, and no keyword-stuffing visible."
+    },
+    "screenshotFile": "site-4-desktop.jpg"
+  },
+  {
+    "name": "Algedra Interior Design",
+    "website": "https://algedra.ae/",
+    "rating": 4.3,
+    "reviewsCount": 150,
+    "mapsUrl": "https://www.google.com/maps?cid=18336908137649715261",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a cohesive, modern architectural visualization with professional layout, clear hierarchy, and contemporary design system—the International Property Awards badge and polished hero imagery indicate a well-maintained professional presence with no structural clutter or spam indicators."
+    },
+    "screenshotFile": "site-5-desktop.jpg"
+  },
+  {
+    "name": "Zen Interiors",
+    "website": "https://www.zeninteriors.net/",
+    "rating": 4.7,
+    "reviewsCount": 103,
+    "mapsUrl": "https://www.google.com/maps?cid=14604400552835106676",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent, modern design system with professional typography, elegant minimalist aesthetic, sophisticated lighting/shadow effects, and a clear visual hierarchy—no structural clutter, template artifacts, or dated design patterns are evident."
+    },
+    "screenshotFile": "site-6-desktop.jpg"
+  },
+  {
+    "name": "Immersion Interior Design LLC",
+    "website": "https://immersiondesigns.com/",
+    "rating": 4.5,
+    "reviewsCount": 193,
+    "mapsUrl": "https://www.google.com/maps?cid=4552721619817028569",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with a coherent visual identity, professional photography, clear typography, and a well-organized navigation structure that shows no signs of being outdated or poorly designed."
+    },
+    "screenshotFile": "site-7-desktop.jpg"
+  },
+  {
+    "name": "Creative Shelf LLC",
+    "website": "https://creativeshelf.ae/",
+    "rating": 4.8,
+    "reviewsCount": 166,
+    "mapsUrl": "https://www.google.com/maps?cid=10585994471869968372",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent, modern design with a clean layout, professional typography, consistent visual hierarchy, and a contemporary color scheme (white, dark text, orange accents); while the gradient overlay and stock photography styling are common, the overall execution is polished and professional without structural clutter or dated artifacts."
+    },
+    "screenshotFile": "site-8-desktop.jpg"
+  },
+  {
+    "name": "ZXI Interiors & Contracting LLC",
+    "website": "https://zxi.ae/",
+    "rating": 5,
+    "reviewsCount": 85,
+    "mapsUrl": "https://www.google.com/maps?cid=15698611650929174000",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent, professionally designed modern interior/contracting portfolio with clean typography, consistent visual identity, and contemporary minimalist aesthetics—no structural clutter, no template artifacts, and no spam content visible."
+    },
+    "screenshotFile": "site-9-desktop.jpg"
+  },
+  {
+    "name": "Perfect Creations Interiors",
+    "website": "https://pcinteriors.ae/",
+    "rating": 4.8,
+    "reviewsCount": 203,
+    "mapsUrl": "https://www.google.com/maps?cid=18047510595024933880",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a cityscape background with no visible website content, navigation, or design elements to evaluate."
+    },
+    "screenshotFile": "site-10-desktop.jpg"
+  },
+  {
+    "name": "Design Nomad",
+    "website": "https://www.designnomad.studio/",
+    "rating": 5,
+    "reviewsCount": 43,
+    "mapsUrl": "https://www.google.com/maps?cid=10442390765794809487",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern visual identity with coherent typography, minimal layout, and a professional aesthetic; the navigation and design system are contemporary and well-executed with no structural clutter, keyword spam, or technical staleness evident."
+    },
+    "screenshotFile": "site-11-desktop.jpg"
+  },
+  {
+    "name": "Atech Interiors LLC",
+    "website": "https://atechinteriors.ae/",
+    "rating": 4.6,
+    "reviewsCount": 85,
+    "mapsUrl": "https://www.google.com/maps?cid=4951962399297590919",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent modern design with consistent branding, professional typography, clean layout, and contemporary styling—a single orange accent color and minimalist aesthetic do not constitute outdated design."
+    },
+    "screenshotFile": "site-12-desktop.jpg"
+  },
+  {
+    "name": "4Space Design",
+    "website": "https://4space.ae/",
+    "rating": 4.9,
+    "reviewsCount": 59,
+    "mapsUrl": "https://www.google.com/maps?cid=4738611698139228973",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "A 2014 copyright footer combined with dated design patterns (heavy red draping, overly ornate cloud fixtures, generic luxury restaurant aesthetic with no modern visual system or coherent branding) signals a site that has not been meaningfully updated in over a decade."
+    },
+    "screenshotFile": "site-13-desktop.jpg"
+  },
+  {
+    "name": "Decor N More LLC",
+    "website": "https://dnmuae.com/",
+    "rating": 4.9,
+    "reviewsCount": 109,
+    "mapsUrl": "https://www.google.com/maps?cid=831950289865466909",
+    "visionScore": {
+      "verdict": "error",
+      "reason": "screenshot failed to load"
+    },
+    "screenshotFile": null
+  },
+  {
+    "name": "Tricon Interiors",
+    "website": "https://triconid.com/",
+    "rating": 5,
+    "reviewsCount": 45,
+    "mapsUrl": "https://www.google.com/maps?cid=3187593975029708102",
+    "visionScore": {
+      "verdict": "outdated",
+      "reason": "Footer copyright year 2010 combined with a generic template-like layout, stock photography aesthetic, and cookie banner treatment suggest a site built on legacy infrastructure and not meaningfully updated in over a decade."
+    },
+    "screenshotFile": "site-15-desktop.jpg"
+  },
+  {
+    "name": "Mouhajer International Design and Contracting",
+    "website": "https://www.midc.ae/",
+    "rating": 4.8,
+    "reviewsCount": 110,
+    "mapsUrl": "https://www.google.com/maps?cid=2019950790125707157",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent, professional visual identity with a large hero image, clear typography, well-organized statistics, and a modern navigation structure—while the color palette and layout are relatively conservative, they lack the hallmarks of being outdated (clutter, template artifacts, semantic disorder, or stale code signals)."
+    },
+    "screenshotFile": "site-16-desktop.jpg"
+  },
+  {
+    "name": "Belhasa Interiors",
+    "website": "https://belhasainteriors.com/",
+    "rating": 4.8,
+    "reviewsCount": 27,
+    "mapsUrl": "https://www.google.com/maps?cid=9485010261390142107",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern interior design aesthetic with coherent visual identity, professional typography, and a well-organized layout with no structural clutter or design system problems."
+    },
+    "screenshotFile": "site-17-desktop.jpg"
+  },
+  {
+    "name": "River Island Interior Decoration LLC",
+    "website": "https://riverislandinterior.ae/",
+    "rating": 4.8,
+    "reviewsCount": 52,
+    "mapsUrl": "https://www.google.com/maps?cid=12726916555354658617",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, coherent visual identity with professional typography, a clear navigation structure, consistent use of white space, and a modern dark theme with gold accents—no structural clutter, keyword stuffing, or dated design system problems are evident."
+    },
+    "screenshotFile": "site-18-desktop.jpg"
+  },
+  {
+    "name": "Space Embrace Interior Decoration LLC",
+    "website": "https://seid.ae/",
+    "rating": 4.8,
+    "reviewsCount": 52,
+    "mapsUrl": "https://www.google.com/maps?cid=7902724613615086401",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with a coherent visual identity, professional typography, clear navigation, and a well-structured layout with no visible clutter, template artifacts, or keyword-stuffed content."
+    },
+    "screenshotFile": "site-19-desktop.jpg"
+  },
+  {
+    "name": "Royal Fitout Decoration Design Dubai",
+    "website": "https://royalfitout.com/",
+    "rating": 4.9,
+    "reviewsCount": 194,
+    "mapsUrl": "https://www.google.com/maps?cid=5381560158615940647",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, coherent visual identity with professional typography, a modern dark theme with gold accents, clear navigation, and well-organized hero content—no structural clutter, template artifacts, or dated design system issues are evident."
+    },
+    "screenshotFile": "site-20-desktop.jpg"
+  },
+  {
+    "name": "Whitebricks Interiors",
+    "website": "https://whitebricks.ae/",
+    "rating": 5,
+    "reviewsCount": 25,
+    "mapsUrl": "https://www.google.com/maps?cid=7516302407621189926",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern interior design aesthetic with coherent visual identity, professional typography, and a well-organized navigation structure—no structural clutter, template artifacts, or genuine dated elements visible."
+    },
+    "screenshotFile": "site-21-desktop.jpg"
+  },
+  {
+    "name": "S3T Koncepts",
+    "website": "https://s3tkoncepts.com/",
+    "rating": 4.5,
+    "reviewsCount": 105,
+    "mapsUrl": "https://www.google.com/maps?cid=13519931192833713922",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern interior design aesthetic with coherent visual identity, professional typography, contemporary lighting design, and a well-organized navigation structure that is current and purposeful."
+    },
+    "screenshotFile": "site-22-desktop.jpg"
+  },
+  {
+    "name": "Winteriors Decor LLC",
+    "website": "https://www.winteriorsdecor.com/",
+    "rating": 4.9,
+    "reviewsCount": 17,
+    "mapsUrl": "https://www.google.com/maps?cid=5841755744929419320",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with a coherent visual identity, professional layout, and contemporary styling that does not warrant a cold-pitch redesign."
+    },
+    "screenshotFile": "site-23-desktop.jpg"
+  },
+  {
+    "name": "H2R Design",
+    "website": "https://h2rdesign.com/",
+    "rating": 4.4,
+    "reviewsCount": 23,
+    "mapsUrl": "https://www.google.com/maps?cid=18321150171252271302",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "Screenshot shows a architectural rendering or design mockup rather than an actual website homepage, making it impossible to assess the site's actual design quality or technical state."
+    },
+    "screenshotFile": "site-24-desktop.jpg"
+  },
+  {
+    "name": "Roar",
+    "website": "https://www.designbyroar.com/",
+    "rating": 4.9,
+    "reviewsCount": 43,
+    "mapsUrl": "https://www.google.com/maps?cid=14136422800891158843",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "The screenshot shows only a logo/wordmark with no actual homepage content visible, making it impossible to assess design quality or coherence."
+    },
+    "screenshotFile": "site-25-desktop.jpg"
+  },
+  {
+    "name": "Origa Design",
+    "website": "https://origadesign.com/",
+    "rating": 4.9,
+    "reviewsCount": 21,
+    "mapsUrl": "https://www.google.com/maps?cid=11648129285697967297",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with a coherent visual identity, professional typography, clear navigation, and contemporary layout—no structural clutter, keyword stuffing, or technical staleness detected."
+    },
+    "screenshotFile": "site-26-desktop.jpg"
+  },
+  {
+    "name": "Liger Interiors Co. LLC",
+    "website": "https://ligerinteriors.com/",
+    "rating": 4.9,
+    "reviewsCount": 43,
+    "mapsUrl": "https://www.google.com/maps?cid=11045060996412232578",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent, professionally-designed luxury interior studio homepage with clean typography, consistent visual hierarchy, elegant imagery, and a modern aesthetic; the stale 2023 copyright year alone does not constitute a structural design problem when the visual and UX execution is current and polished."
+    },
+    "screenshotFile": "site-27-desktop.jpg"
+  },
+  {
+    "name": "USBC Interiors",
+    "website": "https://www.usbcinteriors.com/",
+    "rating": 4.5,
+    "reviewsCount": 121,
+    "mapsUrl": "https://www.google.com/maps?cid=10110110828386687557",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a clean, modern design with coherent visual identity, professional typography, clear hierarchy, and contemporary layout—no structural clutter, template artifacts, or spam-like content."
+    },
+    "screenshotFile": "site-28-desktop.jpg"
+  },
+  {
+    "name": "Spazio Interior Design",
+    "website": "https://spazio.ae/",
+    "rating": 4.5,
+    "reviewsCount": 73,
+    "mapsUrl": "https://www.google.com/maps?cid=1357940107164585733",
+    "visionScore": {
+      "verdict": "fine",
+      "reason": "The site displays a coherent, professional visual identity with clean typography, a deliberate color scheme (dark background with gold accents), modern layout structure, and clear hierarchy—dated elements like the serif font choice and gold palette are intentional design decisions, not structural problems or clutter."
+    },
+    "screenshotFile": "site-29-desktop.jpg"
+  },
+  {
+    "name": "ARCODE INTERIOR",
+    "website": "https://www.arcodeinterior.com/",
+    "rating": 4.8,
+    "reviewsCount": 48,
+    "mapsUrl": "https://www.google.com/maps?cid=13460538487696447560",
+    "visionScore": {
+      "verdict": "uncertain",
+      "reason": "Screenshot shows only a Cloudflare security verification page with no actual website content visible."
+    },
+    "screenshotFile": "site-30-desktop.jpg"
+  }
+]
