@@ -370,6 +370,42 @@
    "usedBy": [
     "rerotti-hair-beauty-dubai-marina"
    ]
+  },
+  {
+   "path": "cleaning/window-cleaner-skyscraper.jpg",
+   "niche": "cleaning",
+   "description": "Rope-access cleaners cleaning the facade of a tall office tower with pink-tinted glass. Real stock photo (Pixabay).",
+   "usedBy": [
+    "pure-zone",
+    "mckleenz-technical-cleaning-services-llc"
+   ]
+  },
+  {
+   "path": "cleaning/sofa-cleaning.jpg",
+   "niche": "cleaning",
+   "description": "Hand with a sponge cleaning a stain on a beige fabric sofa. Real stock photo (Pixabay).",
+   "usedBy": [
+    "neat-and-net",
+    "magic-gloves-cleaning-services",
+    "pure-zone"
+   ]
+  },
+  {
+   "path": "cleaning/woman-cleaning-home.jpg",
+   "niche": "cleaning",
+   "description": "Smiling young woman with a feather duster on a white studio background (cut-out look; best on light sections). Real stock photo (Pixabay).",
+   "usedBy": [
+    "pure-zone",
+    "mckleenz-technical-cleaning-services-llc"
+   ]
+  },
+  {
+   "path": "cleaning/carpet-cleaning.jpg",
+   "niche": "cleaning",
+   "description": "Top-down close-up of a vacuum cleaner head on a teal carpet. Real stock photo (Pixabay).",
+   "usedBy": [
+    "magic-gloves-cleaning-services"
+   ]
   }
  ]
 }
