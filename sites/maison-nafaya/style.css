@@ -157,7 +157,7 @@ img { display: block; max-width: 100%; }
 .card__link { font-size: 13px; font-weight: 600; color: var(--gold-700); display: inline-flex; align-items: center; gap: 6px; position: relative; z-index: 1; }
 
 /* Photo-backed featured card (soin du visage) */
-.card--photo { background: linear-gradient(180deg, rgba(13,12,11,.35) 0%, rgba(13,12,11,.9) 100%), url('images/soin-visage.jpg') center 22% / cover no-repeat; border: 1px solid rgba(201,163,98,.3); min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end; }
+.card--photo { background: linear-gradient(180deg, rgba(13,12,11,.3) 0%, rgba(13,12,11,.92) 100%), url('images/soin-visage.jpg') center 55% / cover no-repeat; border: 1px solid rgba(201,163,98,.3); min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end; }
 @media (min-width: 1000px) { .card--photo { grid-column: span 2; } }
 .card--photo .card__tags, .card--photo h3, .card--photo p, .card--photo .card__link { position: relative; z-index: 1; }
 .card--photo h3, .card--photo .card__link { color: var(--text-on-dark-strong); }
