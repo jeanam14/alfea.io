@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website creation for small businesses — fixed price, 5–10 days | Alfea</title>
+<meta name="description" content="Alfea designs and builds professional websites for small businesses. Fixed pricing, fast turnaround, no agency bloat. From brief to live site in 5-10 days.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/alfea.css">
+<style>
+:root { --dot: var(--blueprint); }
+.hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 150px 0 70px; overflow: hidden; }
+.hero .glow { background: radial-gradient(640px circle at 85% 20%, rgba(127,168,255,.18), transparent 60%); }
+.hero .bgrid { position: absolute; inset: 0; z-index: 0; opacity: .05;
+  background-image: linear-gradient(rgba(127,168,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(127,168,255,1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(circle at 70% 30%, black, transparent 70%);
+  mask-image: radial-gradient(circle at 70% 30%, black, transparent 70%);
+}
+.hero__grid { position: relative; z-index: 2; display: grid; gap: 48px; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 980px) { .hero__grid { grid-template-columns: 5fr 7fr; } }
+.hero__copy h1 { font-size: clamp(34px,5.4vw,62px); margin: 18px 0 20px; text-transform: none; }
+.hero__copy p.lead { font-size: 17px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; max-width: 46ch; }
+.hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.buildbrowser { padding: 20px; }
+.bb-chrome { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+.bb-chrome .dots { display: flex; gap: 5px; }
+.bb-chrome .dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+.bb-chrome .url { flex: 1; font-family: var(--mono); font-size: 11px; color: var(--text-dim); background: var(--basalt-2); border-radius: 6px; padding: 6px 10px; display: flex; align-items: center; gap: 6px; }
+.bb-chrome .url .lock { opacity: 0; transition: opacity .3s; }
+.bb-chrome .url .lock.show { opacity: 1; color: var(--pulse); }
+.bb-stage { position: relative; min-height: 300px; border-radius: 10px; overflow: hidden; background: var(--basalt-2); }
+.bb-layer { position: absolute; inset: 0; padding: 18px; opacity: 0; transition: opacity .6s var(--ease); }
+.bb-layer.show { opacity: 1; }
+.bb-wire-nav { display: flex; gap: 10px; margin-bottom: 20px; }
+.bb-wire-nav div { height: 8px; width: 40px; border-radius: 4px; background: rgba(127,168,255,.25); }
+.bb-wire-box { border: 1px dashed rgba(127,168,255,.35); border-radius: 8px; height: 90px; margin-bottom: 14px; }
+.bb-wire-lines div { height: 7px; border-radius: 4px; background: rgba(127,168,255,.2); margin-bottom: 8px; }
+.bb-wire-lines div:nth-child(2) { width: 70%; }
+.bb-headline { font-family: var(--display); font-weight: 700; font-size: 20px; margin-bottom: 8px; color: var(--text); }
+.bb-sub { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+.bb-photo { height: 100px; border-radius: 8px; background: linear-gradient(135deg,#2b1d14,#120c08); margin-bottom: 14px; position: relative; overflow: hidden; }
+.bb-photo::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(127,168,255,.2), transparent 60%); }
+.bb-toast { position: absolute; top: 14px; right: 14px; font-family: var(--mono); font-size: 10px; background: var(--pulse-soft); color: var(--pulse); border: 1px solid rgba(63,224,165,.4); padding: 6px 10px; border-radius: 8px; opacity: 0; transition: opacity .3s, transform .3s; transform: translateX(10px); }
+.bb-toast.show { opacity: 1; transform: translateX(0); }
+.bb-btn { display: inline-block; font-size: 11px; padding: 8px 16px; border-radius: 999px; background: var(--basalt-1); color: var(--text-dim); transition: all .4s; }
+.bb-btn.live { background: var(--sodium); color: var(--basalt-0); font-weight: 600; }
+.bb-livedot { width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); display: inline-block; margin-right: 6px; transition: background .3s; }
+.bb-livedot.on { background: var(--pulse); box-shadow: 0 0 6px var(--pulse); }
+.bb-stagepill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--blueprint); background: var(--blueprint-soft); border: 1px solid rgba(127,168,255,.35); padding: 6px 12px; border-radius: 999px; margin-bottom: 14px; }
+.bb-progress { display: flex; gap: 5px; margin-top: 14px; }
+.bb-progress span { flex: 1; height: 3px; border-radius: 3px; background: var(--line); }
+.bb-progress span.on { background: var(--blueprint); }
+
+/* facts strip */
+.facts { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; }
+@media (min-width: 760px) { .facts { grid-template-columns: repeat(4,1fr); } }
+.fact { text-align: center; padding: 20px; border-left: 1px solid var(--line); }
+.fact:first-child, .fact:nth-child(2) { border-left: none; }
+@media (min-width: 760px) { .fact:nth-child(2) { border-left: 1px solid var(--line); } }
+.fact .num { font-family: var(--display); font-weight: 700; font-size: clamp(30px,4vw,44px); color: var(--text); }
+.fact .lbl { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: .04em; margin-top: 8px; }
+
+/* before/after slider */
+.bawrap { max-width: 980px; margin: 0 auto; }
+.ba { position: relative; aspect-ratio: 16/10; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(14,17,22,.3); border: 1px solid var(--paper-line); }
+.ba__layer { position: absolute; inset: 0; }
+.ba__after { clip-path: inset(0 0 0 50%); }
+.ba-corner { position: absolute; top: 14px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 5px 10px; border-radius: 6px; background: rgba(0,0,0,.5); color: #fff; z-index: 3; }
+.ba-corner.l { left: 14px; } .ba-corner.r { right: 14px; }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--blueprint); z-index: 4; cursor: ew-resize; }
+.ba-grip { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.9); display: flex; align-items: center; justify-content: center; font-size: 13px; color: #111; box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 5; margin: 0; }
+.ba-pin { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: var(--blueprint); color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; z-index: 3; opacity: 0; transition: opacity .3s; cursor: pointer; box-shadow: 0 0 0 4px rgba(127,168,255,.25); }
+.ba-pin.show { opacity: 1; }
+.ba-pin:hover .ba-pin__tip { opacity: 1; transform: translateY(0); }
+.ba-pin__tip { position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--basalt-1); color: var(--text); font-size: 12px; font-weight: 400; padding: 8px 12px; border-radius: 8px; white-space: nowrap; opacity: 0; transition: all .2s; border: 1px solid var(--line-strong); pointer-events: none; }
+.bacaption { text-align: center; font-size: 13px; color: var(--paper-ink-muted); margin-top: 18px; }
+
+/* site mock (before/after rendered as real markup) */
+.sitemock { width: 100%; height: 100%; font-size: 10px; overflow: hidden; position: relative; }
+.sitemock.before { background: #e4e0d6; color: #333; padding: 14px; }
+.sitemock.before .bnav { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.sitemock.before .blogo { width: 60px; height: 16px; background: #999; }
+.sitemock.before h1 { font-size: 14px; font-family: Georgia, serif; color: #555; margin: 10px 0 6px; }
+.sitemock.before p { font-size: 8px; line-height: 1.6; color: #777; margin-bottom: 4px; }
+.sitemock.before .phone { font-size: 7px; color: #aaa; position: absolute; bottom: 10px; left: 14px; }
+.sitemock.after { position: relative; background: linear-gradient(135deg,#3a2a1c,#1a120b); color: var(--text); overflow: hidden; }
+.sitemock.after::before { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(127,168,255,.3), transparent 55%); }
+.sitemock.after::after { content:''; position:absolute; inset:0; background: linear-gradient(0deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 45%, rgba(0,0,0,.4) 100%); }
+.sitemock.after .alayer { position: absolute; inset: 0; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; z-index: 2; }
+.sitemock.after .anav { display: flex; justify-content: space-between; align-items: center; }
+.sitemock.after .alogo { font-family: var(--display); font-weight: 700; font-size: 11px; color: #fff !important; }
+.sitemock.after .abtn { background: var(--sodium); color: var(--basalt-0) !important; font-size: 7px; padding: 4px 9px; border-radius: 999px; font-weight: 600; }
+.sitemock.after .acopy { text-align: center; align-self: center; }
+.sitemock.after h1 { font-family: var(--display); font-weight: 700; font-size: 17px; margin-bottom: 8px; line-height: 1.15; color: #fff !important; }
+.sitemock.after p { font-size: 9px; color: rgba(255,255,255,.75) !important; }
+
+/* portfolio */
+.bento { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .bento { grid-template-columns: 7fr 5fr; grid-template-rows: 1fr 1fr; } }
+.pfcard { border-radius: 18px; overflow: hidden; cursor: pointer; position: relative; border: 1px solid var(--paper-line); background: #fff; }
+.pfcard.big { grid-row: span 2; }
+.pfbrowser { background: #e9ebee; padding: 8px 10px; display: flex; gap: 5px; }
+.pfbrowser span { width: 7px; height: 7px; border-radius: 50%; background: #c7cad0; }
+.pfshot-wrap { height: 280px; overflow: hidden; position: relative; }
+.pfcard.big .pfshot-wrap { height: 480px; }
+.pfshot { width: 100%; height: 820px; background-size: 100% auto; background-position: top center; transition: transform 6s ease-in-out; }
+.pfcard:hover .pfshot { transform: translateY(calc(-1 * (820px - 100%))); }
+.pfcard.big:hover .pfshot { transform: translateY(calc(-1 * (820px - 100%))); }
+.pfmeta { padding: 16px 18px; }
+.pftag { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--blueprint); background: var(--blueprint-soft); display: inline-block; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+.pfmeta h3 { font-size: 15.5px; color: var(--paper-ink); margin-bottom: 4px; }
+.pfmeta p { font-size: 12.5px; color: var(--paper-ink-muted); }
+.pfview { position: absolute; top: 14px; right: 14px; font-family: var(--mono); font-size: 10px; background: rgba(14,17,22,.8); color: #fff; padding: 6px 10px; border-radius: 6px; opacity: 0; transition: opacity .3s; }
+.pfcard:hover .pfview { opacity: 1; }
+
+/* ruler timeline */
+.ruler { position: relative; margin: 40px 0 0; }
+.ruler__track { position: relative; height: 4px; background: var(--line); border-radius: 4px; display: flex; overflow: hidden; }
+.ruler__seg { height: 100%; transform: scaleX(0); transform-origin: left; transition: transform 1s var(--ease); }
+.ruler__ticks { display: flex; justify-content: space-between; margin-top: 10px; font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
+.rulersteps { display: grid; gap: 20px; grid-template-columns: 1fr; margin-top: 36px; }
+@media (min-width: 860px) { .rulersteps { grid-template-columns: repeat(3,1fr); } }
+.rulerstep { padding: 24px; border-top: 3px solid var(--line); transition: border-color .4s; }
+.rulerstep.lit { border-top-color: var(--blueprint); }
+.rulerstep .n { font-family: var(--mono); font-size: 20px; color: var(--text-dim); margin-bottom: 10px; transition: color .4s; }
+.rulerstep.lit .n { color: var(--blueprint); }
+.rulerstep h3 { font-size: 16px; margin-bottom: 8px; }
+.rulerstep p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* pricing */
+.pricecard { max-width: 760px; margin: 0 auto; background: #fff; border-radius: 20px; border: 1px solid var(--paper-line); border-top: 3px solid var(--blueprint); box-shadow: 0 24px 50px -30px rgba(14,17,22,.2); padding: 40px; display: grid; gap: 30px; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .pricecard { grid-template-columns: 1fr 1fr; } }
+.pricecard h3 { color: var(--paper-ink); font-size: 22px; margin-bottom: 10px; }
+.pricecard .tagline { font-family: var(--mono); font-size: 11px; color: var(--blueprint); margin-bottom: 14px; display: block; }
+.pricecard p.desc { color: var(--paper-ink-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.checklist li { display: flex; gap: 10px; font-size: 14px; color: var(--paper-ink); }
+.checklist li::before { content: '✓'; color: var(--blueprint); font-weight: 700; flex: none; }
+
+.cta-band { padding: 56px; text-align: center; max-width: 760px; margin: 0 auto; position: relative; overflow: hidden; }
+.cta-band::before { content: ''; position: absolute; inset: -40%; background: radial-gradient(circle at 50% 30%, rgba(127,168,255,.16), transparent 60%); pointer-events: none; }
+.cta-band h2 { font-size: clamp(26px,3.4vw,40px); margin-bottom: 14px; position: relative; }
+.cta-band p { color: var(--text-muted); margin-bottom: 28px; position: relative; font-size: 15.5px; }
+.cta-band .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+.more { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .more { grid-template-columns: 1fr 1fr; } }
+.morecard { padding: 18px 20px; display: flex; align-items: center; gap: 14px; }
+.morecard .icowrap { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex: none; }
+.morecard h4 { font-size: 14.5px; margin-bottom: 2px; }
+.morecard p { font-size: 12.5px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a href="/" class="nav__brand">
+    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
+    <span>alfea</span>
+  </a>
+  <div class="nav__links">
+    <a href="/reactivate-leads/">Reactivate Leads</a>
+    <a href="/website-creation/" class="active">Website Creation</a>
+    <a href="https://julaide.io" target="_blank" rel="noopener" aria-label="Walkthrough Videos (opens julaide.io in a new tab)">Walkthrough Videos <span class="ext">↗</span></a>
+  </div>
+  <div class="nav__actions">
+    <a class="btn btn-ghost btn-sm" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20new%20website." target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-primary btn-sm" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20new%20website." target="_blank" rel="noopener">Get your website</a>
+    <button class="nav__burger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+<div class="sheet">
+  <button class="sheet__close" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/reactivate-leads/">Reactivate Leads</a>
+  <a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
+  <div class="sheet__actions">
+    <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-primary" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20new%20website." target="_blank" rel="noopener">Get your website</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero grain">
+  <div class="bgrid" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--blueprint)"></span>Website Creation · Fixed Price</span>
+      <h1>A site that works as hard as <span class="em">you</span> do.</h1>
+      <p class="lead">Professional websites for small businesses — custom-designed, written and launched in 5–10 days, at a fixed price agreed before we start. No agency bloat. No monthly lock-in.</p>
+      <div class="hero__ctas">
+        <a class="btn btn-primary" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20new%20website." target="_blank" rel="noopener">Get your website <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#work">See recent work ↓</a>
+      </div>
+    </div>
+    <div class="buildbrowser glass">
+      <div class="bb-chrome">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="url"><span class="lock" id="bb-lock">🔒</span> masonreedjoinery.com</div>
+      </div>
+      <span class="bb-stagepill" id="bb-stagelabel">Day 1 · Brief</span>
+      <div class="bb-stage">
+        <div class="bb-layer show" data-stage="0">
+          <div class="bb-wire-nav"><div></div><div></div><div></div></div>
+          <div class="bb-wire-box"></div>
+          <div class="bb-wire-lines"><div></div><div></div></div>
+        </div>
+        <div class="bb-layer" data-stage="1">
+          <div class="bb-wire-nav"><div></div><div></div><div></div></div>
+          <div class="bb-headline">Handmade joinery, built to last.</div>
+          <div class="bb-wire-box"></div>
+          <div class="bb-wire-lines"><div></div><div></div></div>
+        </div>
+        <div class="bb-layer" data-stage="2">
+          <div class="bb-wire-nav"><div></div><div></div><div></div></div>
+          <div class="bb-headline">Handmade joinery, built to last.</div>
+          <div class="bb-sub">Custom carpentry, built to last generations.</div>
+          <div class="bb-photo"></div>
+          <div class="bb-toast" id="bb-toast">Preview link sent ✓</div>
+        </div>
+        <div class="bb-layer" data-stage="3">
+          <div class="bb-wire-nav" style="align-items:center;"><div></div><div></div><div style="margin-left:auto;"><span class="bb-btn live">Book a visit</span></div></div>
+          <div class="bb-headline">Handmade joinery, built to last.</div>
+          <div class="bb-sub">Custom carpentry, built to last generations. Based in Bristol — serving the South West.</div>
+          <div class="bb-photo"></div>
+        </div>
+      </div>
+      <div class="bb-progress" id="bb-progress"><span></span><span></span><span></span><span></span></div>
+      <span class="chip chip-example" style="margin-top:14px;display:inline-block;">Example site</span>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="section bg-1 grain" style="padding:64px 0;">
+  <div class="container facts">
+    <div class="fact reveal"><div class="num" data-count-to="5-10"></div><div class="lbl">Days from brief to live</div></div>
+    <div class="fact reveal"><div class="num" data-count-to="0" data-count-prefix="">Fixed</div><div class="lbl">Price agreed upfront</div></div>
+    <div class="fact reveal"><div class="num" data-count-to="2"></div><div class="lbl">Rounds of revisions included</div></div>
+    <div class="fact reveal"><div class="num" data-count-to="100" data-count-suffix="%"></div><div class="lbl">Yours — no monthly lock-in</div></div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section class="section bg-paper grain">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--blueprint)"></span>01 — The difference</span>
+      <h2>What changes when your site is built properly.</h2>
+    </div>
+    <div class="bawrap reveal">
+      <div class="ba" id="ba">
+        <div class="ba-corner l">BEFORE</div>
+        <div class="ba-corner r">AFTER</div>
+        <div class="ba__layer ba__before"><div class="sitemock before">
+          <div class="bnav"><div class="blogo"></div><div style="font-size:7px;color:#888;">HOME · ABOUT · CONTACT</div></div>
+          <h1>Mason &amp; Reed Joinery Services Ltd.</h1>
+          <p>We are a carpentry company that has been operating in the local area for a number of years providing quality joinery services to residential and commercial clients across the region at competitive rates with full insurance...</p>
+          <p>Please call us for more information about our services and to request a quote for your project.</p>
+          <div class="phone">Tel: 0117 xxx xxxx</div>
+        </div></div>
+        <div class="ba__layer ba__after" id="ba-after"><div class="sitemock after">
+          <div class="alayer">
+            <div class="anav"><span class="alogo">Mason &amp; Reed</span><span class="abtn">Book a visit</span></div>
+            <div class="acopy">
+              <h1>Handmade joinery, built to last.</h1>
+              <p>Custom carpentry for homes across the South West.</p>
+            </div>
+          </div>
+        </div></div>
+        <div class="ba-pin" id="ba-pin-1" style="top:14%;left:62%;" data-tip="Book or WhatsApp in one tap, above the fold">1<span class="ba-pin__tip">Book or WhatsApp in one tap, above the fold</span></div>
+        <div class="ba-pin" id="ba-pin-2" style="top:32%;left:58%;" data-tip="Copy written for your customers, not for you">2<span class="ba-pin__tip">Copy written for your customers, not for you</span></div>
+        <div class="ba-pin" id="ba-pin-3" style="top:72%;left:78%;" data-tip="Fast and clean on mobile">3<span class="ba-pin__tip">Fast and clean on mobile</span></div>
+        <div class="ba-pin" id="ba-pin-4" style="top:85%;left:60%;" data-tip="Real photos, clear services">4<span class="ba-pin__tip">Real photos, clear services</span></div>
+        <div class="ba-handle" id="ba-handle"><div class="ba-grip">‹›</div></div>
+        <input type="range" class="ba-range" id="ba-range" min="0" max="100" value="50" aria-label="Before/after comparison slider">
+      </div>
+      <p class="bacaption">Illustrative example — every build is designed around your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WORK -->
+<section class="section bg-paper grain" id="work" style="border-top:none;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--blueprint)"></span>02 — Example builds</span>
+      <h2>A few recent builds.</h2>
+    </div>
+    <div class="bento reveal-group">
+      <div class="pfcard big spot reveal" style="--spot-color:var(--blueprint-soft);" data-modal-title="Property listings site" data-modal-body="A real estate agency needed a search-first homepage that puts listings in front of visitors immediately, not buried behind a generic hero." data-modal-steps="Search-first homepage layout|Listing cards with key details at a glance|Enquiry built into every listing" data-modal-cta="Get a site like this" data-modal-cta-href="https://wa.me/352621990289?text=I%27d%20like%20a%20site%20like%20the%20real%20estate%20example.">
+        <div class="pfbrowser"><span></span><span></span><span></span></div>
+        <div class="pfshot-wrap"><div class="pfshot" style="background-image:linear-gradient(180deg,#1c2333 0%,#273049 14%,#f5f3ee 14%,#f5f3ee 42%,#e8e4da 42%,#e8e4da 70%,#20283a 70%,#20283a 100%);"></div></div>
+        <div class="pfview">View project</div>
+        <div class="pfmeta"><span class="pftag">Real Estate</span><h3>Property listings site</h3><p>Search-first homepage built for a residential sales and rental agency.</p></div>
+      </div>
+      <div class="pfcard spot reveal" style="--spot-color:var(--blueprint-soft);" data-modal-title="Interior design portfolio" data-modal-body="An editorial-style site built to let a design studio's project photography do the talking, with minimal chrome around it." data-modal-steps="Full-bleed project photography|Editorial typography and generous whitespace|Simple enquiry form, no clutter" data-modal-cta="Get a site like this" data-modal-cta-href="https://wa.me/352621990289?text=I%27d%20like%20a%20site%20like%20the%20design%20studio%20example.">
+        <div class="pfbrowser"><span></span><span></span><span></span></div>
+        <div class="pfshot-wrap"><div class="pfshot" style="background-image:linear-gradient(180deg,#fff 0%,#fff 20%,#2b2420 20%,#2b2420 55%,#faf8f4 55%,#faf8f4 100%);"></div></div>
+        <div class="pfview">View project</div>
+        <div class="pfmeta"><span class="pftag">Design Studio</span><h3>Interior design portfolio</h3><p>Editorial-style site built to showcase a studio's project work.</p></div>
+      </div>
+      <div class="pfcard spot reveal" style="--spot-color:var(--blueprint-soft);" data-modal-title="Dental practice site" data-modal-body="A multi-practitioner dental surgery needed booking front and centre, with treatments explained clearly for nervous patients." data-modal-steps="Booking-first homepage layout|Treatments explained in plain language|Practitioner profiles with real photos" data-modal-cta="Get a site like this" data-modal-cta-href="https://wa.me/352621990289?text=I%27d%20like%20a%20site%20like%20the%20dental%20clinic%20example.">
+        <div class="pfbrowser"><span></span><span></span><span></span></div>
+        <div class="pfshot-wrap"><div class="pfshot" style="background-image:linear-gradient(180deg,#eef6f5 0%,#eef6f5 18%,#2f8f82 18%,#2f8f82 40%,#fff 40%,#fff 100%);"></div></div>
+        <div class="pfview">View project</div>
+        <div class="pfmeta"><span class="pftag">Private Clinic</span><h3>Dental practice site</h3><p>Booking-first homepage for a multi-practitioner dental surgery.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW A PROJECT RUNS -->
+<section class="section bg-0 grain">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--blueprint)"></span>03 — How a project runs</span>
+      <h2>From first call to live site in under two weeks.</h2>
+    </div>
+    <div class="ruler reveal" id="ruler">
+      <div class="ruler__track">
+        <div class="ruler__seg" id="seg-1" style="width:10%;background:var(--sodium);"></div>
+        <div class="ruler__seg" id="seg-2" style="width:60%;background:var(--blueprint);opacity:.6;"></div>
+        <div class="ruler__seg" id="seg-3" style="width:30%;background:var(--blueprint);"></div>
+      </div>
+      <div class="ruler__ticks"><span>D1</span><span>D3</span><span>D5</span><span>D7</span><span>D9</span><span>D10</span></div>
+    </div>
+    <div class="rulersteps reveal-group">
+      <div class="rulerstep glass reveal" data-step="0"><div class="n">01</div><h3>Day 1 — Brief &amp; fixed quote</h3><p>A 20-minute call about your business, your customers and what the site must do. You get a fixed quote — no surprises later.</p></div>
+      <div class="rulerstep glass reveal" data-step="1"><div class="n">02</div><h3>Days 2–7 — Design &amp; build</h3><p>We design and write the site. Partway through, you get a live preview link to see real progress, not mock-ups.</p></div>
+      <div class="rulerstep glass reveal" data-step="2"><div class="n">03</div><h3>Days 8–10 — Revisions &amp; launch</h3><p>Two rounds of revisions, then we connect your domain and go live.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section bg-paper grain">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--blueprint)"></span>04 — Pricing</span>
+      <h2>One package. Quoted on the brief call.</h2>
+    </div>
+    <div class="pricecard reveal">
+      <div>
+        <h3>Your website</h3>
+        <span class="tagline">FIXED PRICE · AGREED BEFORE WE START</span>
+        <p class="desc">Every business needs something slightly different, so we quote after a 20-minute call — and that number doesn't move.</p>
+        <a class="btn btn-primary" href="https://wa.me/352621990289?text=I%27d%20like%20to%20book%20a%2020-minute%20brief%20call." target="_blank" rel="noopener">Book the brief call <span class="arrow">→</span></a>
+      </div>
+      <ul class="checklist">
+        <li>Custom design, not a template</li>
+        <li>Copy written or refined for you</li>
+        <li>Fully responsive on every device</li>
+        <li>Contact form, booking or WhatsApp built in</li>
+        <li>2 rounds of revisions</li>
+        <li>5–10 day turnaround</li>
+        <li>Yours to keep — no monthly lock-in</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section bg-0 grain">
+  <div class="container">
+    <div class="cta-band glass reveal">
+      <h2>Your new site could be live in under two <span class="em">weeks.</span></h2>
+      <p>Fixed price, real preview links, and a site that's yours to keep.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20new%20website." target="_blank" rel="noopener">Get your website <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE FROM ALFEA -->
+<section class="section bg-1 grain">
+  <div class="container">
+    <span class="eyebrow reveal"><span class="eyebrow__dot" style="background:var(--sodium)"></span>Also from Alfea</span>
+    <div class="more reveal-group" style="margin-top:20px;">
+      <a href="/reactivate-leads/" class="morecard glass spot reveal" style="--spot-color:var(--pulse-soft);">
+        <div class="icowrap" style="background:var(--pulse-soft);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pulse)" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div><h4>Reactivate Leads</h4><p>Kai reopens your cold WhatsApp leads.</p></div>
+      </a>
+      <a href="https://julaide.io" target="_blank" rel="noopener" class="morecard glass spot reveal" style="--spot-color:var(--reel-soft);">
+        <div class="icowrap" style="background:var(--reel-soft);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--reel)" stroke-width="1.6"><path d="M3 7l8-4 8 4-8 4-8-4z"/><path d="M3 7v10l8 4 8-4V7"/></svg></div>
+        <div><h4>Walkthrough Videos <span class="mono" style="font-size:10px;">julaide.io ↗</span></h4><p>Cinematic video from listing photos.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
+          <span>alfea</span>
+        </div>
+        <p>AI agents, websites and video for businesses that live on enquiries.</p>
+      </div>
+      <div><h4>Products</h4><ul class="footer-links"><li><a href="/reactivate-leads/">Reactivate Leads</a></li><li><a href="/website-creation/">Website Creation</a></li><li><a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li></ul></div>
+      <div><h4>Contact</h4><ul class="footer-links"><li><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp +352 621 990 289</a></li></ul></div>
+      <div><h4>Company</h4><ul class="footer-links"><li><a href="/reactivate-leads/#agencies">Partner with us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year></span> Alfea</span><span class="mono">AI AGENTS · WEBSITES · VIDEO</span></div>
+    <div class="footer-ghost" aria-hidden="true">alfea</div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" tabindex="-1"><div class="modal-panel" tabindex="-1"></div></div>
+<script src="../assets/alfea.js"></script>
+<script>
+(function () {
+  /* ---------- Build browser animation ---------- */
+  var layers = document.querySelectorAll('.bb-layer');
+  var labels = ['Day 1 · Brief', 'Day 3 · Design', 'Day 5 · Preview link', 'Day 9 · Live'];
+  var progress = document.querySelectorAll('#bb-progress span');
+  var stage = 0;
+  var reduced = window.AlfeaReducedMotion;
+
+  function setStage(i) {
+    layers.forEach(function (l) { l.classList.toggle('show', parseInt(l.getAttribute('data-stage'), 10) === i); });
+    document.getElementById('bb-stagelabel').textContent = labels[i];
+    progress.forEach(function (p, idx) { p.classList.toggle('on', idx <= i); });
+    document.getElementById('bb-lock').classList.toggle('show', i >= 3);
+    var toast = document.getElementById('bb-toast');
+    if (i === 2) { toast.classList.remove('show'); setTimeout(function () { toast.classList.add('show'); }, 400); }
+    else toast.classList.remove('show');
+  }
+  setStage(0);
+  if (!reduced) {
+    setInterval(function () { stage = (stage + 1) % 4; setStage(stage); }, 2600);
+  } else {
+    setStage(3);
+  }
+
+  /* ---------- Count-up: handle non-numeric "5-10" and "Fixed" ---------- */
+  document.querySelectorAll('.fact .num').forEach(function (el) {
+    var to = el.getAttribute('data-count-to');
+    if (to === '5-10') { el.textContent = '5–10'; }
+  });
+
+  /* ---------- Before/after slider ---------- */
+  var ba = document.getElementById('ba');
+  var baAfter = document.getElementById('ba-after');
+  var baHandle = document.getElementById('ba-handle');
+  var baRange = document.getElementById('ba-range');
+  var pins = document.querySelectorAll('.ba-pin');
+  function setBA(pct) {
+    pct = Math.max(0, Math.min(100, pct));
+    baAfter.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    baHandle.style.left = pct + '%';
+    baRange.value = pct;
+    pins.forEach(function (p) { p.classList.toggle('show', pct > 60); });
+  }
+  baRange.addEventListener('input', function () { setBA(parseFloat(this.value)); });
+  setBA(50);
+
+  if ('IntersectionObserver' in window) {
+    var baio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !reduced) {
+          setTimeout(function () { setBA(58); setTimeout(function () { setBA(50); }, 500); }, 500);
+          baio.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    baio.observe(ba);
+  }
+
+  /* ---------- Ruler scroll-lit steps ---------- */
+  var rulerSteps = document.querySelectorAll('.rulerstep');
+  var segs = ['seg-1', 'seg-2', 'seg-3'];
+  if ('IntersectionObserver' in window) {
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var i = parseInt(e.target.getAttribute('data-step'), 10);
+          e.target.classList.add('lit');
+          for (var k = 0; k <= i; k++) document.getElementById(segs[k]).style.transform = 'scaleX(1)';
+        }
+      });
+    }, { threshold: 0.5 });
+    rulerSteps.forEach(function (s) { rio.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

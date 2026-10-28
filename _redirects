@@ -1,0 +1,17 @@
+# Netlify redirects for alfea.io
+#
+# These two rules only work once reactivate.alfea.io and web-creation.alfea.io
+# are added as domain aliases on THIS Netlify site (Site settings > Domain
+# management > Add domain alias). Until that's done they're simply unused.
+#
+# IMPORTANT: this intentionally does NOT touch anything below
+# web-creation.alfea.io — closed client preview sites live at
+# <slug>.web-creation.alfea.io (see the separate alfea.io prospecting-pipeline
+# repo's README). A wildcard rule here would break every one of those.
+
+https://reactivate.alfea.io/*   https://alfea.io/reactivate-leads/   301!
+https://web-creation.alfea.io/  https://alfea.io/website-creation/   301!
+
+# Convenience alias so /video-creation also reaches the Julaide product,
+# in case that's ever linked from somewhere other than the homepage card.
+/video-creation   https://julaide.io   302

@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reactivate old leads on WhatsApp — Kai by Alfea</title>
+<meta name="description" content="Kai messages your past enquiries on WhatsApp, picks the conversation up where it stopped, and hands the warm replies to your team. Free pilot on a sample of your list.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/alfea.css">
+<style>
+:root { --dot: var(--pulse); }
+.hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 150px 0 70px; overflow: hidden; }
+.hero .glow { background: radial-gradient(640px circle at 85% 15%, rgba(63,224,165,.18), transparent 60%); }
+.hero__grid { position: relative; z-index: 2; display: grid; gap: 48px; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 980px) { .hero__grid { grid-template-columns: 6fr 6fr; } }
+.hero__copy h1 { font-size: clamp(34px,5.4vw,62px); margin: 18px 0 20px; text-transform: none; }
+.hero__copy p.lead { font-size: 17px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; max-width: 52ch; }
+.hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.trustrow { display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 11.5px; color: var(--pulse); }
+.trustrow span::before { content: '✓ '; }
+
+/* Conversation replay */
+.replay { padding: 20px; max-width: 420px; margin: 0 auto; }
+.replay__tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.replay__tabs button { font-family: var(--mono); font-size: 11px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-dim); }
+.replay__tabs button[aria-selected="true"] { color: var(--pulse); border-color: rgba(63,224,165,.4); background: var(--pulse-soft); }
+.replay__head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.replay__avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--basalt-2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex: none; }
+.replay__who strong { display: block; font-size: 13.5px; }
+.replay__who small { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); }
+.replay__note { margin-left: auto; font-family: var(--mono); font-size: 9.5px; color: var(--text-dim); text-align: right; }
+.replay__thread { min-height: 300px; display: flex; flex-direction: column; gap: 9px; justify-content: flex-end; }
+.replay__divider { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin: 6px 0; opacity: 0; transition: opacity .4s; }
+.replay__divider.show { opacity: 1; }
+.rbub { max-width: 82%; padding: 9px 12px; border-radius: 13px; font-size: 13px; line-height: 1.4; opacity: 0; transform: translateY(8px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.rbub.show { opacity: 1; transform: translateY(0); }
+.rbub--us { align-self: flex-start; background: rgba(255,255,255,.055); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.rbub--them { align-self: flex-end; background: var(--pulse-soft); border: 1px solid rgba(63,224,165,.3); border-bottom-right-radius: 4px; }
+.rbub .tag { display: block; font-family: var(--mono); font-size: 9px; color: var(--pulse); margin-bottom: 4px; }
+.rtyping { align-self: flex-start; display: flex; gap: 3px; padding: 10px 12px; opacity: 0; transition: opacity .2s; }
+.rtyping.show { opacity: 1; }
+.rtyping i { width: 5px; height: 5px; border-radius: 50%; background: var(--text-dim); animation: blink 1s infinite; }
+.rtyping i:nth-child(2) { animation-delay: .15s; } .rtyping i:nth-child(3) { animation-delay: .3s; }
+@keyframes blink { 0%,60%,100% { opacity: .3; } 30% { opacity: 1; } }
+.rhandoff { margin-top: 10px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(63,224,165,.4); background: var(--pulse-soft); opacity: 0; transform: translateY(12px); transition: all .4s var(--ease); }
+.rhandoff.show { opacity: 1; transform: translateY(0); }
+.rhandoff strong { display: block; font-size: 12.5px; margin-bottom: 8px; color: var(--pulse); }
+.rhandoff .kv { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; color: var(--text-muted); padding: 3px 0; }
+.rrail { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.rrail .node { font-family: var(--mono); font-size: 9px; color: var(--text-dim); text-align: center; flex: 1; position: relative; }
+.rrail .node .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--basalt-2); border: 1px solid var(--line-strong); margin: 0 auto 6px; transition: all .3s; }
+.rrail .node.lit .dot { background: var(--pulse); border-color: var(--pulse); box-shadow: 0 0 8px rgba(63,224,165,.6); }
+.rrail .node.lit { color: var(--pulse); }
+.replay__controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+.replay__controls button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-strong); font-size: 12px; color: var(--text-muted); }
+
+/* Timeline (cold) */
+.coldline { position: relative; padding: 50px 0 10px; }
+.coldline__track { position: relative; height: 2px; background: var(--line); border-radius: 2px; }
+.coldline__fill { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--text-dim), var(--pulse)); border-radius: 2px; transition: width 1.2s var(--ease); }
+.coldline__nodes { display: flex; justify-content: space-between; margin-top: -2px; }
+.coldline__node { width: 10px; height: 10px; border-radius: 50%; background: var(--basalt-2); border: 2px solid var(--line-strong); position: relative; }
+.coldline__node.final { border-color: var(--pulse); background: var(--pulse); }
+.coldline__node .lbl { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); white-space: nowrap; }
+.coldline__node.final .lbl { color: var(--pulse); font-weight: 600; }
+.coldline__node.final .ring { position: absolute; inset: -8px; border-radius: 50%; border: 1px solid var(--pulse); opacity: 0; }
+.coldline__node.final.pulse .ring { animation: ring 1s ease-out; }
+@keyframes ring { from { opacity: .8; transform: scale(1);} to { opacity: 0; transform: scale(1.8);} }
+@media (max-width: 760px) { .coldline__nodes { flex-direction: column; gap: 28px; margin-top: 0; } .coldline__track { width: 2px; height: 220px; } .coldline__fill { width: 2px; height: 0; } .coldline__node .lbl { position: static; transform: none; margin-top: 6px; display: block; } .coldline { display: flex; gap: 16px; } .coldline__track-wrap { flex: none; } }
+
+/* Scroll-linked steps */
+.steps { display: grid; gap: 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .steps { grid-template-columns: 5fr 7fr; } }
+.steps__nav { display: flex; flex-direction: column; gap: 4px; }
+@media (min-width: 900px) { .steps__nav { position: sticky; top: 100px; align-self: start; } }
+.steps__nav .s { padding: 18px 20px; border-radius: 14px; opacity: .4; transition: opacity .3s; cursor: pointer; }
+.steps__nav .s.active { opacity: 1; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
+.steps__nav .s .n { font-family: var(--mono); color: var(--pulse); font-size: 13px; margin-right: 8px; }
+.steps__nav .s h3 { display: inline; font-size: 16px; }
+.steps__nav .s p { font-size: 13.5px; color: var(--text-muted); margin-top: 6px; }
+.steps__panels { display: flex; flex-direction: column; gap: 24px; }
+.steppanel { padding: 28px; min-height: 220px; }
+.steppanel .filechip { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; padding: 8px 14px; border-radius: 10px; background: var(--basalt-2); border: 1px solid var(--line-strong); margin-bottom: 14px; }
+.colchips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.colchips span { font-family: var(--mono); font-size: 10.5px; padding: 5px 10px; border-radius: 6px; background: rgba(255,255,255,.04); color: var(--text-muted); }
+.colchips span.consent { color: var(--pulse); border: 1px solid rgba(63,224,165,.35); background: var(--pulse-soft); }
+.approvecard { padding: 16px; border-radius: 12px; background: var(--basalt-2); border: 1px solid var(--line-strong); }
+.approvecard p { font-size: 13.5px; margin-bottom: 12px; }
+.approvecard .var { color: var(--pulse); font-family: var(--mono); }
+.approvecard .actions { display: flex; gap: 10px; }
+.approvecard button { font-size: 12.5px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line-strong); }
+.approvecard button.yes { background: var(--pulse-soft); border-color: var(--pulse); color: var(--pulse); }
+.report { }
+.report .pill { margin-bottom: 14px; }
+.reportrow { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.reportrow .lbl { width: 110px; font-family: var(--mono); font-size: 11.5px; color: var(--text-muted); flex: none; }
+.reportrow .track { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.04); overflow: hidden; }
+.reportrow .fill { height: 100%; width: 0; border-radius: 4px; background: var(--pulse); transition: width 1s var(--ease); }
+.reportrow.optout .fill { background: var(--text-dim); }
+.report .foot { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+
+/* Who it suits */
+.suits { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .suits { grid-template-columns: repeat(3,1fr); } }
+.suit { padding: 24px; cursor: pointer; }
+.suit svg { width: 26px; height: 26px; color: var(--pulse); margin-bottom: 14px; }
+.suit h3 { font-size: 16.5px; margin-bottom: 10px; }
+.suit .sub { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+.suit p { font-size: 13.5px; color: var(--text-muted); }
+
+/* Before you buy table */
+.cmp { display: grid; grid-template-columns: 1fr; gap: 0; }
+@media (min-width: 760px) { .cmp { grid-template-columns: 1fr 1fr 1fr; } }
+.cmp__col { padding: 20px 22px; }
+.cmp__col.reactivate { background: linear-gradient(180deg, rgba(63,224,165,.08), rgba(63,224,165,.02)); border: 1px solid rgba(63,224,165,.3); border-radius: 16px; transform: translateY(-8px); box-shadow: 0 24px 50px -30px rgba(63,224,165,.25); }
+.cmp__col.buy { opacity: .75; }
+.cmp__head { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.cmp__row { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; transition: background .2s; }
+.cmp__row.labelcol { font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); }
+.cmp__row:hover, .cmp__col:hover .cmp__row { background: rgba(255,255,255,.015); }
+.startpill { display: inline-block; font-family: var(--mono); font-size: 10px; color: var(--pulse); background: var(--pulse-soft); border: 1px solid rgba(63,224,165,.35); padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
+.mobtoggle { display: flex; gap: 8px; margin-bottom: 16px; }
+@media (min-width: 760px) { .mobtoggle { display: none; } }
+.mobtoggle button { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--line-strong); font-size: 13px; }
+.mobtoggle button[aria-pressed="true"] { background: var(--pulse-soft); border-color: var(--pulse); }
+@media (max-width: 759px) { .cmp__col.hide-mobile { display: none; } .cmp__col.reactivate { transform: none; } }
+
+/* Fit check */
+.fitcheck { max-width: 640px; margin: 0 auto; padding: 36px; overflow: hidden; }
+.fc-progress { display: flex; gap: 6px; margin-bottom: 28px; }
+.fc-progress span { flex: 1; height: 4px; border-radius: 4px; background: var(--line); }
+.fc-progress span.done { background: var(--pulse); }
+.fc-q { }
+.fc-q h3 { font-size: 24px; margin-bottom: 24px; line-height: 1.3; }
+.fc-answers { display: flex; gap: 12px; }
+.fc-answers button { flex: 1; height: 56px; border-radius: 14px; border: 1px solid var(--line-strong); font-size: 15px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.fc-answers button:hover { border-color: var(--pulse); background: var(--pulse-soft); }
+.fc-answers kbd { font-family: var(--mono); font-size: 10px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 1px 6px; opacity: .6; }
+.fc-back { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--text-dim); }
+.fc-result { text-align: center; }
+.fc-result .icon { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
+.fc-result h3 { font-size: 22px; margin-bottom: 12px; }
+.fc-result p { font-size: 14.5px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6; }
+.fc-pill-pass { display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--pulse); background: var(--pulse-soft); border: 1px solid rgba(63,224,165,.4); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+
+/* Control & consent */
+.ccgrid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .ccgrid { grid-template-columns: 1fr 1fr; } }
+.cctile { padding: 24px; }
+.cctile .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.toggle { width: 34px; height: 18px; border-radius: 999px; background: var(--pulse); position: relative; flex: none; }
+.toggle::after { content: ''; position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; }
+.cctile h3 { font-size: 15.5px; }
+.cctile p { font-size: 13.5px; color: var(--text-muted); }
+.optout-mini { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.optout-mini .rbub { max-width: 70%; font-size: 11.5px; padding: 7px 10px; }
+
+/* Pilot offer band */
+.offerband { display: grid; gap: 24px; grid-template-columns: 1fr; padding: 40px; position: relative; overflow: hidden; }
+@media (min-width: 860px) { .offerband { grid-template-columns: 1fr 1fr; align-items: center; } }
+.offerband::before { content:''; position:absolute; left:-10%; top:-30%; width:60%; height:160%; background: radial-gradient(circle, rgba(255,181,71,.16), transparent 65%); pointer-events:none; }
+.offerband h2 { font-size: clamp(22px,2.6vw,32px); margin-bottom: 10px; position:relative; }
+.ministeps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; }
+.ministeps .m { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; }
+.ministeps .ln { flex: 1; min-width: 14px; height: 1px; background: var(--line-strong); }
+
+/* Agencies */
+.agencies { position: relative; padding: 48px; overflow: hidden; }
+.agencies::before { content:''; position:absolute; left:0; top:0; bottom:0; width:50%; opacity:.04; background-image: repeating-linear-gradient(135deg, #fff 0 1px, transparent 1px 14px); }
+.agencies__grid { display: grid; gap: 30px; grid-template-columns: 1fr; position: relative; }
+@media (min-width: 860px) { .agencies__grid { grid-template-columns: 1fr 1fr; } }
+.agencies ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; }
+.agencies li { font-family: var(--mono); font-size: 12.5px; color: var(--text-muted); }
+.agencies li::before { content: '— '; }
+
+/* FAQ */
+.faqwrap { display: grid; gap: 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .faqwrap { grid-template-columns: 4fr 8fr; } }
+.faqside { position: sticky; top: 100px; align-self: start; }
+.faqside p { color: var(--text-muted); margin: 10px 0 18px; font-size: 14px; }
+.accordion__item { border-bottom: 1px solid var(--line); }
+.accordion__q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; text-align: left; font-size: 15.5px; font-weight: 500; }
+.accordion__q .plus { font-size: 20px; color: var(--text-dim); transition: transform .3s; flex: none; margin-left: 16px; }
+.accordion__item.open .accordion__q .plus { transform: rotate(45deg); color: var(--pulse); }
+.accordion__a { max-height: 0; overflow: hidden; transition: max-height .3s var(--ease); }
+.accordion__a p { padding-bottom: 20px; color: var(--text-muted); font-size: 14.5px; line-height: 1.7; }
+
+/* Pilot form */
+.pilotwrap { display: grid; gap: 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .pilotwrap { grid-template-columns: 5fr 7fr; } }
+.pilotside ol { list-style: none; counter-reset: pstep; margin: 18px 0 24px; display: flex; flex-direction: column; gap: 14px; }
+.pilotside li { counter-increment: pstep; display: flex; gap: 12px; font-size: 14px; color: var(--text-muted); }
+.pilotside li::before { content: counter(pstep); font-family: var(--mono); font-size: 11px; color: var(--pulse); width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(63,224,165,.4); display: flex; align-items: center; justify-content: center; flex: none; }
+.pilotform { padding: 30px; }
+.chipbucket { display: flex; gap: 8px; flex-wrap: wrap; }
+.chipbucket button { padding: 9px 14px; border-radius: 10px; border: 1px solid var(--line-strong); font-size: 12.5px; color: var(--text-muted); }
+.chipbucket button[aria-pressed="true"] { background: var(--pulse-soft); border-color: var(--pulse); color: var(--text); }
+.formnote { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
+.formsuccess { text-align: center; padding: 40px 20px; display: none; }
+.formsuccess.show { display: block; }
+.formsuccess .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--pulse-soft); border: 1px solid var(--pulse); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--pulse); font-size: 22px; }
+
+/* More from alfea */
+.more { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .more { grid-template-columns: 1fr 1fr; } }
+.morecard { padding: 18px 20px; display: flex; align-items: center; gap: 14px; }
+.morecard .icowrap { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex: none; }
+.morecard h4 { font-size: 14.5px; margin-bottom: 2px; }
+.morecard p { font-size: 12.5px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <a href="/" class="nav__brand">
+    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
+    <span>alfea</span>
+  </a>
+  <div class="nav__links">
+    <a href="/reactivate-leads/" class="active">Reactivate Leads</a>
+    <a href="/website-creation/">Website Creation</a>
+    <a href="https://julaide.io" target="_blank" rel="noopener" aria-label="Walkthrough Videos (opens julaide.io in a new tab)">Walkthrough Videos <span class="ext">↗</span></a>
+  </div>
+  <div class="nav__actions">
+    <a class="btn btn-ghost btn-sm" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20to%20try%20a%20Kai%20reactivation%20pilot." target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-primary btn-sm" href="#pilot">Start a free pilot</a>
+    <button class="nav__burger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+<div class="sheet">
+  <button class="sheet__close" aria-label="Close">&times;</button>
+  <a href="/">Home</a>
+  <a href="/website-creation/">Website Creation</a>
+  <a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
+  <div class="sheet__actions">
+    <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-primary" href="#pilot">Start a free pilot</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero grain">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>Kai · Lead Reactivation on WhatsApp</span>
+      <h1>The leads you already paid for are still worth a <span class="em">conversation.</span></h1>
+      <p class="lead">Kai messages your past enquiries on WhatsApp, picks up where the conversation stopped, and passes the warm replies straight to your team. Start with a free pilot on a sample of your list — no payment until you've seen the numbers.</p>
+      <div class="hero__ctas">
+        <a class="btn btn-primary" href="#pilot">Start a free pilot <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20to%20try%20a%20Kai%20reactivation%20pilot." target="_blank" rel="noopener">Message us on WhatsApp</a>
+      </div>
+      <div class="trustrow">
+        <span>Consented contacts only</span>
+        <span>You approve the first message</span>
+        <span>Opt-out in one reply</span>
+      </div>
+    </div>
+
+    <div class="replay glass">
+      <div class="replay__tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-script="0">Real estate</button>
+        <button role="tab" aria-selected="false" data-script="1">Clinic</button>
+        <button role="tab" aria-selected="false" data-script="2">Car leasing</button>
+      </div>
+      <span class="chip chip-example" style="margin-bottom:14px;">Example conversation</span>
+      <div class="replay__head">
+        <div class="replay__avatar" id="r-avatar">SK</div>
+        <div class="replay__who"><strong id="r-name">Sara K.</strong><small id="r-meta">Enquired 94 days ago · 2-bed apartment</small></div>
+        <div class="replay__note">Sent as<br>your business</div>
+      </div>
+      <div class="replay__thread" id="r-thread"></div>
+      <div class="rrail" id="r-rail">
+        <div class="node" data-n="0"><div class="dot"></div>Contacted</div>
+        <div class="node" data-n="1"><div class="dot"></div>Replied</div>
+        <div class="node" data-n="2"><div class="dot"></div>Interested</div>
+        <div class="node" data-n="3"><div class="dot"></div>Call booked</div>
+      </div>
+      <div class="replay__controls">
+        <button id="r-replay" title="Replay" aria-label="Replay conversation">↻</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW A LEAD GOES COLD -->
+<section class="section bg-1 grain">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>01 — The quiet part of your pipeline</span>
+      <h2>Most enquiries don't say no. They just stop replying.</h2>
+      <p>The people on that list already know your name and already asked about your product. A well-timed, human-sounding message is often all that's missing.</p>
+    </div>
+    <div class="coldline reveal" id="coldline">
+      <div style="flex:1;">
+        <div class="coldline__track"><div class="coldline__fill" id="cl-fill"></div></div>
+        <div class="coldline__nodes">
+          <div class="coldline__node"><span class="lbl">Day 0 · Enquiry</span></div>
+          <div class="coldline__node"><span class="lbl">Day 1 · First reply</span></div>
+          <div class="coldline__node"><span class="lbl">Day 3 · One follow-up</span></div>
+          <div class="coldline__node"><span class="lbl">Day 14 · No answer</span></div>
+          <div class="coldline__node"><span class="lbl">Day 94 · Forgotten in the CRM</span></div>
+          <div class="coldline__node final" id="cl-final"><span class="ring"></span><span class="lbl">Day 95 · Kai picks it back up</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section bg-0 grain">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>02 — How it works</span>
+      <h2>Three steps. You stay in charge of each one.</h2>
+    </div>
+    <div class="steps">
+      <div class="steps__nav">
+        <div class="s active" data-step="0"><span class="n">01</span><h3>Share the list</h3><p>Export your past enquiries — a CSV or straight from your CRM. We start with a sample, not the whole thing.</p></div>
+        <div class="s" data-step="1"><span class="n">02</span><h3>Kai starts the conversation</h3><p>You approve the opening message. Kai sends it on WhatsApp, answers replies, and asks the questions your team would ask.</p></div>
+        <div class="s" data-step="2"><span class="n">03</span><h3>You get the warm ones</h3><p>Interested leads are handed to your team with the context they need. You get a clear report of what happened.</p></div>
+      </div>
+      <div class="steps__panels">
+        <div class="steppanel glass reveal" data-panel="0">
+          <div class="filechip">📄 enquiries_2025.csv</div>
+          <div class="colchips">
+            <span>Name</span><span>Mobile</span><span>Enquired about</span><span>Date</span><span class="consent">✓ Consent</span>
+          </div>
+          <p style="margin-top:14px;font-size:13.5px;color:var(--text-muted);">We only message contacts who agreed to hear from you.</p>
+        </div>
+        <div class="steppanel glass reveal" data-panel="1">
+          <div class="approvecard">
+            <p>"Hi <span class="var">{first_name}</span> — it's Kai from your business. You asked us about <span class="var">{enquiry}</span> a while back — still relevant for you?"</p>
+            <div class="actions">
+              <button>Edit</button>
+              <button class="yes" id="approve-btn">Approve</button>
+            </div>
+          </div>
+        </div>
+        <div class="steppanel glass reveal report" data-panel="2">
+          <span class="chip chip-example pill">Illustrative — pilot report sample layout</span>
+          <div class="reportrow"><span class="lbl">Contacted</span><div class="track"><div class="fill" data-w="100"></div></div></div>
+          <div class="reportrow"><span class="lbl">Replied</span><div class="track"><div class="fill" data-w="62"></div></div></div>
+          <div class="reportrow"><span class="lbl">Interested</span><div class="track"><div class="fill" data-w="38"></div></div></div>
+          <div class="reportrow"><span class="lbl">Calls booked</span><div class="track"><div class="fill" data-w="21"></div></div></div>
+          <div class="reportrow optout"><span class="lbl">Opt-outs</span><div class="track"><div class="fill" data-w="6"></div></div></div>
+          <p class="foot">Bars shown for layout only — your pilot report shows real counts from your sample.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT SUITS -->
+<section class="section bg-1 grain">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>03 — Who it suits</span>
+      <h2>If you have a list of people who once showed interest, it suits you.</h2>
+    </div>
+    <div class="suits reveal-group">
+      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Real estate" data-modal-body="Viewing requests and portal enquiries from past launches often sit untouched months later." data-modal-steps="Opening message refers to the exact property they asked about|Kai qualifies budget, timing and area|Handed to your sales agent, with notes" data-modal-cta="Start a pilot for my real estate list" data-modal-cta-href="#pilot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+        <div class="sub">The list you're sitting on:</div>
+        <h3>Real estate</h3>
+        <p>Viewing requests and portal enquiries from past launches.</p>
+      </div>
+      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Mortgage &amp; insurance brokers" data-modal-body="Long decisions, with renewal or rate dates that give a natural reason to reconnect." data-modal-steps="Opening message references their original quote request|Kai qualifies current rate, renewal date and intent|Handed to your advisor, with the quote context" data-modal-cta="Start a pilot for my broker list" data-modal-cta-href="#pilot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        <div class="sub">The list you're sitting on:</div>
+        <h3>Mortgage &amp; insurance brokers</h3>
+        <p>Quote requests that never went further.</p>
+      </div>
+      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Clinics" data-modal-body="People who asked about a treatment and never booked, or patients due to return." data-modal-steps="Opening message references the treatment they asked about|Kai qualifies urgency and preferred timing|Handed to your front desk to book" data-modal-cta="Start a pilot for my clinic list" data-modal-cta-href="#pilot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+        <div class="sub">The list you're sitting on:</div>
+        <h3>Clinics</h3>
+        <p>Consultation enquiries that never booked.</p>
+      </div>
+      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Car dealers &amp; leasing" data-modal-body="Test drive and quote requests that went nowhere, and leases coming to an end." data-modal-steps="Opening message references the model they asked about|Kai qualifies budget and timeline|Handed to your sales floor" data-modal-cta="Start a pilot for my dealer list" data-modal-cta-href="#pilot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l2-6h14l2 6M5 13h14v5H5z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
+        <div class="sub">The list you're sitting on:</div>
+        <h3>Car dealers &amp; leasing</h3>
+        <p>Test-drive and finance enquiries that went quiet.</p>
+      </div>
+      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Education &amp; training" data-modal-body="Past applicants who did not enrol, ahead of the next intake." data-modal-steps="Opening message references the course they asked about|Kai qualifies intent and intake timing|Handed to your admissions team" data-modal-cta="Start a pilot for my education list" data-modal-cta-href="#pilot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3L2 8l10 5 10-5-10-5zM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+        <div class="sub">The list you're sitting on:</div>
+        <h3>Education &amp; training</h3>
+        <p>Course enquiries from past intakes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE YOU BUY MORE LEADS -->
+<section class="section bg-0 grain">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>04 — Before you buy more leads</span>
+      <h2>The cheapest lead is the one you already have.</h2>
+    </div>
+    <div class="mobtoggle">
+      <button aria-pressed="true" data-show="reactivate">Reactivate</button>
+      <button aria-pressed="false" data-show="buy">Buy new</button>
+    </div>
+    <div class="cmp reveal">
+      <div class="cmp__col">
+        <div class="cmp__head" style="opacity:0;">.</div>
+        <div class="cmp__row labelcol">Cost</div>
+        <div class="cmp__row labelcol">Consent</div>
+        <div class="cmp__row labelcol">Familiarity</div>
+        <div class="cmp__row labelcol">Reach</div>
+      </div>
+      <div class="cmp__col reactivate" id="col-reactivate">
+        <span class="startpill">★ Start here</span>
+        <div class="cmp__head">Reactivating your list</div>
+        <div class="cmp__row">Already paid for</div>
+        <div class="cmp__row">Already given</div>
+        <div class="cmp__row">They already know your name</div>
+        <div class="cmp__row">Limited to the size of your list</div>
+      </div>
+      <div class="cmp__col buy hide-mobile" id="col-buy">
+        <div class="cmp__head">Buying new leads</div>
+        <div class="cmp__row">Paid again, per lead</div>
+        <div class="cmp__row">Has to be checked or collected</div>
+        <div class="cmp__row">Starting cold</div>
+        <div class="cmp__row">As wide as your budget</div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:20px;color:var(--text-muted);font-size:14.5px;max-width:60ch;">Reactivation doesn't replace new leads — it makes sure you've used the ones you have first.</p>
+  </div>
+</section>
+
+<!-- FIT CHECK -->
+<section class="section bg-1 grain" id="fit-check">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>05 — Fit check</span>
+      <h2>Is your list a good fit? Three questions.</h2>
+    </div>
+    <div class="fitcheck glass reveal" id="fitcheck">
+      <div class="fc-progress"><span id="fcp-0"></span><span id="fcp-1"></span><span id="fcp-2"></span></div>
+      <div id="fc-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROL & CONSENT -->
+<section class="section bg-0 grain">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>06 — Control and consent</span>
+      <h2>Safe for your brand. Respectful to your contacts.</h2>
+    </div>
+    <div class="ccgrid reveal-group">
+      <div class="cctile glass reveal"><div class="top"><h3>Consented contacts only</h3><div class="toggle" aria-hidden="true"></div></div><p>We ask how consent was collected before we start, and only contact people on lists that have it.</p></div>
+      <div class="cctile glass reveal"><div class="top"><h3>You approve the opening message</h3><div class="toggle" aria-hidden="true"></div></div><p>Nothing is sent until you've read and agreed the first message.</p></div>
+      <div class="cctile glass reveal"><div class="top"><h3>Anyone can opt out</h3><div class="toggle" aria-hidden="true"></div></div><p style="margin-bottom:10px;">Every conversation makes it easy to stop, and people who ask to stop are removed from the list.</p>
+        <div class="optout-mini"><div class="rbub rbub--them">STOP</div><div class="rbub rbub--us">Understood — you won't hear from us again. <span class="chip" style="margin-top:4px;">Opted out</span></div></div>
+      </div>
+      <div class="cctile glass reveal"><div class="top"><h3>A human takes over when it matters</h3><div class="toggle" aria-hidden="true"></div></div><p>The moment someone's ready to talk, your team picks up the conversation with the history in front of them.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT OFFER BAND -->
+<section class="section bg-1 grain">
+  <div class="container">
+    <div class="offerband glass reveal">
+      <h2>Free pilot. Pay nothing until you see the numbers.</h2>
+      <div class="ministeps">
+        <span class="m">1 · We run Kai on a sample of your list</span><span class="ln"></span>
+        <span class="m">2 · You get the report</span><span class="ln"></span>
+        <span class="m">3 · You decide whether to go further</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;" class="reveal"><a class="btn btn-primary" href="#pilot">Start a free pilot <span class="arrow">→</span></a></div>
+  </div>
+</section>
+
+<!-- FOR AGENCIES -->
+<section class="section bg-0 grain" id="agencies">
+  <div class="container">
+    <div class="agencies glass reveal">
+      <div class="agencies__grid">
+        <div>
+          <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>07 — For agencies</span>
+          <h2 style="font-size:28px;margin:14px 0 14px;">Offer reactivation to your own clients.</h2>
+          <p style="color:var(--text-muted);font-size:14.5px;line-height:1.7;">Your clients already have lists of old leads. Add reactivation to what you offer — we run Kai, you keep the client relationship. We start with a free pilot on one client's list so you can see how it performs before you offer it to anyone else.</p>
+          <ul>
+            <li>Choose a client, share their list, review the report</li>
+            <li>We set up Kai, run the pilot, report the results</li>
+            <li>You stay the point of contact throughout</li>
+          </ul>
+          <a class="btn btn-primary" href="#pilot" id="agency-cta">Partner with us <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-1 grain">
+  <div class="container">
+    <div class="faqwrap">
+      <div class="faqside reveal">
+        <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>08 — Questions</span>
+        <h2 style="font-size:28px;margin-top:14px;">Before you ask.</h2>
+        <p>Still unsure?</p>
+        <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+      <div class="accordion reveal">
+        <div class="accordion__item open"><button class="accordion__q">What do I need to start?<span class="plus">+</span></button><div class="accordion__a" style="max-height:200px;"><p>A list of past leads with names, phone numbers and, ideally, what each person asked about and when. A CSV or spreadsheet is enough.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">Which channel does it use?<span class="plus">+</span></button><div class="accordion__a"><p>WhatsApp, using approved message templates for the first message, as WhatsApp requires for messages a business starts.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">Isn't this just automated spam?<span class="plus">+</span></button><div class="accordion__a"><p>It would be if it sent the same message to everyone. Each message refers to what that person asked about, goes only to people who agreed to hear from you, and stops as soon as someone says so. Warm replies go to a person on your team.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">Do you guarantee results?<span class="plus">+</span></button><div class="accordion__a"><p>No. Results depend on the list. That's why the pilot comes first, and why you see your own numbers before any payment.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">What happens to my list?<span class="plus">+</span></button><div class="accordion__a"><p>It's used only for your pilot and deleted when the pilot ends.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">What if my list is small?<span class="plus">+</span></button><div class="accordion__a"><p>With fewer than a couple of hundred contacts, results are hard to measure and new leads may matter more. We'd rather tell you that than start a pilot that can't show you anything.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">What happens after the pilot?<span class="plus">+</span></button><div class="accordion__a"><p>If it worked, we agree terms together, based on the leads and booked calls it produces. If it didn't, we stop and you owe nothing.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">Does it speak Arabic?<span class="plus">+</span></button><div class="accordion__a"><p>Yes. Kai replies in the language the person writes in, including English and Arabic.</p></div></div>
+        <div class="accordion__item"><button class="accordion__q">Is it legal to contact old leads?<span class="plus">+</span></button><div class="accordion__a"><p>It depends on whether those people agreed to receive messages from you. We ask about this before every pilot and only work with lists that have consent. If you're unsure about your list, check with a lawyer first.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT FORM -->
+<section class="section bg-0 grain" id="pilot">
+  <div class="container">
+    <div class="pilotwrap">
+      <div class="pilotside reveal">
+        <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>Request your free pilot</span>
+        <h2 style="font-size:32px;margin:14px 0 14px;">Tell us about your list.</h2>
+        <p style="color:var(--text-muted);font-size:15px;line-height:1.7;">A few details are enough. We reply on WhatsApp with questions about the list and a proposed start date.</p>
+        <ol>
+          <li>Send a sample of your list</li>
+          <li>We confirm consent and set up Kai</li>
+          <li>You get your pilot report</li>
+        </ol>
+        <div class="trustrow">
+          <span>Consented contacts only</span>
+          <span>You approve the first message</span>
+        </div>
+      </div>
+      <form class="pilotform glass reveal" id="pilot-form" name="reactivate-pilot" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="reactivate-pilot">
+        <input type="hidden" name="type" value="business">
+        <input type="hidden" name="list_size" value="">
+        <div class="field hp-field"><label>Leave this empty</label><input type="text" name="bot-field" tabindex="-1" autocomplete="off"></div>
+        <div class="field-row">
+          <div class="field"><label>Your name</label><input type="text" name="name" required></div>
+          <div class="field"><label>Company</label><input type="text" name="company" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Work email</label><input type="email" name="email" required></div>
+          <div class="field"><label>WhatsApp number (optional)</label><input type="tel" name="whatsapp"></div>
+        </div>
+        <div class="field">
+          <label>I am</label>
+          <div class="seg" role="radiogroup" id="who-seg">
+            <button type="button" aria-pressed="true" data-val="business">A business with old leads</button>
+            <button type="button" aria-pressed="false" data-val="agency">An agency with clients who have old leads</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Roughly how many old leads?</label>
+          <div class="chipbucket" id="bucket-seg">
+            <button type="button" data-val="under200">Under 200</button>
+            <button type="button" data-val="200-1000">200 to 1,000</button>
+            <button type="button" data-val="1000-5000">1,000 to 5,000</button>
+            <button type="button" data-val="5000plus">More than 5,000</button>
+          </div>
+        </div>
+        <div class="field"><label>Anything we should know? (optional)</label><textarea name="notes"></textarea></div>
+        <div id="fitcheck-pill"></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Request my free pilot <span class="arrow">→</span></button>
+        <p class="formnote">We only use these details to contact you about the pilot.</p>
+      </form>
+      <div class="formsuccess glass" id="pilot-success" style="grid-column: 1 / -1;">
+        <div class="ck">✓</div>
+        <h3>Thanks — we'll message you on WhatsApp shortly.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE FROM ALFEA -->
+<section class="section bg-1 grain">
+  <div class="container">
+    <span class="eyebrow reveal"><span class="eyebrow__dot" style="background:var(--sodium)"></span>Also from Alfea</span>
+    <div class="more reveal-group" style="margin-top:20px;">
+      <a href="/website-creation/" class="morecard glass spot reveal" style="--spot-color:var(--blueprint-soft);">
+        <div class="icowrap" style="background:var(--blueprint-soft);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blueprint)" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+        <div><h4>Website Creation</h4><p>Fixed-price sites, live in 5–10 days.</p></div>
+      </a>
+      <a href="https://julaide.io" target="_blank" rel="noopener" class="morecard glass spot reveal" style="--spot-color:var(--reel-soft);">
+        <div class="icowrap" style="background:var(--reel-soft);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--reel)" stroke-width="1.6"><path d="M3 7l8-4 8 4-8 4-8-4z"/><path d="M3 7v10l8 4 8-4V7"/></svg></div>
+        <div><h4>Walkthrough Videos <span class="mono" style="font-size:10px;">julaide.io ↗</span></h4><p>Cinematic video from listing photos.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
+          <span>alfea</span>
+        </div>
+        <p>AI agents, websites and video for businesses that live on enquiries.</p>
+      </div>
+      <div><h4>Products</h4><ul class="footer-links"><li><a href="/reactivate-leads/">Reactivate Leads</a></li><li><a href="/website-creation/">Website Creation</a></li><li><a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li></ul></div>
+      <div><h4>Contact</h4><ul class="footer-links"><li><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp +352 621 990 289</a></li></ul></div>
+      <div><h4>Company</h4><ul class="footer-links"><li><a href="#agencies">Partner with us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year></span> Alfea</span><span class="mono">AI AGENTS · WEBSITES · VIDEO</span></div>
+    <div class="footer-ghost" aria-hidden="true">alfea</div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" tabindex="-1"><div class="modal-panel" tabindex="-1"></div></div>
+<script src="../assets/alfea.js"></script>
+<script>
+(function () {
+  /* ---------- Conversation replay ---------- */
+  var SCRIPTS = [
+    {
+      name: 'Sara K.', initials: 'SK', meta: 'Enquired 94 days ago · 2-bed apartment', divider: '94 days of silence',
+      msgs: [
+        { who: 'us', text: 'Hi Sara — it’s Kai from Example Realty. You asked us about a 2-bed apartment in Business Bay a while back — still looking?', tag: '✓ Approved template' },
+        { who: 'them', text: 'Yes actually! The prices were too high though.' },
+        { who: 'us', text: 'Understood. We have two newer listings below AED 1.6M in the same area. Want me to send them?' },
+        { who: 'them', text: 'Yes please.' },
+        { who: 'us', text: 'Sent — would a viewing Thursday or Saturday suit you better?' },
+        { who: 'them', text: 'Thursday works.' }
+      ],
+      handoff: { title: 'Warm lead → handed to Omar (Sales)', kv: [['Budget','Under AED 1.6M'],['Timing','Viewing Thursday'],['Wants','2-bed, Business Bay']] }
+    },
+    {
+      name: 'Daniel R.', initials: 'DR', meta: 'Enquired 61 days ago · Consultation', divider: '61 days of silence',
+      msgs: [
+        { who: 'us', text: 'Hi Daniel — it’s Kai from the clinic. You asked about a consultation a while back — still something you’d like to book?', tag: '✓ Approved template' },
+        { who: 'them', text: 'Oh, yes — I forgot to follow up.' },
+        { who: 'us', text: 'No problem. Is this still urgent, or more of a when-it-suits-you thing?' },
+        { who: 'them', text: 'Not urgent, just want to get it booked.' },
+        { who: 'us', text: 'I’ll get Dr. Amal’s team to call you to find a slot — morning or afternoon better?' },
+        { who: 'them', text: 'Afternoons.' }
+      ],
+      handoff: { title: 'Warm lead → handed to Front Desk', kv: [['Urgency','Low'],['Preference','Afternoons'],['Wants','Consultation booking']] }
+    },
+    {
+      name: 'Priya M.', initials: 'PM', meta: 'Enquired 120 days ago · SUV lease quote', divider: '120 days of silence',
+      msgs: [
+        { who: 'us', text: 'Hi Priya — it’s Kai from the dealership. You asked about an SUV lease a while back — did you go elsewhere, or still deciding?', tag: '✓ Approved template' },
+        { who: 'them', text: 'Still deciding honestly.' },
+        { who: 'us', text: 'Got it. Roughly what monthly budget are you working with?' },
+        { who: 'them', text: 'Around $450 a month.' },
+        { who: 'us', text: 'We’ve got two options close to that. I’ll have Marcus call you with the numbers — today or tomorrow better?' },
+        { who: 'them', text: 'Tomorrow.' }
+      ],
+      handoff: { title: 'Warm lead → handed to Marcus (Sales)', kv: [['Budget','~$450/mo'],['Timing','Call tomorrow'],['Wants','SUV lease']] }
+    }
+  ];
+
+  var thread = document.getElementById('r-thread');
+  var rail = document.getElementById('r-rail');
+  var avatarEl = document.getElementById('r-avatar');
+  var nameEl = document.getElementById('r-name');
+  var metaEl = document.getElementById('r-meta');
+  var replayBtn = document.getElementById('r-replay');
+  var tabs = document.querySelectorAll('.replay__tabs button');
+  var playTimer = null;
+  var reduced = window.AlfeaReducedMotion;
+
+  function litRail(n) {
+    rail.querySelectorAll('.node').forEach(function (node) {
+      node.classList.toggle('lit', parseInt(node.getAttribute('data-n'), 10) <= n);
+    });
+  }
+
+  function playScript(idx) {
+    clearTimeout(playTimer);
+    var s = SCRIPTS[idx];
+    avatarEl.textContent = s.initials;
+    nameEl.textContent = s.name;
+    metaEl.textContent = s.meta;
+    thread.innerHTML = '<div class="replay__divider" id="r-div">— ' + s.divider + ' —</div>';
+    litRail(-1);
+
+    if (reduced) {
+      s.msgs.forEach(function (m) {
+        var b = document.createElement('div');
+        b.className = 'rbub show ' + (m.who === 'us' ? 'rbub--us' : 'rbub--them');
+        b.innerHTML = (m.tag ? '<span class="tag">' + m.tag + '</span>' : '') + m.text;
+        thread.appendChild(b);
+      });
+      var h = document.createElement('div');
+      h.className = 'rhandoff show';
+      h.innerHTML = '<strong>' + s.handoff.title + '</strong>' + s.handoff.kv.map(function (kv) { return '<div class="kv"><span>' + kv[0] + '</span><span>' + kv[1] + '</span></div>'; }).join('');
+      thread.appendChild(h);
+      document.getElementById('r-div').classList.add('show');
+      litRail(3);
+      return;
+    }
+
+    var t = 300;
+    document.getElementById('r-div').classList.add('show');
+    s.msgs.forEach(function (m, i) {
+      t += (m.who === 'us' && i > 0) ? 900 : 700;
+      (function (m, delay, i) {
+        playTimer = setTimeout(function () {
+          var typingEl = null;
+          if (m.who === 'us' && i > 0) {
+            typingEl = document.createElement('div');
+            typingEl.className = 'rtyping show';
+            typingEl.innerHTML = '<i></i><i></i><i></i>';
+            thread.appendChild(typingEl);
+          }
+          setTimeout(function () {
+            if (typingEl) typingEl.remove();
+            var b = document.createElement('div');
+            b.className = 'rbub ' + (m.who === 'us' ? 'rbub--us' : 'rbub--them');
+            b.innerHTML = (m.tag ? '<span class="tag">' + m.tag + '</span>' : '') + m.text;
+            thread.appendChild(b);
+            requestAnimationFrame(function () { b.classList.add('show'); });
+            if (i === 1) litRail(1);
+            if (i === 2) litRail(2);
+          }, typingEl ? 650 : 0);
+        }, delay);
+      })(m, t, i);
+    });
+    t += 900;
+    playTimer = setTimeout(function () {
+      var h = document.createElement('div');
+      h.className = 'rhandoff';
+      h.innerHTML = '<strong>' + s.handoff.title + '</strong>' + s.handoff.kv.map(function (kv) { return '<div class="kv"><span>' + kv[0] + '</span><span>' + kv[1] + '</span></div>'; }).join('');
+      thread.appendChild(h);
+      requestAnimationFrame(function () { h.classList.add('show'); });
+      litRail(3);
+    }, t);
+  }
+
+  var current = 0;
+  playScript(0);
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (tb) { tb.setAttribute('aria-selected', 'false'); });
+      tab.setAttribute('aria-selected', 'true');
+      current = i;
+      playScript(i);
+    });
+  });
+  replayBtn.addEventListener('click', function () { playScript(current); });
+
+  // auto-play once visible
+  var replayCard = document.querySelector('.replay');
+  if ('IntersectionObserver' in window) {
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { rio.disconnect(); } });
+    }, { threshold: 0.3 });
+    rio.observe(replayCard);
+  }
+
+  /* ---------- Cold line draw ---------- */
+  var clSection = document.getElementById('coldline');
+  if ('IntersectionObserver' in window) {
+    var clio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          document.getElementById('cl-fill').style.width = '100%';
+          setTimeout(function () { document.getElementById('cl-final').classList.add('pulse'); }, 1200);
+          clio.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    clio.observe(clSection);
+  }
+
+  /* ---------- Scroll-linked steps ---------- */
+  var stepNavs = document.querySelectorAll('.steps__nav .s');
+  var stepPanels = document.querySelectorAll('.steppanel');
+  var reportBars = null;
+  function activateStep(i) {
+    stepNavs.forEach(function (s, idx) { s.classList.toggle('active', idx === i); });
+    if (i === 2 && !reportBars) {
+      reportBars = true;
+      document.querySelectorAll('.reportrow .fill').forEach(function (f) { f.style.width = f.getAttribute('data-w') + '%'; });
+    }
+  }
+  stepNavs.forEach(function (s, i) {
+    s.addEventListener('click', function () {
+      activateStep(i);
+      stepPanels[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+  if ('IntersectionObserver' in window) {
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) activateStep(parseInt(e.target.getAttribute('data-panel'), 10));
+      });
+    }, { threshold: 0.5 });
+    stepPanels.forEach(function (p) { pio.observe(p); });
+  }
+  document.getElementById('approve-btn').addEventListener('click', function (btn) {
+    this.textContent = '✓ Approved';
+  });
+
+  /* ---------- Mobile comparison toggle ---------- */
+  document.querySelectorAll('.mobtoggle button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.mobtoggle button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      btn.setAttribute('aria-pressed', 'true');
+      var show = btn.getAttribute('data-show');
+      document.getElementById('col-reactivate').classList.toggle('hide-mobile', show !== 'reactivate');
+      document.getElementById('col-buy').classList.toggle('hide-mobile', show !== 'buy');
+    });
+  });
+
+  /* ---------- Fit check ---------- */
+  var FC_Q = [
+    'Have people asked about your product or service in the past — and not bought?',
+    'Do you have their mobile numbers?',
+    'Are there 200 or more of them?'
+  ];
+  var fcBody = document.getElementById('fc-body');
+  var fcAnswers = [];
+  function fcProgress() {
+    for (var i = 0; i < 3; i++) document.getElementById('fcp-' + i).classList.toggle('done', i < fcAnswers.length);
+  }
+  function fcRenderQ(i) {
+    fcBody.innerHTML = '<div class="fc-q"><h3>' + FC_Q[i] + '</h3>' +
+      '<div class="fc-answers"><button data-a="yes">Yes <kbd>Y</kbd></button><button data-a="no">No <kbd>N</kbd></button></div>' +
+      (i > 0 ? '<a class="fc-back" id="fc-back">← Back</a>' : '') + '</div>';
+    fcBody.querySelectorAll('.fc-answers button').forEach(function (b) {
+      b.addEventListener('click', function () { fcAnswer(b.getAttribute('data-a') === 'yes'); });
+    });
+    var back = document.getElementById('fc-back');
+    if (back) back.addEventListener('click', function () { fcAnswers.pop(); fcProgress(); fcRenderQ(fcAnswers.length); });
+  }
+  function fcResult() {
+    var yesCount = fcAnswers.filter(Boolean).length;
+    var html = '';
+    if (fcAnswers[0] && fcAnswers[1] && fcAnswers[2]) {
+      html = '<div class="fc-result"><div class="icon" style="background:var(--pulse-soft);border:1px solid var(--pulse);color:var(--pulse);font-size:24px;">✓</div>' +
+        '<h3>Strong fit for a free pilot.</h3><p>You have the three things a pilot needs. Tell us a little about the list and we’ll set up a sample.</p>' +
+        '<a class="btn btn-primary" href="#pilot" id="fc-continue" data-bucket="5000plus">Continue to the pilot form <span class="arrow">→</span></a>' +
+        '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
+    } else if (!fcAnswers[0]) {
+      html = '<div class="fc-result"><div class="icon" style="background:rgba(255,255,255,.05);border:1px solid var(--line-strong);">—</div>' +
+        '<h3>Kai works best on people who already showed interest.</h3><p>If you’re after brand-new leads, this isn’t the right tool — but talk to us anyway, we’ll point you the right way.</p>' +
+        '<div class="ctas" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;"><a class="btn btn-primary" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp us</a><a class="btn btn-ghost" href="/website-creation/">Or see Website Creation →</a></div>' +
+        '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
+    } else if (!fcAnswers[1]) {
+      html = '<div class="fc-result"><div class="icon" style="background:rgba(255,255,255,.05);border:1px solid var(--line-strong);">—</div>' +
+        '<h3>Kai reaches people on WhatsApp.</h3><p>So we need mobile numbers. If you have emails only, tell us — we’ll be straight about whether it’s worth it.</p>' +
+        '<a class="btn btn-primary" href="#pilot" id="fc-continue">Continue to the form anyway</a>' +
+        '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
+    } else {
+      html = '<div class="fc-result"><div class="icon" style="background:rgba(255,255,255,.05);border:1px solid var(--line-strong);">—</div>' +
+        '<h3>Smaller lists can still work.</h3><p>Results are harder to read with fewer contacts. Tell us the size and we’ll be honest about whether a pilot is worth running.</p>' +
+        '<a class="btn btn-primary" href="#pilot" id="fc-continue" data-bucket="under200">Continue to the form <span class="arrow">→</span></a>' +
+        '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
+    }
+    fcBody.innerHTML = html;
+    var cont = document.getElementById('fc-continue');
+    if (cont) cont.addEventListener('click', function () {
+      var bucket = cont.getAttribute('data-bucket');
+      if (bucket) {
+        document.querySelectorAll('#bucket-seg button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-val') === bucket ? 'true' : 'false'); });
+        document.getElementById('pilot-form').elements['list_size'].value = bucket;
+      }
+      document.getElementById('fitcheck-pill').innerHTML = '<span class="fc-pill-pass" style="display:inline-block;margin-bottom:14px;">Fit check passed ✓</span>';
+    });
+    document.getElementById('fc-restart').addEventListener('click', function () { fcAnswers = []; fcProgress(); fcRenderQ(0); });
+  }
+  function fcAnswer(val) {
+    fcAnswers.push(val);
+    fcProgress();
+    if (fcAnswers.length < 3 && val) { fcRenderQ(fcAnswers.length); }
+    else if (fcAnswers.length < 1) { fcRenderQ(fcAnswers.length); }
+    else if (!val) { fcResult(); }
+    else { fcResult(); }
+  }
+  fcRenderQ(0);
+  document.addEventListener('keydown', function (e) {
+    if (!fcBody.contains(document.activeElement) && document.activeElement !== document.body) return;
+    var btns = fcBody.querySelectorAll('.fc-answers button');
+    if (!btns.length) return;
+    if (e.key.toLowerCase() === 'y') btns[0].click();
+    if (e.key.toLowerCase() === 'n') btns[1].click();
+  });
+
+  /* ---------- Suit cards → pilot prefill ---------- */
+  document.querySelectorAll('.suit').forEach(function (s) {
+    s.addEventListener('click', function () {
+      setTimeout(function () {
+        var notes = document.querySelector('textarea[name="notes"]');
+        if (notes && !notes.value) notes.value = 'Industry: ' + s.querySelector('h3').textContent;
+      }, 50);
+    });
+  });
+
+  /* ---------- Agencies CTA ---------- */
+  document.getElementById('agency-cta').addEventListener('click', function () {
+    setTimeout(function () {
+      document.querySelectorAll('#who-seg button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-val') === 'agency' ? 'true' : 'false'); });
+      document.getElementById('pilot-form').elements['type'].value = 'agency';
+    }, 50);
+  });
+
+  /* ---------- Form segmented controls ---------- */
+  var pilotForm = document.getElementById('pilot-form');
+  document.querySelectorAll('.seg, .chipbucket').forEach(function (group) {
+    group.querySelectorAll('button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        group.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        var val = btn.getAttribute('data-val');
+        if (group.id === 'who-seg') pilotForm.elements['type'].value = val;
+        if (group.id === 'bucket-seg') pilotForm.elements['list_size'].value = val;
+      });
+    });
+  });
+
+  /* ---------- Pilot form submit (Netlify Forms) ---------- */
+  pilotForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (this.querySelector('[name="bot-field"]').value) return;
+    var submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+    var body = new URLSearchParams(new FormData(this)).toString();
+    fetch('/reactivate-leads/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+      .then(function () {
+        pilotForm.style.display = 'none';
+        document.getElementById('pilot-success').classList.add('show');
+      })
+      .catch(function () {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request my free pilot →'; }
+        var note = pilotForm.querySelector('.formnote');
+        if (note) note.textContent = 'Something went wrong sending this — please try again or message us on WhatsApp.';
+      });
+  });
+})();
+</script>
+</body>
+</html>
