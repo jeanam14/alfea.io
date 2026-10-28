@@ -6,99 +6,181 @@
 <title>Alfea — AI lead reactivation, websites and walkthrough video</title>
 <meta name="description" content="Three ways Alfea helps small businesses grow: Kai re-engages old leads on WhatsApp, we build fixed-price websites, and Julaide makes walkthrough videos.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/alfea.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300..600;9..144,1,300..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root { --accent: var(--ink); }
+  :root {
+    --teal-deep: #0A6E63;
+    --teal: #0DBC9C;
+    --teal-mint: #5EE7C7;
+    --teal-bg: #E8F7F3;
+    --ink: #0A1F1C;
+    --ink-soft: #2D4744;
+    --ink-muted: #6B807E;
+    --line: #D9E5E2;
+    --bg: #FAFBFA;
+    --white: #FFFFFF;
+    --clay: #D17147;
+    --clay-deep: #A9532F;
+    --clay-bg: #F0DCD2;
+    --slate: #4E5A86;
+    --slate-deep: #3B4569;
+    --slate-bg: #E6E8F1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 16px; overflow-x: hidden; }
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; }
+  h1.display { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+  h2.display { font-size: clamp(2rem, 4.4vw, 3.2rem); }
+  .eyebrow { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; font-weight: 500; color: var(--teal-deep); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 6rem 0; position: relative; }
+  em { font-style: italic; }
 
-.hero { padding: 120px 0 72px; min-height: 56vh; display: flex; align-items: center; }
-.hero__inner { max-width: 760px; }
-.hero h1 { font-size: clamp(34px,5.4vw,58px); margin: 16px 0 18px; }
-.hero p.lead { font-size: 18px; color: var(--ink-soft); line-height: 1.6; max-width: 56ch; margin-bottom: 22px; }
-.hero__more { font-size: 14.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; }
-.hero__more:hover { color: var(--ink); }
-.hero__facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; }
-.hero__facts span { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--ink-soft); }
-.hero__facts span::before { content: '—'; color: var(--muted); margin-right: 8px; }
+  nav { position: sticky; top: 0; background: rgba(250, 251, 250, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); z-index: 100; padding: 0.9rem 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .logo-img { height: 36px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s ease; }
+  .nav-links a:hover { color: var(--teal-deep); }
+  .nav-links .ext { color: var(--ink-muted); }
+  @media (max-width: 768px) { .nav-links li:not(.nav-cta) { display: none; } .logo-img { height: 30px; } }
 
-.work-head { margin-bottom: 32px; }
-.work-head h2 { font-size: clamp(22px,2.6vw,28px); }
-.work-grid { display: grid; gap: 28px; grid-template-columns: 1fr; }
-@media (min-width: 760px) { .work-grid { grid-template-columns: repeat(3,1fr); } }
-.work-item h3 { font-size: 16px; margin-bottom: 8px; }
-.work-item p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.6rem; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: all 0.25s ease; text-decoration: none; border: none; white-space: nowrap; }
+  .btn-primary { background: var(--ink); color: var(--white) !important; }
+  .btn-primary:hover { background: var(--teal-deep); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-secondary:hover { border-color: var(--teal-deep); color: var(--teal-deep); }
+  .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+  .btn-arrow { transition: transform 0.25s ease; }
+  .btn:hover .btn-arrow { transform: translateX(3px); }
 
-.svc-head { margin-bottom: 36px; }
-.svc-head h2 { font-size: clamp(22px,2.6vw,28px); }
-.svc-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
-@media (min-width: 880px) { .svc-grid { grid-template-columns: repeat(3,1fr); } }
+  .hero { padding: 6rem 0 4rem; text-align: center; overflow: hidden; }
+  .hero-bg { position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 90%; height: 120%; background: radial-gradient(ellipse at center, rgba(13, 188, 156, 0.12), transparent 70%); z-index: 0; pointer-events: none; }
+  .hero-inner { position: relative; z-index: 1; max-width: 740px; margin: 0 auto; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0.9rem; background: var(--teal-bg); border: 1px solid rgba(13, 188, 156, 0.25); border-radius: 100px; margin-bottom: 1.8rem; }
+  .hero-eyebrow .dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+  .hero h1 em { background: linear-gradient(90deg, var(--teal-deep), var(--teal), var(--teal-mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 400; }
+  .hero h1 { margin-bottom: 1.3rem; }
+  .hero p.lead { font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--ink-muted); max-width: 540px; margin: 0 auto 2.2rem; line-height: 1.6; }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-.svc-card { display: flex; flex-direction: column; padding: 32px; overflow: hidden; }
-@media (max-width: 640px) { .svc-card { padding: 24px; } }
-.svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--bar); border-radius: var(--radius-card) var(--radius-card) 0 0; }
-.svc-card .tile { width: 40px; height: 40px; border-radius: 10px; background: var(--tint); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex: none; }
-.svc-card .tile svg { width: 20px; height: 20px; color: var(--deep); }
-.svc-card .label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--deep); margin-bottom: 10px; }
-.svc-card h3 { font-size: 24px; margin-bottom: 12px; }
-.svc-card p.desc { font-size: 15px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 18px; flex: 1; }
-.svc-card ul.facts { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 22px; }
-.svc-card ul.facts li { font-size: 13.5px; color: var(--ink-soft); padding-left: 16px; position: relative; }
-.svc-card ul.facts li::before { content: '—'; position: absolute; left: 0; color: var(--deep); }
-.svc-card .go { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14.5px; color: var(--deep); }
-.svc-card .go .arrow { transition: transform .2s var(--ease); }
-.svc-card:hover .go .arrow { transform: translateX(4px); }
-.svc-card:hover { border-color: var(--bar); }
+  .stats-strip { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; max-width: 740px; margin-left: auto; margin-right: auto; }
+  .stat-item .num { font-family: 'Fraunces', serif; font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 500; color: var(--teal-deep); line-height: 1; margin-bottom: 0.5rem; }
+  .stat-item .label { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.4; }
+  @media (max-width: 640px) { .stats-strip { grid-template-columns: 1fr; gap: 1.5rem; } }
 
-.footer-note { text-align: center; font-size: 14.5px; color: var(--ink-soft); margin-bottom: 28px; }
-.footer-note a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--line-strong); }
+  .services-head { text-align: center; max-width: 620px; margin: 0 auto 3.5rem; }
+  .services-head h2 { margin-bottom: 1rem; }
+  .services-head p { font-size: 1.1rem; color: var(--ink-muted); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .svc-card { padding: 2.2rem; border-radius: 20px; background: linear-gradient(135deg, var(--white), var(--tint)); border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: all 0.35s ease; display: flex; flex-direction: column; min-height: 320px; position: relative; overflow: hidden; }
+  .svc-card::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, var(--glow), transparent 60%); opacity: 0; transition: opacity 0.4s ease; }
+  .svc-card:hover::before { opacity: 1; }
+  .svc-card:hover { transform: translateY(-4px); border-color: var(--deep); box-shadow: 0 20px 40px -20px var(--glow); }
+  .svc-card .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep); margin-bottom: 0.9rem; position: relative; z-index: 1; }
+  .svc-card h3 { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 500; margin-bottom: 0.7rem; position: relative; z-index: 1; }
+  .svc-card p.desc { color: var(--ink-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.2rem; position: relative; z-index: 1; }
+  .svc-card ul.facts { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.6rem; position: relative; z-index: 1; }
+  .svc-card ul.facts li { font-size: 0.85rem; color: var(--ink-soft); padding-left: 16px; position: relative; }
+  .svc-card ul.facts li::before { content: '—'; position: absolute; left: 0; color: var(--deep); }
+  .svc-card .go { margin-top: auto; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--deep); font-weight: 500; font-size: 0.95rem; position: relative; z-index: 1; }
+  .svc-card .go svg { width: 16px; height: 16px; transition: transform 0.25s ease; }
+  .svc-card:hover .go svg { transform: translateX(4px); }
+  @media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } }
+
+  .how { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .how-head { text-align: center; max-width: 620px; margin: 0 auto 4rem; }
+  .how-head h2 { margin-bottom: 1rem; }
+  .flow-diagram { position: relative; }
+  .flow-line { position: absolute; top: 32px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, transparent, var(--teal-mint), var(--teal), var(--teal-mint), transparent); z-index: 0; }
+  .flow-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; position: relative; z-index: 1; }
+  .flow-step { text-align: center; }
+  .flow-circle { width: 64px; height: 64px; margin: 0 auto 1.2rem; background: var(--white); border: 2px solid var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--teal-deep); font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 500; box-shadow: 0 0 0 6px var(--bg); }
+  .flow-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--ink); }
+  .flow-step p { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.5; max-width: 240px; margin: 0 auto; }
+  @media (max-width: 760px) { .flow-steps { grid-template-columns: 1fr; gap: 2.5rem; } .flow-line { display: none; } }
+
+  .cta { background: var(--ink); color: var(--white); text-align: center; padding: 6rem 0; position: relative; overflow: hidden; }
+  .cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(13, 188, 156, 0.2), transparent 50%), radial-gradient(circle at 80% 50%, rgba(94, 231, 199, 0.15), transparent 50%); pointer-events: none; }
+  .cta-content { position: relative; z-index: 1; }
+  .cta h2 { color: var(--white); margin-bottom: 1.3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .cta h2 em { background: linear-gradient(90deg, var(--teal-mint), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 400; }
+  .cta p { color: rgba(255, 255, 255, 0.7); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.2rem; }
+  .cta .btn-primary { background: var(--white); color: var(--ink) !important; }
+  .cta .btn-primary:hover { background: var(--teal-mint); color: var(--ink) !important; }
+  .cta .btn-secondary { background: transparent; color: var(--white); border: 1px solid rgba(255, 255, 255, 0.25); }
+  .cta .btn-secondary:hover { border-color: var(--teal-mint); color: var(--teal-mint); }
+  .cta-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  footer { background: var(--bg); padding: 3rem 0 2rem; border-top: 1px solid var(--line); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-left { display: flex; align-items: center; gap: 1.5rem; }
+  .footer-logo { height: 26px; }
+  .footer-text { color: var(--ink-muted); font-size: 0.85rem; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 0.8rem 1.8rem; list-style: none; }
+  .footer-links a { color: var(--ink-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s ease; }
+  .footer-links a:hover { color: var(--teal-deep); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .wa-float { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.5), 0 4px 12px -2px rgba(0,0,0,0.15); z-index: 99; text-decoration: none; transition: all 0.3s ease; }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="container">
-    <a class="nav__brand" href="/" aria-label="Alfea home">
-      <img class="nav__logo" src="assets/logo.png" alt="Alfea" width="110" height="30">
+<nav>
+  <div class="nav-inner">
+    <a href="/" aria-label="Alfea home" style="display:flex;align-items:center;">
+      <img class="logo-img" src="assets/logo.png" alt="Alfea">
     </a>
-    <ul class="nav__links" role="list">
+    <ul class="nav-links">
       <li><a href="/reactivate-leads/">Reactivate Leads</a></li>
       <li><a href="/website-creation/">Website Creation</a></li>
       <li><a class="ext" href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
+      <li class="nav-cta"><a class="btn btn-primary btn-sm" href="https://wa.me/352621990289" target="_blank" rel="noopener">Talk to us</a></li>
     </ul>
-    <button class="nav__burger" aria-label="Open menu"><span></span></button>
   </div>
 </nav>
 
-<div class="sheet">
-  <button class="sheet__close" aria-label="Close">×</button>
-  <a href="/reactivate-leads/">Reactivate Leads</a>
-  <a href="/website-creation/">Website Creation</a>
-  <a href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
-</div>
-
-<main>
 <section class="hero">
-  <div class="container hero__inner">
-    <span class="eyebrow"><span class="eyebrow__dot"></span>Alfea · Growth services for small businesses</span>
-    <h1>Three ways to bring in <em>more</em> business.</h1>
-    <p class="lead">Pick what you need: an AI that re-engages your old leads, a fixed-price website, or a walkthrough video of your business.</p>
-    <div class="hero__facts">
-      <span>Free pilot on Kai</span>
-      <span>Fixed-price websites</span>
-      <span>Videos from $79</span>
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span style="font-size: 0.8rem; color: var(--teal-deep); font-weight: 500;">Growth services for small businesses</span>
     </div>
-    <a class="hero__more" href="#services">See the services ↓</a>
+    <h1 class="display">Three ways to bring in <em>more</em> business.</h1>
+    <p class="lead">Pick what you need: an AI that re-engages your old leads, a fixed-price website, or a walkthrough video of your business.</p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn btn-primary">See the services<svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      <a href="https://wa.me/352621990289" class="btn btn-secondary" target="_blank" rel="noopener">Not sure? Ask us on WhatsApp</a>
+    </div>
+
+    <div class="stats-strip">
+      <div class="stat-item"><div class="num">Free</div><div class="label">Pilot on Kai before you pay</div></div>
+      <div class="stat-item"><div class="num">5–10</div><div class="label">Days to a live website</div></div>
+      <div class="stat-item"><div class="num">48h</div><div class="label">Turnaround on a walkthrough video</div></div>
+    </div>
   </div>
 </section>
 
-<section class="section bg-1" id="services">
+<section id="services">
   <div class="container">
-    <div class="svc-head">
-      <span class="eyebrow"><span class="eyebrow__dot"></span>What we do</span>
+    <div class="services-head">
+      <span class="eyebrow">What we do</span>
+      <h2 class="display" style="margin-top: 1rem;">Three ways to grow — pick what you need.</h2>
+      <p>Each one solves a different problem. Combine them, or start with one.</p>
     </div>
     <div class="svc-grid">
 
-      <a href="/reactivate-leads/" class="svc-card glass" style="--bar:#0DBC9C; --deep:#0A6E63; --tint:#E8F7F3;">
-        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
+      <a href="/reactivate-leads/" class="svc-card" style="--deep:var(--teal-deep); --glow:rgba(13,188,156,.18); --tint:var(--teal-bg);">
         <span class="label">Reactivate Leads · Kai</span>
         <h3>Turn dead leads into booked calls.</h3>
         <p class="desc">Kai, our AI assistant, messages your old enquiries on WhatsApp, picks up where the conversation stopped, and hands the warm ones to your team.</p>
@@ -107,71 +189,113 @@
           <li>Free pilot on a sample of your list</li>
           <li>You approve the opening message</li>
         </ul>
-        <span class="go">Explore Reactivate Leads <span class="arrow">→</span></span>
+        <span class="go">Explore Reactivate Leads <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
       </a>
 
-      <a href="/website-creation/" class="svc-card glass" style="--bar:#D17147; --deep:#A9532F; --tint:#F0DCD2;">
-        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v5"></path></svg></div>
+      <a href="/website-creation/" class="svc-card" style="--deep:var(--clay-deep); --glow:rgba(209,113,71,.18); --tint:var(--clay-bg);">
         <span class="label">Website Creation</span>
-        <h3>A website that works <em style="color:#A9532F;">as hard</em> as you do.</h3>
+        <h3>A website that works <em style="color:var(--clay-deep);">as hard</em> as you do.</h3>
         <p class="desc">A custom-designed, fixed-price site for your business — written and launched in 5–10 days, with real portfolio work behind it.</p>
         <ul class="facts">
           <li>Fixed price, agreed before we start</li>
           <li>Custom design, not a template</li>
           <li>2 revision rounds · yours to keep</li>
         </ul>
-        <span class="go">Explore Website Creation <span class="arrow">→</span></span>
+        <span class="go">Explore Website Creation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
       </a>
 
-      <a href="https://julaide.io/" target="_blank" rel="noopener" aria-label="Visit Julaide (opens julaide.io in a new tab)" class="svc-card glass" style="--bar:#4E5A86; --deep:#3B4569; --tint:#E6E8F1;">
-        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M10 9l5 3-5 3V9z"></path></svg></div>
+      <a href="https://julaide.io/" target="_blank" rel="noopener" aria-label="Visit Julaide (opens julaide.io in a new tab)" class="svc-card" style="--deep:var(--slate-deep); --glow:rgba(78,90,134,.18); --tint:var(--slate-bg);">
         <span class="label">Walkthrough Videos · Julaide</span>
-        <h3>Let customers walk through <em style="color:#3B4569;">before</em> they walk in.</h3>
+        <h3>Let customers walk through <em style="color:var(--slate-deep);">before</em> they walk in.</h3>
         <p class="desc">A short guided video tour of your space or service, produced by Julaide — our video partner product, made from photos you already have.</p>
         <ul class="facts">
           <li>No shoot needed</li>
           <li>48-hour turnaround</li>
           <li>Separate site — julaide.io</li>
         </ul>
-        <span class="go">Visit Julaide <span class="arrow">↗</span></span>
+        <span class="go">Visit Julaide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
       </a>
 
     </div>
   </div>
 </section>
 
-<section class="section bg-0">
+<section class="how">
   <div class="container">
-    <div class="work-head">
-      <span class="eyebrow"><span class="eyebrow__dot"></span>How we work</span>
+    <div class="how-head">
+      <span class="eyebrow">How we work</span>
+      <h2 class="display" style="margin-top: 1rem;">Proof first. Fixed prices. Fast.</h2>
     </div>
-    <div class="work-grid">
-      <div class="work-item"><h3>Proof before payment</h3><p>Kai starts with a free pilot on a sample of your list. You see real numbers before you pay anything.</p></div>
-      <div class="work-item"><h3>Prices you know upfront</h3><p>Websites are quoted on a short call and the price is fixed. Videos start at $79.</p></div>
-      <div class="work-item"><h3>Days, not months</h3><p>Sites go live in 5–10 days. Walkthrough videos come back in 48 hours.</p></div>
+    <div class="flow-diagram">
+      <div class="flow-line"></div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-circle">1</div>
+          <h4>Proof before payment</h4>
+          <p>Kai starts with a free pilot on a sample of your list — you see real numbers before you pay.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">2</div>
+          <h4>Prices you know upfront</h4>
+          <p>Websites are quoted on a short call and the price is fixed. Videos start at $79.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">3</div>
+          <h4>Days, not months</h4>
+          <p>Sites go live in 5–10 days. Walkthrough videos come back in 48 hours.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-</main>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="display">Not sure where to start? Tell us how customers reach you <em>today.</em></h2>
+      <p>One short conversation on WhatsApp — we'll tell you honestly which of the three, if any, is worth doing first.</p>
+      <div class="cta-ctas">
+        <a href="https://wa.me/352621990289" class="btn btn-primary" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
+        <a href="/reactivate-leads/#pilot" class="btn btn-secondary">Start a free Kai pilot</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="container">
-    <p class="footer-note">Not sure which fits? Email us at <a href="mailto:jean@alfea.io">jean@alfea.io</a>.</p>
     <div class="footer-inner">
-      <a class="footer-brand" href="/" aria-label="Alfea home"><img src="assets/logo.png" alt="Alfea" width="88" height="24"></a>
-      <ul class="footer-links" role="list">
+      <div class="footer-left">
+        <img src="assets/logo.png" alt="Alfea" class="footer-logo">
+        <span class="footer-text">© <span id="year"></span> Alfea</span>
+      </div>
+      <ul class="footer-links">
         <li><a href="/reactivate-leads/">Reactivate Leads</a></li>
         <li><a href="/website-creation/">Website Creation</a></li>
         <li><a href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
+        <li><a href="mailto:jean@alfea.io">jean@alfea.io</a></li>
       </ul>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> Alfea</span>
-      <span><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a></span>
     </div>
   </div>
 </footer>
 
-<script src="assets/alfea.js"></script>
+<a href="https://wa.me/352621990289" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/>
+  </svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('section').forEach(function (el) { el.classList.add('reveal'); observer.observe(el); });
+  } else {
+    document.querySelectorAll('section').forEach(function (el) { el.classList.add('reveal', 'visible'); });
+  }
+</script>
 </body>
 </html>
