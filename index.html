@@ -81,6 +81,9 @@
   .svc-card::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, var(--glow), transparent 60%); opacity: 0; transition: opacity 0.4s ease; }
   .svc-card:hover::before { opacity: 1; }
   .svc-card:hover { transform: translateY(-4px); border-color: var(--deep); box-shadow: 0 20px 40px -20px var(--glow); }
+  .svc-card:hover .svc-icon { transform: scale(1.06); }
+  .svc-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--white); display: flex; align-items: center; justify-content: center; color: var(--deep); margin-bottom: 1.4rem; position: relative; z-index: 1; box-shadow: 0 1px 2px rgba(10,31,28,.08); transition: transform 0.3s ease; }
+  .svc-icon svg { width: 26px; height: 26px; }
   .svc-card .label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep); margin-bottom: 0.9rem; position: relative; z-index: 1; }
   .svc-card h3 { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 500; margin-bottom: 0.7rem; position: relative; z-index: 1; }
   .svc-card p.desc { color: var(--ink-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.2rem; position: relative; z-index: 1; }
@@ -181,6 +184,7 @@
     <div class="svc-grid">
 
       <a href="/reactivate-leads/" class="svc-card" style="--deep:var(--teal-deep); --glow:rgba(13,188,156,.18); --tint:var(--teal-bg);">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
         <span class="label">Reactivate Leads · Kai</span>
         <h3>Turn dead leads into booked calls.</h3>
         <p class="desc">Kai, our AI assistant, messages your old enquiries on WhatsApp, picks up where the conversation stopped, and hands the warm ones to your team.</p>
@@ -193,6 +197,7 @@
       </a>
 
       <a href="/website-creation/" class="svc-card" style="--deep:var(--clay-deep); --glow:rgba(209,113,71,.18); --tint:var(--clay-bg);">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v5"></path></svg></div>
         <span class="label">Website Creation</span>
         <h3>A website that works <em style="color:var(--clay-deep);">as hard</em> as you do.</h3>
         <p class="desc">A custom-designed, fixed-price site for your business — written and launched in 5–10 days, with real portfolio work behind it.</p>
@@ -205,6 +210,7 @@
       </a>
 
       <a href="https://julaide.io/" target="_blank" rel="noopener" aria-label="Visit Julaide (opens julaide.io in a new tab)" class="svc-card" style="--deep:var(--slate-deep); --glow:rgba(78,90,134,.18); --tint:var(--slate-bg);">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M10 9l5 3-5 3V9z"></path></svg></div>
         <span class="label">Walkthrough Videos · Julaide</span>
         <h3>Let customers walk through <em style="color:var(--slate-deep);">before</em> they walk in.</h3>
         <p class="desc">A short guided video tour of your space or service, produced by Julaide — our video partner product, made from photos you already have.</p>
