@@ -11,20 +11,24 @@ framework — open any `index.html` directly in a browser to preview it.
 index.html                  → alfea.io/            (homepage)
 reactivate-leads/index.html → alfea.io/reactivate-leads/
 website-creation/index.html → alfea.io/website-creation/
-assets/alfea.css            → shared design system (all 3 pages)
-assets/alfea.js             → shared behaviour: nav, reveal-on-scroll,
-                               card spotlight, modal, count-up, accordion
+assets/alfea.css            → shared foundation (fonts, nav/footer chrome,
+                               buttons, cards, modal, forms, reveal motion)
+assets/alfea.js             → shared behaviour: nav scroll state, mobile
+                               sheet, reveal-on-scroll, modal, accordion
 _redirects                  → Netlify redirect rules (see below)
 ```
 
-Each page's own interactive components (conversation replay, fit-check
-quiz, before/after slider, build animation, scroll-linked timeline) are
-inline `<script>` blocks at the bottom of that page's `index.html` — kept
-page-local since they're not reused elsewhere.
+Each page sets its own real brand tokens (colors/radius) in a `<style>`
+block at the top of its own `<head>`, on top of the shared foundation —
+see "Design system" below. Each page's own interactive components
+(conversation replay, fit-check quiz, before/after slider, build
+animation, scroll-linked timeline) are inline `<script>` blocks at the
+bottom of that page's `index.html` — kept page-local since they're not
+reused elsewhere.
 
 Julaide (walkthrough video product) is **not** part of this repo — it stays
 at julaide.io, in its own `jeanam14/julaide` repo. This site only links out
-to it (nav, homepage card, footer, "More from Alfea" strips).
+to it (nav, homepage card, footer).
 
 ## Connecting Netlify
 
@@ -53,15 +57,29 @@ client site at that pattern.
 
 ## Design system
 
-"Basalt & Sodium" — dark basalt base (`--basalt-0/1/2`), one shared brand
-accent (`--sodium`, warm amber) used for every primary button and the one
-italic word per headline, plus a distinct accent per product used only for
-glows/icons/borders: Pulse (green, Reactivate Leads), Blueprint (blue,
-Website Creation), Reel (orange, Julaide — referenced on the homepage
-only). Typography: Bricolage Grotesque (display), Instrument Serif italic
-(the one-word emphasis), Geist (body), Geist Mono (labels/eyebrows/stats).
-Full section-by-section brief available on request if this needs
-extending — ask Claude to regenerate it from the original design pass.
+Alfea's real existing brand, pulled directly from the live reactivate.alfea.io
+and web-creation.alfea.io sites — not an invented look. Light, ink-on-paper
+throughout (`--ink:#0A1F1C`), Fraunces for headings (one italic word per H1)
+and Inter for body, the real logo/favicon hotlinked from
+`web-creation.alfea.io` (safe long-term — see "What NOT to touch" above).
+Each page carries its own native accent on top of the shared foundation:
+
+- **Homepage** — ink-on-paper base (`#F7F5F0`), 4px buttons / 6px cards.
+  Each service card carries its own accent bar only: teal for Reactivate
+  Leads, clay for Website Creation, slate-indigo (`#4E5A86`, new — not from
+  an existing product, flag to Jean if he wants it changed) for Julaide.
+- **`/reactivate-leads/`** — teal + mint (`--accent:#0A6E63`,
+  `--teal:#0DBC9C`, `--mint:#5EE7C7`, `--tint:#E8F7F3`), pill buttons
+  (999px radius), real WhatsApp bubble colors in the conversation demo.
+- **`/website-creation/`** — clay/terracotta on paper
+  (`--clay:#D17147`, `--paper:#F7F5F0`, `--paper-deep:#EFEBE2`), 4px
+  radius throughout, the "How a project runs" section inverts to an ink
+  background with paper text (the one deliberate dark moment, matching
+  the live site), real portfolio photos hotlinked from
+  `web-creation.alfea.io` (work-law.jpg / work-trade.jpg / work-clinic.jpg).
+
+No backdrop-blur or translucency anywhere except the sticky nav; no
+cursor-following effects; no colored glow shadows — flat soft shadows only.
 
 ## Honesty notes baked into the copy
 

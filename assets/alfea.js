@@ -1,7 +1,7 @@
-/* Shared behaviour for all Alfea pages: nav, mobile sheet, reveal, card
-   spotlight, modal helper, count-up, accordion. Page-specific interactive
-   components (conversation replay, fit check, before/after slider, etc.)
-   live inline on their own page. */
+/* Shared behaviour for all Alfea pages: nav scroll state, mobile sheet,
+   reveal-on-scroll, modal helper, accordion, footer year. Page-specific
+   interactive components (conversation replay, fit check, before/after
+   slider, etc.) live inline on their own page. */
 (function () {
   'use strict';
 
@@ -11,7 +11,7 @@
   var nav = document.querySelector('.nav');
   function onScroll() {
     if (!nav) return;
-    if (window.scrollY > 40) nav.classList.add('scrolled');
+    if (window.scrollY > 10) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -39,24 +39,13 @@
     revealEls.forEach(function (el) { el.classList.add('in-view'); });
   }
 
-  /* ---------- Card cursor spotlight ---------- */
-  if (!reducedMotion && !('ontouchstart' in window)) {
-    document.querySelectorAll('.spot').forEach(function (card) {
-      card.addEventListener('pointermove', function (e) {
-        var r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
-
   /* ---------- Modal (generic open/close, content injected by caller) ---------- */
   var overlay = document.getElementById('modal-overlay');
   var panel = overlay ? overlay.querySelector('.modal-panel') : null;
   window.AlfeaModal = {
     open: function (html) {
       if (!panel) return;
-      panel.innerHTML = '<button class="modal-panel__close" aria-label="Fermer">&times;</button>' + html;
+      panel.innerHTML = '<button class="modal-panel__close" aria-label="Close">&times;</button>' + html;
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       panel.querySelector('.modal-panel__close').addEventListener('click', window.AlfeaModal.close);
@@ -86,36 +75,6 @@
       window.AlfeaModal.open(html);
     });
   });
-
-  /* ---------- Count-up ---------- */
-  function countUp(el) {
-    var target = el.getAttribute('data-count-to');
-    var prefix = el.getAttribute('data-count-prefix') || '';
-    var suffix = el.getAttribute('data-count-suffix') || '';
-    var isRange = target.indexOf('-') !== -1;
-    if (reducedMotion || isRange) { el.textContent = prefix + target + suffix; return; }
-    var end = parseInt(target, 10);
-    var start = 0;
-    var dur = 900;
-    var t0 = null;
-    function step(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min(1, (ts - t0) / dur);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + Math.round(start + (end - start) * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  var countEls = document.querySelectorAll('[data-count-to]');
-  if (countEls.length && 'IntersectionObserver' in window) {
-    var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
-      });
-    }, { threshold: 0.5 });
-    countEls.forEach(function (el) { cio.observe(el); });
-  }
 
   /* ---------- Accordion ---------- */
   document.querySelectorAll('.accordion').forEach(function (acc) {

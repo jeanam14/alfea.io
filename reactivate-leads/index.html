@@ -8,62 +8,80 @@
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/alfea.css">
 <style>
-:root { --dot: var(--pulse); }
+:root {
+  --ink-soft: #2D4744;
+  --muted: #587270;
+  --line: #D9E5E2;
+  --line-strong: #C7D6D2;
+  --bg-0: #FAFBFA;
+  --bg-1: #E8F7F3;
+  --bg-2: #EFF6F4;
+  --surface: #FFFFFF;
+  --accent: #0A6E63;
+  --accent-soft: rgba(10,110,99,.10);
+  --teal: #0DBC9C;
+  --mint: #5EE7C7;
+  --tint: #E8F7F3;
+  --radius-card: 16px;
+  --radius-btn: 999px;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--teal); }
+.btn-ghost, .btn-secondary { border-color: var(--line-strong); }
 .hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 150px 0 70px; overflow: hidden; }
-.hero .glow { background: radial-gradient(640px circle at 85% 15%, rgba(63,224,165,.18), transparent 60%); }
 .hero__grid { position: relative; z-index: 2; display: grid; gap: 48px; grid-template-columns: 1fr; align-items: center; }
 @media (min-width: 980px) { .hero__grid { grid-template-columns: 6fr 6fr; } }
 .hero__copy h1 { font-size: clamp(34px,5.4vw,62px); margin: 18px 0 20px; text-transform: none; }
-.hero__copy p.lead { font-size: 17px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; max-width: 52ch; }
+.hero__copy p.lead { font-size: 17px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 28px; max-width: 52ch; }
 .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-.trustrow { display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 11.5px; color: var(--pulse); }
+.trustrow { display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 11.5px; color: var(--accent); }
 .trustrow span::before { content: '✓ '; }
 
 /* Conversation replay */
-.replay { padding: 20px; max-width: 420px; margin: 0 auto; }
+.replay { padding: 20px; max-width: 420px; margin: 0 auto; background: #ECE5DD; border: 1px solid var(--line); border-radius: var(--radius-card); box-shadow: var(--shadow-rest); }
 .replay__tabs { display: flex; gap: 6px; margin-bottom: 14px; }
-.replay__tabs button { font-family: var(--mono); font-size: 11px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-dim); }
-.replay__tabs button[aria-selected="true"] { color: var(--pulse); border-color: rgba(63,224,165,.4); background: var(--pulse-soft); }
+.replay__tabs button { font-family: var(--mono); font-size: 11px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.replay__tabs button[aria-selected="true"] { color: var(--accent); border-color: rgba(13,188,156,.4); background: var(--tint); }
 .replay__head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
-.replay__avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--basalt-2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex: none; }
+.replay__avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--mint); color: #04231D; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex: none; }
 .replay__who strong { display: block; font-size: 13.5px; }
-.replay__who small { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); }
-.replay__note { margin-left: auto; font-family: var(--mono); font-size: 9.5px; color: var(--text-dim); text-align: right; }
+.replay__who small { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+.replay__note { margin-left: auto; font-family: var(--mono); font-size: 9.5px; color: var(--muted); text-align: right; }
 .replay__thread { min-height: 300px; display: flex; flex-direction: column; gap: 9px; justify-content: flex-end; }
-.replay__divider { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin: 6px 0; opacity: 0; transition: opacity .4s; }
+.replay__divider { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--muted); margin: 6px 0; opacity: 0; transition: opacity .4s; }
 .replay__divider.show { opacity: 1; }
 .rbub { max-width: 82%; padding: 9px 12px; border-radius: 13px; font-size: 13px; line-height: 1.4; opacity: 0; transform: translateY(8px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
 .rbub.show { opacity: 1; transform: translateY(0); }
-.rbub--us { align-self: flex-start; background: rgba(255,255,255,.055); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
-.rbub--them { align-self: flex-end; background: var(--pulse-soft); border: 1px solid rgba(63,224,165,.3); border-bottom-right-radius: 4px; }
-.rbub .tag { display: block; font-family: var(--mono); font-size: 9px; color: var(--pulse); margin-bottom: 4px; }
+.rbub--us { align-self: flex-start; background: #FFFFFF; color: var(--ink); box-shadow: 0 1px 1px rgba(0,0,0,.08); border-bottom-left-radius: 4px; }
+.rbub--them { align-self: flex-end; background: #DCF8C6; color: var(--ink); box-shadow: 0 1px 1px rgba(0,0,0,.08); border-bottom-right-radius: 4px; }
+.rbub .tag { display: block; font-family: var(--mono); font-size: 9px; color: var(--accent); margin-bottom: 4px; }
 .rtyping { align-self: flex-start; display: flex; gap: 3px; padding: 10px 12px; opacity: 0; transition: opacity .2s; }
 .rtyping.show { opacity: 1; }
-.rtyping i { width: 5px; height: 5px; border-radius: 50%; background: var(--text-dim); animation: blink 1s infinite; }
+.rtyping i { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: blink 1s infinite; }
 .rtyping i:nth-child(2) { animation-delay: .15s; } .rtyping i:nth-child(3) { animation-delay: .3s; }
 @keyframes blink { 0%,60%,100% { opacity: .3; } 30% { opacity: 1; } }
-.rhandoff { margin-top: 10px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(63,224,165,.4); background: var(--pulse-soft); opacity: 0; transform: translateY(12px); transition: all .4s var(--ease); }
+.rhandoff { margin-top: 10px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(13,188,156,.4); background: var(--tint); opacity: 0; transform: translateY(12px); transition: all .4s var(--ease); }
 .rhandoff.show { opacity: 1; transform: translateY(0); }
-.rhandoff strong { display: block; font-size: 12.5px; margin-bottom: 8px; color: var(--pulse); }
-.rhandoff .kv { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; color: var(--text-muted); padding: 3px 0; }
+.rhandoff strong { display: block; font-size: 12.5px; margin-bottom: 8px; color: var(--accent); }
+.rhandoff .kv { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); padding: 3px 0; }
 .rrail { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
-.rrail .node { font-family: var(--mono); font-size: 9px; color: var(--text-dim); text-align: center; flex: 1; position: relative; }
-.rrail .node .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--basalt-2); border: 1px solid var(--line-strong); margin: 0 auto 6px; transition: all .3s; }
-.rrail .node.lit .dot { background: var(--pulse); border-color: var(--pulse); box-shadow: 0 0 8px rgba(63,224,165,.6); }
-.rrail .node.lit { color: var(--pulse); }
+.rrail .node { font-family: var(--mono); font-size: 9px; color: var(--muted); text-align: center; flex: 1; position: relative; }
+.rrail .node .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--bg-2); border: 1px solid var(--line-strong); margin: 0 auto 6px; transition: all .3s; }
+.rrail .node.lit .dot { background: var(--accent); border-color: var(--accent); }
+.rrail .node.lit { color: var(--accent); }
 .replay__controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
-.replay__controls button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-strong); font-size: 12px; color: var(--text-muted); }
+.replay__controls button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-strong); font-size: 12px; color: var(--ink-soft); }
 
 /* Timeline (cold) */
 .coldline { position: relative; padding: 50px 0 10px; }
 .coldline__track { position: relative; height: 2px; background: var(--line); border-radius: 2px; }
-.coldline__fill { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--text-dim), var(--pulse)); border-radius: 2px; transition: width 1.2s var(--ease); }
+.coldline__fill { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--muted), var(--accent)); border-radius: 2px; transition: width 1.2s var(--ease); }
 .coldline__nodes { display: flex; justify-content: space-between; margin-top: -2px; }
-.coldline__node { width: 10px; height: 10px; border-radius: 50%; background: var(--basalt-2); border: 2px solid var(--line-strong); position: relative; }
-.coldline__node.final { border-color: var(--pulse); background: var(--pulse); }
-.coldline__node .lbl { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); white-space: nowrap; }
-.coldline__node.final .lbl { color: var(--pulse); font-weight: 600; }
-.coldline__node.final .ring { position: absolute; inset: -8px; border-radius: 50%; border: 1px solid var(--pulse); opacity: 0; }
+.coldline__node { width: 10px; height: 10px; border-radius: 50%; background: var(--bg-2); border: 2px solid var(--line-strong); position: relative; }
+.coldline__node.final { border-color: var(--accent); background: var(--accent); }
+.coldline__node .lbl { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.coldline__node.final .lbl { color: var(--accent); font-weight: 600; }
+.coldline__node.final .ring { position: absolute; inset: -8px; border-radius: 50%; border: 1px solid var(--accent); opacity: 0; }
 .coldline__node.final.pulse .ring { animation: ring 1s ease-out; }
 @keyframes ring { from { opacity: .8; transform: scale(1);} to { opacity: 0; transform: scale(1.8);} }
 @media (max-width: 760px) { .coldline__nodes { flex-direction: column; gap: 28px; margin-top: 0; } .coldline__track { width: 2px; height: 220px; } .coldline__fill { width: 2px; height: 0; } .coldline__node .lbl { position: static; transform: none; margin-top: 6px; display: block; } .coldline { display: flex; gap: 16px; } .coldline__track-wrap { flex: none; } }
@@ -74,176 +92,163 @@
 .steps__nav { display: flex; flex-direction: column; gap: 4px; }
 @media (min-width: 900px) { .steps__nav { position: sticky; top: 100px; align-self: start; } }
 .steps__nav .s { padding: 18px 20px; border-radius: 14px; opacity: .4; transition: opacity .3s; cursor: pointer; }
-.steps__nav .s.active { opacity: 1; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
-.steps__nav .s .n { font-family: var(--mono); color: var(--pulse); font-size: 13px; margin-right: 8px; }
+.steps__nav .s.active { opacity: 1; background: var(--bg-2); border: 1px solid var(--line); }
+.steps__nav .s .n { font-family: var(--mono); color: var(--accent); font-size: 13px; margin-right: 8px; }
 .steps__nav .s h3 { display: inline; font-size: 16px; }
-.steps__nav .s p { font-size: 13.5px; color: var(--text-muted); margin-top: 6px; }
+.steps__nav .s p { font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
 .steps__panels { display: flex; flex-direction: column; gap: 24px; }
 .steppanel { padding: 28px; min-height: 220px; }
-.steppanel .filechip { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; padding: 8px 14px; border-radius: 10px; background: var(--basalt-2); border: 1px solid var(--line-strong); margin-bottom: 14px; }
+.steppanel .filechip { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; padding: 8px 14px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line-strong); margin-bottom: 14px; }
 .colchips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-.colchips span { font-family: var(--mono); font-size: 10.5px; padding: 5px 10px; border-radius: 6px; background: rgba(255,255,255,.04); color: var(--text-muted); }
-.colchips span.consent { color: var(--pulse); border: 1px solid rgba(63,224,165,.35); background: var(--pulse-soft); }
-.approvecard { padding: 16px; border-radius: 12px; background: var(--basalt-2); border: 1px solid var(--line-strong); }
+.colchips span { font-family: var(--mono); font-size: 10.5px; padding: 5px 10px; border-radius: 6px; background: var(--bg-2); color: var(--ink-soft); }
+.colchips span.consent { color: var(--accent); border: 1px solid rgba(13,188,156,.35); background: var(--tint); }
+.approvecard { padding: 16px; border-radius: 12px; background: var(--bg-2); border: 1px solid var(--line-strong); }
 .approvecard p { font-size: 13.5px; margin-bottom: 12px; }
-.approvecard .var { color: var(--pulse); font-family: var(--mono); }
+.approvecard .var { color: var(--accent); font-family: var(--mono); }
 .approvecard .actions { display: flex; gap: 10px; }
 .approvecard button { font-size: 12.5px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line-strong); }
-.approvecard button.yes { background: var(--pulse-soft); border-color: var(--pulse); color: var(--pulse); }
+.approvecard button.yes { background: var(--tint); border-color: var(--accent); color: var(--accent); }
 .report { }
 .report .pill { margin-bottom: 14px; }
 .reportrow { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.reportrow .lbl { width: 110px; font-family: var(--mono); font-size: 11.5px; color: var(--text-muted); flex: none; }
-.reportrow .track { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.04); overflow: hidden; }
-.reportrow .fill { height: 100%; width: 0; border-radius: 4px; background: var(--pulse); transition: width 1s var(--ease); }
-.reportrow.optout .fill { background: var(--text-dim); }
-.report .foot { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+.reportrow .lbl { width: 110px; font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); flex: none; }
+.reportrow .track { flex: 1; height: 8px; border-radius: 4px; background: var(--bg-2); overflow: hidden; }
+.reportrow .fill { height: 100%; width: 0; border-radius: 4px; background: var(--accent); transition: width 1s var(--ease); }
+.reportrow.optout .fill { background: var(--muted); }
+.report .foot { font-size: 12px; color: var(--muted); margin-top: 10px; }
 
 /* Who it suits */
 .suits { display: grid; gap: 16px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .suits { grid-template-columns: repeat(3,1fr); } }
 .suit { padding: 24px; cursor: pointer; }
-.suit svg { width: 26px; height: 26px; color: var(--pulse); margin-bottom: 14px; }
+.suit svg { width: 26px; height: 26px; color: var(--accent); margin-bottom: 14px; }
 .suit h3 { font-size: 16.5px; margin-bottom: 10px; }
-.suit .sub { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
-.suit p { font-size: 13.5px; color: var(--text-muted); }
+.suit .sub { font-family: var(--mono); font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+.suit p { font-size: 13.5px; color: var(--ink-soft); }
 
 /* Before you buy table */
 .cmp { display: grid; grid-template-columns: 1fr; gap: 0; }
 @media (min-width: 760px) { .cmp { grid-template-columns: 1fr 1fr 1fr; } }
 .cmp__col { padding: 20px 22px; }
-.cmp__col.reactivate { background: linear-gradient(180deg, rgba(63,224,165,.08), rgba(63,224,165,.02)); border: 1px solid rgba(63,224,165,.3); border-radius: 16px; transform: translateY(-8px); box-shadow: 0 24px 50px -30px rgba(63,224,165,.25); }
+.cmp__col.reactivate { background: var(--tint); border: 1px solid var(--accent); border-radius: var(--radius-card); }
 .cmp__col.buy { opacity: .75; }
 .cmp__head { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
 .cmp__row { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; transition: background .2s; }
-.cmp__row.labelcol { font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); }
-.cmp__row:hover, .cmp__col:hover .cmp__row { background: rgba(255,255,255,.015); }
-.startpill { display: inline-block; font-family: var(--mono); font-size: 10px; color: var(--pulse); background: var(--pulse-soft); border: 1px solid rgba(63,224,165,.35); padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
+.cmp__row.labelcol { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+.cmp__row:hover, .cmp__col:hover .cmp__row { background: rgba(10,31,28,.025); }
+.startpill { display: inline-block; font-family: var(--mono); font-size: 10px; color: var(--accent); background: var(--tint); border: 1px solid rgba(13,188,156,.35); padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
 .mobtoggle { display: flex; gap: 8px; margin-bottom: 16px; }
 @media (min-width: 760px) { .mobtoggle { display: none; } }
 .mobtoggle button { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--line-strong); font-size: 13px; }
-.mobtoggle button[aria-pressed="true"] { background: var(--pulse-soft); border-color: var(--pulse); }
+.mobtoggle button[aria-pressed="true"] { background: var(--tint); border-color: var(--accent); }
 @media (max-width: 759px) { .cmp__col.hide-mobile { display: none; } .cmp__col.reactivate { transform: none; } }
 
 /* Fit check */
 .fitcheck { max-width: 640px; margin: 0 auto; padding: 36px; overflow: hidden; }
 .fc-progress { display: flex; gap: 6px; margin-bottom: 28px; }
 .fc-progress span { flex: 1; height: 4px; border-radius: 4px; background: var(--line); }
-.fc-progress span.done { background: var(--pulse); }
+.fc-progress span.done { background: var(--accent); }
 .fc-q { }
 .fc-q h3 { font-size: 24px; margin-bottom: 24px; line-height: 1.3; }
 .fc-answers { display: flex; gap: 12px; }
 .fc-answers button { flex: 1; height: 56px; border-radius: 14px; border: 1px solid var(--line-strong); font-size: 15px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 8px; }
-.fc-answers button:hover { border-color: var(--pulse); background: var(--pulse-soft); }
+.fc-answers button:hover { border-color: var(--accent); background: var(--tint); }
 .fc-answers kbd { font-family: var(--mono); font-size: 10px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 1px 6px; opacity: .6; }
-.fc-back { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--text-dim); }
+.fc-back { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--muted); }
 .fc-result { text-align: center; }
 .fc-result .icon { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
 .fc-result h3 { font-size: 22px; margin-bottom: 12px; }
-.fc-result p { font-size: 14.5px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6; }
-.fc-pill-pass { display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--pulse); background: var(--pulse-soft); border: 1px solid rgba(63,224,165,.4); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+.fc-result p { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 22px; line-height: 1.6; }
+.fc-pill-pass { display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--accent); background: var(--tint); border: 1px solid rgba(13,188,156,.4); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
 
 /* Control & consent */
 .ccgrid { display: grid; gap: 16px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .ccgrid { grid-template-columns: 1fr 1fr; } }
 .cctile { padding: 24px; }
 .cctile .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-.toggle { width: 34px; height: 18px; border-radius: 999px; background: var(--pulse); position: relative; flex: none; }
+.toggle { width: 34px; height: 18px; border-radius: 999px; background: var(--accent); position: relative; flex: none; }
 .toggle::after { content: ''; position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; }
 .cctile h3 { font-size: 15.5px; }
-.cctile p { font-size: 13.5px; color: var(--text-muted); }
+.cctile p { font-size: 13.5px; color: var(--ink-soft); }
 .optout-mini { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
 .optout-mini .rbub { max-width: 70%; font-size: 11.5px; padding: 7px 10px; }
 
 /* Pilot offer band */
 .offerband { display: grid; gap: 24px; grid-template-columns: 1fr; padding: 40px; position: relative; overflow: hidden; }
 @media (min-width: 860px) { .offerband { grid-template-columns: 1fr 1fr; align-items: center; } }
-.offerband::before { content:''; position:absolute; left:-10%; top:-30%; width:60%; height:160%; background: radial-gradient(circle, rgba(255,181,71,.16), transparent 65%); pointer-events:none; }
 .offerband h2 { font-size: clamp(22px,2.6vw,32px); margin-bottom: 10px; position:relative; }
 .ministeps { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; }
-.ministeps .m { font-size: 12.5px; color: var(--text-muted); white-space: nowrap; }
+.ministeps .m { font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; }
 .ministeps .ln { flex: 1; min-width: 14px; height: 1px; background: var(--line-strong); }
 
 /* Agencies */
 .agencies { position: relative; padding: 48px; overflow: hidden; }
-.agencies::before { content:''; position:absolute; left:0; top:0; bottom:0; width:50%; opacity:.04; background-image: repeating-linear-gradient(135deg, #fff 0 1px, transparent 1px 14px); }
 .agencies__grid { display: grid; gap: 30px; grid-template-columns: 1fr; position: relative; }
 @media (min-width: 860px) { .agencies__grid { grid-template-columns: 1fr 1fr; } }
 .agencies ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; }
-.agencies li { font-family: var(--mono); font-size: 12.5px; color: var(--text-muted); }
+.agencies li { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); }
 .agencies li::before { content: '— '; }
 
 /* FAQ */
 .faqwrap { display: grid; gap: 40px; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .faqwrap { grid-template-columns: 4fr 8fr; } }
 .faqside { position: sticky; top: 100px; align-self: start; }
-.faqside p { color: var(--text-muted); margin: 10px 0 18px; font-size: 14px; }
+.faqside p { color: var(--ink-soft); margin: 10px 0 18px; font-size: 14px; }
 .accordion__item { border-bottom: 1px solid var(--line); }
 .accordion__q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; text-align: left; font-size: 15.5px; font-weight: 500; }
-.accordion__q .plus { font-size: 20px; color: var(--text-dim); transition: transform .3s; flex: none; margin-left: 16px; }
-.accordion__item.open .accordion__q .plus { transform: rotate(45deg); color: var(--pulse); }
+.accordion__q .plus { font-size: 20px; color: var(--muted); transition: transform .3s; flex: none; margin-left: 16px; }
+.accordion__item.open .accordion__q .plus { transform: rotate(45deg); color: var(--accent); }
 .accordion__a { max-height: 0; overflow: hidden; transition: max-height .3s var(--ease); }
-.accordion__a p { padding-bottom: 20px; color: var(--text-muted); font-size: 14.5px; line-height: 1.7; }
+.accordion__a p { padding-bottom: 20px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.7; }
 
 /* Pilot form */
 .pilotwrap { display: grid; gap: 40px; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .pilotwrap { grid-template-columns: 5fr 7fr; } }
 .pilotside ol { list-style: none; counter-reset: pstep; margin: 18px 0 24px; display: flex; flex-direction: column; gap: 14px; }
-.pilotside li { counter-increment: pstep; display: flex; gap: 12px; font-size: 14px; color: var(--text-muted); }
-.pilotside li::before { content: counter(pstep); font-family: var(--mono); font-size: 11px; color: var(--pulse); width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(63,224,165,.4); display: flex; align-items: center; justify-content: center; flex: none; }
+.pilotside li { counter-increment: pstep; display: flex; gap: 12px; font-size: 14px; color: var(--ink-soft); }
+.pilotside li::before { content: counter(pstep); font-family: var(--mono); font-size: 11px; color: var(--accent); width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(13,188,156,.4); display: flex; align-items: center; justify-content: center; flex: none; }
 .pilotform { padding: 30px; }
 .chipbucket { display: flex; gap: 8px; flex-wrap: wrap; }
-.chipbucket button { padding: 9px 14px; border-radius: 10px; border: 1px solid var(--line-strong); font-size: 12.5px; color: var(--text-muted); }
-.chipbucket button[aria-pressed="true"] { background: var(--pulse-soft); border-color: var(--pulse); color: var(--text); }
-.formnote { font-size: 12px; color: var(--text-dim); margin-top: 12px; }
+.chipbucket button { padding: 9px 14px; border-radius: 10px; border: 1px solid var(--line-strong); font-size: 12.5px; color: var(--ink-soft); }
+.chipbucket button[aria-pressed="true"] { background: var(--tint); border-color: var(--accent); color: var(--ink); }
+.formnote { font-size: 12px; color: var(--muted); margin-top: 12px; }
 .formsuccess { text-align: center; padding: 40px 20px; display: none; }
 .formsuccess.show { display: block; }
-.formsuccess .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--pulse-soft); border: 1px solid var(--pulse); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--pulse); font-size: 22px; }
+.formsuccess .ck { width: 52px; height: 52px; border-radius: 50%; background: var(--tint); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--accent); font-size: 22px; }
 
-/* More from alfea */
-.more { display: grid; gap: 16px; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .more { grid-template-columns: 1fr 1fr; } }
-.morecard { padding: 18px 20px; display: flex; align-items: center; gap: 14px; }
-.morecard .icowrap { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex: none; }
-.morecard h4 { font-size: 14.5px; margin-bottom: 2px; }
-.morecard p { font-size: 12.5px; color: var(--text-dim); }
 </style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Primary">
-  <a href="/" class="nav__brand">
-    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
-    <span>alfea</span>
-  </a>
-  <div class="nav__links">
-    <a href="/reactivate-leads/" class="active">Reactivate Leads</a>
-    <a href="/website-creation/">Website Creation</a>
-    <a href="https://julaide.io" target="_blank" rel="noopener" aria-label="Walkthrough Videos (opens julaide.io in a new tab)">Walkthrough Videos <span class="ext">↗</span></a>
-  </div>
-  <div class="nav__actions">
-    <a class="btn btn-ghost btn-sm" href="https://wa.me/352621990289?text=Hi%2C%20I%27d%20like%20to%20try%20a%20Kai%20reactivation%20pilot." target="_blank" rel="noopener">WhatsApp</a>
-    <a class="btn btn-primary btn-sm" href="#pilot">Start a free pilot</a>
-    <button class="nav__burger" aria-label="Menu"><span></span></button>
+  <div class="container">
+    <a href="/" class="nav__brand" aria-label="Alfea home">
+      <img class="nav__logo" src="https://web-creation.alfea.io/logo.png" alt="Alfea" width="110" height="30">
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="/reactivate-leads/" class="active">Reactivate Leads</a></li>
+      <li><a href="/website-creation/">Website Creation</a></li>
+      <li><a class="ext" href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
+    </ul>
+    <button class="nav__burger" aria-label="Open menu"><span></span></button>
   </div>
 </nav>
 <div class="sheet">
   <button class="sheet__close" aria-label="Close">&times;</button>
-  <a href="/">Home</a>
+  <a href="/">All services</a>
+  <a href="/reactivate-leads/">Reactivate Leads</a>
   <a href="/website-creation/">Website Creation</a>
-  <a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
+  <a href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
   <div class="sheet__actions">
-    <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a>
     <a class="btn btn-primary" href="#pilot">Start a free pilot</a>
   </div>
 </div>
 
 <!-- HERO -->
-<section class="hero grain">
-  <div class="glow" aria-hidden="true"></div>
+<section class="hero">
   <div class="container hero__grid">
     <div class="hero__copy">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>Kai · Lead Reactivation on WhatsApp</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>Kai · Lead Reactivation on WhatsApp</span>
       <h1>The leads you already paid for are still worth a <span class="em">conversation.</span></h1>
       <p class="lead">Kai messages your past enquiries on WhatsApp, picks up where the conversation stopped, and passes the warm replies straight to your team. Start with a free pilot on a sample of your list — no payment until you've seen the numbers.</p>
       <div class="hero__ctas">
@@ -263,7 +268,7 @@
         <button role="tab" aria-selected="false" data-script="1">Clinic</button>
         <button role="tab" aria-selected="false" data-script="2">Car leasing</button>
       </div>
-      <span class="chip chip-example" style="margin-bottom:14px;">Example conversation</span>
+      <span class="chip" style="margin-bottom:14px;">Example conversation</span>
       <div class="replay__head">
         <div class="replay__avatar" id="r-avatar">SK</div>
         <div class="replay__who"><strong id="r-name">Sara K.</strong><small id="r-meta">Enquired 94 days ago · 2-bed apartment</small></div>
@@ -284,10 +289,10 @@
 </section>
 
 <!-- HOW A LEAD GOES COLD -->
-<section class="section bg-1 grain">
+<section class="section bg-1">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>01 — The quiet part of your pipeline</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>01 — The quiet part of your pipeline</span>
       <h2>Most enquiries don't say no. They just stop replying.</h2>
       <p>The people on that list already know your name and already asked about your product. A well-timed, human-sounding message is often all that's missing.</p>
     </div>
@@ -308,10 +313,10 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="section bg-0 grain">
+<section class="section bg-0">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>02 — How it works</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>02 — How it works</span>
       <h2>Three steps. You stay in charge of each one.</h2>
     </div>
     <div class="steps">
@@ -326,7 +331,7 @@
           <div class="colchips">
             <span>Name</span><span>Mobile</span><span>Enquired about</span><span>Date</span><span class="consent">✓ Consent</span>
           </div>
-          <p style="margin-top:14px;font-size:13.5px;color:var(--text-muted);">We only message contacts who agreed to hear from you.</p>
+          <p style="margin-top:14px;font-size:13.5px;color:var(--ink-soft);">We only message contacts who agreed to hear from you.</p>
         </div>
         <div class="steppanel glass reveal" data-panel="1">
           <div class="approvecard">
@@ -338,7 +343,7 @@
           </div>
         </div>
         <div class="steppanel glass reveal report" data-panel="2">
-          <span class="chip chip-example pill">Illustrative — pilot report sample layout</span>
+          <span class="chip">Illustrative — pilot report sample layout</span>
           <div class="reportrow"><span class="lbl">Contacted</span><div class="track"><div class="fill" data-w="100"></div></div></div>
           <div class="reportrow"><span class="lbl">Replied</span><div class="track"><div class="fill" data-w="62"></div></div></div>
           <div class="reportrow"><span class="lbl">Interested</span><div class="track"><div class="fill" data-w="38"></div></div></div>
@@ -352,38 +357,38 @@
 </section>
 
 <!-- WHO IT SUITS -->
-<section class="section bg-1 grain">
+<section class="section bg-1">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>03 — Who it suits</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>03 — Who it suits</span>
       <h2>If you have a list of people who once showed interest, it suits you.</h2>
     </div>
     <div class="suits reveal-group">
-      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Real estate" data-modal-body="Viewing requests and portal enquiries from past launches often sit untouched months later." data-modal-steps="Opening message refers to the exact property they asked about|Kai qualifies budget, timing and area|Handed to your sales agent, with notes" data-modal-cta="Start a pilot for my real estate list" data-modal-cta-href="#pilot">
+      <div class="suit glass reveal" data-modal-title="Real estate" data-modal-body="Viewing requests and portal enquiries from past launches often sit untouched months later." data-modal-steps="Opening message refers to the exact property they asked about|Kai qualifies budget, timing and area|Handed to your sales agent, with notes" data-modal-cta="Start a pilot for my real estate list" data-modal-cta-href="#pilot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
         <div class="sub">The list you're sitting on:</div>
         <h3>Real estate</h3>
         <p>Viewing requests and portal enquiries from past launches.</p>
       </div>
-      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Mortgage &amp; insurance brokers" data-modal-body="Long decisions, with renewal or rate dates that give a natural reason to reconnect." data-modal-steps="Opening message references their original quote request|Kai qualifies current rate, renewal date and intent|Handed to your advisor, with the quote context" data-modal-cta="Start a pilot for my broker list" data-modal-cta-href="#pilot">
+      <div class="suit glass reveal" data-modal-title="Mortgage &amp; insurance brokers" data-modal-body="Long decisions, with renewal or rate dates that give a natural reason to reconnect." data-modal-steps="Opening message references their original quote request|Kai qualifies current rate, renewal date and intent|Handed to your advisor, with the quote context" data-modal-cta="Start a pilot for my broker list" data-modal-cta-href="#pilot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
         <div class="sub">The list you're sitting on:</div>
         <h3>Mortgage &amp; insurance brokers</h3>
         <p>Quote requests that never went further.</p>
       </div>
-      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Clinics" data-modal-body="People who asked about a treatment and never booked, or patients due to return." data-modal-steps="Opening message references the treatment they asked about|Kai qualifies urgency and preferred timing|Handed to your front desk to book" data-modal-cta="Start a pilot for my clinic list" data-modal-cta-href="#pilot">
+      <div class="suit glass reveal" data-modal-title="Clinics" data-modal-body="People who asked about a treatment and never booked, or patients due to return." data-modal-steps="Opening message references the treatment they asked about|Kai qualifies urgency and preferred timing|Handed to your front desk to book" data-modal-cta="Start a pilot for my clinic list" data-modal-cta-href="#pilot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
         <div class="sub">The list you're sitting on:</div>
         <h3>Clinics</h3>
         <p>Consultation enquiries that never booked.</p>
       </div>
-      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Car dealers &amp; leasing" data-modal-body="Test drive and quote requests that went nowhere, and leases coming to an end." data-modal-steps="Opening message references the model they asked about|Kai qualifies budget and timeline|Handed to your sales floor" data-modal-cta="Start a pilot for my dealer list" data-modal-cta-href="#pilot">
+      <div class="suit glass reveal" data-modal-title="Car dealers &amp; leasing" data-modal-body="Test drive and quote requests that went nowhere, and leases coming to an end." data-modal-steps="Opening message references the model they asked about|Kai qualifies budget and timeline|Handed to your sales floor" data-modal-cta="Start a pilot for my dealer list" data-modal-cta-href="#pilot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l2-6h14l2 6M5 13h14v5H5z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/></svg>
         <div class="sub">The list you're sitting on:</div>
         <h3>Car dealers &amp; leasing</h3>
         <p>Test-drive and finance enquiries that went quiet.</p>
       </div>
-      <div class="suit glass spot reveal" style="--spot-color:var(--pulse-soft);" data-modal-title="Education &amp; training" data-modal-body="Past applicants who did not enrol, ahead of the next intake." data-modal-steps="Opening message references the course they asked about|Kai qualifies intent and intake timing|Handed to your admissions team" data-modal-cta="Start a pilot for my education list" data-modal-cta-href="#pilot">
+      <div class="suit glass reveal" data-modal-title="Education &amp; training" data-modal-body="Past applicants who did not enrol, ahead of the next intake." data-modal-steps="Opening message references the course they asked about|Kai qualifies intent and intake timing|Handed to your admissions team" data-modal-cta="Start a pilot for my education list" data-modal-cta-href="#pilot">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3L2 8l10 5 10-5-10-5zM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
         <div class="sub">The list you're sitting on:</div>
         <h3>Education &amp; training</h3>
@@ -394,10 +399,10 @@
 </section>
 
 <!-- BEFORE YOU BUY MORE LEADS -->
-<section class="section bg-0 grain">
+<section class="section bg-0">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>04 — Before you buy more leads</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>04 — Before you buy more leads</span>
       <h2>The cheapest lead is the one you already have.</h2>
     </div>
     <div class="mobtoggle">
@@ -428,15 +433,15 @@
         <div class="cmp__row">As wide as your budget</div>
       </div>
     </div>
-    <p class="reveal" style="margin-top:20px;color:var(--text-muted);font-size:14.5px;max-width:60ch;">Reactivation doesn't replace new leads — it makes sure you've used the ones you have first.</p>
+    <p class="reveal" style="margin-top:20px;color:var(--ink-soft);font-size:14.5px;max-width:60ch;">Reactivation doesn't replace new leads — it makes sure you've used the ones you have first.</p>
   </div>
 </section>
 
 <!-- FIT CHECK -->
-<section class="section bg-1 grain" id="fit-check">
+<section class="section bg-1" id="fit-check">
   <div class="container">
     <div class="section-head center reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>05 — Fit check</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>05 — Fit check</span>
       <h2>Is your list a good fit? Three questions.</h2>
     </div>
     <div class="fitcheck glass reveal" id="fitcheck">
@@ -447,10 +452,10 @@
 </section>
 
 <!-- CONTROL & CONSENT -->
-<section class="section bg-0 grain">
+<section class="section bg-0">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>06 — Control and consent</span>
+      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>06 — Control and consent</span>
       <h2>Safe for your brand. Respectful to your contacts.</h2>
     </div>
     <div class="ccgrid reveal-group">
@@ -465,7 +470,7 @@
 </section>
 
 <!-- PILOT OFFER BAND -->
-<section class="section bg-1 grain">
+<section class="section bg-1">
   <div class="container">
     <div class="offerband glass reveal">
       <h2>Free pilot. Pay nothing until you see the numbers.</h2>
@@ -480,14 +485,14 @@
 </section>
 
 <!-- FOR AGENCIES -->
-<section class="section bg-0 grain" id="agencies">
+<section class="section bg-0" id="agencies">
   <div class="container">
     <div class="agencies glass reveal">
       <div class="agencies__grid">
         <div>
-          <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>07 — For agencies</span>
+          <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>07 — For agencies</span>
           <h2 style="font-size:28px;margin:14px 0 14px;">Offer reactivation to your own clients.</h2>
-          <p style="color:var(--text-muted);font-size:14.5px;line-height:1.7;">Your clients already have lists of old leads. Add reactivation to what you offer — we run Kai, you keep the client relationship. We start with a free pilot on one client's list so you can see how it performs before you offer it to anyone else.</p>
+          <p style="color:var(--ink-soft);font-size:14.5px;line-height:1.7;">Your clients already have lists of old leads. Add reactivation to what you offer — we run Kai, you keep the client relationship. We start with a free pilot on one client's list so you can see how it performs before you offer it to anyone else.</p>
           <ul>
             <li>Choose a client, share their list, review the report</li>
             <li>We set up Kai, run the pilot, report the results</li>
@@ -501,11 +506,11 @@
 </section>
 
 <!-- FAQ -->
-<section class="section bg-1 grain">
+<section class="section bg-1">
   <div class="container">
     <div class="faqwrap">
       <div class="faqside reveal">
-        <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>08 — Questions</span>
+        <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>08 — Questions</span>
         <h2 style="font-size:28px;margin-top:14px;">Before you ask.</h2>
         <p>Still unsure?</p>
         <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp us</a>
@@ -526,13 +531,13 @@
 </section>
 
 <!-- PILOT FORM -->
-<section class="section bg-0 grain" id="pilot">
+<section class="section bg-0" id="pilot">
   <div class="container">
     <div class="pilotwrap">
       <div class="pilotside reveal">
-        <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--pulse)"></span>Request your free pilot</span>
+        <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--accent)"></span>Request your free pilot</span>
         <h2 style="font-size:32px;margin:14px 0 14px;">Tell us about your list.</h2>
-        <p style="color:var(--text-muted);font-size:15px;line-height:1.7;">A few details are enough. We reply on WhatsApp with questions about the list and a proposed start date.</p>
+        <p style="color:var(--ink-soft);font-size:15px;line-height:1.7;">A few details are enough. We reply on WhatsApp with questions about the list and a proposed start date.</p>
         <ol>
           <li>Send a sample of your list</li>
           <li>We confirm consent and set up Kai</li>
@@ -585,39 +590,21 @@
   </div>
 </section>
 
-<!-- MORE FROM ALFEA -->
-<section class="section bg-1 grain">
-  <div class="container">
-    <span class="eyebrow reveal"><span class="eyebrow__dot" style="background:var(--sodium)"></span>Also from Alfea</span>
-    <div class="more reveal-group" style="margin-top:20px;">
-      <a href="/website-creation/" class="morecard glass spot reveal" style="--spot-color:var(--blueprint-soft);">
-        <div class="icowrap" style="background:var(--blueprint-soft);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blueprint)" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
-        <div><h4>Website Creation</h4><p>Fixed-price sites, live in 5–10 days.</p></div>
-      </a>
-      <a href="https://julaide.io" target="_blank" rel="noopener" class="morecard glass spot reveal" style="--spot-color:var(--reel-soft);">
-        <div class="icowrap" style="background:var(--reel-soft);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--reel)" stroke-width="1.6"><path d="M3 7l8-4 8 4-8 4-8-4z"/><path d="M3 7v10l8 4 8-4V7"/></svg></div>
-        <div><h4>Walkthrough Videos <span class="mono" style="font-size:10px;">julaide.io ↗</span></h4><p>Cinematic video from listing photos.</p></div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
-          <span>alfea</span>
-        </div>
-        <p>AI agents, websites and video for businesses that live on enquiries.</p>
-      </div>
-      <div><h4>Products</h4><ul class="footer-links"><li><a href="/reactivate-leads/">Reactivate Leads</a></li><li><a href="/website-creation/">Website Creation</a></li><li><a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li></ul></div>
-      <div><h4>Contact</h4><ul class="footer-links"><li><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp +352 621 990 289</a></li></ul></div>
-      <div><h4>Company</h4><ul class="footer-links"><li><a href="#agencies">Partner with us</a></li></ul></div>
+    <a class="footer-back" href="/">← All services</a>
+    <div class="footer-inner">
+      <a class="footer-brand" href="/" aria-label="Alfea home"><img src="https://web-creation.alfea.io/logo.png" alt="Alfea" width="88" height="24"></a>
+      <ul class="footer-links" role="list">
+        <li><a href="/reactivate-leads/">Reactivate Leads</a></li>
+        <li><a href="/website-creation/">Website Creation</a></li>
+        <li><a href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
+      </ul>
     </div>
-    <div class="footer-bottom"><span>© <span data-year></span> Alfea</span><span class="mono">AI AGENTS · WEBSITES · VIDEO</span></div>
-    <div class="footer-ghost" aria-hidden="true">alfea</div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Alfea</span>
+      <span><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a></span>
+    </div>
   </div>
 </footer>
 
@@ -844,22 +831,22 @@
     var yesCount = fcAnswers.filter(Boolean).length;
     var html = '';
     if (fcAnswers[0] && fcAnswers[1] && fcAnswers[2]) {
-      html = '<div class="fc-result"><div class="icon" style="background:var(--pulse-soft);border:1px solid var(--pulse);color:var(--pulse);font-size:24px;">✓</div>' +
+      html = '<div class="fc-result"><div class="icon" style="background:var(--tint);border:1px solid var(--accent);color:var(--accent);font-size:24px;">✓</div>' +
         '<h3>Strong fit for a free pilot.</h3><p>You have the three things a pilot needs. Tell us a little about the list and we’ll set up a sample.</p>' +
         '<a class="btn btn-primary" href="#pilot" id="fc-continue" data-bucket="5000plus">Continue to the pilot form <span class="arrow">→</span></a>' +
         '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
     } else if (!fcAnswers[0]) {
-      html = '<div class="fc-result"><div class="icon" style="background:rgba(255,255,255,.05);border:1px solid var(--line-strong);">—</div>' +
+      html = '<div class="fc-result"><div class="icon" style="background:var(--bg-2);border:1px solid var(--line-strong);">—</div>' +
         '<h3>Kai works best on people who already showed interest.</h3><p>If you’re after brand-new leads, this isn’t the right tool — but talk to us anyway, we’ll point you the right way.</p>' +
         '<div class="ctas" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;"><a class="btn btn-primary" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp us</a><a class="btn btn-ghost" href="/website-creation/">Or see Website Creation →</a></div>' +
         '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
     } else if (!fcAnswers[1]) {
-      html = '<div class="fc-result"><div class="icon" style="background:rgba(255,255,255,.05);border:1px solid var(--line-strong);">—</div>' +
+      html = '<div class="fc-result"><div class="icon" style="background:var(--bg-2);border:1px solid var(--line-strong);">—</div>' +
         '<h3>Kai reaches people on WhatsApp.</h3><p>So we need mobile numbers. If you have emails only, tell us — we’ll be straight about whether it’s worth it.</p>' +
         '<a class="btn btn-primary" href="#pilot" id="fc-continue">Continue to the form anyway</a>' +
         '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';
     } else {
-      html = '<div class="fc-result"><div class="icon" style="background:rgba(255,255,255,.05);border:1px solid var(--line-strong);">—</div>' +
+      html = '<div class="fc-result"><div class="icon" style="background:var(--bg-2);border:1px solid var(--line-strong);">—</div>' +
         '<h3>Smaller lists can still work.</h3><p>Results are harder to read with fewer contacts. Tell us the size and we’ll be honest about whether a pilot is worth running.</p>' +
         '<a class="btn btn-primary" href="#pilot" id="fc-continue" data-bucket="under200">Continue to the form <span class="arrow">→</span></a>' +
         '<div><a class="fc-back" id="fc-restart" style="margin-top:14px;">Start over</a></div></div>';

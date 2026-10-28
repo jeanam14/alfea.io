@@ -3,461 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alfea — AI agents, websites and video for growing businesses</title>
-<meta name="description" content="Alfea builds AI agents, websites and walkthrough videos for businesses that live on enquiries — reactivate old leads on WhatsApp, get a fixed-price website live in days, or turn listing photos into cinematic video.">
-<link rel="icon" href="data:,">
+<title>Alfea — AI lead reactivation, websites and walkthrough video</title>
+<meta name="description" content="Three ways Alfea helps small businesses grow: Kai re-engages old leads on WhatsApp, we build fixed-price websites, and Julaide makes walkthrough videos.">
+<link rel="icon" type="image/svg+xml" href="https://web-creation.alfea.io/favicon.svg">
 <link rel="stylesheet" href="assets/alfea.css">
 <style>
-/* ---- Homepage-only ---- */
-.hero { position: relative; min-height: 94vh; display: flex; align-items: center; padding: 150px 0 80px; overflow: hidden; }
-.hero .glow {
-  background:
-    radial-gradient(640px circle at 18% 20%, rgba(63,224,165,.16), transparent 60%),
-    radial-gradient(640px circle at 55% 40%, rgba(127,168,255,.14), transparent 60%),
-    radial-gradient(640px circle at 85% 70%, rgba(255,126,95,.14), transparent 60%);
-}
-.hero .dotgrid { position: absolute; inset: 0; z-index: 0;
-  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-  background-size: 28px 28px;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.6), transparent 75%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,.6), transparent 75%);
-}
-.hero__grid { position: relative; z-index: 2; display: grid; gap: 56px; grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 980px) { .hero__grid { grid-template-columns: 7fr 5fr; } }
-.hero__copy .eyebrow { margin-bottom: 20px; }
-.hero__copy h1 { font-size: clamp(38px,6vw,76px); margin-bottom: 22px; text-transform: none; }
-.hero__copy p.lead { font-size: 17.5px; color: var(--text-muted); max-width: 54ch; margin-bottom: 30px; line-height: 1.7; }
-.hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
-.hero__facts { display: flex; flex-wrap: wrap; gap: 0; font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); }
-.hero__facts span { padding: 0 16px; border-left: 1px solid var(--line); }
-.hero__facts span:first-child { padding-left: 0; border-left: none; }
+:root { --accent: var(--ink); }
 
-.fanstack { position: relative; height: 420px; }
-.fanpanel { position: absolute; width: 280px; padding: 18px; animation: float 6s ease-in-out infinite; cursor: pointer; transition: transform .3s var(--ease), z-index 0s; }
-.fanpanel:hover { transform: translateY(-6px) rotate(0deg) scale(1.03) !important; z-index: 10; }
-.fanpanel--1 { top: 0; left: 10%; transform: rotate(-3deg); animation-delay: 0s; --spot-color: var(--pulse-soft); border-color: rgba(63,224,165,.25) !important; }
-.fanpanel--2 { top: 90px; left: 30%; transform: rotate(2deg); animation-delay: -2s; --spot-color: var(--blueprint-soft); border-color: rgba(127,168,255,.25) !important; }
-.fanpanel--3 { top: 190px; left: 6%; transform: rotate(-1deg); animation-delay: -4s; --spot-color: var(--reel-soft); border-color: rgba(255,126,95,.25) !important; }
-@keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -8px; } }
-.fanpanel .chip { margin-bottom: 10px; }
-.fanpanel__chat { display: flex; flex-direction: column; gap: 8px; }
-.fanpanel__bubble { font-size: 12.5px; padding: 8px 11px; border-radius: 12px; max-width: 90%; line-height: 1.4; }
-.fanpanel__bubble--us { background: rgba(255,255,255,.06); border: 1px solid var(--line); align-self: flex-start; }
-.fanpanel__bubble--them { background: var(--pulse-soft); align-self: flex-end; }
-.fanpanel__browser { display: flex; flex-direction: column; gap: 10px; }
-.fanpanel__chrome { display: flex; gap: 5px; }
-.fanpanel__chrome span { width: 7px; height: 7px; border-radius: 50%; background: var(--line-strong); }
-.fanpanel__wire { display: flex; flex-direction: column; gap: 6px; }
-.fanpanel__wire .bar { height: 8px; border-radius: 4px; background: rgba(127,168,255,.25); }
-.fanpanel__wire .bar.sm { width: 60%; }
-.fanpanel__wire .photo { height: 46px; border-radius: 6px; background: linear-gradient(135deg, rgba(127,168,255,.25), rgba(127,168,255,.08)); margin-top: 4px; }
-.fanpanel__video { position: relative; height: 130px; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, #3a2a22, #1a1210); }
-.fanpanel__video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,126,95,.35), transparent 60%); animation: panbg 8s ease-in-out infinite alternate; }
-@keyframes panbg { from { transform: scale(1) translate(0,0); } to { transform: scale(1.15) translate(-4%,-3%); } }
-.fanpanel__play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; }
-.fanpanel__play svg { width: 34px; height: 34px; opacity: .85; }
-.fanpanel__tc { position: absolute; bottom: 8px; right: 10px; font-family: var(--mono); font-size: 10px; color: #fff; z-index: 1; opacity: .85; }
-.fanpanel__label { margin-top: 10px; font-size: 12px; font-weight: 600; opacity: 0; transition: opacity .2s; }
-.fanpanel:hover .fanpanel__label { opacity: 1; }
-@media (max-width: 980px) { .fanstack { height: 360px; margin: 0 auto; max-width: 320px; } .fanpanel { width: 240px; } }
+.hero { padding: 120px 0 72px; min-height: 56vh; display: flex; align-items: center; }
+.hero__inner { max-width: 760px; }
+.hero h1 { font-size: clamp(34px,5.4vw,58px); margin: 16px 0 18px; }
+.hero p.lead { font-size: 18px; color: var(--ink-soft); line-height: 1.6; max-width: 56ch; margin-bottom: 22px; }
+.hero__more { font-size: 14.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.hero__more:hover { color: var(--ink); }
 
-/* Products grid */
-.products { display: grid; gap: 20px; grid-template-columns: 1fr; }
-@media (min-width: 900px) { .products { grid-template-columns: repeat(3,1fr); } }
-.pcard { padding: 26px; display: flex; flex-direction: column; min-height: 520px; }
-.pcard__vignette { height: 160px; border-radius: 14px; margin-bottom: 20px; position: relative; overflow: hidden; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
-.pcard h3 { font-size: 21px; margin: 14px 0 10px; }
-.pcard p { font-size: 14.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; flex: 1; }
-.pcard ul { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
-.pcard li { font-family: var(--mono); font-size: 12px; color: var(--text-muted); display: flex; gap: 8px; align-items: flex-start; }
-.pcard li::before { content: '—'; flex: none; }
-.pcard__foot { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; }
-.pcard__foot .path { font-family: var(--mono); color: var(--text-dim); }
-.pcard__foot .go { font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s; }
-.pcard:hover .go { gap: 8px; }
-.pcard--ext .pcard__foot .path { display: flex; flex-direction: column; gap: 2px; }
-.pcard--ext .pcard__foot .path small { font-size: 10px; color: var(--text-dim); font-family: var(--sans); font-style: italic; }
+.svc-head { margin-bottom: 36px; }
+.svc-head h2 { font-size: clamp(22px,2.6vw,28px); }
+.svc-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+@media (min-width: 880px) { .svc-grid { grid-template-columns: repeat(3,1fr); } }
 
-/* vignette internals */
-.vig-chips { display: flex; flex-direction: column; gap: 7px; padding: 14px; justify-content: center; height: 100%; }
-.vig-chip { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); opacity: .35; transition: opacity .3s, color .3s; }
-.vig-chip .d { width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); flex: none; }
-.vig-chip.lit { opacity: 1; color: var(--text); }
-.vig-chip.lit .d { background: var(--pulse); box-shadow: 0 0 8px var(--pulse); }
-.vig-browser { height: 100%; padding: 14px; display: flex; flex-direction: column; gap: 7px; justify-content: center; }
-.vig-browser .bar { height: 7px; border-radius: 4px; background: rgba(127,168,255,.18); transition: background 1s; }
-.vig-browser .bar.lit { background: rgba(127,168,255,.6); }
-.vig-browser .photo { height: 38px; border-radius: 6px; background: rgba(127,168,255,.08); margin-top: 4px; transition: background 1s; }
-.vig-browser .photo.lit { background: linear-gradient(135deg, rgba(127,168,255,.45), rgba(127,168,255,.15)); }
-.vig-video { height: 100%; position: relative; background: linear-gradient(135deg,#3a2a22,#1a1210); }
-.vig-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,126,95,.3), transparent 60%); animation: panbg 7s ease-in-out infinite alternate; }
-.vig-video .scrub { position: absolute; left: 14px; right: 14px; bottom: 12px; height: 2px; background: rgba(255,255,255,.2); border-radius: 2px; z-index: 1; }
-.vig-video .scrub::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 30%; background: var(--reel); border-radius: 2px; animation: scrub 5s linear infinite; }
-@keyframes scrub { 0% { width: 4%; } 100% { width: 96%; } }
+.svc-card { display: flex; flex-direction: column; padding: 32px; overflow: hidden; }
+@media (max-width: 640px) { .svc-card { padding: 24px; } }
+.svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--bar); border-radius: var(--radius-card) var(--radius-card) 0 0; }
+.svc-card .tile { width: 40px; height: 40px; border-radius: 10px; background: var(--tint); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex: none; }
+.svc-card .tile svg { width: 20px; height: 20px; color: var(--deep); }
+.svc-card .label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--deep); margin-bottom: 10px; }
+.svc-card h3 { font-size: 24px; margin-bottom: 12px; }
+.svc-card p.desc { font-size: 15px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 18px; flex: 1; }
+.svc-card ul.facts { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 22px; }
+.svc-card ul.facts li { font-size: 13.5px; color: var(--ink-soft); padding-left: 16px; position: relative; }
+.svc-card ul.facts li::before { content: '—'; position: absolute; left: 0; color: var(--deep); }
+.svc-card .go { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14.5px; color: var(--deep); }
+.svc-card .go .arrow { transition: transform .2s var(--ease); }
+.svc-card:hover .go .arrow { transform: translateX(4px); }
+.svc-card:hover { border-color: var(--bar); }
 
-/* How we work tiles */
-.tiles { display: grid; gap: 20px; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .tiles { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1000px) { .tiles { grid-template-columns: repeat(4,1fr); } }
-.tile { padding: 26px; }
-.tile .num { font-family: var(--mono); font-size: 13px; color: var(--text-dim); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-.tile .num .d { width: 7px; height: 7px; border-radius: 50%; }
-.tile h3 { font-size: 17px; margin-bottom: 8px; }
-.tile p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
-
-/* Fit finder */
-.fit { display: grid; gap: 40px; grid-template-columns: 1fr; }
-@media (min-width: 900px) { .fit { grid-template-columns: 5fr 7fr; } }
-.fit__options { display: flex; flex-direction: column; gap: 12px; }
-.fit__opt { text-align: left; padding: 20px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.02); transition: all .2s; width: 100%; }
-.fit__opt[aria-pressed="true"] { border-color: var(--sodium); background: var(--sodium-soft); }
-.fit__opt strong { display: block; font-size: 15.5px; margin-bottom: 4px; }
-.fit__opt span { font-size: 13px; color: var(--text-muted); }
-.fit__panel { padding: 32px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; transition: border-color .4s; }
-.fit__panel h3 { font-size: 24px; margin: 14px 0 12px; }
-.fit__panel p { font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 22px; }
-.fit__panel .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-
-/* Who we work with */
-.chips-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
-.ichip { padding: 14px 18px; border-radius: 14px; display: flex; align-items: center; gap: 12px; transition: border-color .2s; }
-.ichip .dots { display: flex; gap: 4px; }
-.ichip .dots i { width: 7px; height: 7px; border-radius: 50%; display: block; opacity: .5; transition: opacity .2s; }
-.ichip:hover .dots i { opacity: 1; }
-.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-dim); }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.legend i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-
-/* CTA band */
-.cta-band { padding: 56px; text-align: center; max-width: 760px; margin: 0 auto; position: relative; overflow: hidden; }
-.cta-band::before { content: ''; position: absolute; inset: -40%; background: radial-gradient(circle at 50% 30%, rgba(255,181,71,.18), transparent 60%); pointer-events: none; }
-.cta-band h2 { font-size: clamp(26px,3.4vw,40px); margin-bottom: 14px; position: relative; }
-.cta-band p { color: var(--text-muted); margin-bottom: 28px; position: relative; font-size: 15.5px; }
-.cta-band .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.footer-note { text-align: center; font-size: 14.5px; color: var(--ink-soft); margin-bottom: 28px; }
+.footer-note a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--line-strong); }
 </style>
 </head>
 <body>
 
-<nav class="nav" aria-label="Primary">
-  <a href="/" class="nav__brand">
-    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
-    <span>alfea</span>
-  </a>
-  <div class="nav__links">
-    <a href="/reactivate-leads/">Reactivate Leads</a>
-    <a href="/website-creation/">Website Creation</a>
-    <a href="https://julaide.io" target="_blank" rel="noopener" aria-label="Walkthrough Videos (opens julaide.io in a new tab)">Walkthrough Videos <span class="ext">↗</span></a>
-  </div>
-  <div class="nav__actions">
-    <a class="btn btn-ghost btn-sm" href="https://wa.me/352621990289?text=Hi%20Alfea%2C%20I%27d%20like%20to%20know%20which%20of%20your%20services%20fits%20my%20business." target="_blank" rel="noopener">WhatsApp</a>
-    <button class="nav__burger" aria-label="Menu"><span></span></button>
+<nav class="nav">
+  <div class="container">
+    <a class="nav__brand" href="/" aria-label="Alfea home">
+      <img class="nav__logo" src="https://web-creation.alfea.io/logo.png" alt="Alfea" width="110" height="30">
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="/reactivate-leads/">Reactivate Leads</a></li>
+      <li><a href="/website-creation/">Website Creation</a></li>
+      <li><a class="ext" href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
+    </ul>
+    <button class="nav__burger" aria-label="Open menu"><span></span></button>
   </div>
 </nav>
+
 <div class="sheet">
-  <button class="sheet__close" aria-label="Close">&times;</button>
+  <button class="sheet__close" aria-label="Close">×</button>
   <a href="/reactivate-leads/">Reactivate Leads</a>
   <a href="/website-creation/">Website Creation</a>
-  <a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
-  <div class="sheet__actions">
-    <a class="btn btn-ghost" href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a>
-    <a class="btn btn-primary" href="#products">Explore what we do <span class="arrow">→</span></a>
-  </div>
+  <a href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a>
 </div>
 
-<!-- HERO -->
-<section class="hero grain" id="top">
-  <div class="dotgrid" aria-hidden="true"></div>
-  <div class="glow" aria-hidden="true"></div>
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--sodium)"></span>AI AGENTS · WEBSITES · LISTING VIDEO</span>
-      <h1>We turn the attention you've already earned into <span class="em">revenue.</span></h1>
-      <p class="lead">Alfea builds AI agents, websites and walkthrough videos for businesses that live on enquiries — real estate agencies, clinics, brokers, professional firms and local service businesses. Re-open conversations that went quiet, look credible the moment someone finds you, and let buyers see a property before they visit.</p>
-      <div class="hero__ctas">
-        <a class="btn btn-primary" href="#products">Explore what we do <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="https://wa.me/352621990289?text=Hi%20Alfea%2C%20I%27d%20like%20to%20know%20which%20of%20your%20services%20fits%20my%20business." target="_blank" rel="noopener">Talk to us on WhatsApp</a>
-      </div>
-      <div class="hero__facts">
-        <span>Free pilot on Kai</span>
-        <span>Fixed-price websites</span>
-        <span>Videos from $79</span>
-      </div>
-    </div>
-    <div class="fanstack" role="group" aria-label="Our three products">
-      <a href="/reactivate-leads/" class="fanpanel glass spot fanpanel--1" style="--spot-border: rgba(63,224,165,.4);">
-        <span class="chip" style="color:var(--pulse);border-color:rgba(63,224,165,.35);background:var(--pulse-soft);">● Replied — 94 days later</span>
-        <div class="fanpanel__chat">
-          <div class="fanpanel__bubble fanpanel__bubble--us">Hi Sara — still looking for a 2-bed near the marina?</div>
-          <div class="fanpanel__bubble fanpanel__bubble--them">Yes actually! Is the one from March still available?</div>
-        </div>
-        <div class="fanpanel__label">Reactivate Leads →</div>
-      </a>
-      <a href="/website-creation/" class="fanpanel glass spot fanpanel--2" style="--spot-border: rgba(127,168,255,.4);">
-        <div class="fanpanel__browser">
-          <div class="fanpanel__chrome"><span></span><span></span><span></span></div>
-          <div class="fanpanel__wire">
-            <div class="bar"></div><div class="bar sm"></div>
-            <div class="photo"></div>
-          </div>
-        </div>
-        <div class="fanpanel__label" style="color:var(--blueprint);">Live in 5–10 days</div>
-      </a>
-      <a href="https://julaide.io" target="_blank" rel="noopener" class="fanpanel glass spot fanpanel--3" style="--spot-border: rgba(255,126,95,.4);">
-        <div class="fanpanel__video">
-          <div class="fanpanel__play"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.35)"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
-          <span class="fanpanel__tc">00:42</span>
-        </div>
-        <div class="fanpanel__label" style="color:var(--reel);">Walkthrough Video ↗</div>
-      </a>
-    </div>
+<main>
+<section class="hero">
+  <div class="container hero__inner">
+    <span class="eyebrow"><span class="eyebrow__dot"></span>Alfea · Growth services for small businesses</span>
+    <h1>Three ways to bring in <em>more</em> business.</h1>
+    <p class="lead">Pick what you need: an AI that re-engages your old leads, a fixed-price website, or a walkthrough video of your business.</p>
+    <a class="hero__more" href="#services">See the services ↓</a>
   </div>
 </section>
 
-<!-- PRODUCTS -->
-<section class="section bg-1 grain" id="products">
+<section class="section bg-1" id="services">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--sodium)"></span>01 — What we do</span>
-      <h2>Three ways we help you grow.</h2>
-      <p>Each one solves a different leak — pick the one that fits, or combine them.</p>
+    <div class="svc-head">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>What we do</span>
     </div>
-    <div class="products reveal-group">
-      <a href="/reactivate-leads/" class="pcard glass spot reveal" style="--spot-color:var(--pulse-soft); --spot-border: rgba(63,224,165,.4);">
-        <div class="pcard__vignette">
-          <div class="vig-chips" id="vig-chips">
-            <div class="vig-chip" data-i="0"><span class="d"></span>Contacted</div>
-            <div class="vig-chip" data-i="1"><span class="d"></span>Replied</div>
-            <div class="vig-chip" data-i="2"><span class="d"></span>Interested</div>
-            <div class="vig-chip" data-i="3"><span class="d"></span>Call booked</div>
-          </div>
-        </div>
-        <span class="chip" style="color:var(--pulse);border-color:rgba(63,224,165,.35);">AI Agent · WhatsApp</span>
-        <h3>Reactivate leads with Kai</h3>
-        <p>Kai messages the people who already enquired and went quiet — on WhatsApp — picks the conversation back up, and hands the warm ones to your team.</p>
-        <ul>
+    <div class="svc-grid">
+
+      <a href="/reactivate-leads/" class="svc-card glass" style="--bar:#0DBC9C; --deep:#0A6E63; --tint:#E8F7F3;">
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></div>
+        <span class="label">Reactivate Leads · Kai</span>
+        <h3>Turn dead leads into booked calls.</h3>
+        <p class="desc">Kai, our AI assistant, messages your old enquiries on WhatsApp, picks up where the conversation stopped, and hands the warm ones to your team.</p>
+        <ul class="facts">
+          <li>WhatsApp-native, in English or Arabic</li>
           <li>Free pilot on a sample of your list</li>
           <li>You approve the opening message</li>
-          <li>Report: replied, interested, calls booked</li>
         </ul>
-        <div class="pcard__foot"><span class="path">/reactivate-leads</span><span class="go">Explore <span class="arrow">→</span></span></div>
+        <span class="go">Explore Reactivate Leads <span class="arrow">→</span></span>
       </a>
 
-      <a href="/website-creation/" class="pcard glass spot reveal" style="--spot-color:var(--blueprint-soft); --spot-border: rgba(127,168,255,.4);">
-        <div class="pcard__vignette">
-          <div class="vig-browser" id="vig-browser">
-            <div class="bar" data-i="0"></div>
-            <div class="bar sm" data-i="1"></div>
-            <div class="photo" data-i="2"></div>
-          </div>
-        </div>
-        <span class="chip" style="color:var(--blueprint);border-color:rgba(127,168,255,.35);">Web · Fixed Price</span>
-        <h3>Website creation</h3>
-        <p>A custom-designed site, written and launched in 5–10 days — at a fixed price agreed before we start. No agency bloat, no monthly lock-in.</p>
-        <ul>
+      <a href="/website-creation/" class="svc-card glass" style="--bar:#D17147; --deep:#A9532F; --tint:#F0DCD2;">
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v5"></path></svg></div>
+        <span class="label">Website Creation</span>
+        <h3>A website that works <em style="color:#A9532F;">as hard</em> as you do.</h3>
+        <p class="desc">A custom-designed, fixed-price site for your business — written and launched in 5–10 days, with real portfolio work behind it.</p>
+        <ul class="facts">
+          <li>Fixed price, agreed before we start</li>
           <li>Custom design, not a template</li>
-          <li>Booking &amp; WhatsApp built in</li>
           <li>2 revision rounds · yours to keep</li>
         </ul>
-        <div class="pcard__foot"><span class="path">/website-creation</span><span class="go">Explore <span class="arrow">→</span></span></div>
+        <span class="go">Explore Website Creation <span class="arrow">→</span></span>
       </a>
 
-      <a href="https://julaide.io" target="_blank" rel="noopener" aria-label="Visit Julaide (opens julaide.io in a new tab)" class="pcard pcard--ext glass spot reveal" style="--spot-color:var(--reel-soft); --spot-border: rgba(255,126,95,.4);">
-        <div class="pcard__vignette vig-video"><div class="scrub"></div></div>
-        <span class="chip" style="color:var(--reel);border-color:rgba(255,126,95,.35);">Video · Real Estate &amp; Rentals</span>
-        <h3>Walkthrough videos <small style="font-weight:400;font-size:12px;color:var(--text-dim);">— Julaide, by Alfea</small></h3>
-        <p>Cinematic AI walkthroughs made from your listing photos — for properties, villas and holiday rentals. No shoot needed.</p>
-        <ul>
-          <li>From $79 per video</li>
+      <a href="https://julaide.io/" target="_blank" rel="noopener" aria-label="Visit Julaide (opens julaide.io in a new tab)" class="svc-card glass" style="--bar:#4E5A86; --deep:#3B4569; --tint:#E6E8F1;">
+        <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M10 9l5 3-5 3V9z"></path></svg></div>
+        <span class="label">Walkthrough Videos · Julaide</span>
+        <h3>Let customers walk through <em style="color:#3B4569;">before</em> they walk in.</h3>
+        <p class="desc">A short guided video tour of your space or service, produced by Julaide — our video partner product, made from photos you already have.</p>
+        <ul class="facts">
+          <li>No shoot needed</li>
           <li>48-hour turnaround</li>
-          <li>Made from photos you already have</li>
+          <li>Separate site — julaide.io</li>
         </ul>
-        <div class="pcard__foot"><span class="path">julaide.io ↗<small>Separate site</small></span><span class="go">Visit Julaide <span class="arrow">↗</span></span></div>
+        <span class="go">Visit Julaide <span class="arrow">↗</span></span>
       </a>
-    </div>
-  </div>
-</section>
 
-<!-- HOW WE WORK -->
-<section class="section bg-0 grain">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--sodium)"></span>02 — How we work</span>
-      <h2>Proof first. Fixed prices. Fast.</h2>
-    </div>
-    <div class="tiles reveal-group">
-      <div class="tile glass spot reveal"><div class="num"><span class="d" style="background:var(--pulse)"></span>01</div><h3>Proof before payment</h3><p>Kai starts with a free pilot on a sample of your list. You pay nothing until you've seen the numbers.</p></div>
-      <div class="tile glass spot reveal"><div class="num"><span class="d" style="background:var(--blueprint)"></span>02</div><h3>Prices you know upfront</h3><p>Websites are quoted on a 20-minute call and the price is fixed. Videos start at $79.</p></div>
-      <div class="tile glass spot reveal"><div class="num"><span class="d" style="background:var(--reel)"></span>03</div><h3>Days, not months</h3><p>Sites go live in 5–10 days. Walkthrough videos come back in 48 hours.</p></div>
-      <div class="tile glass spot reveal"><div class="num"><span class="d" style="background:var(--sodium)"></span>04</div><h3>You stay in control</h3><p>You approve every opening message, own your site outright, and can stop any time.</p></div>
     </div>
   </div>
 </section>
-
-<!-- WHICH ONE FITS -->
-<section class="section bg-1 grain">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--sodium)"></span>03 — Find your fit</span>
-      <h2>Where are you losing customers?</h2>
-    </div>
-    <div class="fit">
-      <div class="fit__options" role="radiogroup" aria-label="Choose your situation">
-        <button class="fit__opt" role="radio" aria-pressed="true" data-fit="0">
-          <strong>I have a list of old enquiries that went cold.</strong>
-          <span>People who asked, then stopped replying.</span>
-        </button>
-        <button class="fit__opt" role="radio" aria-pressed="false" data-fit="1">
-          <strong>People find me, but my website lets me down — or I don't have one.</strong>
-          <span>Credibility problem, not a traffic problem.</span>
-        </button>
-        <button class="fit__opt" role="radio" aria-pressed="false" data-fit="2">
-          <strong>I sell or rent property and my listings need to stand out.</strong>
-          <span>Photos alone aren't converting browsers to viewings.</span>
-        </button>
-      </div>
-      <div class="fit__panel glass" id="fit-panel" style="border-color:rgba(63,224,165,.35);">
-        <!-- filled by JS -->
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO WE WORK WITH -->
-<section class="section bg-0 grain">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="eyebrow__dot" style="background:var(--sodium)"></span>04 — Who we work with</span>
-      <h2>Built for businesses that run on enquiries.</h2>
-    </div>
-    <div class="chips-row reveal-group">
-      <div class="ichip glass spot reveal"><strong>Real estate agencies</strong><span class="dots"><i style="background:var(--pulse)"></i><i style="background:var(--blueprint)"></i><i style="background:var(--reel)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Holiday rentals &amp; villas</strong><span class="dots"><i style="background:var(--reel)"></i><i style="background:var(--blueprint)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Clinics</strong><span class="dots"><i style="background:var(--pulse)"></i><i style="background:var(--blueprint)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Mortgage &amp; insurance brokers</strong><span class="dots"><i style="background:var(--pulse)"></i><i style="background:var(--blueprint)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Car dealers &amp; leasing</strong><span class="dots"><i style="background:var(--pulse)"></i><i style="background:var(--blueprint)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Education &amp; training</strong><span class="dots"><i style="background:var(--pulse)"></i><i style="background:var(--blueprint)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Law &amp; professional firms</strong><span class="dots"><i style="background:var(--blueprint)"></i></span></div>
-      <div class="ichip glass spot reveal"><strong>Local service businesses</strong><span class="dots"><i style="background:var(--blueprint)"></i></span></div>
-    </div>
-    <div class="legend reveal">
-      <span><i style="background:var(--pulse)"></i>Reactivate Leads</span>
-      <span><i style="background:var(--blueprint)"></i>Website Creation</span>
-      <span><i style="background:var(--reel)"></i>Walkthrough Video</span>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="section bg-1 grain">
-  <div class="container">
-    <div class="cta-band glass reveal">
-      <h2>Not sure where to start? Tell us how customers reach you <span class="em">today.</span></h2>
-      <p>One short conversation on WhatsApp — we'll tell you honestly which of the three, if any, is worth doing first.</p>
-      <div class="ctas">
-        <a class="btn btn-primary" href="https://wa.me/352621990289?text=Hi%20Alfea%2C%20not%20sure%20where%20to%20start%20%E2%80%94%20can%20we%20talk%3F" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
-        <a class="btn btn-ghost" href="/reactivate-leads/#pilot">Start a free Kai pilot <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" opacity=".5"/><circle cx="26.2" cy="10" r="3" fill="var(--sodium)"/></svg>
-          <span>alfea</span>
-        </div>
-        <p>AI agents, websites and video for businesses that live on enquiries.</p>
-      </div>
-      <div>
-        <h4>Products</h4>
-        <ul class="footer-links">
-          <li><a href="/reactivate-leads/">Reactivate Leads</a></li>
-          <li><a href="/website-creation/">Website Creation</a></li>
-          <li><a href="https://julaide.io" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul class="footer-links">
-          <li><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp +352 621 990 289</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul class="footer-links">
-          <li><a href="/reactivate-leads/#agencies">Partner with us</a></li>
-        </ul>
-      </div>
+    <p class="footer-note">Not sure which fits? Email us at <a href="mailto:jean@alfea.io">jean@alfea.io</a>.</p>
+    <div class="footer-inner">
+      <a class="footer-brand" href="/" aria-label="Alfea home"><img src="https://web-creation.alfea.io/logo.png" alt="Alfea" width="88" height="24"></a>
+      <ul class="footer-links" role="list">
+        <li><a href="/reactivate-leads/">Reactivate Leads</a></li>
+        <li><a href="/website-creation/">Website Creation</a></li>
+        <li><a href="https://julaide.io/" target="_blank" rel="noopener">Walkthrough Videos ↗</a></li>
+      </ul>
     </div>
     <div class="footer-bottom">
       <span>© <span data-year></span> Alfea</span>
-      <span class="mono">AI AGENTS · WEBSITES · VIDEO</span>
+      <span><a href="https://wa.me/352621990289" target="_blank" rel="noopener">WhatsApp</a></span>
     </div>
-    <div class="footer-ghost" aria-hidden="true">alfea</div>
   </div>
 </footer>
 
-<div class="modal-overlay" id="modal-overlay" tabindex="-1"><div class="modal-panel" tabindex="-1"></div></div>
 <script src="assets/alfea.js"></script>
-<script>
-(function () {
-  // vignette micro-animations
-  var chips = document.querySelectorAll('#vig-chips .vig-chip');
-  var ci = 0;
-  if (chips.length) setInterval(function () {
-    chips.forEach(function (c) { c.classList.remove('lit'); });
-    chips[ci].classList.add('lit');
-    ci = (ci + 1) % chips.length;
-  }, 900);
-
-  var browserEls = document.querySelectorAll('#vig-browser [data-i]');
-  var bi = 0;
-  if (browserEls.length) setInterval(function () {
-    browserEls.forEach(function (c) { c.classList.remove('lit'); });
-    for (var k = 0; k <= bi; k++) browserEls[k].classList.add('lit');
-    bi = (bi + 1) % browserEls.length;
-  }, 1100);
-
-  // Fit finder
-  var FIT = [
-    {
-      color: 'var(--pulse)', border: 'rgba(63,224,165,.35)',
-      html: '<span class="chip" style="color:var(--pulse);border-color:rgba(63,224,165,.35);">AI Agent · WhatsApp</span>' +
-        '<h3>Reactivate leads with Kai.</h3>' +
-        '<p>Kai messages the people already in your CRM who asked, then went quiet — and hands you the ones who reply interested, with a free pilot first so you see real numbers before paying anything.</p>' +
-        '<div class="ctas"><a class="btn btn-primary" href="/reactivate-leads/">See how the free pilot works <span class="arrow">→</span></a><a class="btn btn-ghost" href="/reactivate-leads/#fit-check">Check if your list qualifies</a></div>'
-    },
-    {
-      color: 'var(--blueprint)', border: 'rgba(127,168,255,.35)',
-      html: '<span class="chip" style="color:var(--blueprint);border-color:rgba(127,168,255,.35);">Web · Fixed Price</span>' +
-        '<h3>Website creation.</h3>' +
-        '<p>A custom-designed site written and launched in 5–10 days, quoted at a fixed price before we start — so people who find you see something that matches the quality of your work.</p>' +
-        '<div class="ctas"><a class="btn btn-primary" href="/website-creation/#work">See recent work <span class="arrow">→</span></a><a class="btn btn-ghost" href="https://wa.me/352621990289?text=I%27d%20like%20a%20fixed%20quote%20for%20a%20website." target="_blank" rel="noopener">Get a fixed quote</a></div>'
-    },
-    {
-      color: 'var(--reel)', border: 'rgba(255,126,95,.35)',
-      html: '<span class="chip" style="color:var(--reel);border-color:rgba(255,126,95,.35);">Video · Real Estate &amp; Rentals</span>' +
-        '<h3>Walkthrough videos by Julaide.</h3>' +
-        '<p>Turn the listing photos you already have into a short cinematic video, ready for the listing and your socials in 48 hours — no shoot day required.</p>' +
-        '<div class="ctas"><a class="btn btn-primary" href="https://julaide.io" target="_blank" rel="noopener">Visit julaide.io <span class="arrow">↗</span></a></div>'
-    }
-  ];
-  var opts = document.querySelectorAll('.fit__opt');
-  var fitPanel = document.getElementById('fit-panel');
-  function renderFit(i) {
-    var f = FIT[i];
-    fitPanel.style.borderColor = f.border;
-    fitPanel.innerHTML = f.html;
-    opts.forEach(function (o, idx) { o.setAttribute('aria-pressed', idx === i ? 'true' : 'false'); });
-  }
-  opts.forEach(function (o, idx) {
-    o.addEventListener('click', function () { renderFit(idx); });
-  });
-  renderFit(0);
-})();
-</script>
 </body>
 </html>
