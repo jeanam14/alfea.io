@@ -20,9 +20,12 @@ My AI COO reads the shared GitHub repo jeanam14/coo. This project's report file
 there is alfea-web.md. Get push access to that repo, follow its CLAUDE.md and
 TEMPLATE.md, then update the report file and push whenever you:
 
-* the situation
+* did something that moves the project forward — not only when waiting on Jean
 * finish something Jean must review (photos, videos, drafts, prospect lists), with links
+* figure out what should happen next to move the project forward, even if it
+  doesn't need Jean — put it in "Agent next steps" so progress stays visible
 * need a decision, files, access or input from Jean
 * end a work session
 
-Never leave something Jean needs only in this chat.
+Report proactively, on your own initiative, not only when blocked and waiting
+for Jean. Never leave something Jean needs only in this chat.
